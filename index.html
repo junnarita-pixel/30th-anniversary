@@ -1,342 +1,416 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>社内共有｜大西代表インタビュー</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Zen+Old+Mincho:wght@400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<!--
+  社内共有ハブ ／ 大西代表インタビュー（AR/30周年）
+  ・動画：Google Drive 埋め込み（クリーン版）
+  ・チャプター：テーマ別グループ順／タイムスタンプはCSVから算出
+  ・引用(quote)は本人確認前のため未掲載
+-->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>社内共有｜大西代表インタビュー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Zen+Old+Mincho:wght@400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-  <style>
-    /* CSSは元の美しいデザインをそのまま維持しています */
-    :root{
-      --paper:#EFEDE6;--paper-2:#E7E4DA;--ink:#1B1D1E;--ink-soft:#4A4D4E;
-      --muted:#7C7E79;--accent:#195049;--accent-ink:#0E2E2A;--tint:#E2E8E4;
-      --line:#D2CFC4;--warn:#8A4B2A;--maxw:1080px;
-    }
-    *{box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
-    body{margin:0;background:var(--paper);color:var(--ink);
-      font-family:"Zen Kaku Gothic New","Noto Sans JP",system-ui,sans-serif;
-      line-height:1.8;-webkit-font-smoothing:antialiased;}
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
-    .eyebrow{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.22em;
-      text-transform:uppercase;color:var(--accent);font-weight:700;}
+<style>
+  :root{
+    --paper:#EFEDE6;--paper-2:#E7E4DA;--ink:#1B1D1E;--ink-soft:#4A4D4E;
+    --muted:#7C7E79;--accent:#195049;--accent-ink:#0E2E2A;--tint:#E2E8E4;
+    --line:#D2CFC4;--warn:#8A4B2A;--maxw:1080px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Zen Kaku Gothic New","Noto Sans JP",system-ui,sans-serif;line-height:1.8;
+    -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  .eyebrow{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--accent);font-weight:700;}
 
-    .topbar{position:sticky;top:0;z-index:60;background:rgba(239,237,230,.92);
-      backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
-    .topbar-inner{max-width:var(--maxw);margin:0 auto;padding:10px 28px;
-      display:flex;align-items:center;justify-content:space-between;gap:16px;}
-    .badge{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.14em;
-      color:#fff;background:var(--warn);padding:4px 10px;border-radius:2px;white-space:nowrap;}
-    .t{font-family:"Space Mono",monospace;font-size:12px;color:var(--muted);letter-spacing:.04em;}
+  .topbar{position:sticky;top:0;z-index:60;background:rgba(239,237,230,.92);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .topbar-inner{max-width:var(--maxw);margin:0 auto;padding:10px 28px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .badge{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.14em;
+    color:#fff;background:var(--warn);padding:4px 10px;border-radius:2px;white-space:nowrap;}
+  .t{font-family:"Space Mono",monospace;font-size:12px;color:var(--muted);letter-spacing:.04em;}
 
-    .hero{padding:60px 0 34px;}
-    .hero h1{font-family:"Zen Old Mincho",serif;font-weight:900;
-      font-size:clamp(26px,4.6vw,46px);line-height:1.3;margin:16px 0 20px;}
-    .subject{font-weight:700;font-size:16px;}
-    .subject span{color:var(--muted);font-weight:500;}
-    .meta{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
-      gap:1px;background:var(--line);border:1px solid var(--line);}
-    .meta div{background:var(--paper);padding:12px 14px;}
-    .meta dt{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.16em;
-      text-transform:uppercase;color:var(--muted);}
-    .meta dd{margin:5px 0 0;font-weight:500;font-size:14px;}
+  .hero{padding:60px 0 34px;}
+  .hero h1{font-family:"Zen Old Mincho",serif;font-weight:900;
+    font-size:clamp(26px,4.6vw,46px);line-height:1.3;margin:16px 0 20px;}
+  .subject{font-weight:700;font-size:16px;}
+  .subject span{color:var(--muted);font-weight:500;}
+  .meta{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+    gap:1px;background:var(--line);border:1px solid var(--line);}
+  .meta div{background:var(--paper);padding:12px 14px;}
+  .meta dt{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--muted);}
+  .meta dd{margin:5px 0 0;font-weight:500;font-size:14px;}
 
-    .player-dock{position:sticky;top:46px;z-index:40;background:var(--paper);
-      border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;}
-    .player-frame{max-width:760px;margin:0 auto;}
-    .video{position:relative;aspect-ratio:16/9;width:100%;background:#14201E;
-      border:1px solid var(--line);border-radius:5px;overflow:hidden;}
-    .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
-    .nowbar{max-width:760px;margin:10px auto 0;display:flex;align-items:center;gap:10px;
-      font-size:13px;color:var(--ink-soft);}
-    .nowbar .tag{font-family:"Space Mono",monospace;font-size:11px;color:#fff;
-      background:var(--accent);padding:2px 8px;border-radius:2px;letter-spacing:.04em;white-space:nowrap;}
-    #nowTitle{font-weight:700;}
+  .player-dock{position:sticky;top:46px;z-index:40;background:var(--paper);
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;}
+  .player-frame{max-width:760px;margin:0 auto;}
+  .video{position:relative;aspect-ratio:16/9;width:100%;background:#14201E;
+    border:1px solid var(--line);border-radius:5px;overflow:hidden;}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .nowbar{max-width:760px;margin:10px auto 0;display:flex;align-items:center;gap:10px;
+    font-size:13px;color:var(--ink-soft);}
+  .nowbar .tag{font-family:"Space Mono",monospace;font-size:11px;color:#fff;
+    background:var(--accent);padding:2px 8px;border-radius:2px;letter-spacing:.04em;white-space:nowrap;}
+  #nowTitle{font-weight:700;}
 
-    section{padding:52px 0;}
-    .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:22px;}
-    .sec-head h2{font-weight:900;font-size:clamp(19px,2.8vw,25px);letter-spacing:.02em;margin:6px 0 0;}
-    .lede{font-size:16px;color:var(--ink-soft);max-width:66ch;}
+  section{padding:52px 0;}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:22px;}
+  .sec-head h2{font-weight:900;font-size:clamp(19px,2.8vw,25px);letter-spacing:.02em;margin:6px 0 0;}
+  .lede{font-size:16px;color:var(--ink-soft);max-width:66ch;}
 
-    #chapters{border-top:1px solid var(--line);}
-    .ch{border-bottom:1px solid var(--line);}
+  /* ===== イントロ ===== */
+  #intro{border-top:1px solid var(--line);}
+  .thesis{max-width:760px;margin:0 0 46px;}
+  .thesis .eyebrow{margin-bottom:14px;display:block;}
+  .thesis .accent-line{width:46px;height:3px;background:var(--accent);margin-bottom:22px;}
+  .thesis p{font-family:"Zen Old Mincho",serif;font-weight:600;
+    font-size:clamp(18px,2.5vw,23px);line-height:1.75;color:var(--accent-ink);margin:0;}
 
-    .ch-header{
-      display:grid;grid-template-columns:auto 1fr auto;
-      gap:18px;padding:20px 14px;cursor:pointer;
-      transition:background .18s;align-items:start;user-select:none;
-    }
-    .ch-header:hover{background:var(--paper-2);}
-    .ch.active .ch-header{background:var(--tint);}
-    .ch.active .ch-num{color:var(--accent);}
+  .principles-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;}
+  .principles-head h2{font-weight:900;font-size:clamp(18px,2.6vw,23px);margin:6px 0 0;letter-spacing:.02em;}
+  .principles-sub{font-size:14.5px;color:var(--ink-soft);margin:0 0 26px;max-width:64ch;}
+  .principles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);}
+  @media(max-width:760px){.principles{grid-template-columns:1fr;}}
+  .principle{background:var(--paper);padding:24px 22px;}
+  .principle .pnum{font-family:"Space Mono",monospace;font-size:12px;color:var(--accent);
+    font-weight:700;letter-spacing:.1em;}
+  .principle h3{font-size:16px;font-weight:700;margin:12px 0 8px;letter-spacing:.01em;}
+  .principle p{font-size:13.5px;color:var(--ink-soft);line-height:1.8;margin:0;}
+  .principle .ex{display:block;margin-top:10px;font-size:12px;color:var(--muted);
+    font-family:"Space Mono",monospace;letter-spacing:.02em;}
+  .howto{margin-top:34px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    background:var(--tint);border-left:3px solid var(--accent);padding:16px 20px;border-radius:0 4px 4px 0;}
+  .howto .label{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--accent);font-weight:700;white-space:nowrap;}
+  .howto .flow{font-size:14px;color:var(--ink-soft);}
+  .howto .flow b{color:var(--ink);font-weight:700;}
 
-    .ch-stamp{display:flex;flex-direction:column;gap:6px;min-width:86px;}
-    .ch-num{font-family:"Space Mono",monospace;font-size:11px;color:var(--muted);font-weight:700;}
-    .ch-time{
-      font-family:"Space Mono",monospace;font-size:14px;color:var(--accent);font-weight:700;
-      border:1px solid var(--accent);border-radius:3px;padding:3px 8px;line-height:1;
-      background:none;cursor:pointer;white-space:nowrap;transition:background .15s,color .15s;
-    }
-    .ch-time:hover,.ch.active .ch-time{background:var(--accent);color:#fff;}
+  /* ===== チャプター ===== */
+  #chapters{background:var(--paper-2);border-top:1px solid var(--line);}
+  #chList{background:var(--paper);border:1px solid var(--line);}
 
-    .ch-main h3{margin:0 0 5px;font-size:17px;font-weight:700;}
-    .ch-lead{margin:0;font-size:14px;color:var(--ink-soft);}
+  .ch-group{
+    padding:20px 18px 14px;background:var(--paper-2);
+    border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:12px;
+  }
+  .ch-group .gnum{font-family:"Space Mono",monospace;font-size:11px;color:var(--accent);
+    font-weight:700;letter-spacing:.1em;}
+  .ch-group h3{margin:0;font-size:15px;font-weight:700;letter-spacing:.04em;}
 
-    .ch-toggle{display:flex;align-items:center;padding-top:4px;color:var(--muted);
-      transition:transform .28s;flex-shrink:0;}
-    .ch-toggle svg{width:20px;height:20px;}
-    .ch.open .ch-toggle{transform:rotate(180deg);color:var(--accent);}
+  .ch{border-bottom:1px solid var(--line);}
+  .ch:last-child{border-bottom:none;}
+  .ch-header{display:grid;grid-template-columns:auto 1fr auto;gap:18px;padding:20px 18px;
+    cursor:pointer;transition:background .18s;align-items:start;user-select:none;}
+  .ch-header:hover{background:var(--paper-2);}
+  .ch.active .ch-header{background:var(--tint);}
+  .ch.active .ch-num{color:var(--accent);}
+  .ch-stamp{display:flex;flex-direction:column;gap:6px;min-width:84px;}
+  .ch-num{font-family:"Space Mono",monospace;font-size:11px;color:var(--muted);font-weight:700;}
+  .ch-time{font-family:"Space Mono",monospace;font-size:14px;color:var(--accent);font-weight:700;
+    border:1px solid var(--accent);border-radius:3px;padding:3px 8px;line-height:1;background:none;
+    cursor:pointer;white-space:nowrap;transition:background .15s,color .15s;}
+  .ch-time:hover,.ch.active .ch-time{background:var(--accent);color:#fff;}
+  .ch-main h4{margin:0 0 5px;font-size:17px;font-weight:700;}
+  .ch-lead{margin:0;font-size:14px;color:var(--ink-soft);}
+  .ch-toggle{display:flex;align-items:center;padding-top:4px;color:var(--muted);
+    transition:transform .28s;flex-shrink:0;}
+  .ch-toggle svg{width:20px;height:20px;}
+  .ch.open .ch-toggle{transform:rotate(180deg);color:var(--accent);}
+  .ch-body{overflow:hidden;max-height:0;transition:max-height .38s cubic-bezier(.4,0,.2,1);
+    padding:0 18px 0 calc(84px + 18px + 18px);}
+  .ch.open .ch-body{max-height:600px;padding-bottom:24px;}
+  .ch-detail{font-size:14px;line-height:1.9;color:var(--ink-soft);
+    border-left:2px solid var(--line);padding-left:16px;margin:0 0 14px;}
+  .ch-take{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px;}
+  .ch-take span{font-size:12px;background:var(--paper-2);border:1px solid var(--line);
+    color:var(--ink-soft);padding:3px 10px;border-radius:20px;}
+  .ch-play-btn{display:inline-flex;align-items:center;gap:7px;margin-top:2px;
+    font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.06em;
+    color:#fff;background:var(--accent);border:none;cursor:pointer;
+    padding:8px 16px;border-radius:3px;transition:background .18s;}
+  .ch-play-btn:hover{background:var(--accent-ink);}
+  .ch-play-btn svg{width:12px;height:12px;}
 
-    .ch-body{
-      overflow:hidden;max-height:0;
-      transition:max-height .38s cubic-bezier(.4,0,.2,1);
-      padding:0 14px 0 calc(86px + 18px + 14px);
-    }
-    .ch.open .ch-body{max-height:800px;padding-bottom:24px;}
+  #decisions{border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .keys{list-style:none;padding:0;margin:0;counter-reset:k;}
+  .keys li{counter-increment:k;display:grid;grid-template-columns:auto 1fr;gap:16px;
+    padding:18px 0;border-top:1px solid var(--line);}
+  .keys li:last-child{border-bottom:1px solid var(--line);}
+  .keys li::before{content:counter(k,decimal-leading-zero);font-family:"Space Mono",monospace;
+    font-size:13px;color:var(--accent);font-weight:700;padding-top:3px;}
+  .keys b{font-weight:700;}
 
-    .ch-detail{font-size:14px;line-height:1.9;color:var(--ink-soft);
-      border-left:2px solid var(--line);padding-left:16px;margin:0 0 14px;}
+  #archive{background:var(--accent-ink);color:#DCE6E2;}
+  #archive .eyebrow{color:#7FB0A6;}#archive h2{color:#fff;}#archive .lede{color:#B9CAC4;}
+  .archive-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px;}
+  @media(max-width:720px){.archive-grid{grid-template-columns:1fr;}}
+  .archive-card{border:1px solid rgba(255,255,255,.14);border-radius:4px;padding:20px;background:rgba(255,255,255,.03);}
+  .archive-card h3{margin:0 0 8px;font-size:15px;color:#fff;}
+  .archive-card p{margin:0;font-size:14px;color:#AEC0BA;line-height:1.8;}
 
-    .ch-take{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px;}
-    .ch-take span{font-size:12px;background:var(--paper);border:1px solid var(--line);
-      color:var(--ink-soft);padding:3px 10px;border-radius:20px;}
+  footer{padding:36px 0 60px;}
+  .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    font-family:"Space Mono",monospace;font-size:11px;color:var(--muted);
+    letter-spacing:.06em;border-top:1px solid var(--line);padding-top:22px;}
 
-    .ch-quote{font-family:"Zen Old Mincho",serif;font-weight:600;font-size:15px;
-      color:var(--accent-ink);border-left:2px solid var(--accent);
-      padding-left:14px;margin:0 0 14px;line-height:1.7;}
+  .reveal{opacity:0;transform:translateY(12px);transition:opacity .5s,transform .5s;}
+  .reveal.in{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+  @media(max-width:600px){.ch-body{padding-left:18px;}.ch-stamp{min-width:70px;}}
+</style>
 
-    .ch-play-btn{
-      display:inline-flex;align-items:center;gap:7px;margin-top:4px;
-      font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.06em;
-      color:#fff;background:var(--accent);border:none;cursor:pointer;
-      padding:8px 16px;border-radius:3px;transition:background .18s;
-    }
-    .ch-play-btn:hover{background:var(--accent-ink);}
-    .ch-play-btn svg{width:12px;height:12px;}
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="badge">社内限定 ／ 取扱注意</span>
+    <span class="t">PWJ INTERNAL · INTERVIEW</span>
+  </div>
+</div>
 
-    #decisions{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-    .keys{list-style:none;padding:0;margin:0;counter-reset:k;}
-    .keys li{counter-increment:k;display:grid;grid-template-columns:auto 1fr;gap:16px;
-      padding:18px 0;border-top:1px solid var(--line);}
-    .keys li:last-child{border-bottom:1px solid var(--line);}
-    .keys li::before{content:counter(k,decimal-leading-zero);font-family:"Space Mono",monospace;
-      font-size:13px;color:var(--accent);font-weight:700;padding-top:3px;}
-    .keys b{font-weight:700;}
+<header class="hero">
+  <div class="wrap reveal">
+    <div class="eyebrow">Internal Briefing ／ Interview</div>
+    <h1>30年の現在地と、これからの実装計画</h1>
+    <div class="subject">大西 健丞　<span>／ ピースウィンズ・ジャパン 代表</span></div>
+    <dl class="meta">
+      <div><dt>収録日</dt><dd>2026.06.04</dd></div>
+      <div><dt>原尺</dt><dd>約162分</dd></div>
+      <div><dt>構成・編集</dt><dd>コンテンツチーム</dd></div>
+      <div><dt>公開範囲</dt><dd>PWJ職員 限定</dd></div>
+    </dl>
+  </div>
+</header>
 
-    #archive{background:var(--accent-ink);color:#DCE6E2;}
-    #archive .eyebrow{color:#7FB0A6;}#archive h2{color:#fff;}#archive .lede{color:#B9CAC4;}
-    .archive-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px;}
-    @media(max-width:720px){.archive-grid{grid-template-columns:1fr;}}
-    .archive-card{border:1px solid rgba(255,255,255,.14);border-radius:4px;padding:20px;background:rgba(255,255,255,.03);}
-    .archive-card h3{margin:0 0 8px;font-size:15px;color:#fff;}
-    .archive-card p{margin:0;font-size:14px;color:#AEC0BA;line-height:1.8;}
-
-    footer{padding:36px 0 60px;}
-    .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
-      font-family:"Space Mono",monospace;font-size:11px;color:var(--muted);
-      letter-spacing:.06em;border-top:1px solid var(--line);padding-top:22px;}
-
-    .reveal{opacity:0;transform:translateY(12px);transition:opacity .5s,transform .5s;}
-    .reveal.in{opacity:1;transform:none;}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}}
-    :focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
-    @media(max-width:600px){.ch-body{padding-left:14px;}.ch-stamp{min-width:70px;}}
-  </style>
-</head>
-<body>
-
-  <div class="topbar">
-    <div class="topbar-inner">
-      <span class="badge">社内限定 ／ 取扱注意</span>
-      <span class="t">PWJ INTERNAL · INTERVIEW</span>
+<div class="player-dock">
+  <div class="wrap">
+    <div class="player-frame">
+      <div class="video">
+        <iframe id="gd-iframe"
+          src="https://drive.google.com/file/d/19nQ_CR_UFpXxqc6pZYPkimtsxeqjcNYm/preview"
+          allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="nowbar">
+      <span class="tag">▶ 再生中</span>
+      <span id="nowTitle">チャプターを選んでください</span>
     </div>
   </div>
+</div>
 
-  <header class="hero">
-    <div class="wrap reveal">
-      <div class="eyebrow">Internal Briefing ／ Interview</div>
-      <h1>30年の現在地と、これからの実装計画</h1>
-      <div class="subject">大西 健丞 <span>／ ピースウィンズ・ジャパン 代表</span></div>
-      <dl class="meta">
-        <div><dt>収録日</dt><dd>2026.06.04</dd></div>
-        <div><dt>原尺</dt><dd>約162分</dd></div>
-        <div><dt>構成・編集</dt><dd>コンテンツチーム</dd></div>
-        <div><dt>公開範囲</dt><dd>PWJ職員 限定</dd></div>
-      </dl>
+<!-- ===== イントロ ===== -->
+<section id="intro">
+  <div class="wrap">
+    <div class="thesis reveal">
+      <span class="eyebrow">この162分は、何の話か</span>
+      <div class="accent-line"></div>
+      <p>30年前、紛争地で「民間でもここまでできる」を証明するところから始まった組織が、いまや国内災害・医療・動物福祉・海洋調査、そして制度づくりまでを担うに至った——その到達点と、次の世代へどう手渡すかまでを語った162分です。</p>
     </div>
-  </header>
 
-  <div class="player-dock">
-    <div class="wrap">
-      <div class="player-frame">
-        <div class="video">
-          <!-- 変更点：最初から直接iframeを記述し、URLの末尾に enablejsapi=1 を追加しています -->
-          <iframe id="yt-iframe"
-            src="https://www.youtube.com/embed/1B7Mq73yXeI?enablejsapi=1&rel=0&modestbranding=1"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowfullscreen></iframe>
+    <div class="reveal">
+      <div class="principles-head">
+        <span class="eyebrow">Throughline</span>
+        <h2>すべての事業を貫く3つの考え方</h2>
+      </div>
+      <p class="principles-sub">各章は別々のプロジェクトの話に見えますが、実は同じ論理の変奏です。この3つを頭に入れて見ると、全体が一本につながります。</p>
+      <div class="principles">
+        <div class="principle">
+          <span class="pnum">01</span>
+          <h3>民間が国家の隙間を埋める</h3>
+          <p>国や国連が動けない領域を、民間がより速く・より安く担えることを現場で証明し続ける。</p>
+          <span class="ex">例：紛争地支援 ／ JPF創設</span>
+        </div>
+        <div class="principle">
+          <span class="pnum">02</span>
+          <h3>デュアルユース（平時↔有事）</h3>
+          <p>平時に稼ぐ・役立つ資産を、有事にそのまま即応へ転用する。高コストな船や拠点を眠らせない設計。</p>
+          <span class="ex">例：海洋調査船 ／ ARROWS岡山拠点</span>
+        </div>
+        <div class="principle">
+          <span class="pnum">03</span>
+          <h3>制度そのものを作り変える</h3>
+          <p>事業を回すだけでなく、ルールや仕組みの側を動かす。資金・税・会計の枠組みごと変えにいく。</p>
+          <span class="ex">例：オーバーヘッド上限 ／ 税制・休眠預金</span>
         </div>
       </div>
-      <div class="nowbar">
-        <span class="tag">▶ 再生中</span>
-        <span id="nowTitle">チャプターを選んでください</span>
+      <div class="howto">
+        <span class="label">こう辿ると分かりやすい</span>
+        <span class="flow"><b>原点と歴史</b> → <b>現在の事業</b> → <b>支える仕組み</b> → <b>これからの設計</b>　の順に並べています。上から辿れば30年の流れと今後がつかめます。</span>
       </div>
     </div>
   </div>
+</section>
 
-  <section id="chapters">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="eyebrow">Chapters</span>
-        <h2>チャプター一覧</h2>
-      </div>
-      <p class="lede" style="margin-bottom:24px;">▼ 展開すると内容を確認できます。タイムスタンプをクリックするとその場所から動画を再生します。</p>
-      <div id="chList"></div>
+<!-- ===== チャプター ===== -->
+<section id="chapters">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">Chapters</span><h2>チャプター一覧</h2></div>
+    <p class="lede reveal" style="margin-bottom:24px;">▼ 展開すると内容を確認できます。タイムスタンプをクリックするとその場所から動画を再生します。</p>
+    <div id="chList" class="reveal"></div>
+  </div>
+</section>
+
+<section id="decisions">
+  <div class="wrap reveal">
+    <div class="sec-head"><span class="eyebrow">Key decisions</span><h2>この収録の決定・方針</h2></div>
+    <ul class="keys">
+      <li><span><b>ロジを中核資産に</b>　空×海プラットフォームをコアと位置づけ、平時はデュアルユース収益で維持し有事に即応する運用へ。</span></li>
+      <li><span><b>医療・救助の一体運用</b>　ARROWSの即応医療を「先導評価→搬送・物資」の標準工程に。医師確保は病院連携・都市拠点化で突破。</span></li>
+      <li><span><b>動物福祉の市場化</b>　非営利の譲渡フローを土台に、インパクト投資でセカンダリーマーケットを全国スケールへ。</span></li>
+      <li><span><b>自治体・企業との事前連結</b>　高リスク沿岸自治体と事前協働、CLT等の事前配備型スキームを展開。</span></li>
+      <li><span><b>組織継承</b>　「ゼロイチ（重力圏離脱）」を担える次世代リーダー育成を経営課題として明示。</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="archive">
+  <div class="wrap reveal">
+    <div class="sec-head"><span class="eyebrow">Archive ／ Access</span><h2 style="color:#fff;">原映像と取り扱い</h2></div>
+    <p class="lede">フル尺（機微情報を含む）はアクセスを限定した場所に保管しています。共有版は配布前に代表／事務局の確認を経ています。</p>
+    <div class="archive-grid">
+      <div class="archive-card"><h3>フル尺アーカイブ</h3><p>保管：［Drive 等、アクセス制限あり］<br />閲覧申請：コンテンツチームまで</p></div>
+      <div class="archive-card"><h3>共有範囲の確認</h3><p>機微指定の内容はこの共有版から除外済み。判断に迷う引用・転載はコンテンツチームへ。</p></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="decisions">
-    <div class="wrap reveal">
-      <div class="sec-head"><span class="eyebrow">Key decisions</span><h2>この収録の決定・方針</h2></div>
-      <ul class="keys">
-        <li><span><b>ロジを中核資産に</b> 空×海プラットフォームをコアと位置づけ、平時はデュアルユース収益で維持し有事に即応する運用へ。</span></li>
-        <li><span><b>医療・救助の一体運用</b> ARROWSの即応医療を「先導評価→搬送・物資」の標準工程に。医師確保は病院連携・都市拠点化で突破。</span></li>
-        <li><span><b>動物福祉の市場化</b> 非営利の譲渡フローを土台に、インパクト投資でセカンダリーマーケットを全国スケールへ。</span></li>
-        <li><span><b>自治体・企業との事前連結</b> 高リスク沿岸自治体と事前協働、CLT等の事前配備型スキームを展開。</span></li>
-        <li><span><b>組織継承</b> 「ゼロイチ（重力圏離脱）」を担える次世代リーダー育成を経営課題として明示。</span></li>
-      </ul>
-    </div>
-  </section>
+<footer>
+  <div class="wrap"><div class="foot">
+    <span>PEACE WINDS JAPAN ／ 社内限定</span>
+    <span>構成・編集：コンテンツチーム</span>
+    <span>最終更新 2026.06</span>
+  </div></div>
+</footer>
 
-  <section id="archive">
-    <div class="wrap reveal">
-      <div class="sec-head"><span class="eyebrow">Archive ／ Access</span><h2 style="color:#fff;">原映像と取り扱い</h2></div>
-      <p class="lede">フル尺（機微情報を含む）はアクセスを限定した場所に保管しています。共有版は配布前に代表／事務局の確認を経ています。</p>
-      <div class="archive-grid">
-        <div class="archive-card"><h3>フル尺アーカイブ</h3><p>保管：［Drive 等、アクセス制限あり］<br />閲覧申請：コンテンツチームまで</p></div>
-        <div class="archive-card"><h3>共有範囲の確認</h3><p>機微指定の内容はこの共有版から除外済み。判断に迷う引用・転載はコンテンツチームへ。</p></div>
-      </div>
-    </div>
-  </section>
+<script>
+  const GD_FILE_ID = "19nQ_CR_UFpXxqc6pZYPkimtsxeqjcNYm";
 
-  <footer>
-    <div class="wrap"><div class="foot">
-      <span>PEACE WINDS JAPAN ／ 社内限定</span>
-      <span>構成・編集：コンテンツチーム</span>
-      <span>最終更新 2026.06</span>
-    </div></div>
-  </footer>
+  /* チャプター：テーマ別グループ順。seekはCSVから算出済み（動画上の時刻） */
+  const GROUPS = ["原点と歴史", "現在の事業", "支える仕組み", "これからの設計"];
 
-  <script>
-    const YT_VIDEO_ID = "1B7Mq73yXeI";
+  const CHAPTERS = [
+    { g:0, seek:0, title:"創設と30年の節目",
+      lead:"湾岸戦争後のイラク北部での実務から独立し、1996年に設立。JPF創設、東日本大震災のロジ展開まで。",
+      summary:"1991年の湾岸戦争後、イラク北部クルド人自治区での現地実務を経て独立。1996年に任意団体として設立（日本はNPO法がなかったため、最初の法人化はクルド人自治区）。1999年にNPO法人化。<br><br>コソボ・東ティモール（1999年）では難民・仮設住宅資材を約5,400戸分供給。日本の官民スキームの未整備を是正するため、外務・財務・経済界を連結しJapan Platform（2001年）を主導。累計1,000億円超の資金、5,000件超のプロジェクトを実行。<br><br>中越地震（2004）・アチェ津波（2004）等の現場知見を起点に、国内大規模災害への拡張を開始。東日本大震災（2011）ではシビックフォースを立ち上げ、SNS・クラファン先駆で約38億円を調達し大規模ロジを展開。",
+      take:["民間が公益を最前線で担う原点","JPF：累計1,000億超・5,000件超","国内外をまたぐロジ実績"] },
+    { g:0, seek:852, title:"紛争・国際人道支援",
+      lead:"コソボ・東ティモールからJapan Platform創設へ。民間が最前線で公益を担う実装力。",
+      summary:"現在も継続的な国際人道支援の実装力を保持。民間組織が最前線で公益を担う事例を世界に示し続けることが、組織の存在意義の一つとして確認された。<br><br>具体的な現地活動と国際連携（UNHCR等）の実績を礎に、次の危機への即応体制を維持する方針。",
+      take:["最前線の実装力の継続維持","国際連携（UNHCR等）"] },
 
-    // 1. YouTube API の読み込み
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    { g:1, seek:3079, title:"災害ロジ｜空×海プラットフォーム",
+      lead:"洋上の燃料・物資拠点とヘリの連携。軽油約540tの多用途活用、ヘリパッド搭載船の常備構想。",
+      summary:"アチェでのシンガポール海軍の運用をベンチマークに、民間版「洋上燃料・物資拠点＋ヘリ」の原型を確立。船舶の燃料積載（軽油約540t）を発電・車両・ヘリ燃料供給に多用途活用できることを確認。<br><br>今後はヘリパッド搭載船の常備配備を構想。帝人と共同開発した「バルーンシェルター」は空輸前提の軽量・高強度素材で、V2の改良を検討中。ドローンの物資投下は「有人機による先導・評価」の後段運用として拡張計画。",
+      take:["洋上拠点＋ヘリ原型","船舶燃料の多用途性（540t）","バルーンシェルターV2","ドローン後段運用"] },
+    { g:1, seek:5511, title:"医療機動部隊 ARROWS",
+      lead:"西日本豪雨（2018）を機に運用開始。WHO EMT認証済。医師確保が課題で、岡山の病院連携モデルを試行中。",
+      summary:"西日本豪雨（2018）を契機に原型運用を開始し、能登半島地震で全国認知と成果を拡大。WHO EMT認証済みで、1〜2チームの即応展開が常態化している。<br><br>課題は常駐医師の採用・維持（都市部志向・報酬要件）のボトルネック。岡山拠点での病院連携型デュアルユース配置を実験中で、「都市常駐＋有事招集」モデルの検証を進める。",
+      take:["WHO EMT認証済","1〜2チーム即応展開","医師確保がボトルネック","岡山デュアルユース拠点実験"] },
+    { g:1, seek:2379, title:"動物福祉・災害救助犬",
+      lead:"殺処分ゼロへ、保護→検疫→再訓練→譲渡の循環を非営利で実装。インパクト投資で市場化へ。",
+      summary:"殺処分ゼロ化に向け、保護→検疫→再訓練→譲渡の「セカンダリーマーケット」を非営利モデルで実装。次段としてインパクト投資を導入し、市場規模と地理的カバレッジを拡張する有償循環モデルを検討中。<br><br>災害救助犬は初動到達のギャップを補完する機能として戦力化。早期に被災現場に入れる体制として、ARROWSや空×海ロジと連動する設計。",
+      take:["セカンダリーマーケット（非営利）","インパクト投資導入検討","救助犬＝初動ギャップ補完"] },
+    { g:1, seek:4471, title:"海洋・資源調査のデュアルユース",
+      lead:"希少な浅海域対応船を運用し月7〜8千万円規模の収益。平時収益で高コスト資産を維持し有事に即応する設計。",
+      summary:"浅海域の音響地質調査に対応できる希少な船を保有・運用。JOGMEC等からの受託（CCS・資源調査）で月7〜8千万円規模の収益案件を獲得している。<br><br>この収益モデルの本質は「平時に稼いで有事に動かす」設計。船舶・航空など高コスト資産のランニングコストを平時の受託収益で賄い、災害時の即応性を担保するデュアルユース構造。",
+      take:["浅海域対応の希少船","月7〜8千万円規模の受託","平時収益→有事即応の設計"] },
 
-    // 2. 既存のiframeにプレイヤー機能（API）を紐付ける
-    var player;
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('yt-iframe');
+    { g:2, seek:2171, title:"自治体・企業・基金のエコシステム",
+      lead:"北海道7自治体と協定締結。経済同友会・共助委員会を主導。企業人材循環やRescue City構想まで。",
+      summary:"北海道7市町村と協定を締結し、事前の地理・文化理解と現地関係構築を先行実施。自治体の「正常性バイアス（過小想定）」を事前に是正するアプローチ。<br><br>経済界とはJPFの歴史的連携に加え、経済同友会で「共助委員会」を主導。企業人材の受け入れ（企業版ふるさと納税・出向）で人材循環を開始。CLT（住友林業）等の事前備蓄・可搬住宅の事業化も協議中。<br><br>資金スキームとして経済同友会基金の創設準備を進め、災害技術スタートアップ（仮称：Rescue City）のグローバル展開も構想中。",
+      take:["北海道7自治体と協定","正常性バイアスの是正","共助委員会（経済同友会）","企業人材循環","Rescue City構想"] },
+    { g:2, seek:1779, title:"政策・制度への影響",
+      lead:"JPF創設、オーバーヘッド上限拡張、税額控除引き上げ——制度そのものを動かしてきた実績。",
+      summary:"JPF創設（三位一体の「カウンターバランス」設計）は大西代表が主導。国際事業のオーバーヘッド上限を〜15%に拡張し「援助貧乏」リスクを緩和。認定NPOの税額控除率引き上げ（〜40%強）も後押し。<br><br>休眠預金（年1,300億円規模）の活用は現状〜80億円/年と低調。機動的活用への制度運用改善を引き続き働きかけ中。インパクト会計ルールの整備提言も進めている。",
+      take:["JPF創設・主導","オーバーヘッド上限〜15%","税額控除〜40%強","休眠預金の活用改善"] },
+
+    { g:3, seek:830, title:"メディア・広報の再設計",
+      lead:"既存メディアの現地浸透不足を踏まえた自主メディア化。KPIは意思決定誘発。深度重視の方針。",
+      summary:"既存大手メディアの現地浸透不足を踏まえ、自主メディア化を検討。方針は「センセーショナリズムではなく本質的な真実を刺す深度重視」。KPIはビュー数だけでなく、政策・企業・首長等の意思決定誘発を重視。<br><br>コスト構造に耐える持続可能モデルとして、寄付・サブスク・企業連携等のハイブリッドを設計する必要あり。内製ユニットの立ち上げ（取材安全基準・編集方針・収益モデル）とパイロット配信を今後の予定に。",
+      take:["KPIは意思決定誘発","深度重視・センセーショナリズム不要","内製ユニット立ち上げ検討"] },
+    { g:3, seek:5389, title:"組織継承と次世代リーダー",
+      lead:"「ゼロイチ（重力圏離脱）」を担える次世代の育成を経営課題として明示。",
+      summary:"「ゼロイチ（重力圏離脱）」——つまり既存の枠組みを超えて新しい仕組みをつくる力——を担える次世代リーダーの育成を、明示的な経営課題として確認。<br><br>規模拡大に伴い、大西代表個人の判断に依存しない組織継承の設計が急務。人材育成・採用・キャリアパスの再設計を含む組織的な取り組みが必要。",
+      take:["ゼロイチ人材の育成が急務","組織継承の設計","個人依存からの脱却"] },
+  ];
+
+  const fmt = s => {
+    s=Math.max(0,Math.floor(s));
+    const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),x=s%60;
+    return (h? h+":"+String(m).padStart(2,"0") : String(m))+":"+String(x).padStart(2,"0");
+  };
+
+  const chevron = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>`;
+  const playIco = `<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>`;
+
+  const list = document.getElementById('chList');
+  let lastGroup = -1;
+  CHAPTERS.forEach((c, i) => {
+    if (c.g !== lastGroup) {
+      const gh = document.createElement('div');
+      gh.className = 'ch-group';
+      gh.innerHTML = `<span class="gnum">${String(c.g+1).padStart(2,'0')}</span><h3>${GROUPS[c.g]}</h3>`;
+      list.appendChild(gh);
+      lastGroup = c.g;
     }
-
-    const CHAPTERS = [
-      { seek:0,    title:"創設と30年の節目", lead:"湾岸戦争後のイラク北部での実務から独立し、1996年に設立。JPF創設、東日本大震災のロジ展開まで。", summary:"1991年の湾岸戦争後、イラク北部クルド人自治区での現地実務を経て独立。1996年に任意団体として設立（日本はNPO法がなかったため、最初の法人化はクルド人自治区）。1999年にNPO法人化。<br><br>コソボ・東ティモール（1999年）では難民・仮設住宅資材を約5,400戸分供給。日本の官民スキームの未整備を是正するため、外務・財務・経済界を連結しJapan Platform（2001年）を主導。累計1,000億円超の資金、5,000件超のプロジェクトを実行。<br><br>中越地震（2004）・アチェ津波（2004）等の現場知見を起点に、国内大規模災害への拡張を開始。東日本大震災（2011）ではシビックフォースを立ち上げ、SNS・クラファン先駆で約38億円を調達し大規模ロジを展開。", take:["民間が公益を最前線で担う原点","JPF：累計1,000億超・5,000件超","国内外をまたぐロジ実績"], quote:"" },
-      { seek:830,  title:"メディア・広報の再設計", lead:"既存メディアの現地浸透不足を踏まえた自主メディア化。KPIは意思決定誘発。深度重視の方針。", summary:"既存大手メディアの現地浸透不足を踏まえ、自主メディア化を検討。方針は「センセーショナリズムではなく本質的な真実を刺す深度重視」。KPIはビュー数だけでなく、政策・企業・首長等の意思決定誘発を重視。<br><br>コスト構造に耐える持続可能モデルとして、寄付・サブスク・企業連携等のハイブリッドを設計する必要あり。内製ユニットの立ち上げ（取材安全基準・編集方針・収益モデル）とパイロット配信を今後の予定に。", take:["KPIは意思決定誘発","深度重視・センセーショナリズム不要","内製ユニット立ち上げ検討"], quote:"" },
-      { seek:852,  title:"紛争・国際人道支援", lead:"コソボ・東ティモールからJapan Platform創設へ。民間が最前線で公益を担う実装力。", summary:"現在も継続的な国際人道支援の実装力を保持。民間組織が最前線で公益を担う事例を世界に示し続けることが、組織の存在意義の一つとして確認された。<br><br>具体的な現地活動と国際連携（UNHCR等）の実績を礎に、次の危機への即応体制を維持する方針。", take:["最前線の実装力の継続維持","国際連携（UNHCR等）"], quote:"" },
-      { seek:1779, title:"政策・制度への影響", lead:"JPF創設、オーバーヘッド上限拡張、税額控除引き上げ——制度そのものを動かしてきた実績。", summary:"JPF創設（三位一体の「カウンターバランス」設計）は大西代表が主導。国際事業のオーバーヘッド上限を〜15%に拡張し「援助貧乏」リスクを緩和。認定NPOの税額控除率引き上げ（〜40%強）も後押し。<br><br>休眠預金（年1,300億円規模）の活用は現状〜80億円/年と低調。機動的活用への制度運用改善を引き続き働きかけ中。インパクト会計ルールの整備提言も進めている。", take:["JPF創設・主導","オーバーヘッド上限〜15%","税額控除〜40%強","休眠預金の活用改善"], quote:"" },
-      { seek:2171, title:"自治体・企業・基金のエコシステム", lead:"北海道7自治体と協定締結。経済同友会・共助委員会を主導。企業人材循環やRescue City構想まで。", summary:"北海道7市町村と協定を締結し、事前の地理・文化理解と現地関係構築を先行実施。自治体の「正常性バイアス（過小想定）」を事前に是正するアプローチ。<br><br>経済界とはJPFの歴史的連携に加え、経済同友会で「共助委員会」を主導。企業人材の受け入れ（企業版ふるさと納税・出向）で人材循環を開始。CLT（住友林業）等の事前備蓄・可搬住宅の事業化も協議中。<br><br>資金スキームとして経済同友会基金の創設準備を進め、災害技術スタートアップ（仮称：Rescue City）のグローバル展開も構想中。", take:["北海道7自治体と協定","正常性バイアスの是正","共助委員会（経済同友会）","企業人材循環","Rescue City構想"], quote:"" },
-      { seek:2379, title:"動物福祉・災害救助犬", lead:"殺処分ゼロへ、保護→検疫→再訓練→譲渡の循環を非営利で実装。インパクト投資で市場化へ。", summary:"殺処分ゼロ化に向け、保護→検疫→再訓練→譲渡の「セカンダリーマーケット」を非営利モデルで実装。次段としてインパクト投資を導入し、市場規模と地理的カバレッジを拡張する有償循環モデルを検討中。<br><br>災害救助犬は初動到達のギャップを補完する機能として戦力化。早期に被災現場に入れる体制として、ARROWSや空×海ロジと連動する設計。", take:["セカンダリーマーケット（非営利）","インパクト投資導入検討","救助犬＝初動ギャップ補完"], quote:"" },
-      { seek:3079, title:"災害ロジ｜空×海プラットフォーム", lead:"洋上の燃料・物資拠点とヘリの連携。軽油約540tの多用途活用、ヘリパッド搭載船の常備構想。", summary:"アチェでのシンガポール海軍の運用をベンチマークに、民間版「洋上燃料・物資拠点＋ヘリ」の原型を確立。船舶の燃料積載（軽油約540t）を発電・車両・ヘリ燃料供給に多用途活用できることを確認。<br><br>今後はヘリパッド搭載船の常備配備を構想。帝人と共同開発した「バルーンシェルター」は空輸前提の軽量・高強度素材で、V2の改良を検討中。ドローンの物資投下は「有人機による先導・評価」の後段運用として拡張計画。", take:["洋上拠点＋ヘリ原型","船舶燃料の多用途性（540t）","バルーンシェルターV2","ドローン後段運用"], quote:"" },
-      { seek:4471, title:"海洋・資源調査のデュアルユース", lead:"希少な浅海域対応船を運用し月7〜8千万円規模の収益。平時収益で高コスト資産を維持し有事に即応する設計。", summary:"浅海域の音響地質調査に対応できる希少な船を保有・運用。JOGMEC等からの受託（CCS・資源調査）で月7〜8千万円規模の収益案件を獲得している。<br><br>この収益モデルの本質は「平時に稼いで有事に動かす」設計。船舶・航空など高コスト資産のランニングコストを平時の受託収益で賄い、災害時の即応性を担保するデュアルユース構造。", take:["浅海域対応の希少船","月7〜8千万円規模の受託","平時収益→有事即応の設計"], quote:"" },
-      { seek:5389, title:"組織継承と次世代リーダー", lead:"「ゼロイチ（重力圏離脱）」を担える次世代の育成を経営課題として明示。", summary:"「ゼロイチ（重力圏離脱）」——つまり既存の枠組みを超えて新しい仕組みをつくる力——を担える次世代リーダーの育成を、明示的な経営課題として確認。<br><br>規模拡大に伴い、大西代表個人の判断に依存しない組織継承の設計が急務。人材育成・採用・キャリアパスの再設計を含む組織的な取り組みが必要。", take:["ゼロイチ人材の育成が急務","組織継承の設計","個人依存からの脱却"], quote:"" },
-      { seek:5511, title:"医療機動部隊 ARROWS", lead:"西日本豪雨（2018）を機に運用開始。WHO EMT認証済。医師確保が課題で、岡山の病院連携モデルを試行中。", summary:"西日本豪雨（2018）を契機に原型運用を開始し、能登半島地震で全国認知と成果を拡大。WHO EMT認証済みで、1〜2チームの即応展開が常態化している。<br><br>課題は常駐医師の採用・維持（都市部志向・報酬要件）のボトルネック。岡山拠点での病院連携型デュアルユース配置を実験中で、「都市常駐＋有事招集」モデルの検証を進める。", take:["WHO EMT認証済","1〜2チーム即応展開","医師確保がボトルネック","岡山デュアルユース拠点実験"], quote:"" },
-    ];
-
-    const fmt = s => {
-      s = Math.max(0, Math.floor(s));
-      const h=Math.floor(s/3600), m=Math.floor((s%3600)/60), x=s%60;
-      return (h ? h+":"+String(m).padStart(2,"0") : String(m))+":"+String(x).padStart(2,"0");
-    };
-
-    const chevron = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>`;
-    const playIco = `<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>`;
-
-    const list = document.getElementById('chList');
-    CHAPTERS.forEach((c, i) => {
-      const el = document.createElement('div');
-      el.className = 'ch reveal'; el.dataset.i = i;
-      el.innerHTML = `
-        <div class="ch-header" tabindex="0" role="button" aria-expanded="false">
-          <div class="ch-stamp">
-            <span class="ch-num">CH ${String(i+1).padStart(2,'0')}</span>
-            <button class="ch-time" data-play title="この時点から再生">${fmt(c.seek)}</button>
-          </div>
-          <div class="ch-main">
-            <h3>${c.title}</h3>
-            <p class="ch-lead">${c.lead}</p>
-          </div>
-          <div class="ch-toggle">${chevron}</div>
+    const el = document.createElement('div');
+    el.className = 'ch'; el.dataset.i = i;
+    el.innerHTML = `
+      <div class="ch-header" tabindex="0" role="button" aria-expanded="false">
+        <div class="ch-stamp">
+          <span class="ch-num">CH ${String(i+1).padStart(2,'0')}</span>
+          <button class="ch-time" data-play title="この時点から再生">${fmt(c.seek)}</button>
         </div>
-        <div class="ch-body" role="region">
-          <div class="ch-detail">${c.summary}</div>
-          ${c.take.length ? `<div class="ch-take">${c.take.map(t=>`<span>${t}</span>`).join('')}</div>` : ''}
-          ${c.quote ? `<div class="ch-quote">「${c.quote}」</div>` : ''}
-          <button class="ch-play-btn" data-play>${playIco}この場所から動画を再生</button>
-        </div>`;
-      list.appendChild(el);
-    });
+        <div class="ch-main">
+          <h4>${c.title}</h4>
+          <p class="ch-lead">${c.lead}</p>
+        </div>
+        <div class="ch-toggle">${chevron}</div>
+      </div>
+      <div class="ch-body" role="region">
+        <div class="ch-detail">${c.summary}</div>
+        ${c.take.length ? `<div class="ch-take">${c.take.map(t=>`<span>${t}</span>`).join('')}</div>` : ''}
+        <button class="ch-play-btn" data-play>${playIco}この場所から動画を再生</button>
+      </div>`;
+    list.appendChild(el);
+  });
 
-    const chEls = [...document.querySelectorAll('.ch')];
-    const nowTitle = document.getElementById('nowTitle');
+  const chEls = [...document.querySelectorAll('.ch')];
+  const nowTitle = document.getElementById('nowTitle');
+  function setActive(i){
+    chEls.forEach(e => e.classList.toggle('active', +e.dataset.i === i));
+    if (CHAPTERS[i]) nowTitle.textContent = `CH ${String(i+1).padStart(2,'0')}　${CHAPTERS[i].title}`;
+  }
+  function toggleOpen(ch){
+    const open = ch.classList.toggle('open');
+    ch.querySelector('.ch-header').setAttribute('aria-expanded', String(open));
+  }
+  function playAt(i){
+    setActive(i);
+    const iframe = document.getElementById('gd-iframe');
+    iframe.src = `https://drive.google.com/file/d/${GD_FILE_ID}/preview`;
+    document.querySelector('.player-dock').scrollIntoView({behavior:'smooth', block:'start'});
+  }
 
-    function setActive(i) {
-      chEls.forEach(e => e.classList.toggle('active', +e.dataset.i === i));
-      if (CHAPTERS[i]) nowTitle.textContent = `CH ${String(i+1).padStart(2,'0')} ${CHAPTERS[i].title}`;
-    }
-    function toggleOpen(ch) {
-      const open = ch.classList.toggle('open');
-      ch.querySelector('.ch-header').setAttribute('aria-expanded', String(open));
-    }
+  list.addEventListener('click', e => {
+    const ch = e.target.closest('.ch'); if (!ch) return;
+    const i = +ch.dataset.i;
+    if (e.target.closest('[data-play]')) { playAt(i); return; }
+    if (e.target.closest('.ch-header')) toggleOpen(ch);
+  });
+  list.addEventListener('keydown', e => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const hdr = e.target.closest('.ch-header'); if (!hdr) return;
+    e.preventDefault(); toggleOpen(hdr.closest('.ch'));
+  });
 
-    // 3. タイムスタンプ機能（APIが使えない環境でも動くようフォールバック追加）
-    function playAt(i) {
-      setActive(i);
-      
-      if (player && typeof player.seekTo === 'function') {
-        // APIが正常に動いている場合はスムーズにシーク
-        player.seekTo(CHAPTERS[i].seek, true);
-        player.playVideo();
-      } else {
-        // 万が一ローカル環境制限等でAPIがブロックされた場合の保険（動画を再読み込みしてジャンプ）
-        const iframe = document.getElementById('yt-iframe');
-        iframe.src = `https://www.youtube.com/embed/${YT_VIDEO_ID}?enablejsapi=1&rel=0&modestbranding=1&start=${CHAPTERS[i].seek}&autoplay=1`;
-      }
-      
-      document.querySelector('.player-dock').scrollIntoView({behavior:'smooth', block:'start'});
-    }
-
-    list.addEventListener('click', e => {
-      const ch = e.target.closest('.ch'); if (!ch) return;
-      const i = +ch.dataset.i;
-      if (e.target.closest('[data-play]')) { playAt(i); return; }
-      if (e.target.closest('.ch-header')) toggleOpen(ch);
-    });
-    list.addEventListener('keydown', e => {
-      if (e.key !== 'Enter' && e.key !== ' ') return;
-      const hdr = e.target.closest('.ch-header'); if (!hdr) return;
-      e.preventDefault(); toggleOpen(hdr.closest('.ch'));
-    });
-
-    const io = new IntersectionObserver(es => es.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-    }), {threshold:.1});
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  </script>
-</body>
-</html>
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), {threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
