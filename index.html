@@ -192,7 +192,7 @@
     <div class="player-frame">
       <div class="video">
         <iframe id="gd-iframe"
-          src="https://drive.google.com/file/d/19nQ_CR_UFpXxqc6pZYPkimtsxeqjcNYm/preview"
+          src="https://www.youtube.com/embed/1B7Mq73yXeI"
           allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
     </div>
@@ -288,7 +288,7 @@
 </footer>
 
 <script>
-  const GD_FILE_ID = "19nQ_CR_UFpXxqc6pZYPkimtsxeqjcNYm";
+  const YT_VIDEO_ID = "1B7Mq73yXeI";
 
   /* チャプター：テーマ別グループ順。seekはCSVから算出済み（動画上の時刻） */
   const GROUPS = ["原点と歴史", "現在の事業", "支える仕組み", "これからの設計"];
@@ -393,7 +393,7 @@
   function playAt(i){
     setActive(i);
     const iframe = document.getElementById('gd-iframe');
-    iframe.src = `https://drive.google.com/file/d/${GD_FILE_ID}/preview`;
+    iframe.src = `https://www.youtube.com/embed/${YT_VIDEO_ID}?start=${CHAPTERS[i].seek}&autoplay=1`;
     document.querySelector('.player-dock').scrollIntoView({behavior:'smooth', block:'start'});
   }
 
