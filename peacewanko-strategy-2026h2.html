@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ピースワンコ コンテンツ戦略 2026 下半期</title>
+<style>
+  :root{
+    --bg:#FBFAF6; --surface:#FFFFFF; --surface-2:#F6F2EA;
+    --ink:#21201C; --ink-2:#6B665B; --ink-3:#9C9486;
+    --accent:#C85A24; --accent-deep:#A8481A; --accent-tint:#FBF0E8;
+    --line:#EBE5DA; --line-strong:#DDD5C7;
+    --c-dark:#3C372E; --c-mute:#DAD3C5;
+    --g-yume:#C85A24; --g-series:#5B7553; --g-furu:#B5863A; --g-web:#8A8475;
+    --green:#3F7A4E;
+    --mincho:"Hiragino Mincho ProN","Yu Mincho","YuMincho",serif;
+    --gothic:"Hiragino Kaku Gothic ProN","Yu Gothic","YuGothic","Meiryo",sans-serif;
+    --mono:ui-monospace,"SFMono-Regular","Menlo","Consolas",monospace;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:var(--gothic);font-size:15.5px;line-height:1.85;
+    font-feature-settings:"palt" 1;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;}
+  .mono{font-family:var(--mono);letter-spacing:.04em;}
+  p{margin:0 0 1.05em;}
+  strong{font-weight:700;}
+  a{color:var(--accent-deep);}
+  h1,h2,h3,h4{margin:0;}
+
+  /* masthead */
+  .masthead{background:rgba(251,250,246,.92);backdrop-filter:saturate(1.4) blur(8px);
+    border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50;}
+  .mh-top{max-width:1080px;margin:0 auto;padding:16px 24px 12px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;}
+  .mh-title{font-family:var(--mincho);font-weight:600;font-size:clamp(15px,2.2vw,19px);letter-spacing:.02em;}
+  .mh-title .o{color:var(--accent);}
+  .mh-meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--ink-3);text-align:right;line-height:1.7;}
+  .mh-meta b{color:var(--ink-2);font-weight:600;}
+  .tabs{max-width:1080px;margin:0 auto;padding:0 14px;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;}
+  .tabs::-webkit-scrollbar{display:none;}
+  .tab{flex:0 0 auto;background:none;border:none;cursor:pointer;color:var(--ink-3);font-family:var(--gothic);font-size:13.5px;font-weight:600;letter-spacing:.01em;padding:11px 16px 13px;border-bottom:2.5px solid transparent;margin-bottom:-1px;display:flex;align-items:baseline;gap:8px;white-space:nowrap;transition:color .18s;}
+  .tab .n{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);}
+  .tab:hover{color:var(--ink);}
+  .tab.active{color:var(--accent-deep);border-bottom-color:var(--accent);}
+  .tab.active .n{color:var(--accent);}
+
+  .page{display:none;animation:fade .4s ease;}
+  .page.active{display:block;}
+  @keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .measure{max-width:720px;}
+  .pagehead{padding:clamp(36px,5vw,60px) 0 6px;}
+  .ph-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--accent);margin-bottom:14px;}
+  .ph-title{font-family:var(--mincho);font-weight:600;font-size:clamp(25px,4vw,40px);line-height:1.28;letter-spacing:.01em;margin-bottom:.55em;}
+  .ph-title .o{color:var(--accent);}
+  .ph-lede{font-size:16.5px;line-height:1.9;color:var(--ink-2);max-width:740px;}
+  .block{padding:clamp(28px,4vw,44px) 0;border-top:1px solid var(--line);}
+  .block:first-of-type{border-top:none;}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--accent);margin-bottom:13px;}
+  h2.h{font-family:var(--mincho);font-weight:600;font-size:clamp(20px,2.8vw,28px);line-height:1.42;margin-bottom:.55em;letter-spacing:.01em;}
+  h3.sh{font-family:var(--gothic);font-weight:700;font-size:16.5px;margin:1.9em 0 .6em;line-height:1.5;padding-left:12px;border-left:3px solid var(--accent);}
+  h3.sh:first-child{margin-top:0;}
+  .lead{font-size:16.5px;line-height:1.92;color:var(--ink-2);margin-bottom:1.3em;}
+  .measure p{color:var(--ink-2);}
+
+  /* insight card (replaces dark panel) */
+  .insight{background:var(--accent-tint);border:1px solid #F0D9C8;border-left:4px solid var(--accent);border-radius:8px;padding:clamp(20px,3vw,30px);margin:24px 0;}
+  .insight .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--accent-deep);margin-bottom:12px;display:block;}
+  .insight p{font-family:var(--mincho);font-size:clamp(17px,2.1vw,21px);line-height:1.7;margin:0;color:var(--ink);font-weight:500;}
+  .insight p .o{color:var(--accent-deep);}
+
+  .memo{border:1px dashed var(--accent);background:#FCF5EF;border-radius:8px;padding:16px 19px;margin:22px 0;font-size:14px;line-height:1.8;color:var(--ink-2);}
+  .memo .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--accent-deep);display:inline-block;margin-bottom:7px;font-weight:600;}
+  .memo p:last-child{margin-bottom:0;}
+  .note{font-size:13px;color:var(--ink-3);line-height:1.75;}
+  ul.clean{margin:.4em 0 1.1em;padding-left:1.2em;}
+  ul.clean li{margin-bottom:.55em;line-height:1.8;color:var(--ink-2);}
+  ul.clean li::marker{color:var(--accent);}
+  ul.clean li strong{color:var(--ink);}
+
+  /* stat cards */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0;}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 18px;}
+  .stat .big{font-family:var(--mincho);font-weight:600;font-size:clamp(24px,3vw,32px);line-height:1.05;color:var(--ink);}
+  .stat .big small{font-size:14px;font-weight:600;color:var(--ink-2);}
+  .stat .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.03em;color:var(--ink-3);margin-top:8px;}
+
+  /* chart card */
+  .chartcard{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px 24px 18px;margin:22px 0;}
+  .chartcard .ct{font-weight:700;font-size:15px;margin-bottom:3px;}
+  .chartcard .cs{font-size:12.5px;color:var(--ink-3);margin-bottom:16px;}
+  .chartcard svg{display:block;width:100%;height:auto;overflow:visible;}
+  .axislbl{font-family:var(--mono);font-size:10px;fill:var(--ink-3);}
+  .gridline{stroke:var(--line);stroke-width:1;}
+
+  /* horizontal bar chart (formats) */
+  .hbars{margin-top:6px;}
+  .hbar{display:grid;grid-template-columns:118px 1fr 92px;gap:12px;align-items:center;padding:7px 0;}
+  .hbar .hl{font-size:13px;font-weight:600;text-align:right;}
+  .hbar .htrack{background:var(--surface-2);border-radius:5px;height:24px;position:relative;overflow:hidden;}
+  .hbar .hfill{height:100%;border-radius:5px;background:var(--c-mute);}
+  .hbar.star .hfill{background:var(--accent);}
+  .hbar .hval{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);}
+  .hbar .hval b{color:var(--ink);font-weight:700;}
+  .retchip{font-family:var(--mono);font-size:10px;color:var(--ink-3);}
+  .retchip.hi{color:var(--accent-deep);font-weight:700;}
+
+  /* split bars */
+  .split{margin:8px 0;}
+  .sprow{margin-bottom:14px;}
+  .sprow .sl{font-size:12.5px;font-weight:600;margin-bottom:6px;color:var(--ink-2);}
+  .spbar{display:flex;height:30px;border-radius:6px;overflow:hidden;font-family:var(--mono);font-size:11px;}
+  .spbar .seg{display:flex;align-items:center;padding:0 12px;color:#fff;white-space:nowrap;}
+  .spbar .seg.mute{background:var(--c-mute);color:var(--ink-2);}
+  .spbar .seg.acc{background:var(--accent);}
+
+  /* tables */
+  .tbl-wrap{overflow-x:auto;margin:16px 0;border:1px solid var(--line);border-radius:10px;}
+  table{border-collapse:collapse;width:100%;min-width:560px;font-size:13px;background:var(--surface);}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.6;}
+  th{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--ink-3);background:var(--surface-2);font-weight:600;}
+  td{color:var(--ink-2);}
+  td .nm{font-weight:700;color:var(--ink);}
+  tr:last-child td{border-bottom:none;}
+  td .f{font-family:var(--mono);font-size:10.5px;color:var(--accent-deep);}
+
+  /* money cards */
+  .money{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0;}
+  .mi{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;}
+  .mi .v{font-family:var(--mincho);font-weight:600;font-size:clamp(19px,2.3vw,24px);color:var(--accent-deep);line-height:1.15;}
+  .mi .k{font-size:12.5px;color:var(--ink-2);margin-top:6px;line-height:1.5;}
+
+  /* 3 pillars */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0;}
+  .pil{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:10px;padding:18px 18px 20px;}
+  .pil .pn{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.08em;}
+  .pil .pt{font-family:var(--mincho);font-weight:600;font-size:18px;margin:8px 0 3px;line-height:1.35;}
+  .pil .pr{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-bottom:10px;}
+  .pil .pd{font-size:13px;color:var(--ink-2);line-height:1.72;}
+
+  /* facility pipeline */
+  .pipe{margin:22px 0 4px;}
+  .pstep{position:relative;padding-left:26px;padding-bottom:4px;}
+  .pstep::before{content:"";position:absolute;left:7px;top:8px;bottom:-4px;width:2px;background:var(--line-strong);}
+  .pstep:last-child::before{display:none;}
+  .pstep .dot{position:absolute;left:1px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--bg);border:2.5px solid var(--ink-2);}
+  .pbox{margin-bottom:14px;}
+  .pbox .role{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--ink-3);margin-bottom:3px;}
+  .pbox .name{font-weight:700;font-size:15px;margin-bottom:2px;}
+  .pbox .desc{font-size:13.5px;color:var(--ink-2);line-height:1.62;}
+  .pstep.eng .dot{background:var(--accent);border-color:var(--accent);}
+  .engbox{background:var(--surface-2);border:1px solid var(--line);border-left:4px solid var(--ink-2);border-radius:8px;padding:14px 18px;margin-bottom:14px;}
+  .engbox .role{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--ink-3);margin-bottom:4px;}
+  .engbox .name{font-weight:700;font-size:15px;margin-bottom:3px;}
+  .engbox .desc{font-size:13.5px;color:var(--ink-2);line-height:1.62;}
+  .branch{margin:11px 0 0 26px;padding:14px 18px;border-radius:8px;background:var(--accent-tint);border:1px solid #F0D9C8;border-left:4px solid var(--accent);}
+  .branch .role{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--accent-deep);margin-bottom:4px;}
+  .branch .name{font-weight:700;font-size:15px;color:var(--accent-deep);margin-bottom:3px;}
+  .branch .desc{font-size:13.5px;color:var(--ink-2);line-height:1.62;}
+
+  /* tiers */
+  .tier{display:grid;grid-template-columns:52px 1fr;gap:16px;padding:16px 0;border-top:1px solid var(--line);align-items:start;}
+  .tier:last-child{border-bottom:1px solid var(--line);}
+  .tier .lv{font-family:var(--mincho);font-weight:600;font-size:13.5px;color:#fff;background:var(--ink);border-radius:6px;text-align:center;padding:7px 0;}
+  .tier.t3 .lv{background:var(--accent);}
+  .tier .body .nm{font-weight:700;font-size:15px;margin-bottom:4px;}
+  .tier .body .nm small{font-family:var(--mono);font-weight:400;font-size:11px;color:var(--ink-3);margin-left:8px;}
+  .tier .body p{font-size:13.5px;color:var(--ink-2);line-height:1.68;margin:0;}
+
+  /* copy block */
+  .copy{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;padding:14px 18px;margin:11px 0;}
+  .copy .ctx{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--accent-deep);margin-bottom:8px;}
+  .copy .line{font-family:var(--mincho);font-size:15.5px;line-height:1.7;color:var(--ink);}
+
+  /* recipe */
+  .recipe{counter-reset:step;margin:16px 0;}
+  .rstep{display:grid;grid-template-columns:30px 1fr;gap:13px;padding:12px 0;border-top:1px solid var(--line);}
+  .rstep:last-child{border-bottom:1px solid var(--line);}
+  .rstep .num{counter-increment:step;font-family:var(--mincho);font-weight:600;font-size:17px;color:var(--accent);}
+  .rstep .num::before{content:counter(step);}
+  .rstep .x{font-size:14px;line-height:1.68;color:var(--ink-2);}
+  .rstep .x strong{color:var(--ink);}
+
+  /* near-term deadlines */
+  .deadlines{margin:18px 0;}
+  .dl{display:grid;grid-template-columns:70px 1fr auto;gap:16px;align-items:center;padding:14px 0;border-top:1px solid var(--line);}
+  .dl:last-child{border-bottom:1px solid var(--line);}
+  .dl .date{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--accent-deep);}
+  .dl .what{font-size:14.5px;font-weight:700;}
+  .dl .what small{display:block;font-weight:400;font-size:12.5px;color:var(--ink-2);margin-top:2px;line-height:1.5;}
+  .dl .kind{font-family:var(--mono);font-size:10px;letter-spacing:.03em;color:#fff;padding:4px 10px;border-radius:20px;white-space:nowrap;}
+  .dl .kind.deliver{background:var(--accent);}
+  .dl .kind.shoot{background:var(--g-series);}
+  .dl .kind.plan{background:var(--g-web);}
+
+  /* inventory */
+  .invgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:18px 0;}
+  .inv{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:15px 17px;position:relative;}
+  .inv .done{position:absolute;top:14px;right:15px;font-family:var(--mono);font-size:10px;color:var(--green);font-weight:700;}
+  .inv .ttl{font-weight:700;font-size:14px;margin-bottom:5px;padding-right:46px;line-height:1.4;}
+  .inv .meta{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-bottom:7px;}
+  .inv .role{font-size:12.5px;color:var(--ink-2);line-height:1.6;}
+  .inv .role b{color:var(--accent-deep);}
+
+  /* ===== GANTT (redesigned, clean & light) ===== */
+  .gantt-scroll{overflow-x:auto;margin:18px 0 8px;border:1px solid var(--line);border-radius:12px;background:var(--surface);}
+  .gantt{min-width:820px;}
+  .g-head{display:grid;grid-template-columns:196px repeat(7,1fr);border-bottom:1px solid var(--line);}
+  .g-head .lc{padding:13px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--ink-3);align-self:center;}
+  .g-head .mc{padding:13px 4px;text-align:center;font-size:12px;color:var(--ink-2);font-weight:600;border-left:1px solid var(--line);}
+  .g-group-row{display:grid;grid-template-columns:196px 1fr;}
+  .g-glabel{padding:10px 16px;font-size:12px;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px;}
+  .g-glabel .d{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.85);}
+  .g-gspace{}
+  .g-row{display:grid;grid-template-columns:196px repeat(7,1fr);border-top:1px solid var(--line);min-height:46px;}
+  .g-row .lbl{padding:10px 16px;font-size:12.5px;line-height:1.45;color:var(--ink);align-self:center;}
+  .g-row .lbl small{display:block;color:var(--ink-3);font-size:11px;}
+  .g-track{grid-column:2 / -1;display:grid;grid-template-columns:repeat(7,1fr);position:relative;align-items:center;}
+  .g-track .cell{border-left:1px solid var(--line-strong);opacity:.5;height:100%;}
+  .bar{height:24px;border-radius:6px;margin:0 4px;display:flex;align-items:center;padding:0 11px;color:#fff;font-size:11px;font-weight:600;white-space:nowrap;overflow:hidden;position:relative;z-index:2;box-shadow:0 1px 2px rgba(0,0,0,.08);}
+  .gantt-rowwrap{position:relative;}
+  /* group accents */
+  .gg-yume{background:var(--g-yume);}
+  .gg-series{background:var(--g-series);}
+  .gg-furu{background:var(--g-furu);}
+  .bar.yume{background:var(--g-yume);}
+  .bar.web{background:var(--g-web);}
+  .bar.series{background:var(--g-series);}
+  .bar.furu{background:var(--g-furu);}
+  .bar.soft{opacity:.55;}
+  .g-mile{display:grid;grid-template-columns:196px repeat(7,1fr);border-top:1px solid var(--line);background:var(--accent-tint);min-height:42px;}
+  .g-mile .lbl{padding:9px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.05em;color:var(--accent-deep);font-weight:700;align-self:center;}
+  .g-mile .g-track{grid-column:2 / -1;}
+  .mstone{justify-self:center;align-self:center;display:flex;flex-direction:column;align-items:center;gap:3px;z-index:2;}
+  .mstone .dia{width:12px;height:12px;background:var(--accent);transform:rotate(45deg);border:2px solid var(--surface);box-shadow:0 0 0 1.5px var(--accent);}
+  .mstone .mlbl{font-family:var(--mono);font-size:9.5px;color:var(--accent-deep);font-weight:700;white-space:nowrap;}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;margin:14px 0 0;font-size:12px;color:var(--ink-2);}
+  .legend span{display:flex;align-items:center;gap:7px;}
+  .legend i{width:12px;height:12px;border-radius:4px;display:inline-block;}
+
+  .foot{border-top:1px solid var(--line);padding:30px 0;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-3);margin-top:14px;}
+  .foot .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+  .foot b{color:var(--ink-2);font-weight:600;}
+
+  @media (max-width:760px){
+    body{font-size:14.5px;}
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .money{grid-template-columns:1fr;}
+    .pillars{grid-template-columns:1fr;}
+    .invgrid{grid-template-columns:1fr;}
+    .tier{grid-template-columns:44px 1fr;gap:13px;}
+    .hbar{grid-template-columns:96px 1fr;gap:8px;}
+    .hbar .hval{grid-column:2;}
+    .mh-meta{text-align:left;}
+    .dl{grid-template-columns:60px 1fr;}
+    .dl .kind{grid-column:2;justify-self:start;margin-top:4px;}
+  }
+  @media (prefers-reduced-motion:reduce){.page{animation:none;}}
+  @media print{
+    .masthead{position:static;backdrop-filter:none;} .tabs{display:none;}
+    .page{display:block !important;animation:none;page-break-before:always;}
+    .page:first-of-type{page-break-before:avoid;}
+    .bar,.mstone .dia,.spbar .seg,.hbar .hfill,.dl .kind,.tier .lv{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .g-glabel{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .block,.gantt-scroll,.chartcard{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="mh-top">
+    <div class="mh-title">ピースワンコ <span class="o">コンテンツ戦略</span> ／ 2026 下半期</div>
+    <div class="mh-meta"><b>v2.1</b>　最終更新 2026.06.18<br>YouTube × ふるさと納税 × 夢之丞</div>
+  </div>
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-target="page1"><span class="n">01</span>戦略とデータ</button>
+    <button class="tab" data-target="page2"><span class="n">02</span>YouTube／ショート</button>
+    <button class="tab" data-target="page3"><span class="n">03</span>ふるさと納税</button>
+    <button class="tab" data-target="page4"><span class="n">04</span>「その後」シリーズ</button>
+    <button class="tab" data-target="page5"><span class="n">05</span>スケジュール</button>
+  </nav>
+</header>
+
+<!-- ============ PAGE 1 ============ -->
+<main class="page active" id="page1">
+  <div class="wrap">
+    <div class="pagehead">
+      <div class="ph-eyebrow">01 ／ 現在地と、考えていること</div>
+      <h1 class="ph-title">数字を読むと、<span class="o">次にやること</span>が見えてくる。</h1>
+      <p class="ph-lede">いただいた最新データ（動画501本＋日別の再生データ・2017〜2026年）を分析しました。良い数字も、課題も、はっきり出ています。ここではまずチャンネルの現在地をグラフで掴んで、そこから戦略を組み立てます。</p>
+    </div>
+
+    <section class="block">
+      <p class="kicker">これまでの累計</p>
+      <h2 class="h">すでに、保護犬領域では群を抜いた資産。</h2>
+      <div class="stats">
+        <div class="stat"><div class="big">1.42<small>億回</small></div><div class="lbl">累計再生回数</div></div>
+        <div class="stat"><div class="big">301<small>万時間</small></div><div class="lbl">総再生時間</div></div>
+        <div class="stat"><div class="big">1,146<small>万円</small></div><div class="lbl">推定収益</div></div>
+        <div class="stat"><div class="big">6.1<small>%</small></div><div class="lbl">平均CTR</div></div>
+      </div>
+      <p class="measure">これだけの規模を持つ保護犬チャンネルは他にありません。課題は「伸びていないこと」ではなく、<strong>一度つかんだ勢いが2023年をピークに落ちてきていること</strong>。まずはその推移を見てみます。</p>
+    </section>
+
+    <section class="block">
+      <p class="kicker">勢いの推移</p>
+      <h2 class="h">2023年がピーク。そこから、ゆるやかに下っている。</h2>
+      <div class="chartcard">
+        <div class="ct">四半期ごとの再生回数</div>
+        <div class="cs">2021年末〜2026年。2023年に爆発的に伸び、その後は減少傾向。</div>
+        <svg viewBox="0 0 720 210" role="img" aria-label="四半期再生回数の推移">
+          <line class="gridline" x1="8" y1="16" x2="712" y2="16"/>
+          <line class="gridline" x1="8" y1="99" x2="712" y2="99"/>
+          <line class="gridline" x1="8" y1="182" x2="712" y2="182"/>
+          <text class="axislbl" x="8" y="12">2,500万</text>
+          <text class="axislbl" x="8" y="95">1,250万</text>
+          <path d="M8.0,182.0 L8.0,181.3 L47.1,181.1 L86.2,134.4 L125.3,135.6 L164.4,109.6 L203.6,79.6 L242.7,16.0 L281.8,116.8 L320.9,151.0 L360.0,121.3 L399.1,137.5 L438.2,153.9 L477.3,142.8 L516.4,136.5 L555.6,140.8 L594.7,164.2 L633.8,163.7 L672.9,166.3 L712.0,167.8 L712.0,182.0 Z" fill="var(--accent-tint)"/>
+          <path d="M8.0,181.3 L47.1,181.1 L86.2,134.4 L125.3,135.6 L164.4,109.6 L203.6,79.6 L242.7,16.0 L281.8,116.8 L320.9,151.0 L360.0,121.3 L399.1,137.5 L438.2,153.9 L477.3,142.8 L516.4,136.5 L555.6,140.8 L594.7,164.2 L633.8,163.7 L672.9,166.3 L712.0,167.8" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round"/>
+          <circle cx="242.7" cy="16.0" r="4.5" fill="var(--accent)" stroke="#fff" stroke-width="2"/>
+          <text class="axislbl" x="242.7" y="34" text-anchor="middle" style="fill:var(--accent-deep);font-weight:700;">2023 ピーク</text>
+          <text class="axislbl" x="8" y="205">2021</text>
+          <text class="axislbl" x="47.1" y="205">2022</text>
+          <text class="axislbl" x="203.6" y="205">2023</text>
+          <text class="axislbl" x="360" y="205">2024</text>
+          <text class="axislbl" x="516.4" y="205">2025</text>
+          <text class="axislbl" x="672.9" y="205">2026</text>
+        </svg>
+      </div>
+      <p class="measure lead">年で見ると、2022年に2,540万回、2023年に5,540万回まで一気に伸びて、そこから2024年（2,620万）、2025年（1,870万）と下がってきています。伸びを牽引したのは、殺処分や告発を打ち出した短くて強いショート。ただ、この打ち出し方が飽和して効きにくくなった、というのが減少のいちばんの理由です。</p>
+    </section>
+
+    <section class="block">
+      <p class="kicker">フォーマット別の実力</p>
+      <h2 class="h">いちばん強いのは、噛む犬のドキュメンタリー。</h2>
+      <div class="chartcard">
+        <div class="ct">ジャンル別・1本あたりの平均再生回数</div>
+        <div class="cs">右端の数字は視聴維持率。咬傷・噛む犬は再生も維持率も突出している。</div>
+        <div class="hbars">
+          <div class="hbar star"><div class="hl">咬傷・噛む犬</div><div class="htrack"><div class="hfill" style="width:100%"></div></div><div class="hval"><b>81万回</b> <span class="retchip hi">維持70%</span></div></div>
+          <div class="hbar"><div class="hl">殺処分・告発</div><div class="htrack"><div class="hfill" style="width:55.7%"></div></div><div class="hval">45万回 <span class="retchip">維持59%</span></div></div>
+          <div class="hbar"><div class="hl">その他・日常</div><div class="htrack"><div class="hfill" style="width:27.4%"></div></div><div class="hval">22万回 <span class="retchip">維持51%</span></div></div>
+          <div class="hbar"><div class="hl">保護・引き出し</div><div class="htrack"><div class="hfill" style="width:19.3%"></div></div><div class="hval">16万回 <span class="retchip">維持56%</span></div></div>
+          <div class="hbar"><div class="hl">訓練・しつけ</div><div class="htrack"><div class="hfill" style="width:15.6%"></div></div><div class="hval">13万回 <span class="retchip">維持54%</span></div></div>
+          <div class="hbar"><div class="hl">病気・医療・老犬</div><div class="htrack"><div class="hfill" style="width:12.1%"></div></div><div class="hval">10万回 <span class="retchip hi">維持72%</span></div></div>
+        </div>
+      </div>
+      <p class="measure">咬傷・噛む犬は、1本あたり平均81万回。2位の殺処分・告発（45万回）の2倍近くで、しかも最後まで見られる割合（視聴維持率）が70%と圧倒的。収益でもこのジャンルがいちばん稼いでいます。もうひとつ注目したいのが病気・医療・老犬で、再生数は小さいけれど<strong>維持率は72%で全ジャンル最高</strong>。見始めた人が最後まで見る、深く刺さるテーマです。これはオレンジ犬舎やお金の話（03）とつながります。</p>
+    </section>
+
+    <section class="block">
+      <p class="kicker">ショートと長尺の役割</p>
+      <h2 class="h">ショートで人を集め、長尺でお金と信頼を生む。</h2>
+      <div class="chartcard">
+        <div class="ct">再生回数と収益の内訳</div>
+        <div class="cs">ショートと長尺で、果たしている役割がはっきり分かれている。</div>
+        <div class="split">
+          <div class="sprow"><div class="sl">再生回数</div><div class="spbar"><div class="seg acc" style="width:71%">ショート 71%</div><div class="seg mute" style="width:29%">長尺 29%</div></div></div>
+          <div class="sprow"><div class="sl">推定収益</div><div class="spbar"><div class="seg mute" style="width:18%">ショート 18%</div><div class="seg acc" style="width:82%">長尺 82%</div></div></div>
+        </div>
+      </div>
+      <p class="measure">ショートは再生の7割を稼ぐ「入口」、長尺は収益の8割を生む「本体」。だから両方を別々の役割で使うのが正解です。ショートで広く人を集めて、長尺でじっくり見てもらい、寄付につなげる——この流れがデータからもはっきり裏づけられます。</p>
+    </section>
+
+    <section class="block">
+      <p class="kicker">ここからの方針</p>
+      <h2 class="h">新しいことを広げるより、効く軸に戻って深める。</h2>
+      <p class="measure">データが指しているのはシンプルです。告発型は飽和したので戻さない。でも噛む犬のドキュメンタリーは、飽きられたわけではなく作る本数が減っただけ。再生も維持率も収益もトップなので、ここに戻すのがいちばん確実です。あわせて、維持率の高い医療・老犬（＝オレンジ犬舎）で深さを出す。新フォーマットを次々試すより、勝てると分かっている軸に資源を寄せる——それが今の順番だと思います。</p>
+      <div class="insight">
+        <span class="lbl">この資料の方針</span>
+        <p>いちばん泣けるチャンネルではなく、<span class="o">いちばん本当のことを見せている</span>チャンネルになる。感動の本数で競うより、信頼の深さを積んでいく。</p>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="kicker">戦略の核</p>
+      <h2 class="h">強みは、表に出していない「見えない場所」にある。</h2>
+      <p class="measure">噛む犬も、医療・老犬も、結局はシェルターの“奥”を見せているから強いんだと思います。世の中に出ているのは譲渡センターにいる卒業候補の子（＝出口）だけ。その手前には、約2,600頭が暮らすシェルター、引き出しから医療・トレーニングまでの工程、10年以上止まったままの殺処分機がある。ここは規模と透明性がないと撮れないので、他団体には真似できません。ここを正面から見せにいくのが、差別化であり、後半のふるさと納税にもそのままつながります。</p>
+      <div class="pipe">
+        <div class="pstep"><span class="dot"></span><div class="pbox"><div class="role">入口</div><div class="name">動物愛護センターの殺処分対象</div><div class="desc">譲渡が難しいとされた野犬・病犬・老犬を、毎月引き出している。</div></div></div>
+        <div class="pstep eng"><span class="dot"></span><div class="engbox"><div class="role">見えないエンジン（ほぼ非公開）</div><div class="name">神石高原シェルター群（約2,600頭）</div><div class="desc">保護・健康観察・医療から、西山・スコラ犬舎での人馴れトレーニングまで。いちばん強い素材が眠っている場所。</div></div></div>
+        <div class="pstep"><span class="dot"></span><div class="pbox"><div class="role">出口（公開・来場可）</div><div class="name">譲渡センター（全国11拠点）</div><div class="desc">トレーニングを終えた子が暮らし、里親希望者が会える。新設の神石高原譲渡センター（2026.5.3）も。</div></div></div>
+        <div class="pstep"><span class="dot"></span><div class="pbox"><div class="role">卒業</div><div class="name">家族のもとへ（累計 約5,000頭）</div><div class="desc">不安そうな表情から、穏やかな顔へ。感情のピーク。</div></div></div>
+      </div>
+      <div class="branch">
+        <div class="role">分岐 ／ 譲渡につながりにくい子</div>
+        <div class="name">オレンジ犬舎（終生ケア）</div>
+        <div class="desc">高齢・病気・障害で介護が必要な子たちが暮らす。里親という出口を持たないこの子たちを支えているのが、寄付とふるさと納税。維持率が高い「医療・老犬」テーマと、いちばん深くつながる場所。</div>
+      </div>
+      <div class="memo"><span class="tag">▸ 確認したいこと</span><p>西山・スコラ・オレンジ犬舎は普段表に出していない場所なので、どこまで撮影・公開していいかはJohn側で確認しながら進める前提。今日の西山訪問が、その最初の感触をつかむ機会になりそう。</p></div>
+    </section>
+
+    <section class="block">
+      <p class="kicker">下半期の戦略（まとめ）</p>
+      <h2 class="h">性質のちがう3本柱を、役割を分けて回す。</h2>
+      <p class="measure lead">下半期は、効き方のちがう3つを同時に走らせます。ひとつで全部やろうとせず、それぞれの役割をはっきり分けるのがポイントです。</p>
+      <div class="pillars">
+        <div class="pil"><div class="pn">PILLAR 01</div><div class="pt">夢之丞レガシー</div><div class="pr">爆発をつくる</div><div class="pd">新しい人にも、すでに寄付してくれている人にも届く、一度きりの大きな山。下半期の起点になる認知の爆発。</div></div>
+        <div class="pil"><div class="pn">PILLAR 02</div><div class="pt">お金の企画<br>（ふるさと納税）</div><div class="pr">着実に変換する</div><div class="pd">こちらから計画して、ジャブのように積み上げる。注目を寄付に変える、自分たちでコントロールできる軸。年末に効かせる。</div></div>
+        <div class="pil"><div class="pn">PILLAR 03</div><div class="pt">保護犬の<br>「その後」シリーズ</div><div class="pr">継続して育てる</div><div class="pd">迎えた方との信頼を積み、保護犬を迎えるハードルを下げ、譲渡と寄付につなげる。季節・毎年で続く資産に。</div></div>
+      </div>
+      <p class="measure">夢之丞で大きく跳ねさせ、お金の企画でふるさと納税に変え、その後シリーズで関係を続けていく。<strong>瞬発・変換・継続</strong>。この3つがかみ合うと、単発の感動で終わらない循環になります。それぞれの中身は、03・04のタブに。</p>
+    </section>
+  </div>
+</main>
+
+<!-- ============ PAGE 2 ============ -->
+<main class="page" id="page2">
+  <div class="wrap">
+    <div class="pagehead">
+      <div class="ph-eyebrow">02 ／ 何を撮るか</div>
+      <h1 class="ph-title">勝てると分かっている軸から、<span class="o">戻していく</span>。</h1>
+      <p class="ph-lede">分析の結論はシンプルでした。噛む犬のドキュメンタリーを長尺で復活させて、そこにショートを乗せる。ショート（入口）・長尺（本体）・CTA（行動）を、役割で分けて設計します。</p>
+    </div>
+
+    <section class="block">
+      <p class="kicker">いま動かす2本</p>
+      <h2 class="h">西山犬舎「噛む犬のその後」と、里親のその後。</h2>
+      <p class="measure lead">昨日の話で、里親さんの元を訪ねる企画が動かせそう、と確認できました。あわせて今日行く西山犬舎には、大きい子や噛む子、制御が難しい子が集まっているとのこと。ここは、データ上いちばん強い「咬傷・噛む犬」フォーマット（平均81万回・維持率70%・収益トップ）のど真ん中です。</p>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>企画</th><th>なぜ効くか</th><th>つながり</th></tr></thead>
+        <tbody>
+          <tr><td><span class="nm">西山犬舎・噛む犬のその後</span></td><td>再生が出ている噛む犬シリーズの子たちの“今”。過去の人気回と地続きで、すでに見たい人がいる</td><td><span class="f">最強フォーマットの復活＋未公開の犬舎</span></td></tr>
+          <tr><td><span class="nm">里親のその後（卒業生を訪ねる）</span></td><td>卒業した子の今は、活動の成果そのもの。寄付の納得材料になる</td><td><span class="f">→ ふるさと納税の説得力（03）</span></td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">この2本は組み合わせられます。「噛んでいた子が、今は家族と穏やかに暮らしている」——変化の前後がそのまま一本の物語になるので、噛む犬シリーズと里親その後をひとつの流れにできます。</p>
+    </section>
+
+    <section class="block">
+      <p class="kicker">ショート（入口）</p>
+      <h2 class="h">リーチを取って、長尺に送る。</h2>
+      <ul class="clean">
+        <li><strong>仕様</strong>：縦9:16／15〜60秒／音なしでも分かるテロップ／最初の2秒で引き込む。</li>
+        <li><strong>作り方</strong>：長尺から30〜60秒を切り出す。世界観が揃うし、制作の手間も減る。</li>
+        <li><strong>まず頻度を戻す</strong>：データ上、投稿が減るとアルゴリズムに拾われにくい。長尺1本から複数ショートを出して本数を確保。</li>
+        <li><strong>CTAは軽め</strong>：ショートの役割は寄付ではなく、長尺へ送ること。</li>
+      </ul>
+      <p class="measure">フックは必ず実在の子・施設・数字に紐づけます。「この子、もう7年ここにいる」「噛んでいた子が、今こうなってる」「この医療費、いくらだと思う？」——よくある“泣ける”の真似ではなく、ここでしか撮れないものを入口にする。</p>
+    </section>
+
+    <section class="block">
+      <p class="kicker">長尺シリーズ（本体）</p>
+      <h2 class="h">柱になりそうな企画を、ひと通り。</h2>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>シリーズ</th><th>尺・形式</th><th>中身</th><th>つながり</th></tr></thead>
+        <tbody>
+          <tr><td><span class="nm">噛む犬のその後</span>（西山）</td><td>10〜20分</td><td>人気回の子たちの今。トレーニングの実際と変化</td><td><span class="f">データ上の最有力</span></td></tr>
+          <tr><td><span class="nm">里親のその後</span></td><td>10〜15分</td><td>卒業生を訪ねる。別人のように幸せそうな姿</td><td><span class="f">成果の証明</span></td></tr>
+          <tr><td><span class="nm">1頭が卒業するまで</span></td><td>15〜20分</td><td>引き出し→医療→トレーニング→譲渡と、かかるお金</td><td><span class="f">ソーンで実証済み</span></td></tr>
+          <tr><td><span class="nm">オレンジ犬舎の日々</span> <span class="f">※許可前提</span></td><td>8〜12分</td><td>ザッツやソーンのような終生ケアの子の日常</td><td><span class="f">維持率72%テーマ／ふるさと納税の顔</span></td></tr>
+          <tr><td><span class="nm">夢之丞</span></td><td>本編＋レガシー</td><td>出会い→訓練→出動→引退→今。素材ほぼ完備</td><td><span class="f">→ 8/10 納品（05）</span></td></tr>
+          <tr><td><span class="nm">返礼品の裏側</span></td><td>5〜8分</td><td>神石高原の生産者を訪ねる</td><td><span class="f">ふるさと納税に直結（03）</span></td></tr>
+        </tbody>
+      </table></div>
+      <div class="memo"><span class="tag">▸ 手持ちの素材</span><p>ソーン（オレンジ犬舎・約7分20秒）は「1頭が卒業するまで」「オレンジ犬舎」の型がもう一本できている状態。ピースニャンコ ep2 は猫版の同じ作り方。夢之丞は素材がほぼ揃っていて、撮るのは「今の夢之丞」だけ。ゼロから始める企画は、思ったより少ないです。</p></div>
+    </section>
+
+    <section class="block">
+      <p class="kicker">受け渡し</p>
+      <h2 class="h">ショート → 長尺 → ふるさと納税。</h2>
+      <div class="tier"><div class="lv">L1</div><div class="body"><div class="nm">ショート<small>集める・送る</small></div><p>概要欄・固定コメントに長尺リンク。再生の7割を担う入口。</p></div></div>
+      <div class="tier"><div class="lv">L2</div><div class="body"><div class="nm">長尺<small>見せる・つなぐ</small></div><p>感情が動いた直後にCTAを一度だけ。概要欄1行目にLP。エンドカードで次の本編へ。シリーズはプレイリストに。収益と信頼の8割はここから。</p></div></div>
+      <div class="tier t3"><div class="lv">L3</div><div class="body"><div class="nm">ふるさと納税<small>行動</small></div><p>育った信頼を、寄付につなぐ。具体的な作り方は次のページへ。</p></div></div>
+    </section>
+  </div>
+</main>
+
+<!-- ============ PAGE 3 ============ -->
+<main class="page" id="page3">
+  <div class="wrap">
+    <div class="pagehead">
+      <div class="ph-eyebrow">03 ／ なぜお金の話をするか</div>
+      <h1 class="ph-title">お金を見せることが、<span class="o">いちばんの訴求</span>になる。</h1>
+      <p class="ph-lede">ふるさと納税はポイントが廃止されて、「お得だから」では選ばれなくなりました。これからは「どこを応援したいか」で選ばれる。だから、お金が何にどれだけ使われているかを正直に見せることが、いちばん効きます。しかも医療・老犬テーマは維持率が高い（72%）ので、お金やケアの話は最後まで見てもらえます。</p>
+    </div>
+
+    <section class="block">
+      <p class="kicker">なぜやるのか</p>
+      <h2 class="h">バズは狙えない。でも、これは狙って積める。</h2>
+      <p class="measure lead">再生のバズは、狙って作れるものではありません。でもふるさと納税の企画は、こちらから設計して、計画的に、着実に積み上げられる数少ない軸です。だから運任せにせず、戦略的に投資する価値がある。しかも今はポイントが廃止されて「どこを応援したいか」で選ばれる時代。お金が何にどれだけ使われているかを正直に見せることが、いちばんの訴求になります。医療・老犬テーマは維持率も高い（72%）ので、お金やケアの話は最後まで見てもらえます。</p>
+      <p class="measure">そしてピースワンコには、保護犬に関する公的な助成金や補助金がありません。犬たちの毎日は、ほぼ全部が寄付とふるさと納税で成り立っている。その規模は、団体自身が公開しているとおり、かなり大きいです。この事実を視聴者と共有することが、感動を寄付に変える橋になります。</p>
+      <div class="money">
+        <div class="mi"><div class="v">年10億円超</div><div class="k">飼育・運営にかかる費用</div></div>
+        <div class="mi"><div class="v">年1億円超</div><div class="k">医療費（手術1回100万円のことも）</div></div>
+        <div class="mi"><div class="v">数十万円／頭</div><div class="k">高齢・病気・障害で譲渡が難しい子</div></div>
+        <div class="mi"><div class="v">約6kg／月</div><div class="k">1頭が食べるフードの量</div></div>
+        <div class="mi"><div class="v">約2,600頭</div><div class="k">いまシェルターで暮らす犬</div></div>
+        <div class="mi"><div class="v">補助金 0円</div><div class="k">公的な助成・補助はない</div></div>
+      </div>
+      <p class="note">※ いずれもピースワンコ／PWJが公式に公開している数字（寄付ページ・ふるさと納税ページ等）。だから<strong>交渉なしで、いま動画にできる</strong>。</p>
+    </section>
+
+    <section class="block">
+      <p class="kicker">具体の映像 ／ ジャブを打っていく</p>
+      <h2 class="h">いきなり本丸ではなく、軽いジャブから。</h2>
+      <p class="measure lead">お金の話は、一発の大ネタより、軽いジャブを重ねて少しずつ踏み込むほうが効きます。まず公開されている事実から入って、反応を見ながら深いところへ。最初の構想として、2段階で。</p>
+
+      <h3 class="sh">ジャブ① 一頭の犬に、いくらかかって、どれだけ支えられているか</h3>
+      <p class="measure">最初の一本は、実在の1頭（たとえばオレンジ犬舎のザッツやソーン）に絞って、その子の毎日にかかるお金を見せる。フードは月6kg、医療費は団体全体で年1億円超、手術1回で100万円のことも、そして公的な補助はゼロ。「この子の毎日は、誰かの寄付で支えられている」を、具体的な一頭で伝えます。<strong>すべて公開済みの数字なので、交渉なしで今すぐ作れます。</strong></p>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>寄付</th><th>できること（公式換算）</th></tr></thead>
+        <tbody>
+          <tr><td><span class="nm">月1,000円</span></td><td>犬1頭のフィラリア予防薬 1年分</td></tr>
+          <tr><td><span class="nm">月3,000円</span></td><td>犬1頭の避妊手術</td></tr>
+          <tr><td><span class="nm">月10,000円</span></td><td>犬3頭分のドッグフード 1年分</td></tr>
+          <tr><td><span class="nm">3,000円</span></td><td>保護犬1頭の血液検査</td></tr>
+          <tr><td><span class="nm">10,000円</span></td><td>保護犬1頭に混合ワクチン</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">この換算を画面に出せば、「月3,000円＝この子の避妊手術」のように、視聴者が自分の寄付を具体的な行為に変換できます。</p>
+
+      <h3 class="sh">ジャブ② 一頭が卒業するまでの、ぜんぶ</h3>
+      <p class="measure">次の一本は、もう一歩踏み込む。特定の1頭を引き出しから卒業まで追いかけて、かかった費用の総額を見せる密着です。ジャブ①で信頼と型ができているので、ここで「ここまで支えて、この子は家族のもとへ」という大きな納得に着地できます。<strong>個体の文脈や見せ方の調整が要るので、ここは社内と相談しながら。</strong>①で反応を作ってから持っていくと、話が通りやすいはずです。</p>
+      <div class="memo"><span class="tag">▸ その先のジャブ</span><p>②まで効いたら、その先は「あなたの寄付が、いまこの瞬間こう使われている」という定点報告や、年末の「今年の駆け込み」など、季節に合わせて打ち続けられます。一発で終わらせず、シリーズにするのが狙い。</p></div>
+    </section>
+
+    <section class="block">
+      <p class="kicker">① CTAの作り方</p>
+      <h2 class="h">そのまま使える文言。</h2>
+      <p class="measure">1本につきCTAは1つに絞る（寄付・シェア・里親のどれか）。お金の数字を入れると、ぐっと具体的になります。</p>
+      <div class="copy"><div class="ctx">ショート末尾・1行</div><div class="line">「この子たちの毎日は、寄付とふるさと納税だけで支えられています。」</div></div>
+      <div class="copy"><div class="ctx">長尺末尾・数字を入れる</div><div class="line">「ピースワンコの医療費は、年間1億円を超えます。手術1回で100万円かかることもある。公的な補助はありません。この子たちの明日を支えているのは、あなたのふるさと納税です。」</div></div>
+      <div class="copy"><div class="ctx">オレンジ犬舎</div><div class="line">「この子に、里親という出口はありません。それでも穏やかに暮らせているのは、あなたの寄付のおかげです。」</div></div>
+      <div class="copy"><div class="ctx">夢之丞</div><div class="line">「夢之丞が繋いだ命を、今度はあなたが繋ぐ。」</div></div>
+      <div class="copy"><div class="ctx">年末・締切前</div><div class="line">「ふるさと納税は12月31日まで。今年の応援は、今年のうちに。」</div></div>
+    </section>
+
+    <section class="block">
+      <p class="kicker">② 組み方 ／ ③ 仕掛け方</p>
+      <h2 class="h">どこに置いて、いつ効かせるか。</h2>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>場所</th><th>置き方</th></tr></thead>
+        <tbody>
+          <tr><td><span class="nm">長尺の中</span></td><td>終盤に1回だけ。感情が動いた直後に</td></tr>
+          <tr><td><span class="nm">概要欄</span></td><td>1行目にLP（折りたたみで隠れない位置）</td></tr>
+          <tr><td><span class="nm">固定コメント</span></td><td>LP＋一言。ピン留め</td></tr>
+          <tr><td><span class="nm">エンドカード</span></td><td>LP、または次の本編へ</td></tr>
+        </tbody>
+      </table></div>
+      <h3 class="sh">季節（→ 05 スケジュール）</h3>
+      <p class="measure">夏（6〜8月）はボーナス期で小さな山。秋（9〜10月）は物語を積む。年末（11〜12月）が本番で、12/31の締切に向けて駆け込みを作り、総集編をその中心に置く。今年はポイント廃止で9月の駆け込みが起きにくいので、年末に寄せるのが正解です。</p>
+      <h3 class="sh">今年ならではの一手</h3>
+      <p class="measure">「ポイントがなくなって損した気分」という空気を、「これからは純粋に応援先を選べる」と言い換える短い解説を、早めに1本。あと、返礼品の代わりにフード代になる“フードプレゼント”や、命名権のような物が届かない返礼は、今年の「意味で選ぶ」層と相性がいいので、そこを特集します。</p>
+    </section>
+
+    <section class="block">
+      <p class="kicker">CTAレシピ</p>
+      <h2 class="h">どの動画でも、この順番で組める。</h2>
+      <div class="recipe">
+        <div class="rstep"><div class="num"></div><div class="x">その動画で<strong>いちばん心が動く瞬間</strong>を見つける。</div></div>
+        <div class="rstep"><div class="num"></div><div class="x">その直後に、<strong>お金の事実をひとつ</strong>置く（年1億円、手術100万円、補助金ゼロ、など）。</div></div>
+        <div class="rstep"><div class="num"></div><div class="x">CTAは<strong>1つだけ</strong>（寄付・シェア・里親）。</div></div>
+        <div class="rstep"><div class="num"></div><div class="x">概要欄1行目と固定コメントに<strong>LPを毎回同じ形で</strong>。</div></div>
+        <div class="rstep"><div class="num"></div><div class="x">エンドカードで<strong>次の本編へ送る</strong>。</div></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- ============ PAGE 4 — その後シリーズ ============ -->
+<main class="page" id="page4">
+  <div class="wrap">
+    <div class="pagehead">
+      <div class="ph-eyebrow">04 ／ 継続の軸</div>
+      <h1 class="ph-title">譲渡は、<span class="o">終わり</span>じゃなくて<span class="o">始まり</span>。</h1>
+      <p class="ph-lede">保護犬の活動は「譲渡したら終わり」になりがちです。でも大西さんの言う「セカンダリーマーケット」の発想だと、迎えてもらったあとこそ、長く深い関係の始まり。その関係を映像にし続けるのが「保護犬のその後」シリーズです。</p>
+    </div>
+
+    <section class="block">
+      <p class="kicker">なぜやるのか ／ セカンダリーマーケット</p>
+      <h2 class="h">迎えたあとの関係に、いちばんの価値がある。</h2>
+      <p class="measure lead">多くの団体は、譲渡（迎えてもらうこと）までを必死にやって、そこで関係がひと区切りになります。でも本当の資産は、迎えてくれた人たちとの“その後”の関係です。一度きりの新規より、続く関係のほうが価値が大きい——大西さんの言うセカンダリーマーケットは、まさにそこ。その後シリーズは、その畑を耕すコンテンツです。</p>
+      <h3 class="sh">効く理由</h3>
+      <ul class="clean">
+        <li><strong>迎えるハードルが下がる</strong>：元野犬や噛んでいた子が、今は家族と穏やかに暮らしている——そのリアルな姿が「うちでも大丈夫かも」という安心になる。次の里親を生む社会的証明。</li>
+        <li><strong>迎えた方との信頼が積み上がる</strong>：譲渡して終わりではなく、ずっと見守られている関係。だんだんコミュニティになっていく。</li>
+        <li><strong>寄付につながる</strong>：関係が続く人と、共感した視聴者が、寄付や継続支援に動く。</li>
+        <li><strong>譲渡数が増える</strong>：安心が次の譲渡を呼び、その譲渡がまた次の「その後」を生む、good loop。</li>
+        <li><strong>続けられる資産になる</strong>：同じ子を季節ごと・毎年訪ねられる。撮り続けられて積み上がる、エバーグリーンな企画。</li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <p class="kicker">マーケットの読み</p>
+      <h2 class="h">これは「再生数」ではなく「信頼」で測る。</h2>
+      <p class="measure">正直に言うと、データ上「里親・卒業」テーマ単体の平均再生は10万回くらいで、噛む犬（81万回）ほどは跳ねません。だからその後シリーズをバズで測ると、見誤ります。これは<strong>再生数ではなく、譲渡の問い合わせ・寄付・里親さんとの関係の深さで測る企画</strong>です。一方で、噛む犬の“その後”として組めば、入口の強さ（再生）と継続の価値（信頼）の両方が取れる。だから——</p>
+      <div class="insight">
+        <span class="lbl">組み方</span>
+        <p>噛む犬の<span class="o">強い入口</span>で人を集め、その子の<span class="o">「その後」</span>で信頼を積む。瞬間の再生と、続く関係を、一本の中で両立させる。</p>
+      </div>
+      <p class="measure">測る指標も、再生数だけでなく「この動画から何件の里親問い合わせ・寄付があったか」を見ていくと、価値が正しく評価されます。社内に説明するときも、ここを最初に握っておきたいところです。</p>
+    </section>
+
+    <section class="block">
+      <p class="kicker">育て方</p>
+      <h2 class="h">季節と、毎年で、続けていく。</h2>
+      <ul class="clean">
+        <li><strong>定点で追う</strong>：印象的な卒業生を数頭、半年〜1年ごとに訪ねる。「あの子、今こうなってます」を定番化。</li>
+        <li><strong>季節に乗せる</strong>：里親月間、年末、保護した記念日など、毎年の節目でまとめて出す。</li>
+        <li><strong>コミュニティ化</strong>：里親さんから近況や写真を募って、視聴者参加型に。次の里親候補が集まる場にする。</li>
+      </ul>
+      <p class="note">下半期は、噛む犬のその後を看板に1〜2本走らせて、型と反応を確かめる。手応えが出たら、季節シリーズとして来年以降の定番に育てます。</p>
+    </section>
+  </div>
+</main>
+
+<!-- ============ PAGE 5 — スケジュール ============ -->
+<main class="page" id="page5">
+  <div class="wrap">
+    <div class="pagehead">
+      <div class="ph-eyebrow">05 ／ スケジュール</div>
+      <h1 class="ph-title">直近の納品と、<span class="o">8/10の山</span>まで。</h1>
+      <p class="ph-lede">まず6月下旬から8月の確定納品を並べて、その先の夢之丞レガシー（8/10）から年末のふるさと納税までを一枚でつなぎます。</p>
+    </div>
+
+    <section class="block">
+      <p class="kicker">直近の納品（確定）</p>
+      <h2 class="h">6月下旬 → 8月。</h2>
+      <div class="deadlines">
+        <div class="dl"><div class="date">6/26</div><div class="what">チャミ 構成決定<small>追悼動画の構成を固める</small></div><div class="kind plan">構成</div></div>
+        <div class="dl"><div class="date">6/27</div><div class="what">ワンコ ショート動画 納品<small>投稿頻度を戻す一手</small></div><div class="kind deliver">納品</div></div>
+        <div class="dl"><div class="date">7/3</div><div class="what">珠洲 ピースニャンコ 納品<small>能登・珠洲のTNRドキュメント</small></div><div class="kind deliver">納品</div></div>
+        <div class="dl"><div class="date">7/10</div><div class="what">ザッツ（オレンジ犬舎）撮影完了<small>終生ケアの子。オレンジ犬舎の一本に</small></div><div class="kind shoot">撮影</div></div>
+        <div class="dl"><div class="date">8/10</div><div class="what">夢之丞レガシー 納品<small>下半期の山。ふるさと納税の求心力に</small></div><div class="kind deliver">納品</div></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="kicker">下半期の流れ</p>
+      <h2 class="h">6月 → 12月。</h2>
+      <div class="gantt-scroll"><div class="gantt">
+        <div class="g-head">
+          <div class="lc">企画 ／ 月</div>
+          <div class="mc">6月</div><div class="mc">7月</div><div class="mc">8月</div><div class="mc">9月</div><div class="mc">10月</div><div class="mc">11月</div><div class="mc">12月</div>
+        </div>
+
+        <div class="g-mile">
+          <div class="lbl">納品の山</div>
+          <div class="g-track">
+            <div class="mstone" style="grid-column:1;"><span class="dia"></span><span class="mlbl">6/27 ショート</span></div>
+            <div class="mstone" style="grid-column:2;"><span class="dia"></span><span class="mlbl">7/3 ニャンコ</span></div>
+            <div class="mstone" style="grid-column:3;"><span class="dia"></span><span class="mlbl">8/10 夢之丞</span></div>
+            <div class="mstone" style="grid-column:7;"><span class="dia"></span><span class="mlbl">12/31 締切</span></div>
+          </div>
+        </div>
+
+        <div class="g-group-row"><div class="g-glabel gg-yume"><span class="d"></span>夢之丞（下半期の柱）</div><div class="g-gspace"></div></div>
+        <div class="g-row"><div class="lbl">今の夢之丞 撮影<small>最優先パス</small></div><div class="g-track"><span class="cell" style="grid-column:1"></span><span class="cell" style="grid-column:2"></span><span class="cell" style="grid-column:3"></span><span class="cell" style="grid-column:4"></span><span class="cell" style="grid-column:5"></span><span class="cell" style="grid-column:6"></span><span class="cell" style="grid-column:7"></span><div class="bar yume" style="grid-column:1 / 3;z-index:2;">素材＋撮影</div></div></div>
+        <div class="g-row"><div class="lbl">レガシー 制作 → 納品</div><div class="g-track"><span class="cell" style="grid-column:1"></span><span class="cell" style="grid-column:2"></span><span class="cell" style="grid-column:3"></span><span class="cell" style="grid-column:4"></span><span class="cell" style="grid-column:5"></span><span class="cell" style="grid-column:6"></span><span class="cell" style="grid-column:7"></span><div class="bar yume" style="grid-column:2 / 4;">編集 → 8/10</div></div></div>
+        <div class="g-row"><div class="lbl">本編・ショート展開／KV・サイト改修</div><div class="g-track"><span class="cell" style="grid-column:1"></span><span class="cell" style="grid-column:2"></span><span class="cell" style="grid-column:3"></span><span class="cell" style="grid-column:4"></span><span class="cell" style="grid-column:5"></span><span class="cell" style="grid-column:6"></span><span class="cell" style="grid-column:7"></span><div class="bar web" style="grid-column:4 / 8;">拡散・継続</div></div></div>
+
+        <div class="g-group-row"><div class="g-glabel gg-series"><span class="d"></span>YouTube シリーズ</div><div class="g-gspace"></div></div>
+        <div class="g-row"><div class="lbl">西山・噛む犬のその後<small>看板シリーズ</small></div><div class="g-track"><span class="cell" style="grid-column:1"></span><span class="cell" style="grid-column:2"></span><span class="cell" style="grid-column:3"></span><span class="cell" style="grid-column:4"></span><span class="cell" style="grid-column:5"></span><span class="cell" style="grid-column:6"></span><span class="cell" style="grid-column:7"></span><div class="bar series" style="grid-column:1 / 6;">パイロット → 連載</div></div></div>
+        <div class="g-row"><div class="lbl">里親のその後</div><div class="g-track"><span class="cell" style="grid-column:1"></span><span class="cell" style="grid-column:2"></span><span class="cell" style="grid-column:3"></span><span class="cell" style="grid-column:4"></span><span class="cell" style="grid-column:5"></span><span class="cell" style="grid-column:6"></span><span class="cell" style="grid-column:7"></span><div class="bar series" style="grid-column:3 / 8;">卒業生を訪ねる</div></div></div>
+        <div class="g-row"><div class="lbl">ザッツ（オレンジ犬舎）</div><div class="g-track"><span class="cell" style="grid-column:1"></span><span class="cell" style="grid-column:2"></span><span class="cell" style="grid-column:3"></span><span class="cell" style="grid-column:4"></span><span class="cell" style="grid-column:5"></span><span class="cell" style="grid-column:6"></span><span class="cell" style="grid-column:7"></span><div class="bar series" style="grid-column:2 / 4;">撮影 → 編集</div></div></div>
+        <div class="g-row"><div class="lbl">ワンコ ショート（頻度を戻す）<small>＋ チャミ・珠洲ニャンコ</small></div><div class="g-track"><span class="cell" style="grid-column:1"></span><span class="cell" style="grid-column:2"></span><span class="cell" style="grid-column:3"></span><span class="cell" style="grid-column:4"></span><span class="cell" style="grid-column:5"></span><span class="cell" style="grid-column:6"></span><span class="cell" style="grid-column:7"></span><div class="bar series soft" style="grid-column:1 / 8;">継続運転</div></div></div>
+
+        <div class="g-group-row"><div class="g-glabel gg-furu"><span class="d"></span>ふるさと納税</div><div class="g-gspace"></div></div>
+        <div class="g-row"><div class="lbl">お金の話（公開数字を動画化）<small>第1段階</small></div><div class="g-track"><span class="cell" style="grid-column:1"></span><span class="cell" style="grid-column:2"></span><span class="cell" style="grid-column:3"></span><span class="cell" style="grid-column:4"></span><span class="cell" style="grid-column:5"></span><span class="cell" style="grid-column:6"></span><span class="cell" style="grid-column:7"></span><div class="bar furu" style="grid-column:2 / 5;">制作・公開</div></div></div>
+        <div class="g-row"><div class="lbl">返礼品の裏側／点廃止の言い換え解説</div><div class="g-track"><span class="cell" style="grid-column:1"></span><span class="cell" style="grid-column:2"></span><span class="cell" style="grid-column:3"></span><span class="cell" style="grid-column:4"></span><span class="cell" style="grid-column:5"></span><span class="cell" style="grid-column:6"></span><span class="cell" style="grid-column:7"></span><div class="bar furu" style="grid-column:1 / 5;">仕込み → 公開</div></div></div>
+        <div class="g-row"><div class="lbl">年末総集編 → 駆け込み<small>夢之丞と連動</small></div><div class="g-track"><span class="cell" style="grid-column:1"></span><span class="cell" style="grid-column:2"></span><span class="cell" style="grid-column:3"></span><span class="cell" style="grid-column:4"></span><span class="cell" style="grid-column:5"></span><span class="cell" style="grid-column:6"></span><span class="cell" style="grid-column:7"></span><div class="bar furu" style="grid-column:6 / 8;">12/31へ</div></div></div>
+      </div></div>
+      <div class="legend">
+        <span><i style="background:var(--g-yume)"></i>夢之丞</span>
+        <span><i style="background:var(--g-series)"></i>シリーズ</span>
+        <span><i style="background:var(--g-furu)"></i>ふるさと納税</span>
+        <span><i style="background:var(--g-web)"></i>展開・web</span>
+      </div>
+      <div class="memo"><span class="tag">▸ メモ</span><p>クリティカルパスは「今の夢之丞」の撮影。ここが遅れると8/10が動くので、6〜7月で必ず押さえる。噛む犬のその後は、今日の西山の撮影感触を見てから話数を確定。チャンウ／大西ラインとのトーン合意（「意志を継ぐ」軸）は7月中に。</p></div>
+    </section>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>ピースワンコ コンテンツ戦略 <b>2026 下半期</b></div>
+    <div>v2.1 ／ 最終更新 2026.06.18</div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var tabs=[].slice.call(document.querySelectorAll('.tab'));
+    var pages=[].slice.call(document.querySelectorAll('.page'));
+    function show(id){
+      pages.forEach(function(p){p.classList.toggle('active',p.id===id);});
+      tabs.forEach(function(t){t.classList.toggle('active',t.dataset.target===id);});
+      if(history.replaceState){history.replaceState(null,'','#'+id);}
+      window.scrollTo({top:0,behavior:'auto'});
+    }
+    tabs.forEach(function(t){t.addEventListener('click',function(){show(t.dataset.target);});});
+    var h=(location.hash||'').replace('#','');
+    if(h&&document.getElementById(h)){show(h);}
+  })();
+</script>
+
+</body>
+</html>
