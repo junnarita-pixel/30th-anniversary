@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aris ｜ カンボ回 設計図 & 構成表</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FBFAF7;
+    --surface:#FFFFFF;
+    --surface-2:#F4F0E9;
+    --ink:#211C18;
+    --muted:#6A6159;
+    --faint:#9A9087;
+    --blood:#A8384B;       /* 子宮・血・浄化・メディスン */
+    --blood-soft:#8E2B3A;
+    --gold:#9A7420;        /* 古代コード・蝋燭の灯（白地で読める深金） */
+    --gold-tint:rgba(154,116,32,.09);
+    --line:rgba(33,28,24,.10);
+    --line-strong:rgba(33,28,24,.13);
+    --display:"Shippori Mincho B1", serif;
+    --body:"Zen Kaku Gothic New", sans-serif;
+    --mono:"Space Mono", ui-monospace, monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.85;
+    font-size:15px;
+    letter-spacing:.01em;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(1200px 600px at 85% -10%, rgba(168,56,75,.05), transparent 60%),
+      radial-gradient(900px 500px at -10% 25%, rgba(154,116,32,.05), transparent 55%);
+    background-attachment:fixed;
+  }
+  .wrap{max-width:980px;margin:0 auto;padding:0 18px}
+
+  /* ---- header ---- */
+  header{padding:46px 0 26px;border-bottom:1px solid var(--line)}
+  .eyebrow{
+    font-family:var(--mono);font-size:11px;letter-spacing:.34em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:16px
+  }
+  h1{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(27px,6.4vw,46px);line-height:1.18;letter-spacing:.01em
+  }
+  h1 .sub{display:block;color:var(--muted);font-weight:500;font-size:clamp(14px,3.4vw,18px);margin-top:12px;letter-spacing:.04em}
+
+  /* ---- tabs ---- */
+  nav{position:sticky;top:0;z-index:20;background:rgba(251,250,247,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-strong)}
+  .tabs{max-width:980px;margin:0 auto;padding:0 18px;display:flex;gap:6px}
+  .tab{
+    appearance:none;background:none;border:none;cursor:pointer;
+    font-family:var(--body);color:var(--faint);font-weight:700;font-size:13.5px;
+    padding:16px 4px;letter-spacing:.02em;position:relative;flex:1;text-align:left;
+    transition:color .25s
+  }
+  .tab .num{font-family:var(--mono);font-size:11px;color:var(--gold);opacity:.6;margin-right:7px}
+  .tab.active{color:var(--ink)}
+  .tab.active .num{opacity:1}
+  .tab::after{content:"";position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--blood);transition:width .3s ease}
+  .tab.active::after{width:100%}
+  @media(max-width:520px){.tab{font-size:12px}.tab .num{display:block;margin:0 0 3px}}
+
+  /* ---- panels ---- */
+  .panel{display:none;padding:30px 0 90px;animation:fade .4s ease}
+  .panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){.panel{animation:none}.tab::after{transition:none}}
+
+  /* section heads */
+  .shead{display:flex;align-items:baseline;gap:12px;margin:38px 0 16px}
+  .shead:first-child{margin-top:8px}
+  .shead .idx{font-family:var(--mono);font-size:12px;color:var(--gold)}
+  .shead h2{font-family:var(--display);font-weight:700;font-size:clamp(19px,4.4vw,25px);letter-spacing:.02em;line-height:1.3}
+  .lead{color:var(--muted);margin:0 0 16px}
+  p+p{margin-top:12px}
+  strong{color:var(--ink);font-weight:700}
+  .blood{color:var(--blood-soft)}
+  .gold{color:var(--gold)}
+
+  /* pull / thesis */
+  .pull{
+    font-family:var(--display);font-weight:700;font-size:clamp(18px,4.6vw,26px);
+    line-height:1.45;color:var(--ink);border-left:2px solid var(--blood);
+    padding:6px 0 6px 20px;margin:22px 0
+  }
+
+  /* channel cards */
+  .cards{display:grid;gap:14px;margin:18px 0 8px}
+  .card{
+    background:var(--surface);
+    border:1px solid var(--line-strong);border-radius:14px;padding:20px 20px 18px;
+    box-shadow:0 1px 3px rgba(33,28,24,.04)
+  }
+  .card .role{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+  .card h3{font-family:var(--display);font-weight:700;font-size:19px;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:14px}
+  .card.yt{border-color:rgba(168,56,75,.4)}
+  .card.yt .role{color:var(--blood-soft)}
+  .card.home{border-color:rgba(154,116,32,.45);background:#FEFCF6}
+
+  .flow{font-family:var(--display);font-size:clamp(15px,3.6vw,19px);color:var(--ink);text-align:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;margin:18px 0;letter-spacing:.02em}
+  .flow span{color:var(--gold)}
+
+  /* attack vs hold */
+  .twocol{display:grid;gap:14px;margin:16px 0}
+  @media(min-width:640px){.twocol{grid-template-columns:1fr 1fr}}
+  .box{border:1px solid var(--line-strong);border-radius:13px;padding:18px}
+  .box.atk{border-color:rgba(168,56,75,.38);background:rgba(168,56,75,.05)}
+  .box.hold{border-color:rgba(201,162,75,.3);background:rgba(201,162,75,.04)}
+  .box h4{font-family:var(--display);font-size:16px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .box ul{list-style:none}
+  .box li{font-size:13.5px;color:var(--muted);padding:5px 0 5px 16px;position:relative}
+  .box li::before{content:"";position:absolute;left:0;top:12px;width:5px;height:5px;border-radius:50%}
+  .box.atk li::before{background:var(--blood)}
+  .box.hold li::before{background:var(--gold)}
+
+  .pipe{display:grid;gap:8px;margin-top:8px}
+  .pipe div{font-size:14px;color:var(--muted);padding:11px 14px;background:var(--surface);border:1px solid var(--line-strong);border-radius:10px}
+  .pipe b{color:var(--ink)}
+
+  /* ===== TAB 2 : composition ===== */
+  .meta{display:grid;gap:10px;margin:6px 0 26px}
+  @media(min-width:640px){.meta{grid-template-columns:repeat(3,1fr)}}
+  .meta div{background:var(--surface);border:1px solid var(--line-strong);border-radius:11px;padding:13px 15px}
+  .meta .ml{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:5px}
+  .meta .mv{font-size:14px;color:var(--ink);font-weight:500}
+
+  .act{margin:34px 0 8px;display:flex;align-items:center;gap:12px}
+  .act .bar{height:1px;flex:1;background:var(--line)}
+  .act h3{font-family:var(--display);font-weight:700;font-size:18px;color:var(--gold);white-space:nowrap;letter-spacing:.03em}
+
+  /* cue card : CSV(source) || build */
+  .cue{background:var(--surface);border:1px solid var(--line-strong);border-radius:14px;margin:14px 0;overflow:hidden}
+  .cue-head{display:flex;align-items:center;gap:10px;padding:13px 16px;border-bottom:1px solid var(--line-strong);background:var(--surface-2)}
+  .cue-tc{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--ink)}
+  .cue-tag{font-size:11px;color:var(--bg);background:var(--gold);padding:2px 9px;border-radius:99px;font-weight:700;letter-spacing:.04em}
+  .cue-tag.peak{background:var(--blood);color:#fff}
+  .cue-grid{display:grid;gap:0}
+  @media(min-width:680px){.cue-grid{grid-template-columns:minmax(220px,.85fr) 1.15fr}}
+
+  .src{padding:15px 16px;border-bottom:1px solid var(--line-strong)}
+  @media(min-width:680px){.src{border-bottom:none;border-right:1px solid var(--line-strong)}}
+  .src-label,.b-label{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:8px}
+  .src-code{font-family:var(--mono);font-size:11.5px;color:var(--gold);background:rgba(201,162,75,.07);border:1px solid var(--line);border-radius:6px;padding:6px 9px;display:inline-block;margin-bottom:9px;line-height:1.5}
+  .src-quote{font-size:13px;color:var(--muted);line-height:1.7}
+  .src-quote::before{content:"❝ ";color:var(--faint)}
+
+  .build{padding:15px 16px}
+  .row{display:grid;grid-template-columns:54px 1fr;gap:10px;padding:7px 0;border-top:1px dashed rgba(236,228,218,.07)}
+  .row:first-of-type{border-top:none;padding-top:0}
+  .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--faint);padding-top:3px}
+  .v{font-size:14px;color:var(--ink)}
+  .v.sub{font-weight:500}
+  .telopline{display:inline-block;background:var(--gold-tint);border-left:2px solid var(--gold);padding:3px 10px;margin:2px 0;border-radius:0 5px 5px 0;font-family:var(--display);font-weight:700;font-size:14.5px;color:var(--ink)}
+  .telopline.big{display:block;text-align:center;font-size:clamp(20px,5vw,30px);background:#1A1512;border:1px solid rgba(168,56,75,.5);border-left:1px solid rgba(168,56,75,.5);color:#fff;padding:18px 12px;margin:6px 0;border-radius:8px;letter-spacing:.14em}
+  .vis{font-size:13.5px;color:var(--muted);line-height:1.7}
+  .prompt{font-family:var(--mono);font-size:11.5px;color:var(--blood-soft);background:#FCF4F4;border:1px solid rgba(168,56,75,.28);border-radius:7px;padding:10px 11px;line-height:1.6;white-space:pre-wrap;word-break:break-word;margin-top:2px}
+  .prompt::before{content:"AI ▸ ";color:var(--blood)}
+
+  .note{background:rgba(201,162,75,.05);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:26px 0}
+  .note h4{font-family:var(--display);font-size:16px;color:var(--gold);margin-bottom:9px}
+  .note p{font-size:13.5px;color:var(--muted)}
+  .note code{font-family:var(--mono);font-size:11.5px;color:var(--blood-soft)}
+
+  footer{border-top:1px solid var(--line);padding:24px 0 50px;color:var(--faint);font-size:12px;font-family:var(--mono);letter-spacing:.05em}
+
+  /* business funnel */
+  .stage{display:grid;grid-template-columns:30px 1fr auto;gap:12px;align-items:center;padding:13px 15px;background:var(--surface);border:1px solid var(--line-strong);border-radius:11px;margin:8px 0}
+  .stage .sn{font-family:var(--mono);font-size:11px;color:var(--gold)}
+  .stage .st{font-weight:700;color:var(--ink);font-size:14px}
+  .stage .sd{color:var(--muted);font-size:12px;margin-top:2px}
+  .stage .sp{font-family:var(--mono);font-size:12px;color:var(--blood-soft);white-space:nowrap;text-align:right}
+  .stage.vac{border-color:rgba(168,56,75,.5);background:rgba(168,56,75,.07);border-style:dashed}
+  .stage.vac .st{color:var(--blood-soft)}
+  .stage.home{border-color:rgba(201,162,75,.45);background:rgba(201,162,75,.05)}
+  @media(max-width:560px){.stage{grid-template-columns:24px 1fr;gap:8px}.stage .sp{grid-column:2;text-align:left;margin-top:3px}}
+
+  .phase-map{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0}
+  .phase-map span{font-size:12px;background:var(--surface-2);border:1px solid var(--line-strong);border-radius:99px;padding:5px 12px;color:var(--muted)}
+  .phase-map b{color:var(--gold);font-family:var(--mono);font-size:10px}
+
+  /* astrology */
+  .astro-row{display:grid;grid-template-columns:138px 1fr;gap:14px;padding:14px 0;border-top:1px dashed rgba(236,228,218,.08)}
+  .astro-row:first-of-type{border-top:none}
+  .astro-row .place{font-family:var(--display);font-weight:700;color:var(--gold);font-size:14.5px;line-height:1.5}
+  .astro-row .place small{display:block;font-family:var(--mono);font-weight:400;font-size:10px;color:var(--faint);letter-spacing:.1em;margin-top:3px}
+  .astro-row .mean{color:var(--muted);font-size:13.5px;line-height:1.75}
+  .astro-row .mean b{color:var(--ink)}
+  @media(max-width:560px){.astro-row{grid-template-columns:1fr;gap:5px}}
+  .elem{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+  .elem div{flex:1;min-width:120px;text-align:center;background:var(--surface);border:1px solid var(--line-strong);border-radius:11px;padding:14px 10px}
+  .elem .en{font-family:var(--display);font-size:24px;font-weight:800}
+  .elem .el{font-size:11px;color:var(--muted);margin-top:3px;letter-spacing:.08em}
+  .elem .fire .en{color:#9A8E86}
+  .elem .earth .en{color:#9A8E86}
+  .elem .air .en{color:var(--gold)}
+  .elem .water .en{color:var(--blood-soft)}
+
+  /* soft depth for light theme */
+  .cue,.meta div,.stage{box-shadow:0 1px 3px rgba(33,28,24,.04)}
+
+  /* accordion : 下層ページ */
+  .acc{border:1px solid var(--line-strong);border-radius:12px;margin:9px 0;background:var(--surface);overflow:hidden;box-shadow:0 1px 3px rgba(33,28,24,.04)}
+  .acc-head{display:grid;grid-template-columns:30px 1fr auto;gap:12px;align-items:center;width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:15px 16px;font-family:var(--body)}
+  .acc-head:hover{background:var(--surface-2)}
+  .acc-head .an{font-family:var(--mono);font-size:11px;color:var(--gold)}
+  .acc-head .at{font-family:var(--display);font-weight:700;font-size:15.5px;color:var(--ink)}
+  .acc-head .as{display:block;font-size:11.5px;color:var(--muted);font-weight:400;margin-top:2px;font-family:var(--body)}
+  .acc-head .chev{font-family:var(--mono);color:var(--gold);font-size:15px;transition:transform .3s;flex-shrink:0}
+  .acc.open .chev{transform:rotate(90deg)}
+  .acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+  .acc.open .acc-body{max-height:2400px}
+  .acc-inner{padding:4px 16px 18px;border-top:1px solid var(--line)}
+  @media(prefers-reduced-motion:reduce){.acc-body{transition:none}.acc .chev{transition:none}}
+  @media(max-width:560px){.acc-head{grid-template-columns:24px 1fr auto;gap:8px}}
+
+  /* drill-down detail rows inside accordion */
+  .dd{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:11px 0;border-top:1px dashed var(--line)}
+  .dd:first-child{border-top:none}
+  .dd .ddk{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--gold);padding-top:3px}
+  .dd .ddv{font-size:13.5px;color:var(--muted);line-height:1.7}
+  .dd .ddv b{color:var(--ink)}
+  .dd.cur .ddk{color:var(--blood-soft)}
+  .dd.sol .ddk{color:#2C7A4B}
+  @media(max-width:560px){.dd{grid-template-columns:1fr;gap:3px}}
+  .tierline{display:grid;grid-template-columns:auto auto 1fr;gap:12px;align-items:baseline;padding:9px 0;border-top:1px dashed var(--line)}
+  .tierline:first-child{border-top:none}
+  .tierline .tn{font-family:var(--display);font-weight:700;color:var(--ink);font-size:14px}
+  .tierline .tp{font-family:var(--mono);font-size:12px;color:var(--blood-soft);white-space:nowrap}
+  .tierline .tx{font-size:12.5px;color:var(--muted)}
+  @media(max-width:560px){.tierline{grid-template-columns:1fr;gap:2px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Aris Hasegawa · Strategy / Astrology / Content</div>
+    <h1>Aris ｜ 統合ダッシュボード
+      <span class="sub">ビジネス・星の設計図・コンテンツを、ひとつに — 攻めと安全を両立させる</span>
+    </h1>
+  </div>
+</header>
+
+<nav>
+  <div class="tabs">
+    <button class="tab active" data-tab="t1"><span class="num">①</span>コンテンツ戦略</button>
+    <button class="tab" data-tab="t3"><span class="num">②</span>ビジネス戦略</button>
+    <button class="tab" data-tab="t4"><span class="num">③</span>占星術</button>
+    <button class="tab" data-tab="t2"><span class="num">④</span>カンボ回 構成表</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ===================== TAB 1 ===================== -->
+<section id="t1" class="panel active">
+
+  <div class="shead"><span class="idx">00</span><h2>戦略の心臓部</h2></div>
+  <p class="lead">普通、薬物体験で攻めるとプラットフォーム・法的・客層が同時に崩れる。でも「冒険／古代文明／女性の力」で攻めるなら、攻めるほど安全になる。ナオキマン的ジャンルが面白いのは<strong>“謎”であって“薬”ではない</strong>から。彼らがデスクから語る題材に、アリスは<strong>実際に立って、実際に撮っている。</strong></p>
+  <div class="pull">「ナオキマンが“語る”場所に、実際に立っている日本人女性」<br>— 解説員ではなく、主人公。</div>
+
+  <div class="shead"><span class="idx">01</span><h2>3層チャンネル設計</h2></div>
+  <div class="cards">
+    <div class="card yt">
+      <div class="role">YouTube — 攻め / リーチ / コラボ磁石</div>
+      <h3>有名になるためのエンジン</h3>
+      <p>映画的に振り切る。フック・連載構造・サムネの強さは都市伝説系から“技術だけ”借りる。中身は冒険と変容、メディスンは背景。ここで「すごい日本人女性がいる」の認知を取る。</p>
+    </div>
+    <div class="card">
+      <div class="role">Instagram — 落とす / 深める / 橋</div>
+      <h3>意味を着地させる場</h3>
+      <p>YouTubeで掴んだ人に、リール＆カルーセルで“落とす”。魔女・子宮・自己愛など自分ごと化できるテーマを丁寧に。DM・ハイライトからコミュニティへの動線。</p>
+    </div>
+    <div class="card">
+      <div class="role">Arisのお家 — 深さ / 収益 / 保護</div>
+      <h3>一番深い有料層</h3>
+      <p>生のセレモニー、カンボの手順、嘔吐、トラウマの開示、ツアーのフル本編。「ここでしか見られない」＝会員価値。法的・プラットフォームリスクをここに封じ込める。</p>
+    </div>
+  </div>
+  <div class="flow">YouTubeで惚れる <span>→</span> Instagramで深く理解する <span>→</span> お家で全部受け取る</div>
+
+  <div class="shead"><span class="idx">02</span><h2>フラッグシップ：宇宙のツアー</h2></div>
+  <p class="lead">アマゾン → メキシコ（マヤ）→ エジプト → ペルー（インカ）→ メキシコ（アステカ）を巡る一人称アドベンチャー連載。本人が言った「Netflixシリーズみたいに」「Catch me if you can」の実装。</p>
+  <p>コラボ磁石になる理屈：ナオキマンは古代文明を<strong>素材映像で語る</strong>しかない。アリスは<strong>現地の本物の映像と体験</strong>を持つ＝彼の“特派員”になれる。これが「コラボが来る文脈」の作り方。OP／ビジュアルはAI生成で、ジャングル→ピラミッド→宇宙→メディスンの象徴へ抜ける映画的タイトルシークエンスにする。</p>
+
+  <div class="shead"><span class="idx">03</span><h2>攻めと守りの線</h2></div>
+  <div class="twocol">
+    <div class="box atk">
+      <h4 class="blood">▲ 攻める</h4>
+      <ul>
+        <li>制作のクオリティとフックの強さ</li>
+        <li>ビジョンの大きさ・連載構造</li>
+        <li>冒険／古代文明の謎</li>
+        <li>魔女・子宮・女性の力・変容</li>
+      </ul>
+    </div>
+    <div class="box hold">
+      <h4 class="gold">● 守る（公開では出さない→お家へ）</h4>
+      <ul>
+        <li>カンボ／アヤワスカの手順・摂取の具体描写</li>
+        <li>性的トラウマの具体（本人同意＋保護文脈のみ）</li>
+        <li>「奴らが隠す真実」系の陰謀フレーム</li>
+        <li>嘔吐などの生描写</li>
+      </ul>
+    </div>
+  </div>
+  <p class="lead" style="margin-top:6px">この線を引いておけば、YouTubeはいくら攻めても燃えない。<strong>“実際にそこにいた”は、陰謀論より強いカード。</strong></p>
+
+  <div class="shead"><span class="idx">04</span><h2>当面のパイプライン</h2></div>
+  <div class="pipe">
+    <div><b>シリーズOP／予告編</b> — インディアナ・アリス、AI主体・短尺・世界観提示</div>
+    <div><b>テーマ単発「魔女・子宮」</b> — 薬物ほぼゼロ・最も安全で最も拡散・魔女学校への導線</div>
+    <div><b>カンボ回 テーマ抽出版 → アヤワスカ回 テーマ抽出版</b> — 強度のエスカレーション順</div>
+    <div><b>Instagram</b> — 各回の“落とし”カルーセル＋リール ／ <b>お家</b> — フル版＋ツアー本編</div>
+  </div>
+</section>
+
+<!-- ===================== TAB 3 : BUSINESS ===================== -->
+<section id="t3" class="panel">
+
+  <div class="shead"><span class="idx">00</span><h2>現状の最大の歪み</h2></div>
+  <p class="lead">今の設計には<strong>「集客」と「収益」が同じ場所で起きようとしている</strong>構造問題がある。3月時点では魔女学校（10〜15万円）が中間プログラムとして綺麗なファンネルを描けていたが、5月に<strong>ピーチフェアへ改名＋入場5,000〜7,000円＋ドネーション</strong>へ変更（固定水瓶座の気質が出た決定でもう戻せない）。結果、入口（ピーチフェア）と本命（100万円）の間に <span class="blood">5万〜100万円の“真空地帯”</span> が空き、ピーチフェア自体が「ほぼ無料体験」化した。これが収益の波が極端に大きい根本原因。</p>
+
+  <div class="shead"><span class="idx">01</span><h2>ファンネル現状図</h2></div>
+  <div class="stage"><span class="sn">01</span><div><div class="st">PGC（Peach Girl Club）</div><div class="sd">Instagram コミュニティ・約600名</div></div><span class="sp">無料</span></div>
+  <div class="stage"><span class="sn">02</span><div><div class="st">ピーチフェア（3週間プログラム）</div><div class="sd">旧・魔女学校。固定水瓶座の気質で低価格化</div></div><span class="sp">¥5,000–7,000＋ドネ</span></div>
+  <div class="stage vac"><span class="sn">!!</span><div><div class="st">真空地帯</div><div class="sd">中間プログラムが存在しない</div></div><span class="sp">¥50,000–1,000,000</span></div>
+  <div class="stage"><span class="sn">03</span><div><div class="st">Highest Nation</div><div class="sd">本命プログラム（今月終了）</div></div><span class="sp">¥1,000,000</span></div>
+  <div class="stage"><span class="sn">04</span><div><div class="st">VIPリトリート</div><div class="sd">LP未整備</div></div><span class="sp">数百万円</span></div>
+
+  <div class="phase-map">
+    <span><b>ATTRACT</b> 認知・発信</span>
+    <span><b>NURTURE</b> 教育・信頼</span>
+    <span><b>ENTRY</b> お家・入口</span>
+    <span><b>MID</b> 中間プログラム</span>
+    <span><b>CORE</b> 本命プログラム</span>
+    <span><b>ASCEND</b> VIP</span>
+  </div>
+
+  <div class="shead"><span class="idx">02</span><h2>5段階ファンネル 詳細</h2></div>
+  <p class="lead">各段階をタップすると、チャネル・役割・現状の課題・打ち手まで降りて開く。</p>
+
+  <div class="acc">
+    <button class="acc-head" aria-expanded="false"><span class="an">01</span><span class="at">① 認知・発信（見つける）<span class="as">@arishasegawa / YouTube</span></span><span class="chev">›</span></button>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="dd"><div class="ddk">チャネル</div><div class="ddv">@arishasegawa（日本向け・メイン）／ YouTube（流れが来たら）</div></div>
+      <div class="dd"><div class="ddk">役割</div><div class="ddv">既存ファンを深め、ビジネスの核として機能させる。<b>ここが全ての商品への入口</b>になる。</div></div>
+      <div class="dd cur"><div class="ddk">現状の課題</div><div class="ddv">プロフィール・ハイライト・固定投稿が整理されておらずバラバラ。毎月変わるのでビジネス導線が機能しない。</div></div>
+      <div class="dd sol"><div class="ddk">打ち手</div><div class="ddv">みゆきちとプロフィール・ハイライト・固定投稿を整理。<b>「触んないルール」</b>を決める。YouTubeは流れが来たらで、優先順位は今は下。</div></div>
+    </div></div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" aria-expanded="false"><span class="an">02</span><span class="at">② 教育・信頼（温める）<span class="as">PGC / Podcast / フリーギフト</span></span><span class="chev">›</span></button>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="dd"><div class="ddk">チャネル</div><div class="ddv">Peach Girl Club（Instagramコミュニティ・343→600名）／ Podcast ／ フリーギフト（音声・検討中）</div></div>
+      <div class="dd"><div class="ddk">役割</div><div class="ddv">信頼の蓄積。アリスをもっと知りたい人が深くアクセスし、<b>エネルギーを受け取ってもらう</b>場。</div></div>
+      <div class="dd cur"><div class="ddk">現状の課題</div><div class="ddv">PGCから次の商品への導線が存在していない。Podcastが教育導線として機能していない。</div></div>
+      <div class="dd sol"><div class="ddk">打ち手</div><div class="ddv">フリーギフト（音声）を作ってPGC経由で配布 → Discordへ誘導。Podcast各話の末尾にお家へのCTA。質問箱・ライブでニーズをヒアリング。</div></div>
+    </div></div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" aria-expanded="false"><span class="an">03</span><span class="at">③ お家・入口（受け取る）<span class="as">Arisのプラットフォーム ★本丸</span></span><span class="chev">›</span></button>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="dd"><div class="ddk">チャネル</div><div class="ddv">ありすんのお家（カテゴリーアリス）＝ Arisのプラットフォーム。スケジュール・コンテンツ・旅日記が集まるHUB。</div></div>
+      <div class="dd"><div class="ddk">役割</div><div class="ddv">ここが整うと<b>ビジネス全体が自動で回り始める</b>。3段階で進化（Step1仕組み→Step2動画販売→Step3アリフリックス）。</div></div>
+      <div class="dd cur"><div class="ddk">現状の課題</div><div class="ddv">今は何もない状態。<b>過去4年のコンテンツ資産が、誰もアクセスできず眠っている</b>。入口商品が存在しない。</div></div>
+      <div class="dd sol"><div class="ddk">打ち手</div><div class="ddv">みゆきちがフレームを作る（外部委託）。コンテンツはJohn＆Arisが設計。6月アマゾン入り前に稼働させるのが目標。既存素材の棚卸しからスタート。</div></div>
+    </div></div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" aria-expanded="false"><span class="an">04</span><span class="at">④ 中間プログラム（繋ぎとめる）<span class="as">魔女学校 → ピーチフェア</span></span><span class="chev">›</span></button>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="dd"><div class="ddk">チャネル</div><div class="ddv">魔女学校（4週間）。火・水・土・空の4エレメントをテーマに、毎週テーマを変えて実践。※5月にピーチフェアへ改名・低価格化。</div></div>
+      <div class="dd"><div class="ddk">役割</div><div class="ddv">アリスのジャーニーを一緒に体験しながら自分のパワーを取り戻す場。コミュニティとの繋がりを深める。</div></div>
+      <div class="dd cur"><div class="ddk">現状の課題</div><div class="ddv">PGC（343名）はすでに温まっている。一方でBefore/Afterの言語化がまだ弱い。価格が真空地帯化。</div></div>
+      <div class="dd sol"><div class="ddk">打ち手</div><div class="ddv">デジタルリトリート方式（既存動画＋週1 Zoom＋Discord）。カカオセレモニー（ゆきとのコラボ）を導入。<b>ここで作ったコンテンツが後でお家に流れ込む</b>。</div></div>
+    </div></div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" aria-expanded="false"><span class="an">05</span><span class="at">⑤ 本命プログラム（変容させる）<span class="as">Highest Nation / VIPリトリート</span></span><span class="chev">›</span></button>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="dd"><div class="ddk">チャネル</div><div class="ddv">Highest Nation（不定期・年1〜2回）／ VIP海外リトリート（タイ・今後も継続）。</div></div>
+      <div class="dd"><div class="ddk">役割</div><div class="ddv">人生を根本から変える最高峰プログラム。<b>アリスの核心的な価値提供の場</b>。</div></div>
+      <div class="dd cur"><div class="ddk">現状の課題</div><div class="ddv">Highest Nationは今月で一旦終了。LPの言葉が尖りすぎて離脱している可能性。VIPリトリートはLPが未整備。</div></div>
+      <div class="dd sol"><div class="ddk">打ち手</div><div class="ddv">お家・魔女学校からの自然な流れで成約する設計。LPをもう少しマイルドに。リトリートは海外用・日本用のLPを作成。</div></div>
+    </div></div>
+  </div>
+
+  <div class="shead"><span class="idx">03</span><h2>3つの再定義</h2></div>
+  <div class="cards">
+    <div class="card">
+      <div class="role">① PGC</div>
+      <h3>収益責任を、一切持たせない</h3>
+      <p>信頼の蓄積と、アリスのエネルギーを受け取る場。ここで何かを売ろうとすると本人が引いてしまう（5,000円ドネへの変更がその証拠）。役割は「お家への自然な動線」に限定する。</p>
+    </div>
+    <div class="card">
+      <div class="role">② ピーチフェア</div>
+      <h3>集金イベント → 入会導線イベント</h3>
+      <p>3週間の体験中に「この続きはお家にあるよ」でお家入会へ送り出す。ドネーションは自由のまま、ただし<strong>目安メニュー化（¥3,000／¥10,000／¥30,000）</strong>で平均単価を3〜5倍に。</p>
+    </div>
+    <div class="card home">
+      <div class="role">③ Arisのお家 ★本丸</div>
+      <h3>月額収益の本体</h3>
+      <p>「入場料で稼ぐ」のではなく「入場料でファンを獲得し、お家で月額収益を作る」へ。ピーチフェアの収益はコスト回収＋αと割り切る。</p>
+    </div>
+  </div>
+
+  <div class="shead"><span class="idx">04</span><h2>収益シミュレーション</h2></div>
+  <div class="card" style="padding:8px 20px 14px">
+    <div class="dd"><div class="ddk">集客</div><div class="ddv">ピーチフェア体験者 100人 × 3期 ＝ <b>300人／年</b></div></div>
+    <div class="dd"><div class="ddk">お家転換</div><div class="ddv">転換率30%（90人）× ¥3,000/月 ＝ <b>¥270,000/月（年 ¥3,240,000）</b></div></div>
+    <div class="dd"><div class="ddk">上位転換</div><div class="ddv">お家から5%（15人）→ リトリート／HN ＝ <b>¥7,500,000〜¥15,000,000</b></div></div>
+    <div class="dd"><div class="ddk">ドネーション</div><div class="ddv">「宇宙銀行に流す感覚」を残しつつ目安メニュー化で平均単価3〜5倍。予測不能のブレ（¥0〜数百万）は本体収益に数えない。</div></div>
+  </div>
+
+  <div class="shead"><span class="idx">05</span><h2>Arisのお家：価値づくり</h2></div>
+  <p class="lead">本丸の設計。ここに過去に詰めた論点が降りて開く。</p>
+
+  <div class="acc">
+    <button class="acc-head" aria-expanded="false"><span class="an">!</span><span class="at">問題1：価格ティアが安すぎ＆機能ベース<span class="as">¥500 / ¥3,000 / ¥10,000</span></span><span class="chev">›</span></button>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="dd"><div class="ddk">現状</div><div class="ddv">¥500／¥3,000／¥10,000はコンビニ〜定額動画の価格帯。これだとブランドが「軽く」見える。</div></div>
+      <div class="dd cur"><div class="ddk">弱点</div><div class="ddv">「Discord付き」「動画見放題」という<b>機能差は、アリスの価値表現として弱い</b>。</div></div>
+      <div class="dd sol"><div class="ddk">方向</div><div class="ddv">機能ベース → <b>価値ベース／体験ベースのティア設計</b>へ。高く・少なく・深く。</div></div>
+    </div></div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" aria-expanded="false"><span class="an">!</span><span class="at">問題2：Netflix型が、星と合っていない<span class="as">固定水瓶座の気質</span></span><span class="chev">›</span></button>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="dd"><div class="ddk">論点</div><div class="ddv">大量ライブラリを浅く広く配信するNetflix型は、コンスタント生産が前提。火4・水星停止のアリスの気質と噛み合わない。</div></div>
+      <div class="dd sol"><div class="ddk">方向</div><div class="ddv">非商業的なコミュニティ感覚（水瓶座MC集結）を活かし、<b>少数・深い・儀式性の濃いコミュニティ型</b>を主軸に。「出た時に全部受け取れる仕組み」を設計で担保。</div></div>
+    </div></div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" aria-expanded="false"><span class="an">D</span><span class="at">アリフリックス 価格ティア案<span class="as">3.27会議ベース</span></span><span class="chev">›</span></button>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="tierline"><span class="tn">ライト</span><span class="tp">〜500円/月</span><span class="tx">お家にアクセス（スケジュール・旅日記・お知らせ）</span></div>
+      <div class="tierline"><span class="tn">スタンダード</span><span class="tp">〜3,000円/月</span><span class="tx">ライト＋Discordコミュニティ（みゆきちがマネージャー）</span></div>
+      <div class="tierline"><span class="tn">プレミアム</span><span class="tp">〜10,000円/月</span><span class="tx">スタンダード＋動画見放題（※価格・特典は要再設計）</span></div>
+      <div class="dd" style="margin-top:8px"><div class="ddk">お家の中身</div><div class="ddv">Arisのスケジュール／動画コンテンツへのアクセス／旅日記・場所紹介／全体のHUBとなる役割。</div></div>
+    </div></div>
+  </div>
+
+  <div class="shead"><span class="idx">06</span><h2>会議・プログラム 詳細</h2></div>
+
+  <div class="acc">
+    <button class="acc-head" aria-expanded="false"><span class="an">3.27</span><span class="at">3人MTGで決まったこと（6項目）<span class="as">プラットフォーム方針の確定</span></span><span class="chev">›</span></button>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="dd"><div class="ddk">方向性</div><div class="ddv">「アリフリックス」＝「Arisのお家」として設計。動画メインではなく、スケジュール・コンテンツ・旅日記など全部が集まるHUB。</div></div>
+      <div class="dd"><div class="ddk">進化</div><div class="ddv">Step1 仕組み＋お家作り（みゆきち担当）→ Step2 動画コンテンツ増・個別販売 → Step3 ボリュームが増えてアリフリックス（Netflix的）。</div></div>
+      <div class="dd"><div class="ddk">別物</div><div class="ddv">アリフリックスと魔女学校は別商品。魔女学校で生まれたコンテンツを、後からアリフリックスに移す流れ。</div></div>
+      <div class="dd"><div class="ddk">みゆきち</div><div class="ddv">プラットフォームの「フレーム」を作る担当（外部委託）。コンテンツ制作はしない。Johnが仕様書を渡して構築。</div></div>
+      <div class="dd"><div class="ddk">John</div><div class="ddv">「Aris株式会社」の中の人として動く。みゆきちへのディレクションもJohnが行う（ここの認識がずれていたので再確認）。</div></div>
+      <div class="dd"><div class="ddk">HN / 次回</div><div class="ddv">Highest Nationは3月で一旦終了（VIPはあと2ヶ月継続、今後は年1〜2回）。次回MTG＝4/10(金)20時 John&Aris。前にJohn&みゆきちの2人MTG。</div></div>
+    </div></div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" aria-expanded="false"><span class="an">C</span><span class="at">魔女学校（4週間プログラム）詳細<span class="as">火・水・土・空の4エレメント</span></span><span class="chev">›</span></button>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="dd"><div class="ddk">コンセプト</div><div class="ddv">火・水・土・空の4エレメントをテーマに、毎週テーマを変えながら自分のパワーを取り戻す4週間。</div></div>
+      <div class="dd"><div class="ddk">形式</div><div class="ddv">デジタルリトリート方式：既存動画教材（Highest Nation等）＋週1 Zoom＋Discord。アリス稼働はZoomのみ、動画は既存素材を活用。</div></div>
+      <div class="dd"><div class="ddk">特徴</div><div class="ddv">カカオセレモニー（友人ゆきとのコラボ）を毎回のセッションに導入。カカオを経費で提供し、みんなで飲みながら実践。</div></div>
+      <div class="dd"><div class="ddk">コミュニティ</div><div class="ddv">1期・2期の交流を大切に。アマゾン帰還後に全員での集まりも検討。「1期2期」と呼ばず「今月」「来月」で募集（プレッシャー回避）。</div></div>
+      <div class="dd"><div class="ddk">価格</div><div class="ddv">10万〜15万円（未確定）でまず設計。※5月にピーチフェアへ低価格化された経緯あり。</div></div>
+      <div class="dd"><div class="ddk">日程</div><div class="ddv">4月中旬 第1期 / 5月 第2期 / 6月前半 第3期（アマゾン中は自走 → 帰還後に最終セッション）。</div></div>
+    </div></div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" aria-expanded="false"><span class="an">▶</span><span class="at">実装フェーズ Phase 0 / 1 / 2<span class="as">キャッシュフロー優先の順番</span></span><span class="chev">›</span></button>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="dd"><div class="ddk">Phase 0</div><div class="ddv"><b>費用ゼロ</b>。魔女学校のLPを一緒に書き、決済はGumroad/BASEで処理。みゆきち抜きで第1期を走らせる。PGCは温まっているのでこれで十分売れる可能性。ここの収益を次の原資に。</div></div>
+      <div class="dd"><div class="ddk">Phase 1</div><div class="ddv"><b>最小限の費用</b>。みゆきちへの依頼を「お家のフレームだけ」に絞る。デザイン・発注書はJohnが先に作り切り、実装するだけの状態で渡す＝工数とコストを大幅に下げる。</div></div>
+      <div class="dd"><div class="ddk">Phase 2</div><div class="ddv"><b>収益が安定してから</b>。外注エディターを入れて動画を本格化。みゆきちにコンテンツ追加・デザイン拡張を依頼。</div></div>
+    </div></div>
+  </div>
+
+  <div class="shead"><span class="idx">07</span><h2>プラットフォーム進化 3ステップ</h2></div>
+  <div class="pipe">
+    <div><b>Step 1 — お家作り</b>　まず器を作り、何を入れるかを固める（棚卸しシート）</div>
+    <div><b>Step 2 — コンテンツ販売</b>　お家の中で単発コンテンツ／プログラムを販売</div>
+    <div><b>Step 3 — アリフリックス</b>　みゆきち主導の本格プラットフォーム（Netflix的）へ進化</div>
+  </div>
+
+  <div class="shead"><span class="idx">08</span><h2>役割の整理</h2></div>
+  <div class="twocol">
+    <div class="box hold">
+      <h4 class="gold">John＝チームの中の人</h4>
+      <ul>
+        <li>外部委託ではなく「アリス株式会社の一員」</li>
+        <li>設計・全体像を固め、費用をコントロール</li>
+        <li>みゆきちへの依頼を整理して発注</li>
+        <li>アリスが安心して飛べる地面を作る</li>
+      </ul>
+    </div>
+    <div class="box atk">
+      <h4 class="blood">魔女学校＝アリス主導</h4>
+      <ul>
+        <li>LP・販売・運営は本人のやり方で</li>
+        <li>Johnは壁打ち・困った時の伴走</li>
+        <li>プラットフォームの話と混ぜない</li>
+        <li>エネルギーが乗っている今がタイミング</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TAB 4 : ASTROLOGY ===================== -->
+<section id="t4" class="panel">
+
+  <div class="shead"><span class="idx">00</span><h2>エネルギーの地形</h2></div>
+  <p class="lead">戦略を「星の設計図」と矛盾させないための前提。アリスは<strong>火4・固定宮優勢</strong>で、地がほぼ無い。だから<span class="gold">爆発的に動く力は強いが、コツコツ継続・事務処理・継続的義務は構造的に苦手</span>。ここを意志ではなく設計で補うのが全戦略の土台。</p>
+  <div class="elem">
+    <div class="fire"><div class="en">4</div><div class="el">火 FIRE</div></div>
+    <div class="earth"><div class="en">少</div><div class="el">地 EARTH</div></div>
+    <div class="air"><div class="en">中</div><div class="el">風 AIR</div></div>
+    <div class="water"><div class="en">1</div><div class="el">水 WATER</div></div>
+  </div>
+
+  <div class="shead"><span class="idx">01</span><h2>主要配置と、その意味</h2></div>
+  <div class="card" style="padding:8px 20px">
+    <div class="astro-row"><div class="place">月・獅子座<small>IC / 4th</small></div><div class="mean">感情の根っこに「<b>輝きたい・愛されたい・特別でいたい</b>」がある。ここが満たされると全部が動き出し、揺らぐと一気に止まる。<b>承認と特別感が燃料</b>。</div></div>
+    <div class="astro-row"><div class="place">水星・射手座<small>8th house</small></div><div class="mean"><b>タブーを哲学に変える言語化力</b>。カンボ・アヤワスカ・子宮ワーク・父との愛を1時間20分のボイスで語り続けられる。誰も言語化できないことを言語化する力は本物。</div></div>
+    <div class="astro-row"><div class="place">金星・木星・天王星<small>水瓶座 / MC集結</small></div><div class="mean"><b>非商業的なコミュニティ感覚でものを渡したい</b>。ピーチフェアを¥5,000–7,000にしたのは戦略ミスではなく、固定水瓶座のエネルギーが価格に出た結果。だから覆せない＝設計で対処。</div></div>
+    <div class="astro-row"><div class="place">土星・牡羊座<small>11th house</small></div><div class="mean"><b>グループへの継続的な義務が構造的に難しい</b>。MTGに来ない・返信が飛ぶ・スケジュールが消える——やる気の問題ではなく星の配置。リマインドでは変わらない、<b>設計で対処するしかない</b>。</div></div>
+    <div class="astro-row"><div class="place">木星・天王星の合<small>突破の星</small></div><div class="mean">ビジネスチャンスは<b>計画通りには来ない</b>。旅の最中・セレモニーの後・予期しない出会いで一気に開く（アリフリックスの一致がまさにそれ）。</div></div>
+  </div>
+
+  <div class="shead"><span class="idx">02</span><h2>星 → ビジネスへの翻訳</h2></div>
+  <div class="cards">
+    <div class="card">
+      <div class="role">価格</div>
+      <h3>入口は低くていい、出口を作る</h3>
+      <p>固定宮5天体は一度決めた価格を変えにくい。だから入口の低価格は許容し、ピーチフェアの最後にお家へのアップグレードを置く設計で収益を作る。</p>
+    </div>
+    <div class="card">
+      <div class="role">発信リズム</div>
+      <h3>毎週コンスタントは消耗する</h3>
+      <p>水星停止＝深まった時に一気に放出するのが本来のリズム。「出た時に全部受け取れる仕組み」（音声をDropboxに投げるだけでコンテンツ化）が星的に正しい。</p>
+    </div>
+    <div class="card">
+      <div class="role">右腕</div>
+      <h3>地と水が強いタイプを横に</h3>
+      <p>火4・水1のアリスには、コンスタントに動け・細部を処理でき・感情的な継続力がある人が要る。Johnの火0・水4はこの補完に合っている。</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <h4>土星11ハウスへの実践処方（一番ビジネスに効く）</h4>
+    <p>「構造的に難しい」で止めず、対処まで落とす——<strong>①グループへの義務を最小化する ②リマインドはJohnが担う ③コミットする約束の数を絞る</strong>。これが効くと、設計全体が回り始める。</p>
+  </div>
+
+  <div class="pull">John（火0・水4）× Aris（火4・水1）。<br>足りない火を借り、過剰な火を受けとめる——星のレベルで噛み合う組み合わせ。</div>
+</section>
+
+<!-- ===================== TAB 2 ===================== -->
+<section id="t2" class="panel">
+
+  <div class="meta">
+    <div><div class="ml">VIDEO</div><div class="mv">カンボ回 / 公開YouTube版</div></div>
+    <div><div class="ml">SOURCE</div><div class="mv">season_2.csv（6/7撮影・231seg）</div></div>
+    <div><div class="ml">LENGTH</div><div class="mv">本編 9–11分 ＋ 縦型30–45秒</div></div>
+    <div><div class="ml">SPINE</div><div class="mv">カンボ＝額縁／魔女・子宮＝中身</div></div>
+    <div><div class="ml">HOOK</div><div class="mv">なぜ“怪しい”と呼ぶのか</div></div>
+    <div><div class="ml">CTA</div><div class="mv">宇宙のツアー予告 → 登録・IG</div></div>
+  </div>
+  <p class="lead">各カットに <span class="gold">元CSV［番号］＋生タイムコード＋実発言</span> を残してある。左＝素材（CSV）、右＝構成。Premiereでそのまま頭出し可能。<strong>本編フル＝コールドオープン＋5幕（約10分40秒）。</strong></p>
+  <div class="flow" style="font-size:13px">コールドオープン <span>→</span> ①額縁 <span>→</span> ②浮上 <span>→</span> ③魔女・子宮 <span>→</span> ④転回 <span>→</span> ⑤ツアー予告</div>
+
+  <!-- COLD OPEN -->
+  <div class="act"><h3>コールドオープン 0:00–0:30</h3><div class="bar"></div></div>
+
+  <article class="cue">
+    <div class="cue-head"><span class="cue-tc">🎬 0:00–0:06</span><span class="cue-tag">掴み</span></div>
+    <div class="cue-grid">
+      <div class="src">
+        <div class="src-label">元CSV</div>
+        <div class="src-code">[0] 00:00:07:04 → 00:00:21:26</div>
+        <p class="src-quote">魔女ドリンク。これを飲んだら、あなたは変えられません。準備はいいですか。…100万円です。</p>
+      </div>
+      <div class="build">
+        <div class="b-label">構成</div>
+        <div class="row"><span class="k">字幕/VO</span><div class="v sub">「魔女ドリンク。これを飲んだら——あなたは、変えられない」</div></div>
+        <div class="row"><span class="k">映像</span><div class="v vis">黒画面に、暗い液体が墨のように渦巻く（ポーション×宇宙）。スロー。</div></div>
+        <div class="row"><span class="k">AI</span><div class="v"><div class="prompt">dark viscous liquid swirling in black void, cosmic ink dispersing, slow motion macro, candlelit rim light, deep garnet and gold, cinematic, organic, premium, 9:16 and 16:9</div></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="cue">
+    <div class="cue-head"><span class="cue-tc">🎬 0:06–0:11</span><span class="cue-tag">畳みかけ</span></div>
+    <div class="cue-grid">
+      <div class="src">
+        <div class="src-label">元CSV</div>
+        <div class="src-code">[0]/[1] 00:00:21:29 →</div>
+        <p class="src-quote">準備はいいですか。</p>
+      </div>
+      <div class="build">
+        <div class="b-label">構成</div>
+        <div class="row"><span class="k">字幕/VO</span><div class="v sub">「準備は、いい?」</div></div>
+        <div class="row"><span class="k">映像</span><div class="v vis">フラッシュ編集。ジャングルの樹冠 → 腕のカンボの痕（焼き跡のドット）を一瞬。<strong>手順は見せず、痕だけ。</strong></div></div>
+        <div class="row"><span class="k">AI</span><div class="v"><div class="prompt">extreme close-up of small round burn dots on skin, soft focus, ambiguous and non-graphic, warm dark tone, mysterious, no text</div></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="cue">
+    <div class="cue-head"><span class="cue-tc">🎬 0:11–0:18</span><span class="cue-tag">問い</span></div>
+    <div class="cue-grid">
+      <div class="src">
+        <div class="src-label">元CSV</div>
+        <div class="src-code">— 構成上の挿入 —</div>
+        <p class="src-quote">（素材なし／テロップで問いを立てる）</p>
+      </div>
+      <div class="build">
+        <div class="b-label">構成</div>
+        <div class="row"><span class="k">テロップ</span><div class="v"><span class="telopline">なぜ社会は、これを“怪しい”と呼ぶのか?</span></div></div>
+        <div class="row"><span class="k">映像</span><div class="v vis">加速モンタージュ：ジャングル → ピラミッドのシルエット → コズミック。</div></div>
+        <div class="row"><span class="k">AI</span><div class="v"><div class="prompt">jungle canopy morphing into ancient pyramid silhouette into cosmic starfield, fast cinematic transition, fog and light shafts, mysterious, epic, dark palette</div></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="cue">
+    <div class="cue-head"><span class="cue-tc">🎬 0:18–0:24</span><span class="cue-tag">予告</span></div>
+    <div class="cue-grid">
+      <div class="src">
+        <div class="src-label">元CSV</div>
+        <div class="src-code">本編からの先出し</div>
+        <p class="src-quote">[103]「汚物はこちらへ」 / [108]「重要なものほど隠されている」を一瞬フラッシュ</p>
+      </div>
+      <div class="build">
+        <div class="b-label">構成</div>
+        <div class="row"><span class="k">映像</span><div class="v vis">本編の強カットを一瞬ずつ。“続きが気になる”引き。<strong>薬物ワードは一切出さない。</strong></div></div>
+        <div class="row"><span class="k">AI</span><div class="v"><div class="prompt">rapid flash cuts, woman's intense calm gaze, moon and blood-red accents, glitch-free elegant montage, 0.2s each</div></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="cue">
+    <div class="cue-head"><span class="cue-tc">🎬 0:24–0:30</span><span class="cue-tag">タイトル</span></div>
+    <div class="cue-grid">
+      <div class="src">
+        <div class="src-label">元CSV</div>
+        <div class="src-code">[3] 00:00:31:11 → 00:00:38:04</div>
+        <p class="src-quote">カムバック。あなたはもう魔法にかかって。</p>
+      </div>
+      <div class="build">
+        <div class="b-label">構成</div>
+        <div class="row"><span class="k">字幕/VO</span><div class="v sub">「あなたはもう、魔法にかかってる」</div></div>
+        <div class="row"><span class="k">映像</span><div class="v vis">シリーズロゴ（インディアナ・アリス）→ ハードカットで第1幕へ。</div></div>
+        <div class="row"><span class="k">AI</span><div class="v"><div class="prompt">cinematic title card, mincho-style Japanese logotype, ember particles, dark green-black background, gold and garnet, ritualistic</div></div></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ACT 1 -->
+  <div class="act"><h3>第1幕：額縁・信頼 0:30–2:00</h3><div class="bar"></div></div>
+  <p class="lead">何をしたかを最小限提示し、<strong>“クリックベイトはしない”という本人の原則</strong>で信頼を獲る。視聴者の「これただの炎上狙い?」を先回りで潰す。</p>
+
+  <article class="cue">
+    <div class="cue-head"><span class="cue-tc">🎬 0:30–1:00</span><span class="cue-tag">額縁</span></div>
+    <div class="cue-grid">
+      <div class="src">
+        <div class="src-label">元CSV</div>
+        <div class="src-code">[16] 00:04:00:18 → 00:04:33:05</div>
+        <p class="src-quote">ブラジル来てから、特に4月は1ヶ月山にこもって修行してた…魔女との出会いがあって、その最終の最終が幹部（カンボ）で締めくくる。</p>
+      </div>
+      <div class="build">
+        <div class="b-label">構成</div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「ブラジルに来てから、4月はまるまる1ヶ月、山にこもって修行してた」</div></div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「魔女との出会いがあって——その最後の最後を、“カンボ”で締めくくった」</div></div>
+        <div class="row"><span class="k">テロップ</span><div class="v"><span class="telopline">アマゾンの“カエルの毒”、カンボ</span></div></div>
+        <div class="row"><span class="k">映像</span><div class="v vis">山中のリトリート、蝋燭の灯。実写b-roll＋AI補完。</div></div>
+        <div class="row"><span class="k">AI</span><div class="v"><div class="prompt">remote jungle mountain retreat at dusk, candlelight, mist, sacred quiet atmosphere, cinematic, dark green palette, no people</div></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="cue">
+    <div class="cue-head"><span class="cue-tc">🎬 1:00–2:00</span><span class="cue-tag peak">信頼の核</span></div>
+    <div class="cue-grid">
+      <div class="src">
+        <div class="src-label">元CSV</div>
+        <div class="src-code">[29] 00:08:28:28 →（前半のみ）</div>
+        <div class="src-code">[36] 00:11:29:19 → 00:11:59:08</div>
+        <p class="src-quote">南米の怪しい薬草を飲んできましたみたいなクリックベイトの見せ方を、私はやってこなかった…超繊細なワーク／先住民・メディスンを守り抜いてきた人たちへのリスペクト…コツコツ、ここだけでやってきた。<br><span style="color:var(--faint)">※[29]後半のトラウマ言及は公開から除外</span></p>
+      </div>
+      <div class="build">
+        <div class="b-label">構成</div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「“南米の怪しい薬草を飲んできました”——そんなクリックベイトの見せ方を、私はしてこなかった」</div></div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「これは超繊細なワークだし、先住民や、この文化を守り抜いてきた人たちへの敬意があるから」</div></div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「ずっと、コツコツ、ここだけでやってきた」</div></div>
+        <div class="row"><span class="k">テロップ</span><div class="v"><span class="telopline">これは、クリックベイトにしない</span></div></div>
+        <div class="row"><span class="k">映像</span><div class="v vis">アリスがまっすぐカメラへ。装飾を削いだ静かな画＝authenticityの核。</div></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ACT 2 -->
+  <div class="act"><h3>第2幕：浮上したもの 2:00–4:00</h3><div class="bar"></div></div>
+  <p class="lead">何が浮かび上がったかを、<strong>普遍に開く</strong>。性的トラウマの具体には触れず、「私たちはどれだけ抑え込んで生きているか」へ着地。</p>
+
+  <article class="cue">
+    <div class="cue-head"><span class="cue-tc">🎬 2:00–2:50</span><span class="cue-tag">浮上</span></div>
+    <div class="cue-grid">
+      <div class="src">
+        <div class="src-label">元CSV</div>
+        <div class="src-code">[31] 00:09:35:06 → 00:09:57:18</div>
+        <div class="src-code">[30] （抽象化して使用）</div>
+        <p class="src-quote">体が全部吸収して貯蔵してきたものを、スピリットと一緒に出した。<br><span style="color:var(--faint)">※[30]の性的体験の具体は除外し“長く封印してきたもの”に抽象化</span></p>
+      </div>
+      <div class="build">
+        <div class="b-label">構成</div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「カンボで浮かび上がったのは、長いあいだ、封印してきたもの」</div></div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「体って、全部を吸収して、貯蔵してる。それを、まるごと外に出した」</div></div>
+        <div class="row"><span class="k">テロップ</span><div class="v"><span class="telopline">体は、全部を憶えている</span></div></div>
+        <div class="row"><span class="k">映像</span><div class="v vis">水・身体・解放の抽象。生描写なし。</div></div>
+        <div class="row"><span class="k">AI</span><div class="v"><div class="prompt">water flowing off a silhouette, release and cleansing, abstract, soft light, no graphic content, poetic, dark tone</div></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="cue">
+    <div class="cue-head"><span class="cue-tc">🎬 2:50–4:00</span><span class="cue-tag">普遍へ</span></div>
+    <div class="cue-grid">
+      <div class="src">
+        <div class="src-label">元CSV</div>
+        <div class="src-code">[32] 00:09:57:20 → 00:10:20:29</div>
+        <p class="src-quote">日常生きてて、うちらが気づいてるのってほんまにもう1とか2しかないんやなって思うし、そこに行くのは怖い。</p>
+      </div>
+      <div class="build">
+        <div class="b-label">構成</div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「日常で私たちが気づいてるのって、ほんの1か2しかないんやなって」</div></div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「その奥に、まだ眠ってるものがある」</div></div>
+        <div class="row"><span class="k">ナレ</span><div class="v sub">これは、メディスンの話じゃない。誰もが、どれだけ抑え込んで生きているか——の話。</div></div>
+        <div class="row"><span class="k">テロップ</span><div class="v"><span class="telopline">気づいているのは、1か2だけ</span></div></div>
+        <div class="row"><span class="k">映像</span><div class="v vis">氷山型メタファー（水面＝意識／深部＝封印）。</div></div>
+        <div class="row"><span class="k">AI</span><div class="v"><div class="prompt">iceberg metaphor, small tip above dark water, vast hidden mass below, moody underwater light, conceptual, cinematic</div></div></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ACT 3 -->
+  <div class="act"><h3>第3幕：魔女・子宮 4:00–8:10</h3><div class="bar"></div></div>
+  <p class="lead">動画の心臓部。生素材は蛇行しているので、順番を組み替えて整文済み。</p>
+
+  <article class="cue">
+    <div class="cue-head"><span class="cue-tc">🎬 4:00–4:25</span><span class="cue-tag">入口</span></div>
+    <div class="cue-grid">
+      <div class="src">
+        <div class="src-label">元CSV</div>
+        <div class="src-code">[84] 00:28:32:15 → 00:28:53:09</div>
+        <p class="src-quote">私も魔女になりたいみたいなギャルたちが出てくるけど、魔女って使うの抵抗あるみたいな。なんでって聞いたら、ダークなイメージないですかみたいな。</p>
+      </div>
+      <div class="build">
+        <div class="b-label">構成</div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「“私も魔女になりたい”って子もいれば、“魔女ってダークなイメージで、抵抗ある”って子もいて」</div></div>
+        <div class="row"><span class="k">テロップ</span><div class="v"><span class="telopline">“魔女”って、どんなイメージ?</span></div></div>
+        <div class="row"><span class="k">映像</span><div class="v vis">アリス A-roll ＋ 柔らかい b-roll。</div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="cue">
+    <div class="cue-head"><span class="cue-tc">🎬 4:25–5:10</span><span class="cue-tag">問い直し</span></div>
+    <div class="cue-grid">
+      <div class="src">
+        <div class="src-label">元CSV</div>
+        <div class="src-code">[93] 00:29:56:18</div>
+        <div class="src-code">[94] 00:30:18:09</div>
+        <div class="src-code">[101] 00:31:53:20</div>
+        <p class="src-quote">千と千尋がわかりやすい…銭婆って優しいやん。宮崎駿が二極性を姉妹で表現／みんなが悪いって思ってるものって本当に悪いのか／湯婆婆ってめっちゃいいやつやった。</p>
+      </div>
+      <div class="build">
+        <div class="b-label">構成</div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「わかりやすいのは“千と千尋”。湯婆婆と銭婆——宮崎駿は、ひとつの存在の二面性を、姉妹で描いてる」</div></div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「みんなが“悪い”って思ってるものは、本当に悪いの?」</div></div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「湯婆婆だって、最後はちゃんと見届けてくれた。どこから見るかで、全然違う」</div></div>
+        <div class="row"><span class="k">テロップ</span><div class="v"><span class="telopline">“魔女＝悪”は、誰が決めた?</span></div></div>
+        <div class="row"><span class="k">映像</span><div class="v vis">アリス ＋ AI（光と影の二極の抽象）。</div></div>
+        <div class="row"><span class="k">AI</span><div class="v"><div class="prompt">two mirrored silhouettes of women, one in light one in shadow, duality, elegant, dark fairytale mood, no copyrighted characters</div></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="cue">
+    <div class="cue-head"><span class="cue-tc">🎬 5:10–6:10</span><span class="cue-tag peak">感情のピーク</span></div>
+    <div class="cue-grid">
+      <div class="src">
+        <div class="src-label">元CSV</div>
+        <div class="src-code">[103] 00:32:34:00 → 00:33:14:17</div>
+        <div class="src-code">[104] 00:33:14:17 → 00:33:41:00</div>
+        <p class="src-quote">子宮ってさ、社会から汚れとか汚いとか…生理ナプキンを入れる三角コーナー、小学生の時、汚物はこちらへって貼られてて、あ、ここの下って汚いんやって／表で恥・汚れと言われてるものって、反対から見たらめちゃくちゃ神聖。</p>
+      </div>
+      <div class="build">
+        <div class="b-label">構成</div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「魔女がパワフルなのは——女性には、子宮があるから」</div></div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「でも子宮は、社会からずっと“汚れ”扱いされてきた。生理を隠せ、ナプキンも、トイレに行くのも恥ずかしい」</div></div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「小学生のとき、生理用品を捨てる三角コーナーに、紙が貼ってあった」</div></div>
+        <div class="row"><span class="k">テロップ</span><div class="v"><span class="telopline big">汚物は こちらへ</span></div></div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「あ、私のこの部分は“汚物”なんやって」</div></div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「でも——表で“恥”“汚れ”とされてるものほど、裏返すと、すごく神聖だったりする」</div></div>
+        <div class="row"><span class="k">テロップ</span><div class="v"><span class="telopline">裏返すと、神聖</span></div></div>
+        <div class="row"><span class="k">映像</span><div class="v vis">アリスの寄り（感情）。「汚物はこちらへ」を<strong>無音の静止フレーム</strong>に置く＝動画一番の刺さりポイント。</div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="cue">
+    <div class="cue-head"><span class="cue-tc">🎬 6:10–6:55</span><span class="cue-tag">リズム</span></div>
+    <div class="cue-grid">
+      <div class="src">
+        <div class="src-label">元CSV</div>
+        <div class="src-code">[105] 00:33:41:04</div>
+        <div class="src-code">[106] 00:34:08:03</div>
+        <p class="src-quote">80億人全員そこから出てきてる…男性社会で生きにくいのは根本的にリズムが違うから／ムーンサイクルは約28日、満月が新月に波のように。でも社会は太陽の24時間リズムだけ。</p>
+      </div>
+      <div class="build">
+        <div class="b-label">構成</div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「私たち80億人、全員、女性のそこから生まれてきた。なのに女性が生きづらいのは——根本のリズムが、違うから」</div></div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「女性のリズムは、約28日。満月から新月へ、波のように変わる。でも社会は、太陽の24時間のリズムだけ」</div></div>
+        <div class="row"><span class="k">テロップ</span><div class="v"><span class="telopline">月のリズム ／ 太陽のリズム</span></div></div>
+        <div class="row"><span class="k">映像</span><div class="v vis">月の満ち欠け・潮の満ち引き ↔ 時計・都市のグリッド。強い視覚メタファー。</div></div>
+        <div class="row"><span class="k">AI</span><div class="v"><div class="prompt">split screen, left: moon phases and ocean tide poetic flowing, right: mechanical clock and rigid city grid cold, contrast of organic vs mechanical, cinematic</div></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="cue">
+    <div class="cue-head"><span class="cue-tc">🎬 6:55–7:20</span><span class="cue-tag peak">テーゼ</span></div>
+    <div class="cue-grid">
+      <div class="src">
+        <div class="src-label">元CSV</div>
+        <div class="src-code">[108] 00:34:45:06</div>
+        <div class="src-code">[105] 「歴史的にバンされてきた」</div>
+        <p class="src-quote">重要なものほど隠されているよなって…／バンされてきたものだよね歴史的に。</p>
+      </div>
+      <div class="build">
+        <div class="b-label">構成</div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「重要なものほど——隠されてきた」</div></div>
+        <div class="row"><span class="k">テロップ</span><div class="v"><span class="telopline big">重要なものほど、<br>隠されている</span></div></div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「魔女狩りも、子宮が“汚れ”にされたのも——女性の見えない力が、封じられてきたんだと思う」</div></div>
+        <div class="row"><span class="k">映像</span><div class="v vis">アリス ＋ AI（埋められる／燃やされる象徴）。</div></div>
+        <div class="row"><span class="k">AI</span><div class="v"><div class="prompt">single candle flame in vast darkness, something precious being hidden underground, symbolic, restrained, garnet and gold, no violence</div></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="cue">
+    <div class="cue-head"><span class="cue-tc">🎬 7:20–7:50</span><span class="cue-tag">覚醒</span></div>
+    <div class="cue-grid">
+      <div class="src">
+        <div class="src-label">元CSV</div>
+        <div class="src-code">[115] 00:37:35:08</div>
+        <div class="src-code">[117] 00:38:18:13</div>
+        <div class="src-code">[118] 00:38:43:18</div>
+        <p class="src-quote">魔女に覚醒した人たちって結構トラウマがある人たち…ほぼ全員／お前考えすぎ、喋りすぎ、っていう封印をかけられる、私たちのサイキック性／自分に立ち上がって、インナーチャイルドを癒していく。戦士だよね。</p>
+      </div>
+      <div class="build">
+        <div class="b-label">構成</div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「自分の魔法を思い出した女性たちは、だいたい、トラウマを通ってきた人たち」</div></div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「“考えすぎ”“喋りすぎ”“感情的すぎ”——そう言われて、力に封印をかけられる」</div></div>
+        <div class="row"><span class="k">テロップ</span><div class="v"><span class="telopline">“〜すぎる”は、封印の呪文</span></div></div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「でも、そこから立ち上がる。インナーチャイルドを癒していく。ある意味、戦士なんだよね」</div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="cue">
+    <div class="cue-head"><span class="cue-tc">🎬 7:50–8:10</span><span class="cue-tag">着地・回収</span></div>
+    <div class="cue-grid">
+      <div class="src">
+        <div class="src-label">元CSV</div>
+        <div class="src-code">[113] 00:36:58:28</div>
+        <div class="src-code">[3] 冒頭の伏線</div>
+        <p class="src-quote">自分を思い出したら、みんな自動的に魔女で。／（冒頭）あなたはもう魔法にかかって。</p>
+      </div>
+      <div class="build">
+        <div class="b-label">構成</div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「自分を思い出したら——みんな、もう魔女なんだよ」</div></div>
+        <div class="row"><span class="k">テロップ</span><div class="v"><span class="telopline">あなたはもう、魔法にかかってる</span><div class="vis" style="margin-top:4px">↑ 冒頭 [3] の伏線回収</div></div></div>
+        <div class="row"><span class="k">映像</span><div class="v vis">アリスがカメラへ → 宇宙のツアー予告（最終幕）へディゾルブ。</div></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ACT 4 -->
+  <div class="act"><h3>第4幕：転回 8:10–9:20</h3><div class="bar"></div></div>
+  <p class="lead">「薬の話じゃない」と本人の言葉で着地。“go do drugs”の誤読を防ぐガードであり、彼女の真実でもある。</p>
+
+  <article class="cue">
+    <div class="cue-head"><span class="cue-tc">🎬 8:10–8:45</span><span class="cue-tag peak">ガード</span></div>
+    <div class="cue-grid">
+      <div class="src">
+        <div class="src-label">元CSV</div>
+        <div class="src-code">[25] 00:07:07:02 → 00:07:34:21</div>
+        <p class="src-quote">メディシンがやってくれたとか、ないと無理とか、その関係性は本当に気をつけてて。メディシンは本来ある感覚を目覚めさせてくれるだけ。</p>
+      </div>
+      <div class="build">
+        <div class="b-label">構成</div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「“メディスンがやってくれた”“それがないと無理”——そういう関係性には、すごく気をつけてる」</div></div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「メディスンは、本来あなたの中にある感覚を、目覚めさせるだけ」</div></div>
+        <div class="row"><span class="k">テロップ</span><div class="v"><span class="telopline">答えは、あなたの中にある</span></div></div>
+        <div class="row"><span class="k">映像</span><div class="v vis">アリスのアップ、静かな確信。</div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="cue">
+    <div class="cue-head"><span class="cue-tc">🎬 8:45–9:20</span><span class="cue-tag">着地</span></div>
+    <div class="cue-grid">
+      <div class="src">
+        <div class="src-label">元CSV</div>
+        <div class="src-code">[26] 00:07:34:24 → 00:07:54:18</div>
+        <div class="src-code">[27] 00:07:54:21 → 00:08:18:09</div>
+        <p class="src-quote">日常に戻ってからがセレモニーやぞ（シャーマンの言葉）／サイケデリックや薬草じゃなくても、ブレスワーク、瞑想、ヨガ…全てがメディスンになる。</p>
+      </div>
+      <div class="build">
+        <div class="b-label">構成</div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「シャーマンが言ってた。“日常に戻ってからが、セレモニーだぞ”」</div></div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「薬草じゃなくても——呼吸も、瞑想も、ヨガも。今この瞬間に、どれだけいられるか。全部が、メディスンになる」</div></div>
+        <div class="row"><span class="k">テロップ</span><div class="v"><span class="telopline">日常に戻ってからが、セレモニー</span></div></div>
+        <div class="row"><span class="k">映像</span><div class="v vis">朝の光、呼吸、ありふれた日常のカット。</div></div>
+        <div class="row"><span class="k">AI</span><div class="v"><div class="prompt">soft morning light through a window, a calm breath, ordinary peaceful moment, serene, warm, cinematic</div></div></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- LAST -->
+  <div class="act"><h3>最終幕：宇宙のツアー予告 9:20–10:40</h3><div class="bar"></div></div>
+  <p class="lead">次章フック＝シリーズの幕開け宣言。<strong>インディアナ・アリス</strong>へ接続し、登録・Instagramへ送る。</p>
+
+  <article class="cue">
+    <div class="cue-head"><span class="cue-tc">🎬 9:20–9:55</span><span class="cue-tag">呼ばれる</span></div>
+    <div class="cue-grid">
+      <div class="src">
+        <div class="src-label">元CSV</div>
+        <div class="src-code">[198] 01:04:44:21 → 01:05:19:09</div>
+        <div class="src-code">[199] 01:05:19:11 → 01:05:45:28</div>
+        <p class="src-quote">アマゾンにもう来週1週間以内…その後にピラミッドが呼んでいる…1カ国目がメキシコ、マヤ文明。導きがあって、心配してない。</p>
+      </div>
+      <div class="build">
+        <div class="b-label">構成</div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「来週、アマゾンの奥地へ。そして、その先で——ピラミッドが、呼んでいる」</div></div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「最初は、メキシコ。マヤ文明」</div></div>
+        <div class="row"><span class="k">テロップ</span><div class="v"><span class="telopline">ピラミッドが、呼んでいる</span></div></div>
+        <div class="row"><span class="k">映像</span><div class="v vis">ピラミッド、コズミック、ゾクゾクする予告トーン。</div></div>
+        <div class="row"><span class="k">AI</span><div class="v"><div class="prompt">ancient Maya pyramid under a cosmic starry sky, beam of light, epic mysterious teaser mood, cinematic wide shot</div></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="cue">
+    <div class="cue-head"><span class="cue-tc">🎬 9:55–10:20</span><span class="cue-tag">航路</span></div>
+    <div class="cue-grid">
+      <div class="src">
+        <div class="src-label">元CSV</div>
+        <div class="src-code">[202] 01:06:10:02 → 01:06:21:17</div>
+        <div class="src-code">[203] 01:06:21:20 → 01:06:40:07</div>
+        <p class="src-quote">エジプト…その次がペルー／インカ帝国、アンデスの方…その後もう一回メキシコ（アステカ）。</p>
+      </div>
+      <div class="build">
+        <div class="b-label">構成</div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「メキシコ（マヤ）→ エジプト → ペルー（インカ）→ そしてまた、メキシコ（アステカ）へ」</div></div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「導きに沿って、古代をひとつずつ、巡っていく」</div></div>
+        <div class="row"><span class="k">テロップ</span><div class="v"><span class="telopline">アマゾン → マヤ → エジプト → インカ → アステカ</span></div></div>
+        <div class="row"><span class="k">映像</span><div class="v vis">航路が線で結ばれる古地図風アニメ。</div></div>
+        <div class="row"><span class="k">AI</span><div class="v"><div class="prompt">antique world map, glowing route line connecting Amazon, Mexico, Egypt, Peru, golden ink, animated travel path, cinematic</div></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="cue">
+    <div class="cue-head"><span class="cue-tc">🎬 10:20–10:40</span><span class="cue-tag peak">開幕・CTA</span></div>
+    <div class="cue-grid">
+      <div class="src">
+        <div class="src-label">元CSV</div>
+        <div class="src-code">[211] 01:09:34:01 → 01:10:00:10</div>
+        <div class="src-code">[230] 01:14:27:04 → 01:14:37:01</div>
+        <p class="src-quote">ドキュメントしていこうと思ってる。インスタとかYouTubeで発信していこうかな／じゃあキャッチミーイフユーキャンにしよう。</p>
+      </div>
+      <div class="build">
+        <div class="b-label">構成</div>
+        <div class="row"><span class="k">字幕</span><div class="v sub">「この旅は、ぜんぶ記録していく」</div></div>
+        <div class="row"><span class="k">テロップ</span><div class="v"><span class="telopline big">宇宙のツアー、開幕</span></div></div>
+        <div class="row"><span class="k">テロップ</span><div class="v"><span class="telopline">Catch me if you can.</span></div></div>
+        <div class="row"><span class="k">CTA</span><div class="v sub">チャンネル登録 ＋ Instagramへ（続きと“落とし”はこちら）。</div></div>
+        <div class="row"><span class="k">映像</span><div class="v vis">シリーズロゴ再掲 → 登録ボタン演出。</div></div>
+        <div class="row"><span class="k">AI</span><div class="v"><div class="prompt">cinematic series end card, mincho logotype, ember particles, garnet and gold on dark, subscribe prompt space</div></div></div>
+      </div>
+    </div>
+  </article>
+
+  <div class="note">
+    <h4>守りメモ（この2パートで外したもの）</h4>
+    <p><code>[131]</code> の「GHQに取られた／奪われた」陰謀寄りの延長は<strong>公開ではカット</strong>、テーゼは「女性の力の封印」＝魔女狩りまでに留める（敬意の範囲）。性的トラウマの具体 <code>[29–32]</code> は触れず“封印してきたものが浮上”の抽象どまり。カンボの手順 <code>[155–168]</code> は当然お家へ。</p>
+  </div>
+
+</section>
+
+</main>
+
+<footer class="wrap">Aris 統合ダッシュボード · コンテンツ戦略 / ビジネス戦略 / 占星術 / カンボ回 構成表（本編フル）· source: season_2.csv</footer>
+
+<script>
+  const tabs=document.querySelectorAll('.tab');
+  const panels=document.querySelectorAll('.panel');
+  tabs.forEach(t=>t.addEventListener('click',()=>{
+    tabs.forEach(x=>x.classList.remove('active'));
+    panels.forEach(p=>p.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById(t.dataset.tab).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }));
+
+  document.querySelectorAll('.acc-head').forEach(h=>h.addEventListener('click',()=>{
+    const acc=h.parentElement;
+    const open=acc.classList.toggle('open');
+    h.setAttribute('aria-expanded', open ? 'true':'false');
+  }));
+</script>
+</body>
+</html>
