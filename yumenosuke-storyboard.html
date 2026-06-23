@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>夢之丞 コンセプトムービー 絵コンテ ― 2案</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  --bg: #0c0b09;
+  --bg2: #14110d;
+  --panel: #1a1610;
+  --edge: #2e2719;
+  --bone: #f2ebdc;
+  --ash: #cfc6b5;
+  --dim: #948a78;
+  --faint: #5f5749;
+  --amber: #e09a45;
+  --amber-bright: #f3ba6c;
+  --rust: #c85a24;
+  --gold: #e8c49d;
+  --teal: #6f9a8d;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ash);
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  background-image: radial-gradient(ellipse at 50% 0%, rgba(224,154,69,.06), transparent 50%);
+}
+
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 2rem 7rem; }
+
+.head { padding: 4rem 0 2rem; border-bottom: 1px solid var(--edge); }
+.head-kicker { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--faint); margin-bottom: 1.5rem; }
+.head h1 { font-family: 'Shippori Mincho', serif; font-size: 40px; font-weight: 800; color: var(--bone); line-height: 1.25; margin-bottom: 1rem; }
+.head p { font-size: 14px; color: var(--dim); max-width: 720px; line-height: 1.9; }
+.head .note { font-size: 12.5px; color: var(--amber); margin-top: 1rem; font-family: 'JetBrains Mono', monospace; }
+
+.tabs { display: flex; gap: 0; margin: 2.5rem 0 0; border-bottom: 2px solid var(--edge); position: sticky; top: 0; background: var(--bg); z-index: 50; padding-top: 1rem; }
+.tab { flex: 1; padding: 1.25rem 1.5rem; cursor: pointer; border: none; background: transparent; color: var(--dim); font-family: inherit; text-align: left; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all .2s; }
+.tab:hover { color: var(--ash); }
+.tab.active { color: var(--bone); border-bottom-color: var(--amber); }
+.tab .tab-no { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .2em; color: var(--amber); display: block; margin-bottom: .4rem; }
+.tab .tab-name { font-family: 'Shippori Mincho', serif; font-size: 22px; font-weight: 700; display: block; margin-bottom: .25rem; }
+.tab .tab-desc { font-size: 12px; color: var(--faint); line-height: 1.6; }
+
+.page { display: none; }
+.page.active { display: block; }
+
+.intro { background: var(--panel); border: 1px solid var(--edge); border-left: 4px solid var(--amber); padding: 1.5rem 1.75rem; margin: 2.5rem 0; }
+.intro-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--amber); margin-bottom: .75rem; }
+.intro p { font-size: 13px; color: var(--dim); line-height: 1.85; }
+.intro p b { color: var(--ash); }
+
+.phase { margin: 2.25rem 0 .5rem; display: flex; align-items: center; gap: 1rem; }
+.phase-line { flex: 1; height: 1px; background: var(--edge); }
+.phase-txt { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--amber); white-space: nowrap; }
+
+.cut { display: grid; grid-template-columns: 200px 1fr; gap: 1.75rem; padding: 1.5rem 0; border-bottom: 1px solid var(--edge); }
+.cut:last-child { border-bottom: none; }
+.frame { width: 100%; aspect-ratio: 16/9; background: #000; border: 1px solid var(--edge); border-radius: 3px; overflow: hidden; }
+.frame svg { width: 100%; height: 100%; display: block; }
+.frame-no { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--amber); margin-top: .6rem; display: flex; justify-content: space-between; letter-spacing: .05em; }
+.frame-no .dur { color: var(--faint); }
+
+.cut-shot { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--teal); margin-bottom: .5rem; }
+.cut-vis { font-size: 14.5px; color: var(--ash); line-height: 1.95; margin-bottom: 1rem; }
+.cut-vis em { font-style: normal; color: var(--amber-bright); font-weight: 600; }
+
+.cut-audio { background: var(--bg2); border-left: 2px solid var(--amber); padding: .85rem 1.1rem; margin-bottom: .75rem; }
+.cut-audio-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: var(--amber); margin-bottom: .4rem; }
+.cut-audio .q { font-family: 'Shippori Mincho', serif; font-size: 16px; line-height: 1.9; color: var(--bone); font-weight: 500; }
+.cut-audio .q em { font-style: normal; color: var(--amber-bright); font-weight: 700; }
+.cut-audio .who { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--faint); margin-top: .4rem; }
+
+.cut-memo { font-size: 11.5px; color: var(--faint); line-height: 1.6; padding-left: 1rem; border-left: 2px solid var(--edge); font-family: 'JetBrains Mono', monospace; }
+
+.cut.climax .frame { border-color: var(--amber); }
+
+.foot { margin-top: 3rem; padding-top: 1.5rem; border-top: 2px solid var(--edge); font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--faint); line-height: 1.9; }
+
+@media (max-width: 760px) {
+  .cut { grid-template-columns: 1fr; gap: 1rem; }
+  .frame { max-width: 280px; }
+  .head h1 { font-size: 30px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="head">
+  <div class="head-kicker">ピースワンコ・ジャパン ／ コンテンツチーム　絵コンテ</div>
+  <h1>夢之丞 コンセプトムービー<br>2つの構成案</h1>
+  <p>成田のメモをそのまま絵コンテに起こしたもの。文言はメモに準拠。構図スケッチと尺は配置の目安。</p>
+  <div class="note">★ = メモ原文のまま ／ セリフ・ナレーションはメモの言葉を優先</div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" data-page="pageA">
+    <span class="tab-no">PATTERN A</span>
+    <span class="tab-name">ワンドリーム型</span>
+    <span class="tab-desc">「野犬という存在」から入る。殺処分・必要とされないこと。転換して夢之丞へ。</span>
+  </button>
+  <button class="tab" data-page="pageB">
+    <span class="tab-no">PATTERN B</span>
+    <span class="tab-name">夕日型</span>
+    <span class="tab-desc">夕日のベンチ。大西と老いた夢之丞。「15年も経ったな」。</span>
+  </button>
+</div>
+
+<!-- ════════════════ PATTERN A ════════════════ -->
+<div class="page active" id="pageA">
+
+  <div class="intro">
+    <div class="intro-tag">Pattern A ／ メモ原文</div>
+    <p><b>「野犬」という存在</b> → 汚い、能力がない、必要じゃない → 弱い存在 → 失禁・おねしょの映像 ／／ <b>「もう、いらないよ」「殺してしまえよ」「ゴミだ」</b>／犬の鳴き声／「ドリームボックス」／「無理だよ」→ 最後にここから救い出す映像 ／／ <b>そんな犬が「○○○○○頭、いました」</b> → 大西さんのセリフ「でも、私達は命をあきらめたくなかった。」 ／／ <b>転換。ゆめのすけの映像に切り替わる。</b></p>
+  </div>
+
+  <div class="phase"><div class="phase-txt">1 ― 「野犬」という存在</div><div class="phase-line"></div></div>
+
+  <!-- A1 -->
+  <div class="cut">
+    <div class="frame">
+      <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#13110d"/><rect x="30" y="48" width="100" height="34" rx="3" fill="#1c1813"/><ellipse cx="68" cy="68" rx="16" ry="11" fill="#0d0a07"/><circle cx="62" cy="60" r="7" fill="#0d0a07"/><text x="80" y="20" text-anchor="middle" font-family="monospace" font-size="6" fill="#6a5f4e">弱い存在 / 失禁・おねしょ</text></svg>
+    </div>
+    <div class="cut-body" style="display:contents"></div>
+    <div>
+      <div class="frame-no"><span>CUT A-1</span><span class="dur">―</span></div>
+      <div class="cut-shot">「野犬」という存在</div>
+      <div class="cut-vis">汚い、能力がない、必要じゃない。<em>弱い存在</em>。失禁をして、おねしょをしている映像。</div>
+      <div class="cut-memo">★ メモ原文「『野犬』という存在 → 汚い、能力がない、必要じゃない → 弱い存在 → 失禁をして、おねしょしている映像」</div>
+    </div>
+  </div>
+
+  <div class="phase"><div class="phase-txt">2 ― 言葉と、ドリームボックス</div><div class="phase-line"></div></div>
+
+  <!-- A2 -->
+  <div class="cut">
+    <div class="frame">
+      <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#0e0c09"/><text x="80" y="34" text-anchor="middle" font-family="serif" font-size="9" fill="#9a7a4a">「もう、いらないよ」</text><text x="80" y="50" text-anchor="middle" font-family="serif" font-size="9" fill="#c85a24">「殺してしまえよ」</text><text x="80" y="66" text-anchor="middle" font-family="serif" font-size="9" fill="#9a7a4a">「ゴミだ」</text></svg>
+    </div>
+    <div>
+      <div class="frame-no"><span>CUT A-2</span><span class="dur">―</span></div>
+      <div class="cut-shot">言葉 ／ 犬の鳴き声</div>
+      <div class="cut-vis">「もう、いらないよ」「殺してしまえよ」「ゴミだ」。犬の鳴き声。「ドリームボックス」。「無理だよ」。</div>
+      <div class="cut-audio">
+        <div class="cut-audio-label">声・音（メモ原文）</div>
+        <div class="q">「もう、いらないよ」<br>「殺してしまえよ」<br>「ゴミだ」</div>
+        <div class="who">犬の鳴き声／「ドリームボックス」／「無理だよ」</div>
+      </div>
+      <div class="cut-memo">★ メモ原文のまま</div>
+    </div>
+  </div>
+
+  <!-- A3 -->
+  <div class="cut">
+    <div class="frame">
+      <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#100d0a"/><rect x="50" y="30" width="60" height="44" rx="2" fill="#171410" stroke="#2a2218" stroke-width="0.5"/><ellipse cx="80" cy="55" rx="10" ry="13" fill="#0d0a07"/><circle cx="80" cy="46" r="6" fill="#0d0a07"/><text x="80" y="84" text-anchor="middle" font-family="monospace" font-size="5.5" fill="#6a5f4e">ここから救い出す映像</text></svg>
+    </div>
+    <div>
+      <div class="frame-no"><span>CUT A-3</span><span class="dur">―</span></div>
+      <div class="cut-shot">救い出す</div>
+      <div class="cut-vis">最後に、<em>ここから救い出す映像</em>。</div>
+      <div class="cut-memo">★ メモ原文「最後に、ここから救い出す映像」</div>
+    </div>
+  </div>
+
+  <div class="phase"><div class="phase-txt">3 ― そんな犬が、○○○○○頭</div><div class="phase-line"></div></div>
+
+  <!-- A4 -->
+  <div class="cut climax">
+    <div class="frame">
+      <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#100d0a"/><text x="80" y="40" text-anchor="middle" font-family="serif" font-size="16" font-weight="700" fill="#c85a24">○○○○○</text><text x="80" y="56" text-anchor="middle" font-family="serif" font-size="8" fill="#8a8070">頭、いました。</text></svg>
+    </div>
+    <div>
+      <div class="frame-no"><span>CUT A-4</span><span class="dur">―</span></div>
+      <div class="cut-shot">数字 ／ 大西さんのセリフ</div>
+      <div class="cut-vis">そんな犬が「<em>○○○○○頭、いました</em>」。</div>
+      <div class="cut-audio">
+        <div class="cut-audio-label">大西さんのセリフ（メモ原文）★</div>
+        <div class="q">「でも、私達は<br><em>命をあきらめたくなかった。</em>」</div>
+        <div class="who">大西代表（実際の声）</div>
+      </div>
+      <div class="cut-memo">★ メモ原文「そんな、犬が『○○○○○頭、いました』／大西さんのセリフ『でも、私達は命をあきらめたくなかった。』」　※数字は要確定</div>
+    </div>
+  </div>
+
+  <div class="phase"><div class="phase-txt">4 ― 転換 ／ ゆめのすけへ</div><div class="phase-line"></div></div>
+
+  <!-- A5 -->
+  <div class="cut climax">
+    <div class="frame">
+      <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#1a1610"/><rect x="0" y="60" width="160" height="30" fill="#241c12"/><ellipse cx="70" cy="62" rx="20" ry="8" fill="#0f0b07"/><circle cx="90" cy="56" r="7" fill="#0f0b07"/><text x="80" y="18" text-anchor="middle" font-family="monospace" font-size="5.5" fill="#9a7a4a">転換：ゆめのすけの映像へ</text></svg>
+    </div>
+    <div>
+      <div class="frame-no"><span>CUT A-5</span><span class="dur">―</span></div>
+      <div class="cut-shot">転換</div>
+      <div class="cut-vis"><em>ゆめのすけの映像に切り替わる。</em></div>
+      <div class="cut-memo">★ メモ原文「転換。ゆめのすけの映像に切り替わる。」</div>
+    </div>
+  </div>
+
+  <div class="phase"><div class="phase-txt">5 ― 夢之丞の軌跡 → 全国へ（成田の語りより）</div><div class="phase-line"></div></div>
+
+  <!-- A6 -->
+  <div class="cut">
+    <div class="frame">
+      <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#1a1610"/><rect x="0" y="60" width="160" height="30" fill="#241c12"/><ellipse cx="70" cy="62" rx="20" ry="8" fill="#0f0b07"/><circle cx="90" cy="56" r="7" fill="#0f0b07"/><path d="M70 30 L150 18" stroke="#7a4a2a" stroke-width="0.5" opacity="0.5"/><text x="80" y="16" text-anchor="middle" font-family="monospace" font-size="5.5" fill="#9a7a4a">家庭犬も無理 → 救助犬 → 世界</text></svg>
+    </div>
+    <div>
+      <div class="frame-no"><span>CUT A-6</span><span class="dur">―</span></div>
+      <div class="cut-shot">夢之丞の軌跡</div>
+      <div class="cut-vis">夢之丞は、家庭犬も無理と言われていたけれど、災害救助犬になって世界をわたり、彼が最初の犬となって殺処分機を広島愛護センターから無くならせて、殺処分数を0にした。</div>
+      <div class="cut-memo">※ 成田の語り原文より。文言はそのまま。</div>
+    </div>
+  </div>
+
+  <!-- A7 -->
+  <div class="cut climax">
+    <div class="frame">
+      <svg viewBox="0 0 160 90"><defs><linearGradient id="aSun" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#e8a85a"/><stop offset="100%" stop-color="#2a1d10"/></linearGradient></defs><rect width="160" height="90" fill="url(#aSun)"/><circle cx="115" cy="38" r="18" fill="#f5d28a" opacity="0.5"/><ellipse cx="70" cy="68" rx="14" ry="18" fill="#1a0f08"/><text x="80" y="84" text-anchor="middle" font-family="monospace" font-size="5" fill="#3a2a1a">夢之丞</text></svg>
+    </div>
+    <div>
+      <div class="frame-no"><span>CUT A-7</span><span class="dur">―</span></div>
+      <div class="cut-shot">着地</div>
+      <div class="cut-audio">
+        <div class="cut-audio-label">締め（成田の語り原文）</div>
+        <div class="q">だから、私たちは日本全国の殺処分を0にしたい。<br>夢を与えてくれて、ありがとう。夢之助。<br><em>あなたと一緒に、夢を見たい。</em></div>
+      </div>
+      <div class="cut-memo">※ 成田の語り原文のまま。</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════ PATTERN B ════════════════ -->
+<div class="page" id="pageB">
+
+  <div class="intro" style="border-left-color:var(--gold)">
+    <div class="intro-tag" style="color:var(--gold)">Pattern B ／ メモ原文</div>
+    <p>夕日に向かって歩く男と足を引き摺る１匹の犬のロングショット／すすきが揺れる、ピンク色のわた雲がゆたう／ベンチに腰をかけ男は犬に話しかける／<b>「15年も経ったな。どうだったお前の人生」</b>／犬のPOV：老いた犬の目では、男はボヤけていてはっきりとは見えない。輪郭だけが浮かぶ。／男のPOV：わからなさが残る真っ黒な目でこちらを覗く犬の表情／<b>「なあ夢之助、まさか殺しかけた⽝に助けられるとは思わなかったよ」</b></p>
+  </div>
+
+  <div class="phase"><div class="phase-txt">夕日のベンチ（メモ原文・確定稿）</div><div class="phase-line"></div></div>
+
+  <!-- B1 -->
+  <div class="cut climax">
+    <div class="frame">
+      <svg viewBox="0 0 160 90"><defs><linearGradient id="bSun1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3a2818"/><stop offset="55%" stop-color="#c87a3a"/><stop offset="100%" stop-color="#f0c478"/></linearGradient></defs><rect width="160" height="90" fill="url(#bSun1)"/><circle cx="125" cy="45" r="20" fill="#ffe9b8" opacity="0.45"/><ellipse cx="35" cy="66" rx="6" ry="13" fill="#1a0f08"/><ellipse cx="50" cy="73" rx="11" ry="5" fill="#1a0f08"/><text x="80" y="84" text-anchor="middle" font-family="monospace" font-size="5" fill="#3a2a1a">ロングショット・すすき・わた雲</text></svg>
+    </div>
+    <div>
+      <div class="frame-no"><span>CUT B-1</span><span class="dur">―</span></div>
+      <div class="cut-shot">ロングショット</div>
+      <div class="cut-vis">夕日に向かって歩く男と足を引き摺る１匹の犬のロングショット。すすきが揺れる、ピンク色のわた雲がゆたう。ベンチに腰をかけ、男は犬に話しかける。</div>
+      <div class="cut-audio">
+        <div class="cut-audio-label">セリフ（メモ原文）★</div>
+        <div class="q">「15年も経ったな。<br>どうだったお前の人生」</div>
+        <div class="who">男＝大西代表（実際の声）</div>
+      </div>
+      <div class="cut-memo">★ メモ原文のまま</div>
+    </div>
+  </div>
+
+  <!-- B2 -->
+  <div class="cut">
+    <div class="frame">
+      <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#2a1d12"/><circle cx="80" cy="45" r="30" fill="#0f0b07"/><circle cx="72" cy="42" r="3" fill="#1a1510"/><circle cx="88" cy="42" r="3" fill="#1a1510"/><ellipse cx="80" cy="40" rx="40" ry="30" fill="none" stroke="#3a2818" stroke-width="8" opacity="0.4"/><text x="80" y="82" text-anchor="middle" font-family="monospace" font-size="5" fill="#9a7a4a">犬POV ⇆ 男POV</text></svg>
+    </div>
+    <div>
+      <div class="frame-no"><span>CUT B-2</span><span class="dur">―</span></div>
+      <div class="cut-shot">POV（犬 ⇆ 男）</div>
+      <div class="cut-vis">犬のPOV：老いた犬の目では、男はボヤけていてはっきりとは見えない。輪郭だけが浮かぶ。<br>男のPOV：わからなさが残る真っ黒な目でこちらを覗く犬の表情。</div>
+      <div class="cut-audio">
+        <div class="cut-audio-label">セリフ（メモ原文）★</div>
+        <div class="q">「なあ夢之助、まさか<br><em>殺しかけた⽝に助けられる</em>とは<br>思わなかったよ」</div>
+        <div class="who">男＝大西代表（実際の声）</div>
+      </div>
+      <div class="cut-memo">★ メモ原文のまま</div>
+    </div>
+  </div>
+
+  <div class="phase"><div class="phase-txt">この先 ― 未定（要相談）</div><div class="phase-line"></div></div>
+
+  <!-- B3 placeholder -->
+  <div class="cut">
+    <div class="frame">
+      <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#13110d"/><text x="80" y="46" text-anchor="middle" font-family="monospace" font-size="7" fill="#5a5248">この先は未確定</text><text x="80" y="60" text-anchor="middle" font-family="monospace" font-size="5" fill="#3a352c">回想／構成は要相談</text></svg>
+    </div>
+    <div>
+      <div class="frame-no"><span>CUT B-3</span><span class="dur">―</span></div>
+      <div class="cut-shot">未定</div>
+      <div class="cut-vis">メモはここ（ベンチの導入）までが確定稿。この先の回想構造・ラストは、まだ言語化されていない。勝手に脚色せず、ここは空けておく。</div>
+      <div class="cut-memo">※ ここから先をどう展開するか、次に一緒に決める。</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="foot">
+  PEACE WINDS JAPAN ／ コンテンツチーム ― 夢之丞コンセプトムービー 絵コンテ 2案<br>
+  ※ 文言は成田のメモに準拠。★＝メモ原文のまま。構図スケッチは配置の目安（実写は小西遊馬）。<br>
+  ※ Pattern A の CUT A-6/A-7 は成田の語り原文、Pattern B の CUT B-3 以降は未確定。
+</div>
+
+</div>
+
+<script>
+document.querySelectorAll('.tab').forEach(function(tab){
+  tab.addEventListener('click', function(){
+    var target = tab.getAttribute('data-page');
+    document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+    document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
+    tab.classList.add('active');
+    document.getElementById(target).classList.add('active');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+});
+</script>
+</body>
+</html>
