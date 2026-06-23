@@ -8,19 +8,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 :root {
-  --bg: #0c0b09;
-  --bg2: #14110d;
-  --panel: #1a1610;
-  --edge: #2e2719;
-  --bone: #f2ebdc;
-  --ash: #cfc6b5;
-  --dim: #948a78;
-  --faint: #5f5749;
-  --amber: #e09a45;
-  --amber-bright: #f3ba6c;
-  --rust: #c85a24;
-  --gold: #e8c49d;
-  --teal: #6f9a8d;
+  --bg: #faf7f0;
+  --bg2: #f3ecdf;
+  --panel: #f6f0e6;
+  --edge: #e3dac9;
+  --edge-strong: #d2c6af;
+  --bone: #211c14;
+  --ash: #3a342a;
+  --dim: #6a6253;
+  --faint: #938a78;
+  --amber: #b06a1f;
+  --amber-bright: #a85d18;
+  --rust: #c0531f;
+  --gold: #9c7a3c;
+  --teal: #3c6a5d;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,23 +30,24 @@ body {
   background: var(--bg);
   color: var(--ash);
   font-family: 'Zen Kaku Gothic New', sans-serif;
-  font-size: 14px;
-  line-height: 1.8;
-  background-image: radial-gradient(ellipse at 50% 0%, rgba(224,154,69,.06), transparent 50%);
+  font-size: 15px;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  background-image: radial-gradient(ellipse at 50% 0%, rgba(176,106,31,.07), transparent 55%);
 }
 
 .wrap { max-width: 1080px; margin: 0 auto; padding: 0 2rem 7rem; }
 
-.head { padding: 4rem 0 2rem; border-bottom: 1px solid var(--edge); }
+.head { padding: 4rem 0 2rem; border-bottom: 2px solid var(--edge-strong); }
 .head-kicker { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--faint); margin-bottom: 1.5rem; }
 .head h1 { font-family: 'Shippori Mincho', serif; font-size: 40px; font-weight: 800; color: var(--bone); line-height: 1.25; margin-bottom: 1rem; }
 .head p { font-size: 14px; color: var(--dim); max-width: 720px; line-height: 1.9; }
 .head .note { font-size: 12.5px; color: var(--amber); margin-top: 1rem; font-family: 'JetBrains Mono', monospace; }
 
-.tabs { display: flex; gap: 0; margin: 2.5rem 0 0; border-bottom: 2px solid var(--edge); position: sticky; top: 0; background: var(--bg); z-index: 50; padding-top: 1rem; }
-.tab { flex: 1; padding: 1.25rem 1.5rem; cursor: pointer; border: none; background: transparent; color: var(--dim); font-family: inherit; text-align: left; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all .2s; }
-.tab:hover { color: var(--ash); }
-.tab.active { color: var(--bone); border-bottom-color: var(--amber); }
+.tabs { display: flex; gap: .5rem; margin: 2.5rem 0 0; border-bottom: 2px solid var(--edge-strong); position: sticky; top: 0; background: var(--bg); z-index: 50; padding-top: 1rem; }
+.tab { flex: 1; padding: 1.1rem 1.4rem; cursor: pointer; border: none; background: transparent; color: var(--dim); font-family: inherit; text-align: left; border-bottom: 3px solid transparent; margin-bottom: -2px; border-radius: 8px 8px 0 0; transition: all .2s; }
+.tab:hover { color: var(--ash); background: rgba(176,106,31,.05); }
+.tab.active { color: var(--bone); border-bottom-color: var(--amber); background: rgba(176,106,31,.07); }
 .tab .tab-no { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .2em; color: var(--amber); display: block; margin-bottom: .4rem; }
 .tab .tab-name { font-family: 'Shippori Mincho', serif; font-size: 22px; font-weight: 700; display: block; margin-bottom: .25rem; }
 .tab .tab-desc { font-size: 12px; color: var(--faint); line-height: 1.6; }
@@ -53,7 +55,7 @@ body {
 .page { display: none; }
 .page.active { display: block; }
 
-.intro { background: var(--panel); border: 1px solid var(--edge); border-left: 4px solid var(--amber); padding: 1.5rem 1.75rem; margin: 2.5rem 0; }
+.intro { background: var(--panel); border: 1px solid var(--edge); border-left: 4px solid var(--amber); border-radius: 6px; padding: 1.5rem 1.75rem; margin: 2.5rem 0; box-shadow: 0 1px 2px rgba(60,45,20,.04); }
 .intro-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--amber); margin-bottom: .75rem; }
 .intro p { font-size: 13px; color: var(--dim); line-height: 1.85; }
 .intro p b { color: var(--ash); }
@@ -62,9 +64,10 @@ body {
 .phase-line { flex: 1; height: 1px; background: var(--edge); }
 .phase-txt { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--amber); white-space: nowrap; }
 
-.cut { display: grid; grid-template-columns: 200px 1fr; gap: 1.75rem; padding: 1.5rem 0; border-bottom: 1px solid var(--edge); }
+.cut { display: grid; grid-template-columns: 210px 1fr; gap: 1.75rem; padding: 1.6rem; margin: 0 -0.5rem; border-bottom: 1px solid var(--edge); border-radius: 8px; }
+.cut:hover { background: rgba(176,106,31,.025); }
 .cut:last-child { border-bottom: none; }
-.frame { width: 100%; aspect-ratio: 16/9; background: #000; border: 1px solid var(--edge); border-radius: 3px; overflow: hidden; }
+.frame { width: 100%; aspect-ratio: 16/9; background: #000; border: 1px solid var(--edge-strong); border-radius: 4px; overflow: hidden; box-shadow: 0 2px 8px rgba(40,30,15,.12); }
 .frame svg { width: 100%; height: 100%; display: block; }
 .frame-no { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--amber); margin-top: .6rem; display: flex; justify-content: space-between; letter-spacing: .05em; }
 .frame-no .dur { color: var(--faint); }
@@ -73,7 +76,7 @@ body {
 .cut-vis { font-size: 14.5px; color: var(--ash); line-height: 1.95; margin-bottom: 1rem; }
 .cut-vis em { font-style: normal; color: var(--amber-bright); font-weight: 600; }
 
-.cut-audio { background: var(--bg2); border-left: 2px solid var(--amber); padding: .85rem 1.1rem; margin-bottom: .75rem; }
+.cut-audio { background: var(--bg2); border: 1px solid var(--edge); border-left: 3px solid var(--amber); border-radius: 4px; padding: .85rem 1.1rem; margin-bottom: .75rem; }
 .cut-audio-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: var(--amber); margin-bottom: .4rem; }
 .cut-audio .q { font-family: 'Shippori Mincho', serif; font-size: 16px; line-height: 1.9; color: var(--bone); font-weight: 500; }
 .cut-audio .q em { font-style: normal; color: var(--amber-bright); font-weight: 700; }
@@ -83,7 +86,7 @@ body {
 
 .cut.climax .frame { border-color: var(--amber); }
 
-.foot { margin-top: 3rem; padding-top: 1.5rem; border-top: 2px solid var(--edge); font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--faint); line-height: 1.9; }
+.foot { margin-top: 3rem; padding-top: 1.5rem; border-top: 2px solid var(--edge-strong); font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--faint); line-height: 1.9; }
 
 @media (max-width: 760px) {
   .cut { grid-template-columns: 1fr; gap: 1rem; }
