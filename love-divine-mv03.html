@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LOVE DIVINE MV03 制作資料 ｜ 我爱你 (Wo Ai Ni)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#141019; --bg2:#1C1526; --bg3:#251C33;
+    --ink:#EFE9F2; --muted:#A99FB5; --dim:#7C7288;
+    --line:rgba(255,255,255,.10); --line2:rgba(255,255,255,.16);
+    --magenta:#EC489B; --violet:#9268F0; --amber:#F4B740; --brick:#E0674A; --mint:#54D6C0;
+    --disp:"Archivo","Noto Sans JP",system-ui,sans-serif;
+    --body:"Noto Sans JP",system-ui,sans-serif;
+    --mono:"Space Mono","SFMono-Regular",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{
+    background:var(--bg); color:var(--ink); font-family:var(--body);
+    font-size:15px; line-height:1.72; letter-spacing:.01em;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px; margin:0 auto; padding:0 22px}
+  a{color:var(--magenta); text-decoration:none; border-bottom:1px solid rgba(236,72,155,.35)}
+  a:hover{border-bottom-color:var(--magenta)}
+  .mono{font-family:var(--mono); letter-spacing:.02em}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative; overflow:hidden; border-bottom:1px solid var(--line)}
+  .hero-bg{position:absolute; inset:0; z-index:0;
+    background:
+      radial-gradient(120% 80% at 18% -10%, rgba(146,104,240,.42), transparent 55%),
+      radial-gradient(90% 70% at 92% 0%, rgba(236,72,155,.40), transparent 55%),
+      radial-gradient(80% 90% at 60% 120%, rgba(244,183,64,.14), transparent 60%);
+  }
+  .hero-bg::after{content:""; position:absolute; inset:0; opacity:.5;
+    background-image:radial-gradient(rgba(255,255,255,.14) 1px, transparent 1.4px);
+    background-size:20px 20px; mask-image:radial-gradient(120% 90% at 70% 0%, #000, transparent 70%);}
+  .hero-inner{position:relative; z-index:1; padding:64px 0 52px}
+  .eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:.28em; text-transform:uppercase;
+    color:var(--ink); opacity:.85}
+  .eyebrow b{color:var(--magenta); font-weight:700}
+  h1{font-family:var(--disp); font-weight:900; line-height:.98; margin:14px 0 6px;
+    font-size:clamp(52px,11vw,104px); letter-spacing:-.01em;
+    text-shadow:0 2px 40px rgba(236,72,155,.25)}
+  .romaji{font-family:var(--disp); font-weight:700; font-size:clamp(15px,3.4vw,22px);
+    letter-spacing:.34em; text-transform:uppercase; color:var(--amber)}
+  .lede{margin-top:18px; max-width:40ch; color:var(--ink); font-weight:500; font-size:16px}
+  .hero-meta{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px}
+  .chip{font-family:var(--mono); font-size:12px; letter-spacing:.04em; color:var(--ink);
+    border:1px solid var(--line2); border-radius:100px; padding:6px 13px; background:rgba(255,255,255,.03)}
+  .chip b{color:var(--magenta)}
+
+  /* ---------- SECTION ---------- */
+  section{padding:52px 0; border-bottom:1px solid var(--line)}
+  .sec-head{display:flex; align-items:baseline; gap:16px; margin-bottom:26px}
+  .sec-idx{font-family:var(--mono); font-size:13px; color:var(--magenta); font-weight:700;
+    border:1px solid rgba(236,72,155,.45); border-radius:6px; padding:3px 9px; flex:none}
+  .sec-head h2{font-family:var(--disp); font-weight:900; font-size:clamp(23px,4.4vw,32px);
+    letter-spacing:.01em; line-height:1.1}
+  .sec-head .en{display:block; font-family:var(--mono); font-size:11px; letter-spacing:.24em;
+    text-transform:uppercase; color:var(--dim); font-weight:400; margin-top:3px}
+
+  /* ---------- concept ---------- */
+  .thesis{font-size:clamp(18px,2.6vw,22px); line-height:1.62; font-weight:500; max-width:34ch;
+    border-left:3px solid var(--amber); padding-left:18px; margin-bottom:30px}
+  .thesis .hl{color:var(--amber)}
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  .mood{background:var(--bg2); border:1px solid var(--line); border-radius:14px; padding:20px}
+  .mood h4{font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    margin-bottom:10px; display:flex; align-items:center; gap:9px}
+  .dot{width:9px; height:9px; border-radius:50%}
+  .mood.studio h4 .dot{background:var(--brick)} .mood.live h4 .dot{background:var(--magenta)}
+  .mood p{color:var(--muted); font-size:14px}
+
+  /* ---------- schedule ---------- */
+  .day{background:var(--bg2); border:1px solid var(--line); border-radius:16px; overflow:hidden; margin-bottom:18px}
+  .day-top{display:flex; flex-wrap:wrap; align-items:center; gap:12px 16px; padding:18px 22px;
+    border-bottom:1px solid var(--line); background:linear-gradient(90deg, rgba(146,104,240,.10), transparent)}
+  .day.d2 .day-top{background:linear-gradient(90deg, rgba(236,72,155,.12), transparent)}
+  .day-tag{font-family:var(--mono); font-size:11px; letter-spacing:.14em; padding:4px 9px; border-radius:6px;
+    text-transform:uppercase; font-weight:700}
+  .day.d1 .day-tag{color:#151019; background:var(--violet)}
+  .day.d2 .day-tag{color:#151019; background:var(--magenta)}
+  .day-date{font-family:var(--disp); font-weight:900; font-size:22px; letter-spacing:.01em}
+  .day-date small{font-family:var(--body); font-weight:500; font-size:13px; color:var(--muted); margin-left:8px; letter-spacing:0}
+  .day-where{margin-left:auto; font-size:13px; color:var(--muted); text-align:right}
+  .day-where b{color:var(--ink); font-weight:700}
+  .crew{display:flex; flex-wrap:wrap; gap:8px; padding:14px 22px 4px}
+  .crew .lbl{font-family:var(--mono); font-size:11px; letter-spacing:.12em; color:var(--dim); align-self:center; text-transform:uppercase}
+  .role{font-size:12.5px; border:1px solid var(--line2); border-radius:100px; padding:4px 11px; color:var(--ink)}
+  .role b{color:var(--amber)}
+  table.sched{width:100%; border-collapse:collapse; margin:8px 0 4px}
+  table.sched td{padding:9px 22px; border-top:1px solid var(--line); vertical-align:top; font-size:14px}
+  table.sched tr td:first-child{white-space:nowrap; width:96px; font-family:var(--mono); font-size:13px; color:var(--amber); font-weight:700}
+  table.sched tr:first-child td{border-top:none}
+  .badge{display:inline-block; font-family:var(--mono); font-size:10px; letter-spacing:.08em; padding:1px 7px;
+    border-radius:5px; vertical-align:middle; margin-left:7px; text-transform:uppercase; font-weight:700}
+  .b-check{color:var(--amber); border:1px solid rgba(244,183,64,.5)}
+  .b-plan{color:var(--mint); border:1px solid rgba(84,214,192,.4)}
+
+  /* ---------- venues ---------- */
+  .venue{background:var(--bg2); border:1px solid var(--line); border-radius:16px; padding:22px; margin-bottom:16px}
+  .venue-h{display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 14px; margin-bottom:6px}
+  .venue-h h3{font-family:var(--disp); font-weight:900; font-size:21px; letter-spacing:.01em}
+  .venue-h .kind{font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--violet)}
+  .venue.live .venue-h .kind{color:var(--magenta)}
+  .venue-sub{font-size:13px; color:var(--muted); margin-bottom:16px}
+  .facts{display:grid; grid-template-columns:auto 1fr; gap:7px 16px; font-size:13.5px; margin-bottom:14px}
+  .facts dt{font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--dim); padding-top:2px}
+  .facts dd{color:var(--ink)}
+  .tags{display:flex; flex-wrap:wrap; gap:6px; margin:4px 0 14px}
+  .tag{font-size:11.5px; color:var(--muted); background:var(--bg3); border:1px solid var(--line); border-radius:6px; padding:3px 9px}
+  .venue-note{font-size:12.5px; color:var(--muted); border-top:1px dashed var(--line2); padding-top:12px}
+  .venue-note b{color:var(--amber); font-weight:700}
+  .maplink{font-family:var(--mono); font-size:12px}
+
+  /* ---------- plan / gear ---------- */
+  .card{background:var(--bg2); border:1px solid var(--line); border-radius:14px; padding:20px; margin-bottom:14px}
+  .card h4{font-size:15px; margin-bottom:10px; display:flex; align-items:center; gap:9px}
+  .card h4 .num{font-family:var(--mono); font-size:12px; color:var(--magenta); font-weight:700}
+  .card ul{list-style:none}
+  .card li{position:relative; padding-left:18px; margin:6px 0; font-size:14px; color:var(--muted)}
+  .card li::before{content:"▸"; position:absolute; left:0; color:var(--violet)}
+  .card li b{color:var(--ink); font-weight:700}
+
+  .spec{display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--line); border-radius:12px; overflow:hidden}
+  .spec div{padding:12px 16px; border-top:1px solid var(--line); border-right:1px solid var(--line)}
+  .spec div:nth-child(-n+2){border-top:none}
+  .spec div:nth-child(2n){border-right:none}
+  .spec .k{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--dim); display:block; margin-bottom:3px}
+  .spec .v{font-size:14px; color:var(--ink); font-weight:500}
+  .spec .v b{color:var(--amber)}
+
+  /* ---------- production timeline ---------- */
+  .tl{position:relative; margin-left:6px; padding-left:26px}
+  .tl::before{content:""; position:absolute; left:5px; top:6px; bottom:6px; width:2px;
+    background:linear-gradient(var(--violet), var(--magenta), var(--amber))}
+  .tl-item{position:relative; padding:0 0 18px}
+  .tl-item::before{content:""; position:absolute; left:-25px; top:5px; width:11px; height:11px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--magenta)}
+  .tl-item.done::before{background:var(--magenta)}
+  .tl-when{font-family:var(--mono); font-size:12px; color:var(--amber); font-weight:700; letter-spacing:.02em}
+  .tl-what{font-size:14.5px; margin-top:1px}
+  .tl-what small{color:var(--muted); font-size:12.5px}
+
+  .legend{display:flex; flex-wrap:wrap; gap:16px; margin-top:22px; font-size:12px; color:var(--muted)}
+  .legend span{display:flex; align-items:center; gap:7px}
+
+  footer{padding:34px 0 60px}
+  .foot-grid{display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; align-items:flex-end}
+  .foot-grid .brand{font-family:var(--disp); font-weight:900; font-size:18px; letter-spacing:.02em}
+  .foot-grid .meta{font-family:var(--mono); font-size:11.5px; color:var(--dim); line-height:1.8; text-align:right}
+
+  @media (max-width:640px){
+    .two,.spec{grid-template-columns:1fr}
+    .day-where{margin-left:0; text-align:left; width:100%}
+    table.sched td{padding-left:18px; padding-right:18px}
+    .facts{grid-template-columns:1fr}
+    .facts dt{padding-top:8px}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{opacity:0; transform:translateY(14px); animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+    @keyframes rise{to{opacity:1; transform:none}}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-inner reveal">
+    <div class="eyebrow">LOVE DIVINE ／ <b>MUSIC VIDEO No.03</b></div>
+    <h1>我爱你</h1>
+    <div class="romaji">Wo Ai Ni</div>
+    <p class="lede">90年代ニュージャックスイングの世界観で撮る、ダンスパーティーMV。撮影の香盤・会場・構成・機材を1枚にまとめた制作資料です。</p>
+    <div class="hero-meta">
+      <span class="chip"><b>2</b>&nbsp;DAYS 撮影</span>
+      <span class="chip mono">7.30&nbsp;THU&nbsp;スタジオ</span>
+      <span class="chip mono">7.31&nbsp;FRI&nbsp;ライブ</span>
+      <span class="chip mono">名古屋 / NAGOYA</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- 01 CONCEPT -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-idx">01</span>
+      <div><h2>コンセプト & イメージ<span class="en">Concept / Mood</span></h2></div>
+    </div>
+    <p class="thesis">いい歳をした大人が、ちょっと<span class="hl">若かりし頃を思い出してはじけている</span>——作り込みすぎない、その自然な熱量を撮る。</p>
+    <p style="max-width:56ch; color:var(--muted); margin-bottom:26px; font-size:14.5px">
+      デモは90年代ニュージャックスイング。映像はダンスパーティーのイメージで、振り付けをきっちり合わせるより、自由に踊る瞬間を断片的につないでいく。温かみのある色味と、クラブの光（ミラーボール／カラーライト）を活かす。
+    </p>
+    <div class="two">
+      <div class="mood studio">
+        <h4><span class="dot"></span>STUDIO ／ 7.30</h4>
+        <p>メンバーのダンス練習を、そのまま切り取る。スチールも少し。赤レンガ＋LEDの背景と鏡を活かした、練習の素の空気感。</p>
+      </div>
+      <div class="mood live">
+        <h4><span class="dot"></span>LIVE ／ 7.31</h4>
+        <p>ミニライブの「歌っている様子」を軸に、フロアで自由に踊る客席を断片的に。2階バルコニーからの引きで会場の熱を一枚に。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 SCHEDULE -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-idx">02</span>
+      <div><h2>撮影スケジュール<span class="en">Shooting Schedule</span></h2></div>
+    </div>
+
+    <div class="day d1">
+      <div class="day-top">
+        <span class="day-tag">Day 1 ／ Studio</span>
+        <span class="day-date">7.30<small>（木）13:00–17:00</small></span>
+        <span class="day-where"><b>DANCE SPACE 007</b><br>名古屋・伏見</span>
+      </div>
+      <div class="crew">
+        <span class="lbl">Crew</span>
+        <span class="role">成田淳&nbsp;<b>Dir / Cam</b></span>
+        <span class="role">小池&nbsp;<b>Cam</b></span>
+        <span class="role">2名体制</span>
+      </div>
+      <table class="sched">
+        <tr><td>12:45</td><td>集合・搬入（機材／照明）</td></tr>
+        <tr><td>13:00</td><td>セッティング・ライティング（NANLITE＋背景LED）／カメラテスト</td></tr>
+        <tr><td>13:30</td><td>ダンス練習撮影 — メンバーの練習をそのまま、自然な様子を回す</td></tr>
+        <tr><td>15:00</td><td>スチール撮影 — ポートレート／グループ（鏡・レンガ背景）</td></tr>
+        <tr><td>16:00</td><td>インサート撮り — 表情・手元・小物・アンビエンス</td></tr>
+        <tr><td>16:45</td><td>撤収・原状回復</td></tr>
+        <tr><td>17:00</td><td>終了</td></tr>
+      </table>
+    </div>
+
+    <div class="day d2">
+      <div class="day-top">
+        <span class="day-tag">Day 2 ／ Live</span>
+        <span class="day-date">7.31<small>（金）時間 <span class="badge b-check">要確認</span></small></span>
+        <span class="day-where"><b>Club (O) Utopos</b><br>名古屋・新栄</span>
+      </div>
+      <div class="crew">
+        <span class="lbl">Crew</span>
+        <span class="role">成田淳&nbsp;<b>Cam A ／ フロア・寄り</b></span>
+        <span class="role">カメラマン1名&nbsp;<b>Cam B ／ 2F・引き</b></span>
+        <span class="role">2カメ体制</span>
+      </div>
+      <table class="sched">
+        <tr><td>開場前</td><td>入り・機材セッティング（2カメ位置決め：2Fバルコニー／フロア）<span class="badge b-plan">案</span></td></tr>
+        <tr><td>ー</td><td>リハ／サウンドチェック撮影（可能なら押さえる）</td></tr>
+        <tr><td>本番</td><td>ミニライブ — 歌唱を正面・寄りでしっかり撮る（Cam A）</td></tr>
+        <tr><td>本番</td><td>フロア — 自由に踊る様子を断片的に、ハンドヘルドで機動的に</td></tr>
+        <tr><td>本番</td><td>2Fバルコニー — ステージ全景／客席の熱の引き画（Cam B）</td></tr>
+        <tr><td>転換</td><td>客席・アンビエンス・小ネタの拾い撮り</td></tr>
+        <tr><td>終演後</td><td>撤収</td></tr>
+      </table>
+    </div>
+    <p style="font-size:12.5px; color:var(--dim); margin-top:6px">※ ライブの開場・本番時間は峰親さん／会場に要確認。上記は現時点の想定です。</p>
+  </section>
+
+  <!-- 03 VENUES -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-idx">03</span>
+      <div><h2>会場情報<span class="en">Venues</span></h2></div>
+    </div>
+
+    <div class="venue studio">
+      <div class="venue-h"><h3>DANCE SPACE 007</h3><span class="kind">Day 1 ／ Studio</span></div>
+      <p class="venue-sub">赤レンガ＋カラフルLEDのダンススタジオ。90sの温かい世界観と相性◎。</p>
+      <dl class="facts">
+        <dt>住所</dt><dd>愛知県名古屋市中区栄2-2-14 サンフタミ栄3F</dd>
+        <dt>アクセス</dt><dd>地下鉄東山線 伏見駅 徒歩3分／丸の内駅 徒歩5分／栄駅 徒歩6分</dd>
+        <dt>広さ・定員</dt><dd>55㎡（約17坪）・1〜15名（大きく動くダンスは8名程度が目安）</dd>
+        <dt>料金</dt><dd>1時間 ¥2,090〜（通常¥2,750）・最低2時間〜・直前割/早割10%</dd>
+        <dt>道案内</dt><dd>伏見駅4番出口を直進 → 焼肉ライクのビルを通り越し2本目の交差点を右折 → 鳥貴族が入った小さめビルの3F</dd>
+      </dl>
+      <div class="tags">
+        <span class="tag">赤レンガ壁</span><span class="tag">LED（色変更可）</span><span class="tag">前面鏡</span>
+        <span class="tag">防音</span><span class="tag">土足禁止</span><span class="tag">飲食持込可</span>
+        <span class="tag">商用利用可</span><span class="tag">インボイス対応</span>
+      </div>
+      <p class="venue-note"><b>注意</b>　裸足だと床が滑りやすい／見学不可。&nbsp;&nbsp;予約・詳細：<a href="https://www.instabase.jp/space/9755015913" class="maplink">instabase ↗</a>&nbsp;・&nbsp;<a href="https://maps.google.com/maps?q=35.1677259,136.8996112" class="maplink">Map ↗</a></p>
+    </div>
+
+    <div class="venue live">
+      <div class="venue-h"><h3>club (O) Utopos</h3><span class="kind">Day 2 ／ Live</span></div>
+      <p class="venue-sub">2026年4月オープンの新栄のクラブ／ライブハウス。ウートポス＝“どこにもない場所”。</p>
+      <dl class="facts">
+        <dt>住所</dt><dd>〒460-0007 愛知県名古屋市中区新栄2-47-50</dd>
+        <dt>アクセス</dt><dd>地下鉄 新栄町駅／栄駅圏（新栄エリア）</dd>
+        <dt>構造</dt><dd>2階建て — 1Fステージ正面のメインフロア＋2Fバルコニー（上からステージ全体を見下ろせる）</dd>
+        <dt>音響</dt><dd>ADAMSON サウンドシステム（S7Pを2Fに天吊り）</dd>
+        <dt>撮影メリット</dt><dd>2Fバルコニーから引き画（ステージ全景）、1Fフロアで寄り。ミラーボール／カラー照明で90sクラブの空気が出しやすい</dd>
+      </dl>
+      <p class="venue-note"><b>ポイント</b>　バルコニーの高さを活かした2カメ構成が効く（アップいただいたStory写真の画角がまさにそれ）。&nbsp;&nbsp;公式：<a href="https://club-outopos.jp" class="maplink">club-outopos.jp ↗</a>&nbsp;・&nbsp;<a href="https://maps.google.com/maps?q=愛知県名古屋市中区新栄2-47-50" class="maplink">Map ↗</a></p>
+    </div>
+  </section>
+
+  <!-- 04 PLAN -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-idx">04</span>
+      <div><h2>撮影プラン / 構成<span class="en">Shooting Plan</span></h2></div>
+    </div>
+
+    <div class="card">
+      <h4><span class="num">S</span>スタジオ（7/30）</h4>
+      <ul>
+        <li><b>ダンス練習をドキュメント。</b>振り付けを作り込むより、練習の素の動き・掛け合いをそのまま断片で。</li>
+        <li><b>背景を主役に。</b>赤レンガ＋LED（色替え）＋前面鏡で奥行きと反射を作る。鏡越しアングルも1枚。</li>
+        <li><b>スチールを挟む。</b>ポートレート／グループを数カット。サムネ・宣材にも転用。</li>
+        <li><b>照明</b>は NANLITE を2700K寄りにして90sの温かいトーン。リフレクター／ソフトで肌を柔らかく。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h4><span class="num">L</span>ライブ（7/31）— 2カメ</h4>
+      <ul>
+        <li><b>Cam A（成田・フロア）</b>：ハンドヘルドで機動的に。歌唱の寄り＋踊る客席の断片。</li>
+        <li><b>Cam B（カメラマン・2F）</b>：バルコニーからステージ全景と会場の熱を引きで固定〜微パン。</li>
+        <li><b>歌っている様子</b>を軸に、自由に踊るカットを groove に乗せて細かくつなぐ前提で素材を集める。</li>
+        <li>ミラーボール・カラー照明・アンビエンスを積極的に拾い、クラブの質感を素材化。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h4><span class="num">E</span>編集の方向</h4>
+      <ul>
+        <li>ニュージャックスイングのハネたビートに合わせ、<b>断片カットのモンタージュ</b>で疾走感を出す。</li>
+        <li>スタジオ（練習）× ライブ（本番）を交互に見せ、“素 → はじける”の流れを作る。</li>
+        <li>色は温かい90sトーン。必要ならライトリーク／グレインで質感を足す。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 05 GEAR -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-idx">05</span>
+      <div><h2>照明・機材<span class="en">Lighting / Gear</span></h2></div>
+    </div>
+
+    <div class="card">
+      <h4 style="margin-bottom:14px">NANLITE FS-300B <span style="font-family:var(--mono);font-size:11px;color:var(--dim);font-weight:400;letter-spacing:.06em">持込予定（成田）</span></h4>
+      <div class="spec">
+        <div><span class="k">出力</span><span class="v"><b>350W</b> バイカラー LEDモノライト</span></div>
+        <div><span class="k">色温度</span><span class="v">2700–6500K（無段階）</span></div>
+        <div><span class="k">演色性</span><span class="v"><b>CRI 96 / TLCI 97</b></span></div>
+        <div><span class="k">最大照度</span><span class="v">38,720 lux @1m（リフレクター時）</span></div>
+        <div><span class="k">配光</span><span class="v">120°（開放）／55°（リフレクター）</span></div>
+        <div><span class="k">マウント</span><span class="v">Bowens-S（アンブレラホルダー内蔵）</span></div>
+        <div><span class="k">制御</span><span class="v">本体／Bluetooth（NANLINK）／2.4G</span></div>
+        <div><span class="k">内蔵FX</span><span class="v">12種（フラッシュ／パルス／パパラッチ 他）</span></div>
+      </div>
+      <ul style="margin-top:14px">
+        <li><b>スタジオ</b>：2700K寄りで温かいトーン。レンガ＋LED背景と好相性。</li>
+        <li><b>クラブ演出</b>：内蔵FX（フラッシュ／パルス／パパラッチ）でパーティー感を足せる。</li>
+        <li><b>注意</b>：ファンOFFで最大出力が25%に低下。歌唱録りなど音が気になる場面はファン音とのバランスに注意。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h4><span class="num">＋</span>その他の想定</h4>
+      <ul>
+        <li>ライブは<b>2カメ</b>（成田＋カメラマン1名）。スタジオは成田＋小池の<b>2名</b>。</li>
+        <li>スチール用の準備（スタジオ）。予備バッテリー／メディア／三脚・ジンバル等は各自。</li>
+        <li>会場の既存照明（ミラーボール・カラーライト）を積極活用し、持込ライトは補助・演出で。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 06 PRODUCTION SCHEDULE -->
+  <section style="border-bottom:none">
+    <div class="sec-head">
+      <span class="sec-idx">06</span>
+      <div><h2>制作スケジュール<span class="en">Production Timeline</span></h2></div>
+    </div>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-when">〜 7/28</div>
+        <div class="tl-what">事前準備 — 香盤・段取り確定、会場予約確定（スタジオ／ライブ枠）、デモ音源・曲尺の共有 <span class="badge b-check">要確認</span></div>
+      </div>
+      <div class="tl-item done">
+        <div class="tl-when">7/30（木）</div>
+        <div class="tl-what">スタジオ撮影 <small>／ DANCE SPACE 007・13:00–17:00</small></div>
+      </div>
+      <div class="tl-item done">
+        <div class="tl-when">7/31（金）</div>
+        <div class="tl-what">ライブ撮影 <small>／ club (O) Utopos</small></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">8月 上旬</div>
+        <div class="tl-what">素材整理・セレクト <small>／ 2日分のデータ確認・ベストテイク抽出</small></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">8月 中旬</div>
+        <div class="tl-what">初稿編集 <small>／ 構成・カット編集・カラー・音調整</small></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">8月 下旬</div>
+        <div class="tl-what">修正 <small>／ 本編納品後2回まで無償</small></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">8月末〜9月上旬</div>
+        <div class="tl-what">本編納品 <span class="badge b-plan">目安</span></div>
+      </div>
+    </div>
+    <div class="legend">
+      <span><span class="badge b-check">要確認</span>先方・会場と確定が必要</span>
+      <span><span class="badge b-plan">案 / 目安</span>現時点の想定・要相談</span>
+    </div>
+    <p style="font-size:12.5px; color:var(--dim); margin-top:14px">※ 制作スケジュールは目安です。正式な納品希望日があれば、それに合わせて調整します。</p>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <div class="foot-grid">
+    <div>
+      <div class="brand">LOVE DIVINE ／ MV03</div>
+      <div style="font-size:12.5px;color:var(--muted);margin-top:4px">新曲「我爱你（Wo Ai Ni）」ミュージックビデオ 制作資料</div>
+    </div>
+    <div class="meta">
+      Prepared by 成田 淳 ／ WAVE CREATIVE<br>
+      Nagoya ・ New Jack Swing MV<br>
+      Rev. 2026.06.30
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
