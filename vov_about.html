@@ -88,7 +88,9 @@ h2 em{font-style:italic;color:var(--burg)}
 .leader-ph{
   aspect-ratio:4/3;
   display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
 }
+.leader-ph img{width:100%;height:100%;object-fit:cover}
 .leader:nth-child(1) .leader-ph{background:linear-gradient(150deg,#C8B49C,#A88C70)}
 .leader:nth-child(2) .leader-ph{background:linear-gradient(150deg,#BCA688,#9C8064)}
 .ph-lbl{font-size:10px;letter-spacing:.24em;color:rgba(28,20,16,.35);font-weight:700;text-transform:uppercase}
@@ -297,7 +299,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <h2>指導者<em>紹介</em></h2>
     <div class="leaders-g">
       <div class="leader">
-        <div class="leader-ph"><span class="ph-lbl">Portrait Photo</span></div>
+        <div class="leader-ph"><img src="vov_assets/leader-founder.jpg" alt="ラニー・ラッカー" style="object-position:center 20%"></div>
         <div class="leader-body">
           <p class="leader-role">Founder</p>
           <h3 class="leader-name">ラニー・ラッカー</h3>
@@ -305,7 +307,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         </div>
       </div>
       <div class="leader">
-        <div class="leader-ph"><span class="ph-lbl">Portrait Photo</span></div>
+        <div class="leader-ph"><img src="vov_assets/leader-director.jpg" alt="兼松弘子" style="object-position:35% center"></div>
         <div class="leader-body">
           <p class="leader-role">Director</p>
           <h3 class="leader-name">兼松 弘子</h3>

@@ -110,6 +110,7 @@ h1 em{font-style:italic;color:var(--burg)}
   display:flex;align-items:center;justify-content:center;
 }
 .ph-lbl{font-size:10px;letter-spacing:.24em;color:rgba(28,20,16,.35);font-weight:700;text-transform:uppercase}
+.hr-photo-main img,.hr-photo-sub img{width:100%;height:100%;object-fit:cover}
 .hr-gold-frame{position:absolute;top:6%;left:6%;width:56%;aspect-ratio:3/4;border:2px solid var(--gold);pointer-events:none}
 .hr-badge{
   position:absolute;top:12%;right:8%;
@@ -163,7 +164,9 @@ h2 em{font-style:italic;color:var(--burg)}
   aspect-ratio:4/5;background:linear-gradient(150deg,#D2C0A8,#B49C80);
   display:flex;align-items:center;justify-content:center;
   box-shadow:0 18px 56px rgba(28,20,16,.14);
+  overflow:hidden;
 }
+.ai-main img{width:100%;height:100%;object-fit:cover}
 .ai-frame{position:absolute;top:-14px;left:-14px;width:calc(100% - 28px);height:calc(100% - 28px);border:2px solid var(--gold);pointer-events:none;z-index:1}
 .ai-badge{
   position:absolute;bottom:-18px;right:-18px;
@@ -248,6 +251,7 @@ h2 em{font-style:italic;color:var(--burg)}
 .gc:first-child{grid-row:1/3}
 .gc-in{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;transition:transform .5s ease}
 .gc:hover .gc-in{transform:scale(1.05)}
+.gc-in img{width:100%;height:100%;object-fit:cover;display:block}
 .gc:nth-child(1) .gc-in{background:linear-gradient(150deg,#C8B098,#A88C70)}
 .gc:nth-child(2) .gc-in{background:linear-gradient(150deg,#BCA890,#9C8468)}
 .gc:nth-child(3) .gc-in{background:linear-gradient(150deg,#C4AC94,#A48868)}
@@ -487,8 +491,8 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
   </div>
   <div class="hero-r">
     <div class="hr-gold-frame"></div>
-    <div class="hr-photo-main"><span class="ph-lbl">Concert Photo</span></div>
-    <div class="hr-photo-sub"><span class="ph-lbl">Rehearsal</span></div>
+    <div class="hr-photo-main"><img src="vov_assets/top-hero-main.jpg" alt="コンサートでのVOV"></div>
+    <div class="hr-photo-sub"><img src="vov_assets/top-hero-sub.jpg" alt="リハーサル風景"></div>
     <div class="hr-badge">
       <span class="hr-badge-n">Since<br>1999</span>
       <span class="hr-badge-t">Gospel Choir</span>
@@ -512,7 +516,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <div class="about-g rv">
       <div class="ai-block">
         <div class="ai-frame"></div>
-        <div class="ai-main"><span class="ph-lbl">Photo Coming Soon</span></div>
+        <div class="ai-main"><img src="vov_assets/top-about.jpg" alt="VOVのメンバー"></div>
         <div class="ai-badge">
           <span class="ai-badge-n">Since<br>1999</span>
           <span class="ai-badge-t">Nagoya</span>
@@ -626,11 +630,11 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       <a href="vov_gallery.html" class="btn-line">すべて見る →</a>
     </div>
     <div class="gal-grid rv">
-      <div class="gc"><div class="gc-in"><span class="ph-lbl">Concert</span></div><div class="gc-ov"><span class="gc-ov-t">クリスマスコンサート</span></div></div>
-      <div class="gc"><div class="gc-in"><span class="ph-lbl">Rehearsal</span></div><div class="gc-ov"><span class="gc-ov-t">木曜リハーサル</span></div></div>
-      <div class="gc"><div class="gc-in"><span class="ph-lbl">Event</span></div><div class="gc-ov"><span class="gc-ov-t">ゴスペルフェス</span></div></div>
-      <div class="gc"><div class="gc-in"><span class="ph-lbl">Workshop</span></div><div class="gc-ov"><span class="gc-ov-t">ワークショップ</span></div></div>
-      <div class="gc"><div class="gc-in"><span class="ph-lbl">Members</span></div><div class="gc-ov"><span class="gc-ov-t">メンバー集合</span></div></div>
+      <div class="gc"><div class="gc-in"><img src="vov_assets/top-gallery-concert.jpg" alt="コンサートの様子"></div><div class="gc-ov"><span class="gc-ov-t">コンサートの様子</span></div></div>
+      <div class="gc"><div class="gc-in"><img src="vov_assets/top-gallery-rehearsal.jpg" alt="リハーサル風景"></div><div class="gc-ov"><span class="gc-ov-t">リハーサル風景</span></div></div>
+      <div class="gc"><div class="gc-in"><img src="vov_assets/top-gallery-event.jpg" alt="屋外イベント出演"></div><div class="gc-ov"><span class="gc-ov-t">屋外イベント出演</span></div></div>
+      <div class="gc"><div class="gc-in"><img src="vov_assets/top-gallery-backstage.jpg" alt="本番前のひとこま" style="object-position:65% center"></div><div class="gc-ov"><span class="gc-ov-t">本番前のひとこま</span></div></div>
+      <div class="gc"><div class="gc-in"><img src="vov_assets/top-gallery-members.jpg" alt="メンバー集合写真"></div><div class="gc-ov"><span class="gc-ov-t">メンバー集合写真</span></div></div>
     </div>
 
     <!-- 動画（YouTube埋め込みエリア） -->
