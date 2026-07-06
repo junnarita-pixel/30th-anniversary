@@ -102,7 +102,10 @@ h1 em{font-style:italic;color:var(--burg)}
   background:linear-gradient(155deg,#C8B49C 0%,#AE9678 50%,#94785C 100%);
   box-shadow:0 24px 64px rgba(28,20,16,.22);
   display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
 }
+.hr-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease}
+.hr-slide.active{opacity:1}
 .hr-photo-sub{
   position:absolute;bottom:11%;right:7%;width:40%;aspect-ratio:4/3;
   background:linear-gradient(155deg,#BCA688,#A08868);
@@ -110,7 +113,7 @@ h1 em{font-style:italic;color:var(--burg)}
   display:flex;align-items:center;justify-content:center;
 }
 .ph-lbl{font-size:10px;letter-spacing:.24em;color:rgba(28,20,16,.35);font-weight:700;text-transform:uppercase}
-.hr-photo-main img,.hr-photo-sub img{width:100%;height:100%;object-fit:cover}
+.hr-photo-sub img{width:100%;height:100%;object-fit:cover}
 .hr-gold-frame{position:absolute;top:6%;left:6%;width:56%;aspect-ratio:3/4;border:2px solid var(--gold);pointer-events:none}
 .hr-badge{
   position:absolute;top:12%;right:8%;
@@ -491,7 +494,12 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
   </div>
   <div class="hero-r">
     <div class="hr-gold-frame"></div>
-    <div class="hr-photo-main"><img src="vov_assets/top-hero-main.jpg" alt="コンサートでのVOV"></div>
+    <div class="hr-photo-main">
+      <img src="vov_assets/top-hero-main.jpg" alt="コンサートでのVOV" class="hr-slide active">
+      <img src="vov_assets/top-hero-slide-2.jpg" alt="コンサートでのVOV" class="hr-slide">
+      <img src="vov_assets/top-hero-slide-3.jpg" alt="コンサートでのVOV" class="hr-slide">
+      <img src="vov_assets/top-hero-slide-4.jpg" alt="コンサートでのVOV" class="hr-slide">
+    </div>
     <div class="hr-photo-sub"><img src="vov_assets/top-hero-sub.jpg" alt="リハーサル風景"></div>
     <div class="hr-badge">
       <span class="hr-badge-n">Since<br>1999</span>
@@ -859,6 +867,16 @@ const obs = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
 }), { threshold: .1 });
 document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+const heroSlides = document.querySelectorAll('.hr-photo-main .hr-slide');
+if (heroSlides.length > 1) {
+  let heroIdx = 0;
+  setInterval(() => {
+    heroSlides[heroIdx].classList.remove('active');
+    heroIdx = (heroIdx + 1) % heroSlides.length;
+    heroSlides[heroIdx].classList.add('active');
+  }, 4500);
+}
 
 document.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', e => {
