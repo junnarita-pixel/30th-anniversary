@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>お問い合わせ | Voices of Vision</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#E9E3D9;--bg2:#E2DBCF;--bg3:#D6CDBE;--paper:#F2EEE6;
+  --burg:#6D2B3D;--burg-d:#4E1C2A;
+  --gold:#B8923A;--gold-l:#D4B061;
+  --ink:#1C1410;--ink-m:#473A30;--ink-l:#8A7B6C;
+  --white:#FBF9F5;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans JP',sans-serif;font-size:15px;line-height:1.9}
+
+.topbar{background:var(--ink);display:flex;align-items:center;justify-content:space-between;padding:8px 48px}
+.topbar-t{font-size:11.5px;color:rgba(251,249,245,.55);letter-spacing:.08em}
+.topbar-cta{display:flex;align-items:center;gap:8px;color:var(--gold-l);text-decoration:none;font-size:12.5px;font-weight:700;letter-spacing:.1em}
+.topbar-cta::after{content:'→'}
+.topbar-cta:hover{color:var(--white)}
+
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(233,227,217,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--bg3)}
+.logo{text-decoration:none;display:flex;flex-direction:column}
+.logo-m{font-family:'Lora',serif;font-size:21px;font-weight:700;color:var(--burg);line-height:1}
+.logo-s{font-size:10px;letter-spacing:.3em;color:var(--ink-l);margin-top:4px;font-weight:500}
+nav ul{display:flex;gap:26px;list-style:none;align-items:center}
+nav ul a{color:var(--ink-m);text-decoration:none;font-size:14px;font-weight:500;transition:color .25s}
+nav ul a:hover{color:var(--burg)}
+.nav-cta{background:var(--burg);color:var(--white)!important;padding:11px 26px;font-size:13px!important;font-weight:700!important;letter-spacing:.1em!important}
+
+.phero{background:var(--burg);border-bottom:4px solid var(--gold);padding:76px 48px;text-align:center}
+.phero-eye{font-size:11px;letter-spacing:.4em;color:var(--gold-l);font-weight:700;text-transform:uppercase;margin-bottom:14px}
+.phero h1{font-family:'Lora',serif;font-size:clamp(34px,4vw,46px);font-weight:700;color:var(--white)}
+.phero p{font-size:14px;color:rgba(251,249,245,.6);margin-top:12px}
+
+section{padding:80px 48px}
+.inner{max-width:840px;margin:0 auto}
+
+/* カテゴリ選択カード */
+.cat-g{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:56px}
+.cat{
+  background:var(--white);padding:28px 22px;text-align:center;
+  border:2px solid var(--bg3);cursor:pointer;
+  transition:all .25s;position:relative;
+}
+.cat:hover{border-color:var(--gold)}
+.cat.active{border-color:var(--burg);background:var(--paper)}
+.cat.active::after{
+  content:'✓';position:absolute;top:10px;right:14px;
+  color:var(--burg);font-weight:700;font-size:16px;
+}
+.cat-icon{
+  width:52px;height:52px;margin:0 auto 14px;
+  background:var(--burg);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;color:var(--white);
+}
+.cat:nth-child(1) .cat-icon{background:var(--gold)}
+.cat:nth-child(3) .cat-icon{background:var(--ink)}
+.cat-n{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.cat-d{font-size:12px;color:var(--ink-l);line-height:1.7}
+
+/* イベント出演依頼バナー */
+.event-banner{
+  background:var(--ink);
+  border-left:5px solid var(--gold);
+  padding:30px 36px;
+  margin-bottom:48px;
+  display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;
+}
+.eb-t h3{font-family:'Lora',serif;font-size:20px;font-weight:700;color:var(--gold-l);margin-bottom:8px}
+.eb-t p{font-size:13.5px;color:rgba(251,249,245,.65);line-height:1.9}
+
+/* フォーム */
+.form-card{
+  background:var(--white);
+  padding:44px 48px;
+  box-shadow:0 8px 36px rgba(28,20,16,.09);
+  border-top:4px solid var(--gold);
+}
+.form-title{
+  font-family:'Lora',serif;font-size:24px;font-weight:700;
+  color:var(--ink);margin-bottom:6px;
+}
+.form-sub{font-size:13.5px;color:var(--ink-l);margin-bottom:36px}
+.fg{margin-bottom:26px}
+.fg label{
+  display:block;font-size:13.5px;font-weight:700;
+  color:var(--ink);margin-bottom:9px;
+}
+.req{
+  display:inline-block;background:var(--burg);color:var(--white);
+  font-size:10px;font-weight:700;padding:2px 9px;margin-left:9px;
+  letter-spacing:.08em;vertical-align:middle;
+}
+.opt{
+  display:inline-block;background:var(--bg3);color:var(--ink-l);
+  font-size:10px;font-weight:700;padding:2px 9px;margin-left:9px;
+  letter-spacing:.08em;vertical-align:middle;
+}
+.fg input[type=text],.fg input[type=email],.fg select,.fg textarea{
+  width:100%;padding:14px 16px;
+  border:2px solid var(--bg3);background:var(--paper);
+  font-family:'Noto Sans JP',sans-serif;font-size:14.5px;color:var(--ink);
+  transition:border-color .25s;outline:none;
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold)}
+.fg textarea{min-height:150px;resize:vertical}
+.fg select{appearance:none;cursor:pointer}
+.form-note{
+  font-size:12.5px;color:var(--ink-l);line-height:1.9;
+  background:var(--paper);padding:16px 20px;
+  border-left:3px solid var(--gold);margin-bottom:32px;
+}
+.submit-btn{
+  display:block;width:100%;
+  background:var(--burg);color:var(--white);
+  padding:18px;border:none;cursor:pointer;
+  font-family:'Noto Sans JP',sans-serif;
+  font-size:15px;font-weight:700;letter-spacing:.12em;
+  transition:background .25s;position:relative;
+}
+.submit-btn::after{content:'';position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--gold)}
+.submit-btn:hover{background:var(--burg-d)}
+
+/* 窓口情報 */
+.contact-info{background:var(--paper)}
+.ci-g{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px}
+.ci{
+  background:var(--white);padding:32px 34px;
+  border-top:4px solid var(--burg);
+  box-shadow:0 4px 20px rgba(28,20,16,.06);
+}
+.ci:nth-child(2){border-top-color:var(--gold)}
+.ci-role{font-size:11px;letter-spacing:.24em;color:var(--gold);font-weight:700;text-transform:uppercase;margin-bottom:10px}
+.ci h3{font-family:'Lora',serif;font-size:19px;font-weight:700;color:var(--ink);margin-bottom:12px}
+.ci p{font-size:13.5px;color:var(--ink-m);line-height:2}
+.s-eye{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.s-eye-bar{width:30px;height:2px;background:var(--gold)}
+.s-eye-t{font-size:11px;letter-spacing:.34em;color:var(--gold);font-weight:700;text-transform:uppercase}
+h2{font-family:'Lora',serif;font-size:clamp(28px,3.2vw,36px);font-weight:700;color:var(--ink)}
+h2 em{font-style:italic;color:var(--burg)}
+
+footer{background:var(--ink);padding:56px 48px 28px;border-top:4px solid var(--gold)}
+.ft-bot{display:flex;justify-content:space-between;max-width:1100px;margin:0 auto}
+.ft-c{font-size:11px;color:rgba(251,249,245,.28);letter-spacing:.05em}
+
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.rv.on{opacity:1;transform:translateY(0)}
+
+@media(max-width:860px){
+  .topbar{padding:8px 20px}
+  .topbar-t{display:none}
+  nav{padding:14px 24px}
+  nav ul li:not(:last-child){display:none}
+  section{padding:60px 24px}
+  .cat-g{grid-template-columns:1fr}
+  .event-banner{grid-template-columns:1fr;text-align:center}
+  .form-card{padding:32px 26px}
+  .ci-g{grid-template-columns:1fr}
+}
+
+footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--gold)}
+.ft-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;max-width:1100px;margin:0 auto 40px}
+.ft-brand{font-family:'Lora',serif;font-size:21px;font-weight:700;color:var(--gold-l);margin-bottom:12px}
+.ft-tag{font-size:13px;color:rgba(251,249,245,.45);line-height:1.9;margin-bottom:24px}
+.ft-sns{display:flex;gap:10px}
+.sn{width:36px;height:36px;border:1px solid rgba(212,176,97,.3);display:flex;align-items:center;justify-content:center;font-size:13px;color:rgba(212,176,97,.7);text-decoration:none;transition:all .25s}
+.sn:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.ft-col h5{font-size:10.5px;letter-spacing:.28em;color:var(--gold);font-weight:700;margin-bottom:16px;text-transform:uppercase}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.ft-col a{font-size:13.5px;color:rgba(251,249,245,.5);text-decoration:none;transition:color .22s}
+.ft-col a:hover{color:var(--gold-l)}
+.ft-support{max-width:1100px;margin:0 auto 40px;border:1px solid rgba(212,176,97,.2);padding:22px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.ft-support-t{font-size:13px;color:rgba(251,249,245,.6);line-height:1.8}
+.ft-support-t strong{color:var(--gold-l);font-weight:700}
+.ft-support-btns{display:flex;gap:12px}
+.aff-btn{display:flex;align-items:center;gap:9px;padding:11px 22px;text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.04em;transition:all .25s}
+.aff-amazon{background:#FF9900;color:#1C1410}
+.aff-amazon:hover{background:#FFAD33}
+.aff-rakuten{background:#BF0000;color:#FBF9F5}
+.aff-rakuten:hover{background:#D91111}
+.aff-icon{width:20px;height:20px;border-radius:4px;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#1C1410}
+.aff-rakuten .aff-icon{color:#BF0000}
+@media(max-width:860px){.ft-g{grid-template-columns:1fr 1fr;gap:32px}.ft-support{flex-direction:column;text-align:center}}
+
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="topbar-t">名古屋のゴスペルクワイア　Voices of Vision</span>
+  <a href="#event" class="topbar-cta">イベント出演依頼はこちら</a>
+</div>
+
+<nav>
+  <a href="vov_top.html" class="logo">
+    <span class="logo-m">Voices of Vision</span>
+    <span class="logo-s">Nagoya Gospel Choir</span>
+  </a>
+  <ul>
+    <li><a href="vov_about.html">VOVについて</a></li>
+    <li><a href="vov_top.html#schedule">スケジュール</a></li>
+    <li><a href="vov_top.html#gallery">ギャラリー</a></li>
+    <li><a href="vov_top.html#history">歴史</a></li>
+    <li><a href="vov_top.html#posts">活動レポート</a></li>
+    <li><a href="#form" class="nav-cta">体験を申し込む</a></li>
+  </ul>
+</nav>
+
+<div class="phero">
+  <p class="phero-eye">Contact</p>
+  <h1>お問い合わせ</h1>
+  <p>体験申し込み・イベント出演依頼・取材のご相談など、お気軽にどうぞ</p>
+</div>
+
+<section>
+  <div class="inner rv">
+
+    <!-- イベント出演依頼バナー -->
+    <div class="event-banner" id="event">
+      <div class="eb-t">
+        <h3>イベント出演のご依頼を受け付けています</h3>
+        <p>地域イベント・式典・企業イベントなど、ゴスペルの生演奏でイベントを彩ります。<br>下記フォームのカテゴリで「イベント出演依頼」を選択してお送りください。</p>
+      </div>
+    </div>
+
+    <!-- カテゴリ選択 -->
+    <div class="cat-g">
+      <div class="cat" onclick="selectCat(this,'イベント出演依頼')">
+        <div class="cat-icon">♪</div>
+        <div class="cat-n">イベント出演依頼</div>
+        <p class="cat-d">イベント・式典などへの出演のご相談</p>
+      </div>
+      <div class="cat active" onclick="selectCat(this,'体験・見学の申し込み')">
+        <div class="cat-icon">👋</div>
+        <div class="cat-n">体験・見学</div>
+        <p class="cat-d">リハーサルの体験・見学の申し込み</p>
+      </div>
+      <div class="cat" onclick="selectCat(this,'メディア取材・その他')">
+        <div class="cat-icon">✉</div>
+        <div class="cat-n">取材・その他</div>
+        <p class="cat-d">メディア取材やその他のお問い合わせ</p>
+      </div>
+    </div>
+
+    <!-- フォーム -->
+    <div class="form-card" id="form">
+      <h2 class="form-title">お問い合わせフォーム</h2>
+      <p class="form-sub">2〜3営業日以内にご返信いたします。</p>
+
+      <div class="fg">
+        <label>お問い合わせカテゴリ<span class="req">必須</span></label>
+        <select id="cat-select">
+          <option>体験・見学の申し込み</option>
+          <option>イベント出演依頼</option>
+          <option>メディア取材・その他</option>
+        </select>
+      </div>
+
+      <div class="fg">
+        <label>お名前<span class="req">必須</span></label>
+        <input type="text" placeholder="山田 花子">
+      </div>
+
+      <div class="fg">
+        <label>メールアドレス<span class="req">必須</span></label>
+        <input type="email" placeholder="example@email.com">
+      </div>
+
+      <div class="fg">
+        <label>希望日・イベント日程<span class="opt">任意</span></label>
+        <input type="text" placeholder="例）6月26日の木曜夜リハを見学したい／10月10日のイベントに出演依頼">
+      </div>
+
+      <div class="fg">
+        <label>メッセージ<span class="opt">任意</span></label>
+        <textarea placeholder="ご質問・ご相談内容があればご記入ください"></textarea>
+      </div>
+
+      <p class="form-note">
+        ・体験、見学は事前連絡なしでもOKです。直接会場にお越しいただいても大丈夫です。<br>
+        ・イベント出演依頼の場合は、開催日時・会場・イベント内容をメッセージ欄にご記入いただけるとスムーズです。
+      </p>
+
+      <button class="submit-btn" onclick="alert('STUDIOのフォーム機能に接続します（プレビュー）')">送信する</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- 窓口情報 -->
+<section class="contact-info">
+  <div class="inner rv">
+    <div class="s-eye">
+      <div class="s-eye-bar"></div>
+      <span class="s-eye-t">Information</span>
+    </div>
+    <h2>各種<em>窓口</em></h2>
+    <div class="ci-g">
+      <div class="ci">
+        <p class="ci-role">Event / Booking</p>
+        <h3>イベント出演・契約窓口</h3>
+        <p>出演のご依頼・契約に関するご相談はこちら。<br>（掲載内容はVOV確認後に確定）</p>
+      </div>
+      <div class="ci">
+        <p class="ci-role">Visit / Join</p>
+        <h3>体験・入会窓口</h3>
+        <p>体験・見学・入会に関するご質問はこちら。<br>（掲載内容はVOV確認後に確定）</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-g">
+    <div>
+      <div class="ft-brand">Voices of Vision</div>
+      <p class="ft-tag">名古屋を拠点に活動する<br>ゴスペルクワイア。Since 1999</p>
+      <div class="ft-sns">
+        <a href="#" class="sn">f</a>
+        <a href="#" class="sn">ig</a>
+        <a href="#" class="sn">▶</a>
+        <a href="#" class="sn">L</a>
+      </div>
+    </div>
+    <div class="ft-col">
+      <h5>Pages</h5>
+      <ul>
+        <li><a href="vov_about.html">VOVについて</a></li>
+        <li><a href="vov_schedule.html">活動・スケジュール</a></li>
+        <li><a href="vov_join.html">入会案内</a></li>
+        <li><a href="vov_gallery.html">ギャラリー・コンサート</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h5>Info</h5>
+      <ul>
+        <li><a href="vov_posts.html">活動レポート</a></li>
+        <li><a href="vov_history.html">VOVの歩み（年表）</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="vov_contact.html#event">イベント出演依頼</a></li>
+        <li><a href="vov_contact.html">体験・入会</a></li>
+        <li><a href="vov_contact.html">メディア取材</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-support">
+    <p class="ft-support-t"><strong>お買い物でVOVを応援</strong>　—　こちらのリンクからお買い物いただくと、VOVの活動支援につながります。</p>
+    <div class="ft-support-btns">
+      <a href="https://www.amazon.co.jp/?adgrpid=157529192841&hvpone=&hvptwo=&hvadid=675114138690&hvpos=&hvnetw=g&hvrand=6019416796282722687&hvqmt=e&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1009454&hvtargid=kwd-10573980&hydadcr=27922_14701883&gad_source=1&linkCode=sl2&tag=dctz-22&linkId=cce015f77930366e19ead6cd4e316738&language=ja_JP&ref_=as_li_ss_tl" target="_blank" rel="noopener" class="aff-btn aff-amazon">
+        <span class="aff-icon">a</span>Amazon
+      </a>
+      <a href="https://www.rakuten.co.jp/?scid=af_pc_etc&sc2id=af_103_0_10000991" target="_blank" rel="noopener" class="aff-btn aff-rakuten">
+        <span class="aff-icon">R</span>楽天市場
+      </a>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <span class="ft-c">© 2026 Voices of Vision. All rights reserved.</span>
+    <span class="ft-c">vov.jp</span>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
+}), { threshold: .1 });
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+function selectCat(el, val){
+  document.querySelectorAll('.cat').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('cat-select').value = val;
+  document.getElementById('form').scrollIntoView({behavior:'smooth'});
+}
+
+document.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href && href.startsWith('#') && href.length > 1) {
+      e.preventDefault();
+      const t = document.querySelector(href);
+      if (t) t.scrollIntoView({ behavior: 'smooth' });
+    } else if (href === '#') {
+      e.preventDefault();
+    }
+  });
+});
+</script>
+</body>
+</html>

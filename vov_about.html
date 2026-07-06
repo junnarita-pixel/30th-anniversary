@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VOVについて | Voices of Vision</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#E9E3D9;--bg2:#E2DBCF;--bg3:#D6CDBE;--paper:#F2EEE6;
+  --burg:#6D2B3D;--burg-d:#4E1C2A;
+  --gold:#B8923A;--gold-l:#D4B061;
+  --ink:#1C1410;--ink-m:#473A30;--ink-l:#8A7B6C;
+  --white:#FBF9F5;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans JP',sans-serif;font-size:15px;line-height:1.9}
+
+/* TOP BAR */
+.topbar{background:var(--ink);display:flex;align-items:center;justify-content:space-between;padding:8px 48px}
+.topbar-t{font-size:11.5px;color:rgba(251,249,245,.55);letter-spacing:.08em}
+.topbar-cta{display:flex;align-items:center;gap:8px;color:var(--gold-l);text-decoration:none;font-size:12.5px;font-weight:700;letter-spacing:.1em;transition:color .25s}
+.topbar-cta::after{content:'→'}
+.topbar-cta:hover{color:var(--white)}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(233,227,217,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--bg3)}
+.logo{text-decoration:none;display:flex;flex-direction:column}
+.logo-m{font-family:'Lora',serif;font-size:21px;font-weight:700;color:var(--burg);line-height:1}
+.logo-s{font-size:10px;letter-spacing:.3em;color:var(--ink-l);margin-top:4px;font-weight:500}
+nav ul{display:flex;gap:26px;list-style:none;align-items:center}
+nav ul a{color:var(--ink-m);text-decoration:none;font-size:14px;font-weight:500;transition:color .25s}
+nav ul a:hover,nav ul a.active{color:var(--burg)}
+.nav-cta{background:var(--burg);color:var(--white)!important;padding:11px 26px;font-size:13px!important;font-weight:700!important;letter-spacing:.1em!important}
+.nav-cta:hover{background:var(--burg-d)}
+
+/* PAGE HERO */
+.phero{
+  background:var(--burg);
+  border-bottom:4px solid var(--gold);
+  padding:76px 48px;text-align:center;
+}
+.phero-eye{font-size:11px;letter-spacing:.4em;color:var(--gold-l);font-weight:700;text-transform:uppercase;margin-bottom:14px}
+.phero h1{font-family:'Lora',serif;font-size:clamp(34px,4vw,46px);font-weight:700;color:var(--white)}
+.phero p{font-size:14px;color:rgba(251,249,245,.6);margin-top:12px}
+
+/* SECTION */
+section{padding:88px 48px}
+.inner{max-width:1000px;margin:0 auto}
+.s-eye{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.s-eye-bar{width:30px;height:2px;background:var(--gold)}
+.s-eye-t{font-size:11px;letter-spacing:.34em;color:var(--gold);font-weight:700;text-transform:uppercase}
+h2{font-family:'Lora',serif;font-size:clamp(28px,3.2vw,38px);font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:20px}
+h2 em{font-style:italic;color:var(--burg)}
+.s-body{font-size:15.5px;line-height:2.15;color:var(--ink-m)}
+
+/* 理念 */
+.mission{background:var(--paper)}
+.mission-inner{max-width:820px;margin:0 auto;text-align:center}
+.founder-txt{
+  font-size:16px;line-height:2.3;color:var(--ink-m);
+  padding:36px 40px;background:var(--white);
+  border-top:3px solid var(--gold);border-bottom:3px solid var(--gold);
+  margin:36px 0;
+}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+.pl{
+  background:var(--white);padding:34px 26px;text-align:center;
+  border-top:4px solid var(--burg);
+  box-shadow:0 4px 20px rgba(28,20,16,.06);
+}
+.pl:nth-child(2){border-top-color:var(--gold)}
+.pl:nth-child(3){border-top-color:var(--ink)}
+.pl-n{font-family:'Lora',serif;font-size:20px;font-weight:700;color:var(--burg);display:block;margin-bottom:12px}
+.pl-d{font-size:13.5px;color:var(--ink-m);line-height:2}
+
+/* 指導者 */
+.leaders{background:var(--bg)}
+.leaders-g{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:48px}
+.leader{
+  background:var(--white);
+  box-shadow:0 6px 28px rgba(28,20,16,.08);
+  overflow:hidden;
+}
+.leader-ph{
+  aspect-ratio:4/3;
+  display:flex;align-items:center;justify-content:center;
+}
+.leader:nth-child(1) .leader-ph{background:linear-gradient(150deg,#C8B49C,#A88C70)}
+.leader:nth-child(2) .leader-ph{background:linear-gradient(150deg,#BCA688,#9C8064)}
+.ph-lbl{font-size:10px;letter-spacing:.24em;color:rgba(28,20,16,.35);font-weight:700;text-transform:uppercase}
+.leader-body{padding:28px 30px 32px}
+.leader-role{font-size:11px;letter-spacing:.24em;color:var(--gold);font-weight:700;text-transform:uppercase;margin-bottom:8px}
+.leader-name{font-family:'Lora',serif;font-size:23px;font-weight:700;color:var(--ink);margin-bottom:14px}
+.leader-bio{font-size:14px;color:var(--ink-m);line-height:2}
+
+/* パート構成 */
+.parts{background:var(--paper)}
+.parts-g{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+.part{
+  background:var(--white);padding:28px 24px;text-align:center;
+  border:2px solid var(--bg3);transition:border-color .25s;
+}
+.part:hover{border-color:var(--gold)}
+.part-n{font-family:'Lora',serif;font-size:17px;font-weight:700;color:var(--burg);margin-bottom:8px}
+.part-d{font-size:13px;color:var(--ink-l);line-height:1.9}
+.parts-note{
+  margin-top:28px;text-align:center;
+  font-size:14px;color:var(--ink-m);
+}
+
+/* リハーサル・会費（重要セクション） */
+.fees{background:var(--bg)}
+.reh-table{
+  margin-top:44px;
+  background:var(--white);
+  box-shadow:0 6px 28px rgba(28,20,16,.08);
+}
+.reh-row{
+  display:grid;grid-template-columns:150px 1fr 1fr;
+  border-bottom:1px solid var(--bg3);
+}
+.reh-row:last-child{border-bottom:none}
+.reh-row.head{background:var(--ink)}
+.reh-cell{padding:20px 26px;font-size:14.5px;color:var(--ink-m);line-height:1.9}
+.reh-row.head .reh-cell{
+  color:var(--gold-l);font-size:12px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;padding:15px 26px;
+}
+.reh-cell.name{
+  font-weight:700;color:var(--burg);
+  display:flex;align-items:center;
+  border-right:1px solid var(--bg3);
+}
+.fee-highlight{
+  margin-top:36px;
+  background:var(--burg);
+  padding:38px 44px;
+  display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;
+  border-left:5px solid var(--gold);
+}
+.fee-price{
+  font-family:'Lora',serif;text-align:center;color:var(--white);
+}
+.fee-price-n{font-size:46px;font-weight:700;line-height:1}
+.fee-price-t{font-size:12px;letter-spacing:.2em;margin-top:6px;color:var(--gold-l);font-weight:600}
+.fee-desc{color:rgba(251,249,245,.85);font-size:15px;line-height:2.1}
+.fee-desc strong{color:var(--gold-l);font-weight:700}
+
+/* 沿革 */
+.hist{background:var(--paper)}
+.timeline{position:relative;max-width:720px;margin:48px auto 0;padding-left:36px}
+.timeline::before{content:'';position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--bg3)}
+.tl-item{position:relative;padding-bottom:32px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:'';position:absolute;left:-34px;top:7px;width:14px;height:14px;background:var(--gold);border:3px solid var(--paper);box-shadow:0 0 0 2px var(--gold)}
+.tl-item.major::before{background:var(--burg);box-shadow:0 0 0 2px var(--burg)}
+.tl-year{font-family:'Lora',serif;font-size:21px;font-weight:700;color:var(--burg);margin-bottom:4px}
+.tl-text{font-size:14.5px;color:var(--ink-m);line-height:1.9}
+
+/* CTA */
+.cta-sec{
+  background:var(--ink);
+  border-top:4px solid var(--gold);
+  padding:76px 48px;text-align:center;
+}
+.cta-sec h2{color:var(--white)}
+.cta-sec h2 em{color:var(--gold-l)}
+.cta-sec p{color:rgba(251,249,245,.6);font-size:14.5px;margin-bottom:36px}
+.btn-fill{
+  display:inline-block;
+  background:var(--burg);color:var(--white);padding:17px 44px;
+  font-size:14.5px;font-weight:700;letter-spacing:.08em;text-decoration:none;
+  box-shadow:0 6px 24px rgba(109,43,61,.4);transition:all .25s;position:relative;
+}
+.btn-fill::after{content:'';position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--gold)}
+.btn-fill:hover{background:var(--burg-d);transform:translateY(-2px)}
+
+/* FOOTER */
+footer{background:var(--ink);padding:56px 48px 28px;border-top:1px solid rgba(212,176,97,.2)}
+.ft-bot{display:flex;justify-content:space-between;max-width:1100px;margin:0 auto}
+.ft-c{font-size:11px;color:rgba(251,249,245,.28);letter-spacing:.05em}
+
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.rv.on{opacity:1;transform:translateY(0)}
+
+@media(max-width:860px){
+  .topbar{padding:8px 20px}
+  .topbar-t{display:none}
+  nav{padding:14px 24px}
+  nav ul li:not(:last-child){display:none}
+  section{padding:64px 24px}
+  .pillars,.parts-g,.leaders-g{grid-template-columns:1fr}
+  .reh-row{grid-template-columns:1fr}
+  .reh-cell.name{border-right:none;border-bottom:1px solid var(--bg3)}
+  .reh-row.head{display:none}
+  .fee-highlight{grid-template-columns:1fr;text-align:center;gap:20px}
+}
+
+footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--gold)}
+.ft-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;max-width:1100px;margin:0 auto 40px}
+.ft-brand{font-family:'Lora',serif;font-size:21px;font-weight:700;color:var(--gold-l);margin-bottom:12px}
+.ft-tag{font-size:13px;color:rgba(251,249,245,.45);line-height:1.9;margin-bottom:24px}
+.ft-sns{display:flex;gap:10px}
+.sn{width:36px;height:36px;border:1px solid rgba(212,176,97,.3);display:flex;align-items:center;justify-content:center;font-size:13px;color:rgba(212,176,97,.7);text-decoration:none;transition:all .25s}
+.sn:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.ft-col h5{font-size:10.5px;letter-spacing:.28em;color:var(--gold);font-weight:700;margin-bottom:16px;text-transform:uppercase}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.ft-col a{font-size:13.5px;color:rgba(251,249,245,.5);text-decoration:none;transition:color .22s}
+.ft-col a:hover{color:var(--gold-l)}
+.ft-support{max-width:1100px;margin:0 auto 40px;border:1px solid rgba(212,176,97,.2);padding:22px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.ft-support-t{font-size:13px;color:rgba(251,249,245,.6);line-height:1.8}
+.ft-support-t strong{color:var(--gold-l);font-weight:700}
+.ft-support-btns{display:flex;gap:12px}
+.aff-btn{display:flex;align-items:center;gap:9px;padding:11px 22px;text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.04em;transition:all .25s}
+.aff-amazon{background:#FF9900;color:#1C1410}
+.aff-amazon:hover{background:#FFAD33}
+.aff-rakuten{background:#BF0000;color:#FBF9F5}
+.aff-rakuten:hover{background:#D91111}
+.aff-icon{width:20px;height:20px;border-radius:4px;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#1C1410}
+.aff-rakuten .aff-icon{color:#BF0000}
+@media(max-width:860px){.ft-g{grid-template-columns:1fr 1fr;gap:32px}.ft-support{flex-direction:column;text-align:center}}
+
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="topbar-t">名古屋のゴスペルクワイア　Voices of Vision</span>
+  <a href="vov_contact.html#event" class="topbar-cta">イベント出演依頼はこちら</a>
+</div>
+
+<nav>
+  <a href="vov_top.html" class="logo">
+    <span class="logo-m">Voices of Vision</span>
+    <span class="logo-s">Nagoya Gospel Choir</span>
+  </a>
+  <ul>
+    <li><a href="#" class="active">VOVについて</a></li>
+    <li><a href="vov_top.html#schedule">スケジュール</a></li>
+    <li><a href="vov_top.html#gallery">ギャラリー</a></li>
+    <li><a href="vov_top.html#history">歴史</a></li>
+    <li><a href="vov_top.html#posts">活動レポート</a></li>
+    <li><a href="vov_contact.html" class="nav-cta">体験を申し込む</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="phero">
+  <p class="phero-eye">About Us</p>
+  <h1>VOVについて</h1>
+  <p>Voices of Vision — 名古屋のゴスペル・クワイア</p>
+</div>
+
+<!-- 理念 -->
+<section class="mission">
+  <div class="mission-inner rv">
+    <div class="s-eye" style="justify-content:center">
+      <div class="s-eye-bar"></div>
+      <span class="s-eye-t">Mission</span>
+      <div class="s-eye-bar"></div>
+    </div>
+    <h2>私たちが<em>大切にしていること</em></h2>
+    <p class="founder-txt">
+      Voices of Visionは、Founder（創設者）ラニー・ラッカー氏が提言している
+      "Music"、"History"、"Christianity" を体現し、<br>
+      多くの人の心に届くよう、歌い続けていくことを目的に活動を展開している名古屋のゴスペル・クワイアです。<br>
+      ゴスペルのルーツに根差した、本物のゴスペルを目指しています。
+    </p>
+    <div class="pillars">
+      <div class="pl">
+        <span class="pl-n">Music</span>
+        <p class="pl-d">歌の喜びを仲間と分かち合う。オーディションなし・楽譜なし。音を聴いて覚えるスタイルで、誰もが音楽に参加できます。</p>
+      </div>
+      <div class="pl">
+        <span class="pl-n">History</span>
+        <p class="pl-d">ゴスペルが歩んできた歴史とルーツを学び、その背景にある物語とともに歌い継いでいきます。</p>
+      </div>
+      <div class="pl">
+        <span class="pl-n">Christianity</span>
+        <p class="pl-d">ゴスペルの精神を尊重し、歌に込める。信仰の強制はありません。メンバーのうちクリスチャンは約2〜3割です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 指導者 -->
+<section class="leaders">
+  <div class="inner rv">
+    <div class="s-eye">
+      <div class="s-eye-bar"></div>
+      <span class="s-eye-t">Leaders</span>
+    </div>
+    <h2>指導者<em>紹介</em></h2>
+    <div class="leaders-g">
+      <div class="leader">
+        <div class="leader-ph"><span class="ph-lbl">Portrait Photo</span></div>
+        <div class="leader-body">
+          <p class="leader-role">Founder</p>
+          <h3 class="leader-name">ラニー・ラッカー</h3>
+          <p class="leader-bio">Voices of Visionの創設者。"Music" "History" "Christianity" の3つの柱を提言し、ゴスペルのルーツに根差した本物のゴスペルを日本に伝え続けている。（プロフィール文は確定後に差し替え）</p>
+        </div>
+      </div>
+      <div class="leader">
+        <div class="leader-ph"><span class="ph-lbl">Portrait Photo</span></div>
+        <div class="leader-body">
+          <p class="leader-role">Director</p>
+          <h3 class="leader-name">兼松 弘子</h3>
+          <p class="leader-bio">VOVの指導者として、メンバー一人ひとりの声を大切にしながらクワイアを導いている。（プロフィール文は確定後に差し替え）</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- パート構成 -->
+<section class="parts">
+  <div class="inner rv">
+    <div class="s-eye">
+      <div class="s-eye-bar"></div>
+      <span class="s-eye-t">Members</span>
+    </div>
+    <h2>パート<em>構成</em></h2>
+    <div class="parts-g">
+      <div class="part">
+        <div class="part-n">Soprano</div>
+        <p class="part-d">クワイアの華やかな高音を担うパート</p>
+      </div>
+      <div class="part">
+        <div class="part-n">Alto</div>
+        <p class="part-d">ハーモニーの厚みを支える中音パート</p>
+      </div>
+      <div class="part">
+        <div class="part-n">Tenor &amp; Bass</div>
+        <p class="part-d">土台となる低音を響かせるパート</p>
+      </div>
+    </div>
+    <p class="parts-note">このほか、<strong>VOV-Jr.</strong>（3歳〜中学生）、<strong>VOV-U25</strong>（高校生〜25歳）のクラスがあります。OB・OGの復帰も歓迎しています。</p>
+  </div>
+</section>
+
+<!-- リハーサル・会費 -->
+<section class="fees" id="fees">
+  <div class="inner rv">
+    <div class="s-eye">
+      <div class="s-eye-bar"></div>
+      <span class="s-eye-t">Rehearsal &amp; Membership</span>
+    </div>
+    <h2>リハーサル・<em>会費について</em></h2>
+    <p class="s-body">夜リハ・朝リハ・ユースの3つのリハーサルを月会費制で運用しています。</p>
+
+    <div class="reh-table">
+      <div class="reh-row head">
+        <div class="reh-cell">クラス</div>
+        <div class="reh-cell">開催日時</div>
+        <div class="reh-cell">会場・対象</div>
+      </div>
+      <div class="reh-row">
+        <div class="reh-cell name">夜リハーサル</div>
+        <div class="reh-cell">毎週木曜日<br>19:00 〜 21:00</div>
+        <div class="reh-cell">在日大韓基督教会 名古屋教会 7F<br>（名古屋市西区）</div>
+      </div>
+      <div class="reh-row">
+        <div class="reh-cell name">朝リハーサル</div>
+        <div class="reh-cell">毎週金曜日<br>10:00 〜 12:00</div>
+        <div class="reh-cell">在日大韓基督教会 名古屋教会 7F<br>（名古屋市西区）</div>
+      </div>
+      <div class="reh-row">
+        <div class="reh-cell name">VOV-U25<br>（ユース）</div>
+        <div class="reh-cell">開催日時は<br>お問い合わせください</div>
+        <div class="reh-cell">高校生〜25歳のユース世代クラス</div>
+      </div>
+    </div>
+
+    <div class="fee-highlight">
+      <div class="fee-price">
+        <div class="fee-price-n">¥4,000</div>
+        <div class="fee-price-t">月額 / 一般会員</div>
+      </div>
+      <p class="fee-desc">
+        月会費制で運用しています。一般会員は月額4,000円で、<strong>夜リハ・朝リハ・ユースのどのリハーサルにも参加できます。</strong><br>
+        自分のライフスタイルに合わせて、参加しやすい時間を選んでください。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 沿革 -->
+<section class="hist">
+  <div class="inner rv">
+    <div class="s-eye" style="justify-content:center">
+      <div class="s-eye-bar"></div>
+      <span class="s-eye-t">History</span>
+      <div class="s-eye-bar"></div>
+    </div>
+    <h2 style="text-align:center">VOVの<em>歩み</em></h2>
+    <div class="timeline">
+      <div class="tl-item major">
+        <div class="tl-year">1999</div>
+        <p class="tl-text">名古屋でゴスペルグループ創設（前身：名古屋ゴスペルクワイヤー）</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2000</div>
+        <p class="tl-text">「Voices of Vision」に改名。本格的な活動を開始</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2002</div>
+        <p class="tl-text">活動記録（History）のアーカイブを開始</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2006</div>
+        <p class="tl-text">在日大韓基督教会 名古屋教会7Fをリハーサル会場として利用開始</p>
+      </div>
+      <div class="tl-item major">
+        <div class="tl-year">2024</div>
+        <p class="tl-text">創設25周年。四半世紀にわたり名古屋のゴスペルシーンを支え続ける</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <h2>一緒に<em>歌いませんか？</em></h2>
+  <p>オーディションも楽譜も必要ありません。まずは一度、リハーサルを体験しに来てください。</p>
+  <a href="vov_contact.html" class="btn-fill">体験を申し込む</a>
+</div>
+
+<footer>
+  <div class="ft-g">
+    <div>
+      <div class="ft-brand">Voices of Vision</div>
+      <p class="ft-tag">名古屋を拠点に活動する<br>ゴスペルクワイア。Since 1999</p>
+      <div class="ft-sns">
+        <a href="#" class="sn">f</a>
+        <a href="#" class="sn">ig</a>
+        <a href="#" class="sn">▶</a>
+        <a href="#" class="sn">L</a>
+      </div>
+    </div>
+    <div class="ft-col">
+      <h5>Pages</h5>
+      <ul>
+        <li><a href="vov_about.html">VOVについて</a></li>
+        <li><a href="vov_schedule.html">活動・スケジュール</a></li>
+        <li><a href="vov_join.html">入会案内</a></li>
+        <li><a href="vov_gallery.html">ギャラリー・コンサート</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h5>Info</h5>
+      <ul>
+        <li><a href="vov_posts.html">活動レポート</a></li>
+        <li><a href="vov_history.html">VOVの歩み（年表）</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="vov_contact.html#event">イベント出演依頼</a></li>
+        <li><a href="vov_contact.html">体験・入会</a></li>
+        <li><a href="vov_contact.html">メディア取材</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-support">
+    <p class="ft-support-t"><strong>お買い物でVOVを応援</strong>　—　こちらのリンクからお買い物いただくと、VOVの活動支援につながります。</p>
+    <div class="ft-support-btns">
+      <a href="https://www.amazon.co.jp/?adgrpid=157529192841&hvpone=&hvptwo=&hvadid=675114138690&hvpos=&hvnetw=g&hvrand=6019416796282722687&hvqmt=e&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1009454&hvtargid=kwd-10573980&hydadcr=27922_14701883&gad_source=1&linkCode=sl2&tag=dctz-22&linkId=cce015f77930366e19ead6cd4e316738&language=ja_JP&ref_=as_li_ss_tl" target="_blank" rel="noopener" class="aff-btn aff-amazon">
+        <span class="aff-icon">a</span>Amazon
+      </a>
+      <a href="https://www.rakuten.co.jp/?scid=af_pc_etc&sc2id=af_103_0_10000991" target="_blank" rel="noopener" class="aff-btn aff-rakuten">
+        <span class="aff-icon">R</span>楽天市場
+      </a>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <span class="ft-c">© 2026 Voices of Vision. All rights reserved.</span>
+    <span class="ft-c">vov.jp</span>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
+}), { threshold: .1 });
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+document.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href && href.startsWith('#') && href.length > 1) {
+      e.preventDefault();
+      const t = document.querySelector(href);
+      if (t) t.scrollIntoView({ behavior: 'smooth' });
+    } else if (href === '#') {
+      e.preventDefault();
+    }
+  });
+});
+</script>
+</body>
+</html>
