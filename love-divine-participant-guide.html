@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LOVE DIVINE ｜ Live and Dance Party（新曲MV撮影ライブ）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;900&family=Kaushan+Script&family=Noto+Sans+JP:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#15100F; --bg2:#211917; --bg3:#2C211F;
+    --ink:#F3ECEA; --muted:#B6A9A6; --dim:#897B78;
+    --line:rgba(255,255,255,.10); --line2:rgba(255,255,255,.17);
+    --red:#D83A2C; --amber:#F0A63C; --blue:#5E82C8; --cream:#EFE3D6;
+    --disp:"Archivo","Noto Sans JP",system-ui,sans-serif;
+    --script:"Kaushan Script",cursive;
+    --body:"Noto Sans JP",system-ui,sans-serif;
+    --mono:"Space Mono","SFMono-Regular",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{background:var(--bg); color:var(--ink); font-family:var(--body);
+    font-size:16px; line-height:1.78; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:620px; margin:0 auto; padding:0 20px}
+  a{color:var(--amber); text-decoration:none; border-bottom:1px solid rgba(240,166,60,.4)}
+  section{padding:34px 0; border-bottom:1px solid var(--line)}
+  .eyebrow{font-family:var(--mono); font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--red); font-weight:700}
+  h2{font-family:var(--disp); font-weight:900; font-size:clamp(21px,5.2vw,27px); line-height:1.2; margin:8px 0 14px}
+  h2 .en{display:block; font-family:var(--mono); font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--dim); font-weight:400; margin-top:5px}
+  p{color:var(--muted)}
+  .lead{font-size:16px; color:var(--ink); font-weight:500}
+  .lead .hl{color:var(--amber); font-weight:700}
+
+  /* hero */
+  .hero{position:relative; overflow:hidden}
+  .hero-bg{position:absolute; inset:0; z-index:0;
+    background:
+      radial-gradient(115% 75% at 20% -8%, rgba(216,58,44,.5), transparent 55%),
+      radial-gradient(95% 70% at 88% 2%, rgba(94,130,200,.34), transparent 55%),
+      radial-gradient(90% 90% at 55% 120%, rgba(240,166,60,.16), transparent 60%);}
+  .hero-bg::after{content:""; position:absolute; inset:0; opacity:.5;
+    background-image:radial-gradient(rgba(255,255,255,.15) 1px, transparent 1.4px);
+    background-size:19px 19px; mask-image:radial-gradient(120% 90% at 65% 0%, #000, transparent 66%);}
+  .hero-in{position:relative; z-index:1; padding:48px 0 38px; text-align:center}
+  .kicker{font-family:var(--mono); font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:var(--cream)}
+  .brand{font-family:var(--disp); font-weight:900; color:var(--red); line-height:.94;
+    font-size:clamp(46px,13vw,84px); letter-spacing:-.005em; margin:8px 0 2px; text-shadow:0 2px 34px rgba(216,58,44,.34)}
+  .script{font-family:var(--script); color:var(--cream); font-size:clamp(30px,9vw,54px); line-height:1; margin:2px 0 12px}
+  .hero-sub{font-size:15px; font-weight:500; color:var(--ink); opacity:.92}
+  .chips{display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-top:22px}
+  .chip{font-family:var(--mono); font-size:12px; color:var(--ink);
+    border:1px solid var(--line2); border-radius:100px; padding:6px 13px; background:rgba(255,255,255,.04)}
+  .chip b{color:var(--red)}
+
+  /* consideration */
+  .easy{background:linear-gradient(160deg, rgba(94,130,200,.14), rgba(240,166,60,.08));
+    border:1px solid var(--line2); border-radius:18px; padding:22px}
+  .easy .t{font-weight:700; color:var(--ink); font-size:17px; margin-bottom:8px}
+  .easy p{font-size:14.5px}
+  .easy .soft{color:var(--blue); font-weight:700}
+
+  /* placeholder (dress code, TBA) */
+  .placeholder{border:1.5px dashed var(--line2); border-radius:16px; padding:22px; text-align:center; background:rgba(255,255,255,.02)}
+  .placeholder .tag{display:inline-block; font-family:var(--mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--amber); border:1px solid rgba(240,166,60,.5); border-radius:100px; padding:3px 11px; margin-bottom:12px}
+  .placeholder p{font-size:14.5px; color:var(--ink)}
+
+  /* info card */
+  .info{background:var(--bg2); border:1px solid var(--line); border-radius:16px; overflow:hidden}
+  .info .row{display:flex; gap:14px; padding:13px 18px; border-top:1px solid var(--line)}
+  .info .row:first-child{border-top:none}
+  .info .k{flex:none; width:74px; font-family:var(--mono); font-size:11px; letter-spacing:.08em; color:var(--dim); text-transform:uppercase; padding-top:3px}
+  .info .v{font-size:15px; color:var(--ink); font-weight:500}
+  .info .v b{color:var(--amber); font-weight:700}
+
+  /* lineup */
+  .line-block{margin-bottom:16px}
+  .line-block .cap{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--red); font-weight:700; margin-bottom:6px}
+  .line-block .names{font-size:17px; font-weight:700}
+  .band{display:grid; gap:6px}
+  .band .m{font-size:14.5px; color:var(--ink)}
+  .band .m .inst{font-family:var(--mono); font-size:11px; color:var(--dim); letter-spacing:.06em; margin-right:8px}
+
+  /* flow */
+  .flow{display:flex; flex-wrap:wrap; align-items:center; gap:8px 6px}
+  .flow .f{background:var(--bg3); border:1px solid var(--line2); border-radius:100px; padding:7px 14px; font-size:13.5px; font-weight:700}
+  .flow .f.hi{background:linear-gradient(135deg, rgba(216,58,44,.32), rgba(240,166,60,.22)); border-color:transparent}
+  .flow .arw{color:var(--dim)}
+
+  /* venue */
+  .venue{background:var(--bg2); border:1px solid var(--line); border-radius:16px; padding:20px}
+  .venue h3{font-family:var(--disp); font-weight:900; font-size:20px; margin-bottom:4px}
+  .venue .addr{font-size:14px; color:var(--muted); line-height:1.7}
+  .venue .go{display:inline-block; margin-top:12px; margin-right:16px; font-family:var(--mono); font-size:13px}
+
+  /* notice */
+  .notice{background:var(--bg2); border:1px solid var(--line); border-left:3px solid var(--amber); border-radius:12px; padding:16px 18px}
+  .notice .lbl{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--amber); font-weight:700; display:block; margin-bottom:6px}
+  .notice p{font-size:13.5px; color:var(--ink)}
+
+  footer{padding:40px 0 56px; text-align:center}
+  footer .script{font-size:clamp(28px,9vw,44px); color:var(--cream)}
+  footer .sm{font-family:var(--mono); font-size:12px; color:var(--dim); margin-top:6px; letter-spacing:.05em}
+
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{opacity:0; transform:translateY(12px); animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+    @keyframes rise{to{opacity:1; transform:none}}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-in reveal">
+    <div class="kicker">New Single MV Shoot</div>
+    <div class="brand">LOVE&nbsp;DIVINE</div>
+    <div class="script">Live and Dance Party</div>
+    <p class="hero-sub">新曲MV撮影ライブ ── 会場の空気ごと、みんなで作る一日。</p>
+    <div class="chips">
+      <span class="chip"><b>7.31</b>&nbsp;FRI</span>
+      <span class="chip mono">OPEN&nbsp;7:00PM</span>
+      <span class="chip mono">club(O)Utopos</span>
+      <span class="chip mono">名古屋・新栄</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <div class="eyebrow">About</div>
+    <h2>90's R&amp;B / New Jack Swing<span class="en">Live &amp; MV Shoot &amp; Dance Party</span></h2>
+    <p class="lead">
+      90's R&amp;B / New Jack Swing のグルーヴを感じる LOVE DIVINE 新曲リリースに合わせて、<span class="hl">ミニライブ＆MV撮影イベント</span>を開催します。当日はスペシャルゲスト、そして生バンドでのLOVE DIVINEライブ。ライブ後には、新曲ミュージックビデオ撮影＆ダンスパーティー！
+    </p>
+    <p style="margin-top:12px">
+      ただ観るだけではなく、音楽を楽しむ会場の雰囲気も含めて、みんなで一緒に作品を作るイベントです。ぜひ一緒に、いい時間にしましょう。
+    </p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Relax</div>
+    <h2>楽しみ方は、自由です<span class="en">At your own pace</span></h2>
+    <div class="easy">
+      <div class="t">「踊るのはちょっと…」という方も、どうぞご安心ください。</div>
+      <p>
+        座って・立って観るのも、手拍子で楽しむのも、うしろから眺めているだけでも<span class="soft">大歓迎</span>です。無理に前に出たり、踊ったりする必要はまったくありません。<br><br>
+        もし気が向いたら、少しだけ一緒に体を揺らしてもらえたら嬉しいです。かんたんな振りは当日ゆるっとご案内しますが、<span class="soft">覚えなくてもOK</span>。あなたのペースで、その場を楽しんでいただけたら、それがいちばんです。
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Dress Code</div>
+    <h2>当日の服装について<span class="en">Coming soon</span></h2>
+    <div class="placeholder">
+      <span class="tag">準備中</span>
+      <p>当日の服装（ドレスコード）は、<b>追ってこちらでご案内します。</b><br>決まり次第お知らせしますので、少々お待ちください。</p>
+      <!-- ▼ 衣装ガイドは主催から共有され次第、ここに追記してください -->
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Line-up</div>
+    <h2>出演<span class="en">Live &amp; Guests</span></h2>
+    <div class="line-block">
+      <div class="cap">Live</div>
+      <div class="names">LOVE DIVINE <span style="font-weight:400;color:var(--muted);font-size:14px">（生バンド編成）</span></div>
+    </div>
+    <div class="line-block">
+      <div class="cap">Special Guests</div>
+      <div class="names">M4U ／ aRia</div>
+    </div>
+    <div class="line-block" style="margin-bottom:0">
+      <div class="cap">Band</div>
+      <div class="band">
+        <div class="m"><span class="inst">Drums</span>Marvin Lenoar</div>
+        <div class="m"><span class="inst">Bass</span>Hiroyuki Okubo</div>
+        <div class="m"><span class="inst">Keys</span>Warren Alston</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Time table</div>
+    <h2>当日の流れ<span class="en">Flow</span></h2>
+    <div class="flow">
+      <span class="f">OPEN 7:00PM</span><span class="arw">→</span>
+      <span class="f">ライブ（ゲスト＆生バンド）</span><span class="arw">→</span>
+      <span class="f hi">MV撮影＆ダンスパーティー</span>
+    </div>
+    <p style="font-size:13px; color:var(--dim); margin-top:12px">※ 各パートの時間は当日の進行によって前後します。少し早めのご来場だとうれしいです。</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Information</div>
+    <h2>開催概要<span class="en">Details</span></h2>
+    <div class="info">
+      <div class="row"><span class="k">Date</span><span class="v">2026.7.31（金）</span></div>
+      <div class="row"><span class="k">Open</span><span class="v"><b>7:00PM</b></span></div>
+      <div class="row"><span class="k">Ticket</span><span class="v">一般 <b>¥2,500</b> ／ 25歳以下 <b>¥1,000</b></span></div>
+      <div class="row"><span class="k">Place</span><span class="v">club(O)Utopos（名古屋・新栄）</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Venue</div>
+    <h2>会場・アクセス<span class="en">Access</span></h2>
+    <div class="venue">
+      <h3>club(O)Utopos</h3>
+      <p class="addr">
+        〒460-0007 愛知県名古屋市中区新栄2-47-50<br>
+        地下鉄 新栄町駅／栄駅 から（新栄エリア）
+      </p>
+      <a class="go" href="https://maps.google.com/maps?q=愛知県名古屋市中区新栄2-47-50">Google マップ ↗</a>
+      <a class="go" href="https://www.instagram.com/cluboutopos/">@cluboutopos ↗</a>
+    </div>
+  </section>
+
+  <section style="border-bottom:none">
+    <div class="notice">
+      <span class="lbl">撮影についてのお願い</span>
+      <p>イベント内でMV撮影を行います。会場の様子が映像に使用される場合があります。あらかじめご了承ください。映り込みを控えたい方は、当日スタッフまでお気軽にお声がけください。</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <div class="script">See you on 7.31</div>
+  <div class="sm">LOVE DIVINE ／ Live and Dance Party ／ NEW SINGLE MV SHOOT</div>
+</footer>
+
+</body>
+</html>
