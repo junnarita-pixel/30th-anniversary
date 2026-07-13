@@ -4,6 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>活動・スケジュール | Voices of Vision</title>
+<meta name="description" content="VOVの定期リハーサル（木曜夜・金曜朝・U25）とイベント出演スケジュール、会場アクセスのご案内。">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#6D2B3D">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Voices of Vision">
+<meta property="og:title" content="活動・スケジュール | Voices of Vision">
+<meta property="og:description" content="VOVの定期リハーサル（木曜夜・金曜朝・U25）とイベント出演スケジュール、会場アクセスのご案内。">
+<meta property="og:url" content="https://junnarita-pixel.github.io/30th-anniversary/vov_schedule.html">
+<meta property="og:image" content="https://junnarita-pixel.github.io/30th-anniversary/vov_assets/top-hero-main.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="vov_assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -129,6 +140,26 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 .aff-rakuten .aff-icon{color:#BF0000}
 @media(max-width:860px){.ft-g{grid-template-columns:1fr 1fr;gap:32px}.ft-support{flex-direction:column;text-align:center}}
 
+
+/* ===== ACCESS ===== */
+.access-box{margin-top:14px;display:grid;grid-template-columns:1fr 1.3fr;background:var(--white);box-shadow:0 4px 20px rgba(28,20,16,.07);overflow:hidden}
+.access-info{padding:34px 36px;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.access-eye{font-size:11px;letter-spacing:.3em;color:var(--gold);font-weight:700;text-transform:uppercase}
+.access-info h3{font-family:'Lora',serif;font-size:21px;font-weight:700;color:var(--ink)}
+.access-t{font-size:14px;color:var(--ink-m);line-height:2}
+.access-map iframe{width:100%;height:100%;min-height:280px;border:0;display:block}
+@media(max-width:860px){.access-box{grid-template-columns:1fr}}
+
+/* ===== MOBILE MENU ===== */
+.menu-btn{display:none;background:none;border:0;cursor:pointer;padding:10px;margin:-6px}
+.menu-btn span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;transition:transform .3s,opacity .3s}
+.menu-open .menu-btn span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-open .menu-btn span:nth-child(2){opacity:0}
+.menu-open .menu-btn span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.m-menu{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);border-bottom:2px solid var(--gold);box-shadow:0 14px 30px rgba(28,20,16,.14)}
+.m-menu a{display:block;padding:15px 26px;color:var(--ink-m);text-decoration:none;font-size:14.5px;font-weight:500;border-bottom:1px solid var(--bg3)}
+.m-menu a.m-cta{background:var(--burg);color:var(--white);font-weight:700;text-align:center;letter-spacing:.1em;border-bottom:none}
+@media(max-width:860px){nav ul{display:none}.menu-btn{display:block}.menu-open .m-menu{display:block}}
 </style>
 </head>
 <body>
@@ -145,6 +176,19 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <li><a href="vov_about.html">VOVについて</a></li><li><a href="vov_schedule.html" class="active">スケジュール</a></li><li><a href="vov_gallery.html">ギャラリー</a></li><li><a href="vov_history.html">歴史</a></li><li><a href="vov_posts.html">活動レポート</a></li>
     <li><a href="vov_contact.html" class="nav-cta">体験を申し込む</a></li>
   </ul>
+  <button class="menu-btn" aria-label="メニューを開く" onclick="document.body.classList.toggle('menu-open')">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="m-menu">
+    <a href="vov_top.html">トップ</a>
+    <a href="vov_about.html">VOVについて</a>
+    <a href="vov_schedule.html">活動・スケジュール</a>
+    <a href="vov_gallery.html">ギャラリー・コンサート</a>
+    <a href="vov_history.html">VOVの歩み</a>
+    <a href="vov_posts.html">活動レポート</a>
+    <a href="vov_join.html">入会案内</a>
+    <a href="vov_contact.html" class="m-cta">体験を申し込む</a>
+  </div>
 </nav>
 <div class="phero">
   <p class="phero-eye">Schedule</p>
@@ -184,6 +228,17 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         <div class="fee-price-t">月額 / 一般会員</div>
       </div>
       <p class="fee-desc">月会費制で運用しています。一般会員は月額4,000円で、<strong>どのリハーサルにも参加できます。</strong>ライフスタイルに合わせて参加しやすい時間を選んでください。</p>
+    </div>
+    <div class="access-box">
+      <div class="access-info">
+        <p class="access-eye">Access</p>
+        <h3>リハーサル会場</h3>
+        <p class="access-t"><strong>在日大韓基督教会 名古屋教会 7F</strong><br>名古屋市西区　—　夜リハ・朝リハともにこちらの会場です。<br>見学・体験は事前連絡なしでも大丈夫です。お気軽にお越しください。</p>
+        <a href="https://www.google.com/maps/search/?api=1&query=%E5%9C%A8%E6%97%A5%E5%A4%A7%E9%9F%93%E5%9F%BA%E7%9D%A3%E6%95%99%E4%BC%9A%20%E5%90%8D%E5%8F%A4%E5%B1%8B%E6%95%99%E4%BC%9A" target="_blank" rel="noopener" class="btn-line">Googleマップで開く →</a>
+      </div>
+      <div class="access-map">
+        <iframe src="https://maps.google.com/maps?q=%E5%9C%A8%E6%97%A5%E5%A4%A7%E9%9F%93%E5%9F%BA%E7%9D%A3%E6%95%99%E4%BC%9A%E5%90%8D%E5%8F%A4%E5%B1%8B%E6%95%99%E4%BC%9A&z=16&output=embed" loading="lazy" title="リハーサル会場の地図" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
     </div>
   </div>
 </section>
@@ -232,12 +287,6 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <div>
       <div class="ft-brand">Voices of Vision</div>
       <p class="ft-tag">名古屋を拠点に活動する<br>ゴスペルクワイア。Since 1999</p>
-      <div class="ft-sns">
-        <a href="#" class="sn">f</a>
-        <a href="#" class="sn">ig</a>
-        <a href="#" class="sn">▶</a>
-        <a href="#" class="sn">L</a>
-      </div>
     </div>
     <div class="ft-col">
       <h5>Pages</h5>

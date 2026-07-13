@@ -4,6 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>VOVについて | Voices of Vision</title>
+<meta name="description" content="Voices of Vision（VOV）の理念・指導者・パート構成・リハーサルと会費のご案内。">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#6D2B3D">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Voices of Vision">
+<meta property="og:title" content="VOVについて | Voices of Vision">
+<meta property="og:description" content="Voices of Vision（VOV）の理念・指導者・パート構成・リハーサルと会費のご案内。">
+<meta property="og:url" content="https://junnarita-pixel.github.io/30th-anniversary/vov_about.html">
+<meta property="og:image" content="https://junnarita-pixel.github.io/30th-anniversary/vov_assets/top-hero-main.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="vov_assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -226,6 +237,17 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 .aff-rakuten .aff-icon{color:#BF0000}
 @media(max-width:860px){.ft-g{grid-template-columns:1fr 1fr;gap:32px}.ft-support{flex-direction:column;text-align:center}}
 
+
+/* ===== MOBILE MENU ===== */
+.menu-btn{display:none;background:none;border:0;cursor:pointer;padding:10px;margin:-6px}
+.menu-btn span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;transition:transform .3s,opacity .3s}
+.menu-open .menu-btn span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-open .menu-btn span:nth-child(2){opacity:0}
+.menu-open .menu-btn span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.m-menu{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);border-bottom:2px solid var(--gold);box-shadow:0 14px 30px rgba(28,20,16,.14)}
+.m-menu a{display:block;padding:15px 26px;color:var(--ink-m);text-decoration:none;font-size:14.5px;font-weight:500;border-bottom:1px solid var(--bg3)}
+.m-menu a.m-cta{background:var(--burg);color:var(--white);font-weight:700;text-align:center;letter-spacing:.1em;border-bottom:none}
+@media(max-width:860px){nav ul{display:none}.menu-btn{display:block}.menu-open .m-menu{display:block}}
 </style>
 </head>
 <body>
@@ -248,6 +270,19 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <li><a href="vov_posts.html">活動レポート</a></li>
     <li><a href="vov_contact.html" class="nav-cta">体験を申し込む</a></li>
   </ul>
+  <button class="menu-btn" aria-label="メニューを開く" onclick="document.body.classList.toggle('menu-open')">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="m-menu">
+    <a href="vov_top.html">トップ</a>
+    <a href="vov_about.html">VOVについて</a>
+    <a href="vov_schedule.html">活動・スケジュール</a>
+    <a href="vov_gallery.html">ギャラリー・コンサート</a>
+    <a href="vov_history.html">VOVの歩み</a>
+    <a href="vov_posts.html">活動レポート</a>
+    <a href="vov_join.html">入会案内</a>
+    <a href="vov_contact.html" class="m-cta">体験を申し込む</a>
+  </div>
 </nav>
 
 <!-- PAGE HERO -->
@@ -303,7 +338,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         <div class="leader-body">
           <p class="leader-role">Founder</p>
           <h3 class="leader-name">ラニー・ラッカー</h3>
-          <p class="leader-bio">Voices of Visionの創設者。"Music" "History" "Christianity" の3つの柱を提言し、ゴスペルのルーツに根差した本物のゴスペルを日本に伝え続けている。（プロフィール文は確定後に差し替え）</p>
+          <p class="leader-bio">Voices of Visionの創設者。"Music" "History" "Christianity" の3つの柱を提言し、ゴスペルのルーツに根差した本物のゴスペルを日本に伝え続けている。</p>
         </div>
       </div>
       <div class="leader">
@@ -311,7 +346,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         <div class="leader-body">
           <p class="leader-role">Director</p>
           <h3 class="leader-name">兼松 弘子</h3>
-          <p class="leader-bio">VOVの指導者として、メンバー一人ひとりの声を大切にしながらクワイアを導いている。（プロフィール文は確定後に差し替え）</p>
+          <p class="leader-bio">VOVの指導者として、メンバー一人ひとりの声を大切にしながらクワイアを導いている。</p>
         </div>
       </div>
     </div>
@@ -363,12 +398,12 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       <div class="reh-row">
         <div class="reh-cell name">夜リハーサル</div>
         <div class="reh-cell">毎週木曜日<br>19:00 〜 21:00</div>
-        <div class="reh-cell">在日大韓基督教会 名古屋教会 7F<br>（名古屋市西区）</div>
+        <div class="reh-cell">在日大韓基督教会 名古屋教会 7F<br>（名古屋市西区）<br><a href="https://www.google.com/maps/search/?api=1&query=%E5%9C%A8%E6%97%A5%E5%A4%A7%E9%9F%93%E5%9F%BA%E7%9D%A3%E6%95%99%E4%BC%9A%20%E5%90%8D%E5%8F%A4%E5%B1%8B%E6%95%99%E4%BC%9A" target="_blank" rel="noopener" style="font-size:12.5px;color:var(--gold);font-weight:700;text-decoration:none;border-bottom:1px solid var(--gold)">Googleマップで見る →</a></div>
       </div>
       <div class="reh-row">
         <div class="reh-cell name">朝リハーサル</div>
         <div class="reh-cell">毎週金曜日<br>10:00 〜 12:00</div>
-        <div class="reh-cell">在日大韓基督教会 名古屋教会 7F<br>（名古屋市西区）</div>
+        <div class="reh-cell">在日大韓基督教会 名古屋教会 7F<br>（名古屋市西区）<br><a href="https://www.google.com/maps/search/?api=1&query=%E5%9C%A8%E6%97%A5%E5%A4%A7%E9%9F%93%E5%9F%BA%E7%9D%A3%E6%95%99%E4%BC%9A%20%E5%90%8D%E5%8F%A4%E5%B1%8B%E6%95%99%E4%BC%9A" target="_blank" rel="noopener" style="font-size:12.5px;color:var(--gold);font-weight:700;text-decoration:none;border-bottom:1px solid var(--gold)">Googleマップで見る →</a></div>
       </div>
       <div class="reh-row">
         <div class="reh-cell name">VOV-U25<br>（ユース）</div>
@@ -436,12 +471,6 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <div>
       <div class="ft-brand">Voices of Vision</div>
       <p class="ft-tag">名古屋を拠点に活動する<br>ゴスペルクワイア。Since 1999</p>
-      <div class="ft-sns">
-        <a href="#" class="sn">f</a>
-        <a href="#" class="sn">ig</a>
-        <a href="#" class="sn">▶</a>
-        <a href="#" class="sn">L</a>
-      </div>
     </div>
     <div class="ft-col">
       <h5>Pages</h5>
