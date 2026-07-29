@@ -153,6 +153,39 @@
   .card li::before{content:"▸"; position:absolute; left:0; color:var(--violet)}
   .card li b{color:var(--ink); font-weight:700}
 
+  /* ---------- cutlist ---------- */
+  table.cutlist{width:100%; border-collapse:collapse; margin-top:8px; font-size:13px}
+  table.cutlist th{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--dim);
+    text-align:left; padding:6px 10px; border-bottom:1px solid var(--line2)}
+  table.cutlist td{padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top}
+  table.cutlist td.t{font-family:var(--mono); font-size:12px; color:var(--amber); font-weight:700; white-space:nowrap}
+  table.cutlist td.sec{font-weight:700; color:var(--ink); white-space:nowrap}
+  table.cutlist td.note{color:var(--dim); font-size:12px}
+  .subj{display:inline-block; font-size:11px; font-weight:700; border-radius:5px; padding:1px 7px; margin:1px 3px 1px 0; border:1px solid}
+  .subj.ld{color:var(--magenta); border-color:rgba(236,72,155,.45)}
+  .subj.shinya{color:var(--amber); border-color:rgba(244,183,64,.5)}
+  .subj.band{color:var(--violet); border-color:rgba(146,104,240,.5)}
+  .subj.aud{color:var(--mint); border-color:rgba(84,214,192,.45)}
+  .subj.other{color:var(--muted); border-color:var(--line2)}
+  @media (max-width:640px){ table.cutlist td.sec{white-space:normal} }
+
+  /* ---------- storyboard ---------- */
+  table.sb{width:100%; border-collapse:collapse; margin-top:8px}
+  table.sb td{padding:9px 8px; border-bottom:1px solid var(--line); vertical-align:top; font-size:12.5px}
+  td.sb-th{width:126px} .sb-th img{width:118px; height:auto; border-radius:8px; border:1px solid var(--line2); display:block}
+  td.sb-main .tm{font-family:var(--mono); font-size:11.5px; color:var(--amber); font-weight:700}
+  td.sb-main .nm{font-weight:700; color:var(--ink); font-size:14px; line-height:1.3}
+  td.sb-main .nt{color:var(--dim); font-size:11.5px; margin-top:2px}
+  td.sb-e{width:118px}
+  .ebar{display:flex; align-items:center; gap:6px; margin:3px 0}
+  .ebar .el{font-family:var(--mono); font-size:9px; letter-spacing:.06em; color:var(--dim); width:26px; flex:none}
+  .ebar .tr{flex:1; height:6px; border-radius:4px; background:rgba(255,255,255,.07); overflow:hidden}
+  .ebar .fl{height:100%; border-radius:4px}
+  .ebar.mo .fl{background:linear-gradient(90deg,var(--violet),var(--magenta))}
+  .ebar.au .fl{background:linear-gradient(90deg,var(--amber),var(--brick))}
+  .pk{display:inline-block; font-family:var(--mono); font-size:9.5px; color:var(--mint); border:1px solid rgba(84,214,192,.4); border-radius:4px; padding:0 5px; margin-left:6px; vertical-align:middle}
+  @media (max-width:640px){ td.sb-e{display:none} td.sb-th{width:96px} .sb-th img{width:90px} }
+
   .spec{display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--line); border-radius:12px; overflow:hidden}
   .spec div{padding:12px 16px; border-top:1px solid var(--line); border-right:1px solid var(--line)}
   .spec div:nth-child(-n+2){border-top:none}
@@ -235,7 +268,7 @@
       </div>
       <div class="mood live">
         <h4><span class="dot"></span>LIVE ／ 7.31</h4>
-        <p>会場みんなが主役。振り付けを共有して一緒に踊る参加型。歌唱を軸に、ライブレコーディング（本編用の通し撮り）まで。GoPro含む4カメで会場の熱を一枚に。</p>
+        <p>会場みんなが主役。振り付けを共有して一緒に踊る参加型。歌唱を軸に、ライブレコーディング（本編用の通し撮り）まで。5カメ（操作2＋固定3）で会場の熱を一枚に。</p>
       </div>
     </div>
   </section>
@@ -262,9 +295,11 @@
       <table class="sched">
         <tr><td>12:45</td><td>集合・搬入（機材／照明）</td></tr>
         <tr><td>13:00</td><td>セッティング・ライティング（NANLITE＋背景LED）／カメラテスト</td></tr>
-        <tr><td>13:30</td><td>ダンス練習撮影 — メンバーの練習をそのまま、自然な様子を回す</td></tr>
-        <tr><td>15:00</td><td>スチール撮影 — ポートレート／グループ（鏡・レンガ背景）</td></tr>
-        <tr><td>16:00</td><td>インサート撮り — 表情・手元・小物・アンビエンス</td></tr>
+        <tr><td>13:20</td><td>ダンス練習撮影 — メンバーの練習をそのまま、自然な様子を回す</td></tr>
+        <tr><td>14:40</td><td>スチール撮影 — ポートレート／グループ（鏡・レンガ背景）</td></tr>
+        <tr><td>15:20</td><td>ライティング組み替え（高コントラスト）＋衣装チェンジ</td></tr>
+        <tr><td>15:40</td><td><b>寸劇撮影</b> — ダサいヨシュアさん × おしゃれメンバー3人。リール用に縦位置も押さえる<span class="badge b-check">脚本待ち</span></td></tr>
+        <tr><td>16:30</td><td>インサート撮り — 表情・手元・小物・アンビエンス</td></tr>
         <tr><td>16:45</td><td>撤収・原状回復</td></tr>
         <tr><td>17:00</td><td>終了</td></tr>
       </table>
@@ -273,23 +308,25 @@
     <div class="day d2">
       <div class="day-top">
         <span class="day-tag">Day 2 ／ Live</span>
-        <span class="day-date">7.31<small>（金）時間 <span class="badge b-check">要確認</span></small></span>
+        <span class="day-date">7.31<small>（金）13:00 会場入り〜23:00 完全撤収</small></span>
         <span class="day-where"><b>Club (O) Utopos</b><br>名古屋・新栄</span>
       </div>
       <div class="crew">
         <span class="lbl">Crew</span>
-        <span class="role">成田淳&nbsp;<b>Cam A ／ フロア・寄り</b></span>
-        <span class="role">カメラマン&nbsp;<b>Cam B ／ 2F・引き</b></span>
-        <span class="role">カメラマン&nbsp;<b>Cam C ／ ステージ・別アングル</b></span>
-        <span class="role">GoPro&nbsp;<b>Cam D ／ 定点POV</b></span>
-        <span class="role">4カメ体制</span>
+        <span class="role">成田淳&nbsp;<b>Cam A ／ フロア・寄り（R6 II）</b></span>
+        <span class="role">アシスタント&nbsp;<b>Cam D ／ 客席（Osmo Pocket 3）</b></span>
+        <span class="role">固定3台&nbsp;<b>B・C・E</b></span>
+        <span class="role">5カメ体制（操作2＋固定3）</span>
       </div>
       <table class="sched">
-        <tr><td>早め入り</td><td>会場入り・4カメ位置決め・セッティング（2Fバルコニー／フロア／ステージサイド／GoPro定点）<span class="badge b-check">要確認</span></td></tr>
-        <tr><td>ライブ</td><td>本番 — 全<b>4曲</b>（New Jack Swing）。4カメでステージ＆客席の熱を回す</td></tr>
+        <tr><td>13:00</td><td>主催・バンド 会場入り（リハ・仕込み）</td></tr>
+        <tr><td>15:00–16:00</td><td><b>撮影チーム入り</b> — 5カメ位置決め・セッティング（2Fバルコニー／会場後方／ステージ前／フロア）・フリッカーテスト・WB実測・リハ撮影テスト</td></tr>
+        <tr><td>19:00</td><td>OPEN</td></tr>
+        <tr><td>ライブ</td><td>本番 — 全<b>4曲</b>（New Jack Swing）。5カメでステージ＆客席の熱を回す</td></tr>
         <tr><td>曲間</td><td>撮影タイム（<b>2〜3回</b>）— 会場と一緒に振り付け／みんなで踊る（練習風景もOK）</td></tr>
-        <tr><td>終演後</td><td>アンコールで、もう一度撮る</td></tr>
-        <tr><td>PV撮影</td><td><b>ライブレコーディング（〜30分）</b> — 会場にディレクションし、丸っと通しで撮る（本編用の決めカット）</td></tr>
+        <tr><td>終演前後</td><td>アンコールで、もう一度撮る → <b>ライブレコーディング（〜30分）</b>：会場にディレクションし、丸っと通しで撮る（本編用の決めカット）</td></tr>
+        <tr><td>22:00</td><td>ライブ終了</td></tr>
+        <tr><td>23:00</td><td><b>完全撤収</b></td></tr>
       </table>
       <div class="dresscode">
         <span class="dc-lbl">Dress Code</span>
@@ -297,7 +334,7 @@
         <span class="dc-note">お客さんにも事前依頼。「私も参加した」役目を担ってもらう参加型。</span>
       </div>
     </div>
-    <p style="font-size:12.5px; color:var(--dim); margin-top:6px">※ ライブの開場・本番時間は要確認。早めに会場入りして仕込み。上記は現時点の想定です。</p>
+    <p style="font-size:12.5px; color:var(--dim); margin-top:6px">※ 13:00入り・22:00終了・23:00完全撤収は確定情報。撮影チームは15:00–16:00に入ってカメラ準備。OPEN 19:00（フライヤー掲載）。</p>
   </section>
 
   <!-- 03 VENUES -->
@@ -339,69 +376,68 @@
     </div>
 
     <div class="camplan">
-      <div class="camplan-h"><h3>カメラ配置図</h3><span class="kind">Camera Plan ／ 4 CAM</span></div>
-      <p class="camplan-sub">GoPro含む4カメの想定配置（俯瞰）。ステージ正面のフロア＋2Fバルコニーの高さを活かした構成。</p>
-      <svg viewBox="0 0 680 480" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
-        <!-- venue outline -->
-        <rect x="20" y="20" width="640" height="440" rx="16" fill="#17111F" stroke="rgba(255,255,255,.12)"/>
-        <!-- stage -->
+      <div class="camplan-h"><h3>カメラ配置図</h3><span class="kind">Camera Plan ／ 5 CAM</span></div>
+      <p class="camplan-sub">全機材を自前で用意する条件下での配置（俯瞰）。操作は2台（A＝成田／D＝アシスタント）、残り3台（B・C・E）は固定・無人で回しっぱなし。</p>
+      <svg viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+        <rect x="20" y="20" width="640" height="460" rx="16" fill="#17111F" stroke="rgba(255,255,255,.12)"/>
         <rect x="150" y="36" width="380" height="74" rx="8" fill="rgba(224,103,74,.16)" stroke="#E0674A" stroke-width="1.5"/>
         <text x="340" y="70" text-anchor="middle" fill="#EFE9F2" font-size="17" font-weight="700">ステージ</text>
         <text x="340" y="92" text-anchor="middle" fill="#E0674A" font-size="11" letter-spacing="3" font-family="'Space Mono',monospace">STAGE</text>
-        <!-- floor label -->
-        <text x="330" y="232" text-anchor="middle" fill="#A99FB5" font-size="14" font-weight="700">1F フロア</text>
-        <text x="330" y="252" text-anchor="middle" fill="#7C7288" font-size="12">客席・ダンス（参加型）</text>
-        <!-- mirror ball -->
-        <circle cx="576" cy="150" r="11" fill="none" stroke="#9268F0" stroke-width="1"/>
-        <line x1="576" y1="139" x2="576" y2="161" stroke="#9268F0" stroke-width=".6"/>
-        <line x1="565" y1="150" x2="587" y2="150" stroke="#9268F0" stroke-width=".6"/>
-        <text x="576" y="178" text-anchor="middle" fill="#7C7288" font-size="10">ミラーボール</text>
-        <!-- 2F balcony -->
-        <rect x="44" y="356" width="592" height="100" rx="10" fill="rgba(146,104,240,.10)" stroke="#9268F0" stroke-width="1.2" stroke-dasharray="5 4"/>
-        <text x="340" y="392" text-anchor="middle" fill="#C9BEE6" font-size="13" font-weight="700">2F バルコニー</text>
-        <text x="340" y="410" text-anchor="middle" fill="#7C7288" font-size="11">上階・ステージを見下ろせる</text>
+        <text x="300" y="214" text-anchor="middle" fill="#A99FB5" font-size="14" font-weight="700">1F フロア</text>
+        <text x="300" y="233" text-anchor="middle" fill="#7C7288" font-size="11.5">客席・ダンス（参加型）</text>
+        <circle cx="596" cy="150" r="11" fill="none" stroke="#9268F0" stroke-width="1"/>
+        <line x1="596" y1="139" x2="596" y2="161" stroke="#9268F0" stroke-width=".6"/>
+        <line x1="585" y1="150" x2="607" y2="150" stroke="#9268F0" stroke-width=".6"/>
+        <text x="596" y="177" text-anchor="middle" fill="#7C7288" font-size="10">ミラーボール</text>
+        <rect x="44" y="382" width="592" height="94" rx="10" fill="rgba(146,104,240,.10)" stroke="#9268F0" stroke-width="1.2" stroke-dasharray="5 4"/>
+        <text x="300" y="416" text-anchor="middle" fill="#C9BEE6" font-size="13" font-weight="700">2F バルコニー</text>
+        <text x="300" y="434" text-anchor="middle" fill="#7C7288" font-size="11">上階・ステージを見下ろせる</text>
 
-        <!-- ===== arrows ===== -->
-        <!-- C: stage side, point right -->
-        <line x1="112" y1="80" x2="146" y2="80" stroke="#F4B740" stroke-width="2"/>
-        <polygon points="146,80 138,76 138,84" fill="#F4B740"/>
-        <!-- D GoPro: stage front, point down into floor -->
-        <line x1="340" y1="136" x2="340" y2="172" stroke="#54D6C0" stroke-width="2"/>
-        <polygon points="340,172 336,164 344,164" fill="#54D6C0"/>
-        <!-- A: floor, point up to stage -->
-        <line x1="452" y1="250" x2="452" y2="150" stroke="#EC489B" stroke-width="2" stroke-dasharray="2 4"/>
-        <polygon points="452,150 448,158 456,158" fill="#EC489B"/>
-        <!-- B: balcony, point up to stage -->
-        <line x1="528" y1="404" x2="528" y2="150" stroke="#9268F0" stroke-width="2"/>
+        <!-- arrows -->
+        <line x1="340" y1="136" x2="340" y2="176" stroke="#7FB2FF" stroke-width="2"/>
+        <polygon points="340,176 336,168 344,168" fill="#7FB2FF"/>
+        <line x1="470" y1="248" x2="470" y2="150" stroke="#EC489B" stroke-width="2" stroke-dasharray="2 4"/>
+        <polygon points="470,150 466,158 474,158" fill="#EC489B"/>
+        <line x1="152" y1="286" x2="152" y2="150" stroke="#54D6C0" stroke-width="2" stroke-dasharray="2 4"/>
+        <polygon points="152,150 148,158 156,158" fill="#54D6C0"/>
+        <line x1="600" y1="316" x2="600" y2="196" stroke="#8A8296" stroke-width="1.6"/>
+        <polygon points="600,196 596,204 604,204" fill="#8A8296"/>
+        <line x1="528" y1="430" x2="528" y2="150" stroke="#9268F0" stroke-width="2"/>
         <polygon points="528,150 524,158 532,158" fill="#9268F0"/>
 
-        <!-- ===== pins ===== -->
-        <!-- C -->
-        <circle cx="96" cy="80" r="14" fill="#F4B740" stroke="#120d18" stroke-width="1.5"/>
-        <text x="96" y="85" text-anchor="middle" fill="#120d18" font-size="13" font-weight="700" font-family="'Space Mono',monospace">C</text>
-        <text x="96" y="112" text-anchor="middle" fill="#EFE9F2" font-size="11">ステージ横</text>
-        <!-- D -->
-        <circle cx="340" cy="122" r="14" fill="#54D6C0" stroke="#120d18" stroke-width="1.5"/>
-        <text x="340" y="127" text-anchor="middle" fill="#120d18" font-size="13" font-weight="700" font-family="'Space Mono',monospace">D</text>
-        <text x="392" y="122" text-anchor="middle" fill="#54D6C0" font-size="11" font-weight="700">GoPro</text>
-        <!-- A -->
-        <circle cx="452" cy="264" r="22" fill="none" stroke="#EC489B" stroke-width="1" stroke-dasharray="3 3" opacity=".7"/>
-        <circle cx="452" cy="264" r="14" fill="#EC489B" stroke="#120d18" stroke-width="1.5"/>
-        <text x="452" y="269" text-anchor="middle" fill="#120d18" font-size="13" font-weight="700" font-family="'Space Mono',monospace">A</text>
-        <text x="452" y="300" text-anchor="middle" fill="#EFE9F2" font-size="11">フロア（移動）</text>
-        <!-- B -->
-        <circle cx="528" cy="420" r="14" fill="#9268F0" stroke="#120d18" stroke-width="1.5"/>
-        <text x="528" y="425" text-anchor="middle" fill="#120d18" font-size="13" font-weight="700" font-family="'Space Mono',monospace">B</text>
-        <text x="528" y="447" text-anchor="middle" fill="#C9BEE6" font-size="11">2F 引き</text>
+        <!-- pins -->
+
+        <circle cx="340" cy="122" r="14" fill="#7FB2FF" stroke="#120d18" stroke-width="1.5"/>
+        <text x="340" y="127" text-anchor="middle" fill="#120d18" font-size="13" font-weight="700" font-family="'Space Mono',monospace">E</text>
+        <text x="394" y="121" text-anchor="middle" fill="#7FB2FF" font-size="10.5" font-weight="700">GoPro 固定</text>
+
+        <circle cx="470" cy="262" r="22" fill="none" stroke="#EC489B" stroke-width="1" stroke-dasharray="3 3" opacity=".7"/>
+        <circle cx="470" cy="262" r="14" fill="#EC489B" stroke="#120d18" stroke-width="1.5"/>
+        <text x="470" y="267" text-anchor="middle" fill="#120d18" font-size="13" font-weight="700" font-family="'Space Mono',monospace">A</text>
+        <text x="470" y="298" text-anchor="middle" fill="#EFE9F2" font-size="10.5">成田／R6・移動</text>
+
+        <circle cx="152" cy="300" r="22" fill="none" stroke="#54D6C0" stroke-width="1" stroke-dasharray="3 3" opacity=".7"/>
+        <circle cx="152" cy="300" r="14" fill="#54D6C0" stroke="#120d18" stroke-width="1.5"/>
+        <text x="152" y="305" text-anchor="middle" fill="#120d18" font-size="13" font-weight="700" font-family="'Space Mono',monospace">D</text>
+        <text x="152" y="336" text-anchor="middle" fill="#54D6C0" font-size="10.5">Pocket3・客席（アシスタント）</text>
+
+        <circle cx="600" cy="330" r="14" fill="#8A8296" stroke="#120d18" stroke-width="1.5"/>
+        <text x="600" y="335" text-anchor="middle" fill="#120d18" font-size="13" font-weight="700" font-family="'Space Mono',monospace">C</text>
+        <text x="600" y="357" text-anchor="middle" fill="#A99FB5" font-size="10.5">後方・SD固定（引き保険）</text>
+
+        <circle cx="528" cy="446" r="14" fill="#9268F0" stroke="#120d18" stroke-width="1.5"/>
+        <text x="528" y="451" text-anchor="middle" fill="#120d18" font-size="13" font-weight="700" font-family="'Space Mono',monospace">B</text>
+        <text x="528" y="470" text-anchor="middle" fill="#C9BEE6" font-size="10.5">2F 全景マスター（固定）</text>
       </svg>
 
       <div class="cam-legend">
-        <div class="ci"><span class="pin" style="background:#EC489B">A</span><span class="ct"><b>成田 ／ フロア</b><small>ハンドヘルドで移動。歌唱の寄り＋踊る客席の断片。</small></span></div>
-        <div class="ci"><span class="pin" style="background:#9268F0">B</span><span class="ct"><b>2F バルコニー ／ 引き</b><small>ステージ全景と会場の熱を上階から固定〜微パン。</small></span></div>
-        <div class="ci"><span class="pin" style="background:#F4B740">C</span><span class="ct"><b>ステージ横 ／ 別アングル</b><small>サイド・寄りでパフォーマンスを押さえる。</small></span></div>
-        <div class="ci"><span class="pin" style="background:#54D6C0">D</span><span class="ct"><b>GoPro ／ 定点POV</b><small>ステージ前から客席へ。広角で参加の熱を回しっぱなし。</small></span></div>
+        <div class="ci"><span class="pin" style="background:#EC489B">A</span><span class="ct"><b>R6 Mark II ／ フロア（成田・操作）</b><small>24-70 f2.8。歌唱の寄り、慎也・Samのソロ、客席の表情。本編の主戦力</small></span></div>
+        <div class="ci"><span class="pin" style="background:#9268F0">B</span><span class="ct"><b>PowerShot V1 ／ 2Fバルコニー（固定）</b><small>16mm側で全景マスター。開演〜終演まで回しっぱなし。AとC-Log 3で色が揃う</small></span></div>
+        <div class="ci"><span class="pin" style="background:#8A8296">C</span><span class="ct"><b>Sony NXCAM ／ 後方（固定）</b><small>バックアップの引き。Bが落ちた時の保険。90sテクスチャーにも使える</small></span></div>
+        <div class="ci"><span class="pin" style="background:#54D6C0">D</span><span class="ct"><b>Osmo Pocket 3 ／ 客席（アシスタント・操作）</b><small>ジンバル内蔵で歩き撮りに強い。「参加している」質感を担当</small></span></div>
+        <div class="ci"><span class="pin" style="background:#7FB2FF">E</span><span class="ct"><b>GoPro 11 ／ ステージ前（固定）</b><small>超広角POVで客席へ。USB給電。要所のインサート用</small></span></div>
       </div>
-      <p class="venue-note" style="margin-top:14px"><b>要確認</b>　会場HPのレイアウト図をもとに、当日ステージ位置・導線に合わせて微調整。上記は想定配置です。電源・配線とお客さんの導線（フロアの移動）に注意。</p>
+      <p class="venue-note" style="margin-top:14px"><b>要確認</b>　会場HPのレイアウト図をもとに、当日ステージ位置・導線に合わせて微調整。電源・配線とお客さんの導線に注意。固定機は無人のため、本番前に画角を最終確認。</p>
     </div>
   </section>
 
@@ -423,21 +459,49 @@
     </div>
 
     <div class="card">
-      <h4><span class="num">L</span>ライブ（7/31）— 4カメ（GoPro含む）・ライブレコーディング</h4>
+      <h4><span class="num">L</span>ライブ（7/31）— 5カメ（操作2＋固定3）・ライブレコーディング</h4>
       <ul>
-        <li><b>Cam A（成田・フロア）</b>：ハンドヘルドで機動的に。歌唱の寄り＋踊る客席の断片。</li>
-        <li><b>Cam B（2F・引き）</b>：バルコニーからステージ全景と会場の熱を引きで固定〜微パン。</li>
-        <li><b>Cam C（ステージ・別アングル）</b>：寄り／サイドからパフォーマンスを押さえる。</li>
-        <li><b>Cam D（GoPro・定点POV）</b>：ステージ前から客席へ／広角の定点。踊る会場の“参加”の熱を捨てカメで回しっぱなし。</li>
+        <li><b>Cam A（R6 II・成田／フロア）</b>：ハンドヘルドで機動的に。歌唱の寄り＋踊る客席の断片。</li>
+        <li><b>Cam B（PowerShot V1・2F固定）</b>：バルコニーからステージ全景。開演〜終演まで回しっぱなしの全景マスター。</li>
+        <li><b>Cam C（Sony NXCAM・後方固定）</b>：バックアップの引き。<b>SD画質は90sテクスチャーとしても使える</b>。</li>
+        <li><b>Cam D（Osmo Pocket 3・アシスタント）</b>：客席まわり。「参加している」質感を拾う。</li>
+        <li><b>Cam E（GoPro 11・固定）</b>：ステージ前から客席へ超広角の定点。回しっぱなし。</li>
         <li><b>ライブレコーディング</b>：最後にPV撮影として会場にディレクションし、丸っと通しで撮る（本編の決めカット）。</li>
         <li><b>曲間に2〜3回＋アンコール</b>でも撮影。歌唱を軸に、踊るカットを groove に乗せて細かくつなぐ前提で集める。</li>
       </ul>
     </div>
 
     <div class="card">
+      <h4><span class="num">♪</span>「我爱你」曲構成 × セクション別の狙い <span style="font-family:var(--mono);font-size:11px;color:var(--dim);font-weight:400;letter-spacing:.06em">Shinyaさん共有のカット表（7/22）</span></h4>
+      <p style="font-size:13px; color:var(--muted); margin-bottom:10px">曲は約4:04・BPM 112。振付は<a href="https://www.youtube.com/watch?v=mwu7g8kkEwU">振付動画 ↗</a>を参照。<b>B・C・Eは回しっぱなし、Dは客席まわりを担当</b>するので、下表は「Aで何を狙うか」の順番です。カット割り（何秒で切るか）は編集で決めます。</p>
+      <p style="margin-bottom:12px"><a href="LOVE_DIVINE_MV03_撮影計画.html" style="display:inline-block;font-size:13.5px;font-weight:700;border:1px solid rgba(236,72,155,.5);border-radius:100px;padding:7px 16px;background:rgba(236,72,155,.1)">▶ 撮影計画（2名体制の詳細・当日の段取り）を開く ↗</a></p>
+      <table class="cutlist">
+        <tr><th>TC</th><th>Section</th><th>Shinyaさん指定</th><th>Aで狙うもの</th></tr>
+        <tr><td class="t">0:02</td><td class="sec">Intro</td><td class="note">Drums, Band, LD</td><td class="note">ドラム → キーボード（0:12）→ LD</td></tr>
+        <tr><td class="t">0:19</td><td class="sec">Intro – Band In</td><td class="note">Love Divine, Band</td><td class="note">LD登場。引き気味から入る</td></tr>
+        <tr><td class="t">0:35</td><td class="sec">Verse 1</td><td class="note">慎也, LD, Band, 客</td><td class="note">慎也の歌唱・寄り</td></tr>
+        <tr><td class="t">0:52</td><td class="sec">Pre Chorus</td><td class="note">Love Divine, 客</td><td class="note">LD → 振り返って客席の反応</td></tr>
+        <tr><td class="t">1:10</td><td class="sec">Chorus</td><td class="note">Love Divine, 客</td><td class="note">サビ頭。LD正面</td></tr>
+        <tr><td class="t">1:26</td><td class="sec">Post Chorus</td><td class="note">LD, Band, 客</td><td class="note">バンド寄り</td></tr>
+        <tr><td class="t">1:43</td><td class="sec">Verse 2</td><td class="note">慎也, LD, Band, 客</td><td class="note">慎也 → LD（1:46）</td></tr>
+        <tr><td class="t">2:00</td><td class="sec">Pre Chorus</td><td class="note">Love Divine, 客</td><td class="note">客席の熱。ここから動きが増える</td></tr>
+        <tr><td class="t">2:18</td><td class="sec">Chorus 2 ★</td><td class="note">Love Divine, 客</td><td class="note"><b>倍サビ・33秒と長い。本編の芯。</b>客と一緒に踊る画を確実に</td></tr>
+        <tr><td class="t">2:51</td><td class="sec">Post Chorus</td><td class="note">LD, Band, 客</td><td class="note">音が最大。バンドの鳴りどころ</td></tr>
+        <tr><td class="t">3:07</td><td class="sec">Guitar Solo</td><td class="note">慎也, Band</td><td class="note">慎也のソロ・寄り。3:25にドラムのフィル</td></tr>
+        <tr><td class="t">3:25</td><td class="sec">Post Chorus</td><td class="note">LD, Band, 客</td><td class="note">LD＋客</td></tr>
+        <tr><td class="t">3:42</td><td class="sec">Bridge ★</td><td class="note">Sam, LD, 客</td><td class="note"><b>振付の動きが全曲で最大。</b>Sam → 会場全体。引きはB</td></tr>
+      </table>
+      <ul style="margin-top:12px">
+        <li><b>同じ曲を最低2回撮れる</b>（ライブ本番＋最後のPV撮影の通し）。1回目は演出せず生の熱を、2回目で<b>2:18と3:42だけ</b>を確実に。</li>
+        <li><b>★の2箇所が本編の芯。</b>Chorus 2（倍サビ）と Bridge（動き最大）。ここに素材を厚く割く。</li>
+        <li>カメラ割りの目安：慎也・Samのソロ＝A の寄り、Band・Drumsフィル＝A、客＝D＋E、全体＝B（保険でC）。</li>
+      </ul>
+    </div>
+
+    <div class="card">
       <h4><span class="num">P</span>参加型ディレクション</h4>
       <ul>
-        <li><b>振り付けを会場と共有</b>し、みんなで一緒に踊る。練習風景もそのまま撮ってOK。</li>
+        <li><b>振り付けを会場と共有</b>し、みんなで一緒に踊る。練習風景もそのまま撮ってOK。参考：<a href="https://www.youtube.com/watch?v=mwu7g8kkEwU">WO AI NI 振付動画 ↗</a></li>
         <li><b>ドレスコード＝モノトーン＋デニム</b>。お客さんにも事前依頼、「私も参加した」役目を担ってもらう。</li>
         <li>気軽に参加できるけど、“一緒に参加した”実感を見せる。<b>全員が盛り上がる主役</b>。</li>
         <li>盛り上がっている人・いいキャラクターの人を、<b>その場でディレクション</b>しながらキャッチ。</li>
@@ -447,8 +511,8 @@
     <div class="card">
       <h4><span class="num">＋</span>寸劇イントロ & BTS</h4>
       <ul>
-        <li><b>冒頭に数十秒の寸劇。</b>高コントラストで、“ダサいヨシュアさん” × “おしゃれなメンバー3人”。<b>リール動画にも転用</b>。</li>
-        <li>ラーちゃんがヨシュアさんにダメ出しする様子など、<b>素のやりとり（BTS）</b>も差し込む。</li>
+        <li><b>冒頭に数十秒の寸劇。</b><b>7/30 スタジオで撮影</b>（香盤 15:40〜）。高コントラストで、“ダサいヨシュアさん” × “おしゃれなメンバー3人”。<b>リール動画にも転用</b>（縦位置も押さえる）。<span class="badge b-plan">脚本：Shinyaさん作成中</span></li>
+        <li>ヨシュアさんがダーちゃんにダメ出しする様子など、<b>素のやりとり（BTS）</b>も差し込む。</li>
       </ul>
     </div>
 
@@ -490,11 +554,22 @@
     </div>
 
     <div class="card">
-      <h4><span class="num">＋</span>その他の想定</h4>
+      <h4><span class="num">＋</span>カメラ機材（すべて自前）</h4>
+      <p style="font-size:13px;color:var(--brick);background:rgba(224,103,74,.12);border:1px solid rgba(224,103,74,.35);border-radius:10px;padding:11px 14px;margin-bottom:12px">
+        <b>ご了承ください：</b>今回は予算の都合により、<b>カメラ・機材はすべて自前で用意</b>しています。放送用マルチカム機材やカメラマンの増員は含まれないため、<b>ご要望のすべてに応えられるわけではありません。</b>会場が暗く、オペレーターも限られる（成田＋アシスタント1名）ため、無人の固定カメラを併用した構成としています。
+      </p>
       <ul>
-        <li>ライブは<b>4カメ</b>（成田＋カメラマン2名＋GoPro定点）。スタジオは成田＋小池の<b>2名</b>。</li>
-        <li>スチール用の準備（スタジオ）。予備バッテリー／メディア／三脚・ジンバル等は各自。</li>
-        <li>会場の既存照明（ミラーボール・カラーライト）を積極活用し、持込ライトは補助・演出で。</li>
+        <li><b>Canon R6 Mark II</b>＋24-70mm f/2.8 — Cam A。最も暗所に強く、主戦力。曲中のレンズ交換はしない</li>
+        <li><b>Canon PowerShot V1</b> — Cam B。2F固定の全景マスター。冷却ファン＋USB給電で長回し。<b>AとC-Log 3で色が揃う</b></li>
+        <li><b>Sony NXCAM（SD）</b> — Cam C。後方固定でバックアップの引き。90sテクスチャーにも使える</li>
+        <li><b>DJI Osmo Pocket 3</b> — Cam D。アシスタントが客席まわりを担当</li>
+        <li><b>GoPro HERO11</b> — Cam E。超広角の固定POV（USB給電必須）</li>
+        <li style="color:var(--dim)">FUJIFILM X-T4 / X-S10、Roland V-1HD — 色の系統と操作要員の都合により今回は使用しません</li>
+      </ul>
+      <ul style="margin-top:10px">
+        <li><b>統一設定</b>：4K/30p・シャッター1/60（名古屋＝60Hz）・<b>WBは手動固定（AWB禁止）</b>。24pにする場合は仕込み中にフリッカーテスト必須</li>
+        <li><b>同期</b>：本番の頭で手拍子／スレート。卓からラインアウトをリファレンス録り</li>
+        <li>ライブは<b>操作2台（A＝成田／D＝アシスタント）＋固定3台</b>。スタジオは成田＋小池の<b>2名</b>。会場の既存照明（ミラーボール・カラーライト）を活かし、持込ライトは補助・演出で</li>
       </ul>
     </div>
   </section>
@@ -506,40 +581,40 @@
       <div><h2>制作スケジュール<span class="en">Production Timeline</span></h2></div>
     </div>
     <div class="tl">
-      <div class="tl-item">
-        <div class="tl-when">〜 7/28</div>
-        <div class="tl-what">事前準備 — 香盤・段取り確定、会場予約確定（スタジオ／ライブ枠）、デモ音源・曲尺の共有 <span class="badge b-check">要確認</span></div>
-      </div>
       <div class="tl-item done">
+        <div class="tl-when">〜 7/29</div>
+        <div class="tl-what">事前準備 <small>／ 振付動画 共有済（7/18）・曲構成＆カット表 共有済（7/22）・当日タイムライン確定</small><br><div class="tl-what" style="margin-top:2px"><small>残：寸劇の脚本（Shinyaさん作成中）<span class="badge b-check">待ち</span></small></div></div>
+      </div>
+      <div class="tl-item">
         <div class="tl-when">7/30（木）</div>
         <div class="tl-what">スタジオ撮影 <small>／ DANCE SPACE 007・13:00–17:00</small></div>
       </div>
-      <div class="tl-item done">
+      <div class="tl-item">
         <div class="tl-when">7/31（金）</div>
-        <div class="tl-what">ライブ撮影 <small>／ club (O) Utopos</small></div>
+        <div class="tl-what">ライブ撮影 <small>／ club (O) Utopos・13:00入り（撮影チーム15:00–16:00）〜23:00撤収</small></div>
       </div>
       <div class="tl-item">
-        <div class="tl-when">8月 上旬</div>
-        <div class="tl-what">素材整理・セレクト <small>／ 2日分のデータ確認・ベストテイク抽出</small></div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-when">8月 中旬</div>
-        <div class="tl-what">初稿編集 <small>／ 構成・カット編集・カラー・音調整</small></div>
+        <div class="tl-when">8月 上旬〜中旬</div>
+        <div class="tl-what">素材整理・セレクト・編集 <small>／ 2日分のデータ確認、ベストテイク抽出、5台分の同期とカラーマッチング、構成・カット編集</small></div>
       </div>
       <div class="tl-item">
         <div class="tl-when">8月 下旬</div>
-        <div class="tl-what">修正 <small>／ 本編納品後2回まで無償</small></div>
+        <div class="tl-what"><b>映像 初稿のご確認</b> <small>／ 構成・カット編集・カラー・音調整を含む</small></div>
       </div>
       <div class="tl-item">
-        <div class="tl-when">8月末〜9月上旬</div>
-        <div class="tl-what">本編納品 <span class="badge b-plan">目安</span></div>
+        <div class="tl-when">9月 上旬〜中旬</div>
+        <div class="tl-what">修正対応 <small>／ 2回まで無償。以降は別途お見積り</small></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">9月中</div>
+        <div class="tl-what"><b>本編 納品</b> <span class="badge b-plan">目安</span></div>
       </div>
     </div>
     <div class="legend">
       <span><span class="badge b-check">要確認</span>先方・会場と確定が必要</span>
       <span><span class="badge b-plan">案 / 目安</span>現時点の想定・要相談</span>
     </div>
-    <p style="font-size:12.5px; color:var(--dim); margin-top:14px">※ 制作スケジュールは目安です。正式な納品希望日があれば、それに合わせて調整します。</p>
+    <p style="font-size:12.5px; color:var(--dim); margin-top:14px">※ 8月下旬に映像の初稿をご確認いただき、9月中の納品を目安としています。正式な公開希望日があれば、それに合わせて調整します。</p>
   </section>
 
 </main>
