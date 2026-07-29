@@ -225,6 +225,71 @@
     .reveal{opacity:0; transform:translateY(14px); animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
     @keyframes rise{to{opacity:1; transform:none}}
   }
+
+  /* ---------- tabs ---------- */
+  .tabs{display:flex; gap:8px; padding:18px 22px 0; max-width:960px; margin:0 auto; flex-wrap:wrap}
+  .tab{font-family:var(--mono); font-size:13px; font-weight:700; letter-spacing:.04em;
+    color:var(--muted); background:transparent; border:1px solid var(--line2); border-radius:100px;
+    padding:9px 20px; cursor:pointer; transition:color .18s, border-color .18s, background .18s}
+  .tab:hover{color:var(--ink); border-color:var(--line2)}
+  .tab[aria-selected="true"]{color:#151019; background:var(--magenta); border-color:transparent}
+  .tab .jp{font-family:var(--body)}
+  .panel[hidden]{display:none}
+
+  /* ---------- 撮影計画 tab (scoped) ---------- */
+#panel-plan{--bg:#12121A;--bg2:#1A1A24;--bg3:#23232F;--ink:#ECEAF0;--muted:#A5A0AE;--dim:#79737F;
+    --line:rgba(255,255,255,.10);--line2:rgba(255,255,255,.18);
+    --key:#E8543F;--ok:#4FBF9F;--warn:#E8B23F;--cool:#6E8FD8;
+    --body:"Noto Sans JP",system-ui,sans-serif;--mono:"Space Mono",ui-monospace,monospace}
+#panel-plan *{box-sizing:border-box;margin:0;padding:0}
+#panel-plan{color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.75}
+#panel-plan .wrap{max-width:840px;margin:0 auto;padding:0 20px}
+#panel-plan h1{font-size:clamp(24px,5vw,34px);font-weight:900;line-height:1.2;margin-bottom:6px}
+#panel-plan .sub{color:var(--muted);font-size:14px}
+#panel-plan header{padding:38px 0 26px;border-bottom:2px solid var(--key)}
+#panel-plan section{padding:30px 0;border-bottom:1px solid var(--line)}
+#panel-plan h2{font-size:19px;font-weight:900;margin-bottom:4px;display:flex;align-items:center;gap:10px}
+#panel-plan h2 .n{font-family:var(--mono);font-size:12px;color:var(--key);border:1px solid var(--key);border-radius:5px;padding:2px 8px}
+#panel-plan .lead{color:var(--muted);font-size:13.5px;margin-bottom:16px}
+#panel-plan .box{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px}
+#panel-plan .box.key{border-left:3px solid var(--key)}
+#panel-plan .box.ok{border-left:3px solid var(--ok)}
+#panel-plan .box.warn{border-left:3px solid var(--warn)}
+#panel-plan .box h4{font-size:15px;font-weight:700;margin-bottom:6px}
+#panel-plan ul{list-style:none}
+#panel-plan li{position:relative;padding-left:16px;margin:5px 0;font-size:14px;color:var(--muted)}
+#panel-plan li::before{content:"–";position:absolute;left:0;color:var(--dim)}
+#panel-plan li b{color:var(--ink)}
+#panel-plan table{width:100%;border-collapse:collapse;font-size:13.5px}
+#panel-plan th{text-align:left;font-size:11px;letter-spacing:.08em;color:var(--dim);font-family:var(--mono);
+     text-transform:uppercase;padding:7px 9px;border-bottom:1px solid var(--line2)}
+#panel-plan td{padding:9px;border-bottom:1px solid var(--line);vertical-align:top}
+#panel-plan td.tc{font-family:var(--mono);font-size:12.5px;color:var(--warn);white-space:nowrap;font-weight:700}
+#panel-plan td.sec{font-weight:700;white-space:nowrap}
+#panel-plan td.m{color:var(--muted);font-size:13px}
+#panel-plan tr.star td{background:rgba(232,84,63,.09)}
+#panel-plan .star-tag{display:inline-block;font-size:10px;font-family:var(--mono);color:var(--key);
+    border:1px solid var(--key);border-radius:4px;padding:0 5px;margin-left:6px}
+#panel-plan .cam{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;
+    border-radius:4px;padding:1px 7px;border:1px solid}
+#panel-plan .cam.a{color:var(--key);border-color:var(--key)}
+#panel-plan .cam.b{color:var(--cool);border-color:var(--cool)}
+#panel-plan .cam.c{color:var(--ok);border-color:var(--ok)}
+#panel-plan .cam.d{color:#C88FD8;border-color:#C88FD8}
+#panel-plan .cam.e{color:var(--warn);border-color:var(--warn)}
+#panel-plan .role{display:grid;grid-template-columns:88px 1fr;gap:8px 14px;font-size:14px}
+#panel-plan .role dt{font-weight:700;color:var(--key)}
+#panel-plan .role dd{color:var(--muted)}
+#panel-plan .flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:8px 0}
+#panel-plan .flow span{background:var(--bg3);border:1px solid var(--line2);border-radius:100px;padding:5px 12px;font-size:13px;font-weight:700}
+#panel-plan .flow .ar{background:none;border:none;color:var(--dim);padding:0 2px}
+#panel-plan .no{color:var(--dim);text-decoration:line-through}
+#panel-plan footer{padding:30px 0 50px;color:var(--dim);font-size:12px;font-family:var(--mono)}
+@media(max-width:640px){
+#panel-plan .role{grid-template-columns:1fr}
+#panel-plan .role dt{margin-top:8px}
+#panel-plan td,#panel-plan th{padding:7px 5px;font-size:12.5px}
+}
 </style>
 </head>
 <body>
@@ -245,6 +310,12 @@
   </div>
 </header>
 
+<nav class="tabs" role="tablist" aria-label="資料の切り替え">
+  <button class="tab" role="tab" id="tab-doc" aria-controls="panel-doc" aria-selected="true"><span class="jp">制作資料</span></button>
+  <button class="tab" role="tab" id="tab-plan" aria-controls="panel-plan" aria-selected="false"><span class="jp">撮影計画</span></button>
+</nav>
+
+<div class="panel" id="panel-doc" role="tabpanel" aria-labelledby="tab-doc">
 <main class="wrap">
 
   <!-- 01 CONCEPT -->
@@ -618,6 +689,194 @@
   </section>
 
 </main>
+</div>
+
+<div class="panel" id="panel-plan" role="tabpanel" aria-labelledby="tab-plan" hidden>
+<div class="wrap">
+<header>
+  <h1>「我爱你」撮影計画</h1>
+  <p class="sub">2名体制（成田＋アシスタント1名）で実際に回せる構成 ／ 7.30 スタジオ・7.31 ライブ</p>
+</header>
+
+<section>
+  <h2><span class="n">00</span>前提</h2>
+  <div class="box warn">
+    <h4>機材条件について（先にご了承いただきたい点）</h4>
+    <p style="font-size:13.5px;color:var(--muted)">今回は予算の都合により、<b>カメラ・機材はすべて自前（成田）で用意</b>しています。放送用マルチカム機材やカメラマンの増員は含まれないため、<b>ご要望のすべてに応えられるわけではない</b>点をあらかじめご了承ください。会場が暗いこと・オペレーターが限られること（成田＋アシスタント1名）から、無人の固定カメラを併用した構成としています。</p>
+  </div>
+  <div class="box key">
+    <h4>同じ曲を最低2回撮れる。1回で全部狙わない。</h4>
+    <ul>
+      <li><b>1回目＝ライブ本番</b>：生の熱。歌唱・バンド・客の自然な反応を拾う。演出しない。</li>
+      <li><b>2回目＝最後のPV撮影（通し）</b>：ここだけ演出できる。決めカット・客と踊る画を確実に取る。</li>
+      <li>アンコールがあれば3回目。<b>本編の芯は2回目で作る</b>前提で組む。</li>
+    </ul>
+  </div>
+  <div class="box warn">
+    <h4>この構成にした理由</h4>
+    <ul>
+      <li><b>会場が暗い。</b>暗所に強い機材を寄りに集中させ、それ以外は用途を限定して使います。</li>
+      <li><b>固定カメラは無人で回します。</b>本番中の画角調整ができないため、仕込みの段階で余裕を持った構図にします。</li>
+      <li><b>台数は絞ります。</b>増やすほど同期・カラーマッチング・素材整理が膨らみ、1台あたりの精度と納品までの速さが落ちるためです。</li>
+      <li><b>最重要は最後のPV撮影（通し）。</b>ここに全カメラのベスト状態を合わせます（バッテリー・カードの残量と画角を通しの直前に必ずリセット／確認）。ライブ本編でメディアを使い切ると、一番大事な通しが撮れなくなるためです。</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">01</span>カメラ構成（5台）</h2>
+  <p class="lead">操作は2台（成田＝A／アシスタント＝D）。残り3台は置きっぱなし。</p>
+  <table>
+    <tr><th>Cam</th><th>機材</th><th>位置</th><th>役割</th></tr>
+    <tr>
+      <td><span class="cam a">A</span></td>
+      <td><b>Canon R6 Mark II</b><div class="m">24-70mm f/2.8 通し</div></td>
+      <td>フロア<div class="m">成田・手持ち</div></td>
+      <td class="m"><b>これが本編。</b>寄りは全部これ。暗所に一番強い。レンズ交換は<b>しない</b>（曲中に替える余裕はない）</td>
+    </tr>
+    <tr>
+      <td><span class="cam b">B</span></td>
+      <td><b>Canon PowerShot V1</b><div class="m">16mm側 固定・F2.8</div></td>
+      <td>2Fバルコニー<div class="m">固定・無人</div></td>
+      <td class="m"><b>全景マスター。開演から終演まで回しっぱなし。</b>冷却ファン＋USB給電で長回しできるのが選定理由。Aと同じC-Log 3なので<b>カラーは同じLUTで揃う</b></td>
+    </tr>
+    <tr>
+      <td><span class="cam c">C</span></td>
+      <td><b>Sony NXCAM（SD）</b></td>
+      <td>会場後方<div class="m">固定・無人</div></td>
+      <td class="m"><b>バックアップの引き。</b>Bが止まる／画角がズレる／給電が落ちた時の保険。長回しリファレンスも兼ねる。SD画質を活かして<b>90sインサート</b>としても使える</td>
+    </tr>
+    <tr>
+      <td><span class="cam d">D</span></td>
+      <td><b>DJI Osmo Pocket 3</b></td>
+      <td>フロア内<div class="m">アシスタント・手持ち</div></td>
+      <td class="m">客席の中を抜けていく画。<b>ジンバル内蔵で歩き撮りに強い</b>。「参加している」質感を担当</td>
+    </tr>
+    <tr>
+      <td><span class="cam e">E</span></td>
+      <td><b>GoPro HERO11</b></td>
+      <td>ステージ前縁→客席<div class="m">固定・無人</div></td>
+      <td class="m">超広角POV。客席側の保険。色は合わないので要所のインサート用</td>
+    </tr>
+  </table>
+  <div class="box warn" style="margin-top:14px">
+    <h4>この台数での注意</h4>
+    <ul>
+      <li><b>編集で色を合わせる系統は4つ</b>（Canon 2台＝同じC-Log 3で1系統／DJI／Sony／GoPro）。<b>AとBは同一LUTで揃う</b>ので、本編の主要カットは破綻しません。D・C・Eは用途を限定して使えば合わせ込みは最小で済みます。</li>
+      <li><span class="no">FUJIFILM X-T4 / X-S10</span> → 色の系統が増えると合わせ込みが膨らむため、今回は使いません。</li>
+      <li>固定3台（B・C・E）は本番中に触れないため、<b>人が前に立つ前提でマージンを取った画角</b>にします。</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">02</span>2人の役割</h2>
+  <dl class="role">
+    <dt>成田</dt>
+    <dd>Cam A の手持ちに専念。本編の寄りはすべてここで撮ります。</dd>
+    <dt>アシスタント</dt>
+    <dd><b>Cam D（Osmo Pocket 3）で客席まわりの撮影</b>と、<b>カメラ関係の管理</b>（固定3台の録画確認・バッテリー／カード交換・機材の番）。最後のPV撮影では客席への声かけも分担します。</dd>
+  </dl>
+  <div class="box" style="margin-top:14px">
+    <h4>当日の分担メモ</h4>
+    <ul>
+      <li><b>曲中＝Dで撮影／曲間＝固定3台の確認</b>、と時間で切り分けます。撮影と管理が衝突しません。</li>
+      <li>Dで狙うのは<b>「踊っている客席」と「ステージを見上げる表情」</b>の2つ。止まって撮る→移動、の繰り返しで安定させます。</li>
+      <li>Aのフレームに入らない立ち位置を、仕込みの時点で決めておきます。</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">04</span>最後のPV撮影（通し）</h2>
+  <p class="lead">ライブで唯一、演出できる時間。ここの設計だけは事前に決めておく価値があります。</p>
+  <div class="box key">
+    <h4>先に決めておくこと</h4>
+    <ul>
+      <li><b>① 音は何を流すか。</b>マスター音源をPAで流せるなら、スタジオ素材と完全に噛み合います（推奨）。生演奏だと尺がズレて、寄りのリップシンクが合わなくなります。</li>
+      <li><b>② MVの最終的な音はマスター音源かライブ録音か。</b>これで編集の土台が決まります。</li>
+      <li><b>③ 楽曲の正確な尺。</b>振付動画は4:04で終わりますが、カット表には「Drums at 4:13」の記載があります。<b>アウトロの有無</b>を確認したいです。</li>
+      <li>①〜③はいずれも<b>Shinyaさんに要確認</b>。撮影前に決まっていると編集が大きく変わります。</li>
+      <li><b>何回やるか。</b>最低2テイク。1テイク目で客席の動きを見て、2テイク目で修正。</li>
+      <li><b>成田の動線。</b>1テイク目＝客席側から（客と踊る画）／2テイク目＝ステージ寄りから（LD中心）。<b>1テイクにつき1つの役割だけ</b>。欲張ると両方中途半端になります。</li>
+    </ul>
+  </div>
+  <div class="box">
+    <h4>会場への声かけ（アシスタントと分担）</h4>
+    <ul>
+      <li>振り付けは曲間に一度共有済みの前提。ここでは「もう一回やります」だけ。</li>
+      <li>前に詰めてもらう。引きの画に空間が空くと寂しくなる。</li>
+      <li>「上手くなくていい、笑ってる方が映る」と一言。<b>控えめな人が多い前提</b>なので、上手さを求めない空気を作る。</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">05</span>7/30 スタジオ（13:00–17:00）</h2>
+  <p class="lead">ここはコントロールできるので、事前に決めた通りに撮れます。ライブで撮れないものを全部ここで。</p>
+  <table>
+    <tr><th>時間</th><th>内容</th></tr>
+    <tr><td class="tc">13:00</td><td class="m">セッティング・ライティング（NANLITE 2700K寄り）</td></tr>
+    <tr><td class="tc">13:30</td><td class="m"><b>振付の通し × 3テイク以上</b>（引き／寄り／横）。ライブで寄りが撮れなかった時の保険になる</td></tr>
+    <tr><td class="tc">14:30</td><td class="m"><b>寸劇</b>（ヨシュアさん×メンバー3人・高コントラスト）※脚本待ち。リール用に縦位置も</td></tr>
+    <tr><td class="tc">15:30</td><td class="m">インサート（表情・手元・足元）。<b>Sony NXCAMの90s質感カットもここで押さえておく</b>（ライブでは引きのバックアップに回るため）</td></tr>
+    <tr><td class="tc">16:15</td><td class="m">スチール</td></tr>
+    <tr><td class="tc">16:45</td><td class="m">撤収</td></tr>
+  </table>
+  <div class="box warn" style="margin-top:12px">
+    <h4>寸劇の枠が足りない可能性</h4>
+    <p style="font-size:13.5px;color:var(--muted)">照明を組み替える必要があるので、実質45〜60分見た方が安全です。上の配分でギリギリなので、<b>脚本が届いた時点で長さを確認</b>して、入らなければ7/31の15:00–19:00の仕込み時間に会場で撮る方向に切り替えを。</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">06</span>7/31 当日</h2>
+  <div class="flow">
+    <span>13:00 主催・バンド入り</span><span class="ar">→</span>
+    <span>15:00 撮影チーム入り</span><span class="ar">→</span>
+    <span>19:00 OPEN</span><span class="ar">→</span>
+    <span>ライブ4曲</span><span class="ar">→</span>
+    <span>PV撮影 通し</span><span class="ar">→</span>
+    <span>22:00 終了</span>
+  </div>
+  <div class="box">
+    <h4>15:00–19:00 の仕込みでやること（この順番）</h4>
+    <ul>
+      <li><b>フリッカーテスト。</b>クラブのLEDでバンディングが出るか。1/60でダメなら1/120。ここで決めて全カメラ固定。</li>
+      <li><b>WBを実測して全台に同じ数値。</b>オートWBは禁止。照明が変わるたびに色が動いて、後で揃わなくなる。</li>
+      <li><b>B（V1）の給電テスト。</b>モバイルバッテリーで録画中に減らないか。<b>ダメならLP-E17予備で曲ごとに交換する運用に切り替え</b>。ここで判明させておく。</li>
+      <li><b>B・C・Eの画角を最終決定。</b>無人なので、人が前に立つ可能性まで見てマージンを取る。</li>
+      <li><b>卓からラインアウト</b>をもらって同期用に別録り。各カメラの内蔵マイクも必ずON（同期の手がかり）。</li>
+      <li><b>本番前に全カメラで手拍子1回</b>（同期用スレート）。<b>Dも回した状態で</b>。</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">07</span>編集メモ</h2>
+  <p class="lead">撮影後の話ですが、素材の集め方に関わるので先に。</p>
+  <div class="box">
+    <ul>
+      <li><b>BPM 112 / 4拍子。1小節＝約2.14秒、1拍＝約0.54秒。</b>カット点は小節頭に置くのが基本。半拍前に切ると走って聴こえます。</li>
+      <li><b>カット尺は前半4秒前後 → 後半3.5秒前後へ詰める。</b>エネルギーが終盤型（Bridgeが動き最大）なので、ラストに向けて密度を上げる。</li>
+      <li><b>スタジオ素材とライブ素材は同じ小節で切り替える。</b>同じ振付なので、小節頭で入れ替えると気持ちよく繋がります（振付を会場と共有している理由）。</li>
+      <li><b>Sony NXCAM（SD）は解像度が合わないので拡大前提。</b>あえてグレイン・にじみを残して90sインサートとして使う。全編には使わない。</li>
+    </ul>
+  </div>
+</section>
+
+<section style="border:none">
+  <h2><span class="n">08</span>設定</h2>
+  <table>
+    <tr><td class="sec">フレームレート</td><td class="m">4K / 30p 統一（NXCAMはSDなので60i/30p実機に合わせる）</td></tr>
+    <tr><td class="sec">シャッター</td><td class="m">1/60（フリッカー次第で1/120）</td></tr>
+    <tr><td class="sec">WB</td><td class="m">手動固定・全台同じ数値（Osmoも手動に）</td></tr>
+    <tr><td class="sec">プロファイル</td><td class="m">A・B＝C-Log 3（同一LUTで揃う） ／ D＝標準 ／ C（NXCAM）・E（GoPro）＝そのまま</td></tr>
+    <tr><td class="sec">同期</td><td class="m">手拍子＋各カメラ内蔵マイク＋卓ライン</td></tr>
+  </table>
+</section>
+</div>
+</div>
 
 <footer class="wrap">
   <div class="foot-grid">
@@ -633,5 +892,25 @@
   </div>
 </footer>
 
+
+<script>
+(function(){
+  var tabs = document.querySelectorAll('.tab');
+  function show(name, push){
+    tabs.forEach(function(t){
+      var on = t.id === 'tab-' + name;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if(push && history.replaceState) history.replaceState(null, '', '#' + name);
+    window.scrollTo({top:0, behavior:'instant'});
+  }
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){ show(t.id.replace('tab-',''), true); });
+  });
+  var h = (location.hash || '').replace('#','');
+  if(h === 'plan' || h === 'doc') show(h, false);
+})();
+</script>
 </body>
 </html>
