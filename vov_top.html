@@ -12,7 +12,7 @@
 <meta property="og:title" content="Voices of Vision | 名古屋ゴスペルクワイア">
 <meta property="og:description" content="名古屋のゴスペルクワイア Voices of Vision（VOV）公式サイト。1999年創設、オーディションなし・楽譜なし。木曜夜・金曜朝のリハーサルで一緒に歌いませんか。見学・体験はいつでも歓迎です。">
 <meta property="og:url" content="https://junnarita-pixel.github.io/30th-anniversary/vov_top.html">
-<meta property="og:image" content="https://junnarita-pixel.github.io/30th-anniversary/vov_assets/top-hero-main.jpg">
+<meta property="og:image" content="https://junnarita-pixel.github.io/30th-anniversary/vov_assets/top1-01.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="vov_assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -106,41 +106,33 @@ h1 em{font-style:italic;color:var(--burg)}
 }
 .h-since-t{font-size:11px;letter-spacing:.24em;color:var(--ink-l);line-height:1.7;font-weight:600;text-transform:uppercase}
 
-/* HERO右 */
-.hero-r{position:relative;background:var(--bg2);overflow:hidden}
+/* HERO右：横構図メインを大きく見せる */
+.hero-r{position:relative;background:var(--bg2);overflow:hidden;display:flex;align-items:center;justify-content:center;padding:56px 52px}
+.hr-stage{position:relative;width:100%;max-width:600px}
+.hr-gold-frame{position:absolute;top:-14px;left:-14px;width:100%;height:100%;border:2px solid var(--gold);pointer-events:none;z-index:0}
 .hr-photo-main{
-  position:absolute;top:9%;left:9%;width:56%;aspect-ratio:3/4;
+  position:relative;z-index:1;width:100%;aspect-ratio:3/2;overflow:hidden;
   background:linear-gradient(155deg,#C8B49C 0%,#AE9678 50%,#94785C 100%);
   box-shadow:0 24px 64px rgba(28,20,16,.22);
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;
-}
-.hr-photo-sub{
-  position:absolute;bottom:11%;right:7%;width:40%;aspect-ratio:4/3;
-  background:linear-gradient(155deg,#BCA688,#A08868);
-  box-shadow:0 16px 44px rgba(28,20,16,.18);
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;
 }
 .ph-lbl{font-size:10px;letter-spacing:.24em;color:rgba(28,20,16,.35);font-weight:700;text-transform:uppercase}
 /* 写真ローテーション（ランダム・重複なし） */
 img[data-rot],img[data-rot-fade]{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:opacity 1.4s ease}
-.hr-gold-frame{position:absolute;top:6%;left:6%;width:56%;aspect-ratio:3/4;border:2px solid var(--gold);pointer-events:none}
 .hr-badge{
-  position:absolute;top:12%;right:8%;
+  position:absolute;z-index:2;top:-20px;right:-16px;
   background:var(--ink);color:var(--gold-l);
-  padding:16px 22px;text-align:center;
+  padding:13px 19px;text-align:center;
   box-shadow:0 10px 32px rgba(28,20,16,.3);
 }
-.hr-badge-n{font-family:'Lora',serif;font-size:22px;font-weight:600;font-style:italic;line-height:1.2;display:block}
+.hr-badge-n{font-family:'Lora',serif;font-size:20px;font-weight:600;font-style:italic;line-height:1.2;display:block}
 .hr-badge-t{font-size:9px;letter-spacing:.22em;margin-top:5px;display:block;color:rgba(212,176,97,.75);text-transform:uppercase;font-weight:600}
 .hr-quote{
-  position:absolute;bottom:6%;left:5%;right:42%;
-  background:rgba(251,249,245,.95);padding:18px 22px;
+  position:relative;z-index:1;margin-top:24px;
+  background:var(--white);padding:17px 22px;
   border-left:4px solid var(--burg);
-  box-shadow:0 8px 28px rgba(28,20,16,.12);
+  box-shadow:0 8px 28px rgba(28,20,16,.1);
 }
-.hr-quote p{font-family:'Lora',serif;font-size:13px;font-style:italic;color:var(--ink-m);line-height:1.8;margin-bottom:6px}
+.hr-quote p{font-family:'Lora',serif;font-size:13.5px;font-style:italic;color:var(--ink-m);line-height:1.85;margin-bottom:6px}
 .hr-quote span{font-size:10px;letter-spacing:.18em;color:var(--ink-l);font-weight:700;text-transform:uppercase}
 
 /* ===== キャッチコピーバンド（旧ニュースバー差し替え） ===== */
@@ -446,9 +438,10 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
   nav{padding:14px 24px}
   nav ul{gap:16px}
   nav ul li:not(:last-child){display:none}
-  .hero{grid-template-columns:1fr}
-  .hero-r{min-height:380px}
-  .hero-l{padding:56px 28px}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-r{min-height:auto;padding:34px 26px 44px}
+  .hr-stage{max-width:460px}
+  .hero-l{padding:52px 28px 8px}
   section{padding:72px 24px}
   .about-g,.join-g,.sched-g{grid-template-columns:1fr;gap:44px}
   .gal-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,180px)}
@@ -529,16 +522,17 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     </div>
   </div>
   <div class="hero-r">
-    <div class="hr-gold-frame"></div>
-    <div class="hr-photo-main"><img src="vov_assets/top-hero-main.jpg" alt="コンサートの様子" data-rot></div>
-    <div class="hr-photo-sub"><img src="vov_assets/top-hero-sub.jpg" alt="リハーサル風景" data-rot></div>
-    <div class="hr-badge">
-      <span class="hr-badge-n">Since<br>1999</span>
-      <span class="hr-badge-t">Gospel Choir</span>
-    </div>
-    <div class="hr-quote">
-      <p>「オーディションなし。楽譜なし。<br>歌が好きな気持ちだけ持ってきてください。」</p>
-      <span>Voices of Vision</span>
+    <div class="hr-stage">
+      <div class="hr-gold-frame"></div>
+      <div class="hr-photo-main"><img src="vov_assets/top1-01.jpg" alt="Voices of Vision" data-rot="hero"></div>
+      <div class="hr-badge">
+        <span class="hr-badge-n">Since<br>1999</span>
+        <span class="hr-badge-t">Gospel Choir</span>
+      </div>
+      <div class="hr-quote">
+        <p>「はじめはみんな初心者。<br>One Voiceで歌う醍醐味を、ぜひ体験してください。」</p>
+        <span>Voices of Vision</span>
+      </div>
     </div>
   </div>
 </div>
@@ -555,7 +549,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <div class="about-g rv">
       <div class="ai-block">
         <div class="ai-frame"></div>
-        <div class="ai-main"><img src="vov_assets/top-about.jpg" alt="VOVのメンバー" data-rot></div>
+        <div class="ai-main"><img src="vov_assets/top2-01.jpg" alt="VOVのメンバー" data-rot="about"></div>
         <div class="ai-badge">
           <span class="ai-badge-n">Since<br>1999</span>
           <span class="ai-badge-t">Nagoya</span>
@@ -564,10 +558,10 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       <div>
         <div class="s-eye">
           <div class="s-eye-bar"></div>
-          <span class="s-eye-t">About VOV</span>
+          <span class="s-eye-t">Our Values</span>
         </div>
-        <h2>名古屋発の<br><em>ゴスペルクワイア</em></h2>
-        <p class="s-body">Voices of Visionは、Founder（創設者）ラニー・ラッカー氏が提言する3つの柱を体現し、多くの人の心に届くよう歌い続けていくことを目的に活動しています。</p>
+        <h2>VOVが<br><em>大切にしていること</em></h2>
+        <p class="s-body">Voices of Visionは、Founder（創設者）ラニー・ラッカー氏が提言する "Music" "History" "Christianity" の3つの柱を大切に、世代を超えた仲間とともに、多くの人の心に届くゴスペルを歌い続けています。</p>
         <div class="pillars">
           <div class="pl"><span class="pl-n">Music</span><span class="pl-d">歌の喜びを<br>分かち合う</span></div>
           <div class="pl"><span class="pl-n">History</span><span class="pl-d">ゴスペルの<br>ルーツを知る</span></div>
@@ -669,11 +663,11 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       <a href="vov_gallery.html" class="btn-line">すべて見る →</a>
     </div>
     <div class="gal-grid rv">
-      <div class="gc"><div class="gc-in"><img src="vov_assets/top-gallery-concert.jpg" alt="コンサートの様子" data-rot></div><div class="gc-ov"><span class="gc-ov-t">コンサートの様子</span></div></div>
-      <div class="gc"><div class="gc-in"><img src="vov_assets/top-gallery-rehearsal.jpg" alt="リハーサル風景" data-rot></div><div class="gc-ov"><span class="gc-ov-t">リハーサル風景</span></div></div>
-      <div class="gc"><div class="gc-in"><img src="vov_assets/top-gallery-event.jpg" alt="屋外イベント出演" data-rot></div><div class="gc-ov"><span class="gc-ov-t">屋外イベント出演</span></div></div>
-      <div class="gc"><div class="gc-in"><img src="vov_assets/top-gallery-backstage.jpg" alt="本番前のひとこま" style="object-position:65% center" data-rot></div><div class="gc-ov"><span class="gc-ov-t">本番前のひとこま</span></div></div>
-      <div class="gc"><div class="gc-in"><img src="vov_assets/top-gallery-members.jpg" alt="メンバー集合写真" data-rot></div><div class="gc-ov"><span class="gc-ov-t">メンバー集合写真</span></div></div>
+      <div class="gc"><div class="gc-in"><img src="vov_assets/gb-20th.jpg" alt="20周年記念コンサート" data-rot="gal"></div><div class="gc-ov"><span class="gc-ov-t">20周年記念コンサート</span></div></div>
+      <div class="gc"><div class="gc-in"><img src="vov_assets/gb-night-reh.jpg" alt="夜リハーサル" data-rot="gal"></div><div class="gc-ov"><span class="gc-ov-t">夜リハーサル</span></div></div>
+      <div class="gc"><div class="gc-in"><img src="vov_assets/gb-tokai.jpg" alt="東海フェスティバル" data-rot="gal"></div><div class="gc-ov"><span class="gc-ov-t">東海フェスティバル</span></div></div>
+      <div class="gc"><div class="gc-in"><img src="vov_assets/gb-tpw.jpg" alt="TPWとの共演" data-rot="gal"></div><div class="gc-ov"><span class="gc-ov-t">TPWとの共演</span></div></div>
+      <div class="gc"><div class="gc-in"><img src="vov_assets/gb-newyear.jpg" alt="VOV新年会" data-rot="gal"></div><div class="gc-ov"><span class="gc-ov-t">VOV新年会</span></div></div>
     </div>
 
     <!-- 動画（YouTube埋め込みエリア） -->
@@ -735,21 +729,22 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       </div>
       <div class="tl-item">
         <div class="tl-year">2000</div>
-        <p class="tl-text">「Voices of Vision」に改名。本格的な活動を開始</p>
+        <p class="tl-text">「Voices of Vision（VOV）」に改名</p>
       </div>
       <div class="tl-item">
-        <div class="tl-year">2002</div>
-        <p class="tl-text">活動記録（History）のアーカイブを開始</p>
+        <div class="tl-year">2001</div>
+        <p class="tl-text">TPW（アメリカ・アラバマ州）と初共演。以後、姉妹クワイアに</p>
       </div>
       <div class="tl-item">
-        <div class="tl-year">2006</div>
-        <p class="tl-text">在日大韓基督教会 名古屋教会7Fをリハーサル会場として利用開始</p>
+        <div class="tl-year">2008</div>
+        <p class="tl-text">1stアルバム "We Stand on the Vision" をリリース</p>
       </div>
       <div class="tl-item major">
-        <div class="tl-year">2024</div>
-        <p class="tl-text">創設25周年。四半世紀にわたり名古屋のゴスペルシーンを支え続ける</p>
+        <div class="tl-year">2019</div>
+        <p class="tl-text">20周年記念コンサート "Time to Get Up!!!" を開催</p>
       </div>
     </div>
+    <p style="text-align:center;margin-top:36px"><a href="vov_history.html" class="btn-line">VOVの歩みをすべて見る →</a></p>
   </div>
 </section>
 
@@ -889,69 +884,70 @@ const obs = new IntersectionObserver(es => es.forEach(e => {
 }), { threshold: .1 });
 document.querySelectorAll('.rv').forEach(el => obs.observe(el));
 
-/* 写真ローテーション：数秒ごとにどれか1枠がランダムに切り替わる。
-   表示中の写真とは重複しない画像だけをプールから選ぶ。 */
-const ROT_POOL = [
-  { src: 'vov_assets/top-hero-main.jpg',        cap: 'コンサートの様子' },
-  { src: 'vov_assets/top-hero-slide-2.jpg',     cap: 'ステージパフォーマンス' },
-  { src: 'vov_assets/top-hero-slide-3.jpg',     cap: 'コンサートの様子' },
-  { src: 'vov_assets/top-hero-slide-4.jpg',     cap: 'ライブの一幕' },
-  { src: 'vov_assets/top-hero-sub.jpg',         cap: 'リハーサル風景' },
-  { src: 'vov_assets/top-about.jpg',            cap: 'ステージでのメンバー' },
-  { src: 'vov_assets/top-gallery-concert.jpg',  cap: 'コンサートの様子' },
-  { src: 'vov_assets/top-gallery-rehearsal.jpg',cap: 'リハーサル風景' },
-  { src: 'vov_assets/top-gallery-event.jpg',    cap: '屋外イベント出演' },
-  { src: 'vov_assets/top-gallery-backstage.jpg',cap: '本番前のひとこま', pos: '65% center' },
-  { src: 'vov_assets/top-gallery-members.jpg',  cap: 'メンバー集合写真' },
-  { src: 'vov_assets/gallery-concert.jpg',      cap: 'コンサートの様子' },
-  { src: 'vov_assets/gallery-rehearsal.jpg',    cap: 'リハーサル風景' },
-  { src: 'vov_assets/gallery-event.jpg',        cap: '屋外イベント出演' },
-  { src: 'vov_assets/gallery-social.jpg',       cap: 'メンバーとの交流会' },
-  { src: 'vov_assets/gallery-members.jpg',      cap: 'メンバー集合写真' },
-  { src: 'vov_assets/gallery-performance.jpg',  cap: 'ライブパフォーマンス' }
+/* 写真ローテーション：枠ごとに専用の写真プールを持ち、数秒ごとに
+   どれか1枠がランダムに切り替わる。同じグループ内で表示中の写真とは
+   重複しない画像だけを選ぶ（1枚が2箇所に同時表示されない）。 */
+const heroPool = [];
+for (let i = 1; i <= 8; i++) heroPool.push({ src: 'vov_assets/top1-' + String(i).padStart(2,'0') + '.jpg', cap: 'Voices of Vision' });
+const aboutPool = [];
+for (let i = 1; i <= 6; i++) aboutPool.push({ src: 'vov_assets/top2-' + String(i).padStart(2,'0') + '.jpg', cap: 'VOVのメンバー' });
+const galPool = [
+  { src: 'vov_assets/gb-night-reh.jpg',   cap: '夜リハーサル' },
+  { src: 'vov_assets/gb-morning-reh.jpg', cap: '朝リハーサル' },
+  { src: 'vov_assets/gb-section.jpg',     cap: 'セクションリーダー練習' },
+  { src: 'vov_assets/gb-lanny-night.jpg', cap: 'ラニー・ラッカー ワークショップ' },
+  { src: 'vov_assets/gb-newyear.jpg',     cap: 'VOV新年会' },
+  { src: 'vov_assets/gb-20th.jpg',        cap: '20周年記念コンサート' },
+  { src: 'vov_assets/gb-tpw.jpg',         cap: 'TPWとの共演' },
+  { src: 'vov_assets/gb-waiwai.jpg',      cap: 'わいわいミュージックフェス' },
+  { src: 'vov_assets/gb-tokai.jpg',       cap: '東海フェスティバル' },
+  { src: 'vov_assets/gb-xmas.jpg',        cap: 'クリスマスコンサート' },
+  { src: 'vov_assets/gb-charity.jpg',     cap: '東日本大震災チャリティ活動' },
+  { src: 'vov_assets/gb-jr-visit.jpg',    cap: 'VOV-Jr. 施設訪問' },
+  { src: 'vov_assets/gb-staff.jpg',       cap: '運営スタッフミーティング' }
 ];
-const rotSlots = Array.from(document.querySelectorAll('img[data-rot]'));
-const rotShown = new Set(rotSlots.map(im => im.getAttribute('src')));
-let rotLast = -1, rotBusy = false;
+const ROT_GROUPS = { hero: heroPool, about: aboutPool, gal: galPool };
 
-if (rotSlots.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  setInterval(() => {
-    if (rotBusy) return;
-    let si;
-    do { si = Math.floor(Math.random() * rotSlots.length); } while (si === rotLast && rotSlots.length > 1);
-    rotLast = si;
-    const slot = rotSlots[si];
-    const cands = ROT_POOL.filter(p => !rotShown.has(p.src));
-    if (!cands.length) return;
-    const next = cands[Math.floor(Math.random() * cands.length)];
-    rotBusy = true;
-    rotShown.add(next.src);
-    const pre = new Image();
-    pre.src = next.src;
-    (pre.decode ? pre.decode() : Promise.resolve()).then(() => {
-      const ov = document.createElement('img');
-      ov.src = next.src;
-      ov.alt = next.cap;
-      ov.setAttribute('data-rot-fade', '');
-      if (next.pos) ov.style.objectPosition = next.pos;
-      ov.style.opacity = '0';
-      slot.parentElement.insertBefore(ov, slot.nextSibling);
-      requestAnimationFrame(() => requestAnimationFrame(() => { ov.style.opacity = '1'; }));
-      setTimeout(() => {
-        rotShown.delete(slot.getAttribute('src'));
-        slot.src = next.src;
-        slot.alt = next.cap;
-        slot.style.objectPosition = next.pos || '';
-        ov.remove();
-        const gc = slot.closest('.gc');
-        if (gc) {
-          const t = gc.querySelector('.gc-ov-t');
-          if (t) t.textContent = next.cap;
-        }
-        rotBusy = false;
-      }, 1500);
-    }).catch(() => { rotShown.delete(next.src); rotBusy = false; });
-  }, 3800);
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  Object.keys(ROT_GROUPS).forEach((group, gi) => {
+    const slots = Array.from(document.querySelectorAll('img[data-rot="' + group + '"]'));
+    const pool = ROT_GROUPS[group];
+    if (!slots.length || pool.length <= slots.length) return;
+    const shown = new Set(slots.map(im => im.getAttribute('src').replace(/^.*\//, 'vov_assets/')));
+    let last = -1, busy = false;
+    setInterval(() => {
+      if (busy) return;
+      let si;
+      do { si = Math.floor(Math.random() * slots.length); } while (si === last && slots.length > 1);
+      last = si;
+      const slot = slots[si];
+      const cands = pool.filter(p => !shown.has(p.src));
+      if (!cands.length) return;
+      const next = cands[Math.floor(Math.random() * cands.length)];
+      busy = true;
+      shown.add(next.src);
+      const pre = new Image();
+      pre.src = next.src;
+      (pre.decode ? pre.decode() : Promise.resolve()).then(() => {
+        const ov = document.createElement('img');
+        ov.src = next.src; ov.alt = next.cap;
+        ov.setAttribute('data-rot-fade', '');
+        if (next.pos) ov.style.objectPosition = next.pos;
+        ov.style.opacity = '0';
+        slot.parentElement.insertBefore(ov, slot.nextSibling);
+        requestAnimationFrame(() => requestAnimationFrame(() => { ov.style.opacity = '1'; }));
+        setTimeout(() => {
+          shown.delete(slot.getAttribute('src').replace(/^.*\//, 'vov_assets/'));
+          slot.src = next.src; slot.alt = next.cap;
+          slot.style.objectPosition = next.pos || '';
+          ov.remove();
+          const gc = slot.closest('.gc');
+          if (gc) { const t = gc.querySelector('.gc-ov-t'); if (t) t.textContent = next.cap; }
+          busy = false;
+        }, 1500);
+      }).catch(() => { shown.delete(next.src); busy = false; });
+    }, 4200 + gi * 900);
+  });
 }
 
 document.querySelectorAll('a').forEach(a => {
