@@ -93,7 +93,7 @@ img[data-rot],img[data-rot-fade]{position:absolute;inset:0;width:100%;height:100
 .hero-content{position:relative;z-index:3;width:100%;padding:0 clamp(40px,8vw,110px)}
 .h-eye{display:flex;align-items:center;gap:13px;margin-bottom:26px}
 .h-eye-bar{width:44px;height:2px;background:var(--gold-l)}
-.h-eye-t{font-size:clamp(10px,1vw,12px);letter-spacing:.34em;color:var(--gold-l);font-weight:700;text-transform:uppercase}
+.h-eye-t{font-size:clamp(10px,1vw,12px);letter-spacing:.34em;color:var(--gold-l);font-weight:700}
 h1{font-family:'Lora','Noto Serif JP',serif;font-size:clamp(40px,6vw,76px);font-weight:700;line-height:1.2;color:var(--white);margin-bottom:22px;text-shadow:0 2px 34px rgba(0,0,0,.42)}
 h1 em{font-style:italic;color:var(--gold-l)}
 .h-sub{font-family:'Lora','Noto Serif JP',serif;font-size:clamp(15px,1.7vw,19px);letter-spacing:.26em;color:rgba(251,249,245,.85);margin-bottom:42px;font-weight:500;font-style:italic;text-shadow:0 1px 20px rgba(0,0,0,.4)}
@@ -115,10 +115,10 @@ h1 em{font-style:italic;color:var(--gold-l)}
 .hero-content .btn-line:hover{color:var(--white);opacity:.72}
 .hero-badge{position:absolute;z-index:3;top:52px;right:clamp(28px,5vw,64px);background:rgba(24,16,12,.72);backdrop-filter:blur(3px);color:var(--gold-l);padding:15px 22px;text-align:center;border:1px solid rgba(212,176,97,.3)}
 .hero-badge-n{font-family:'Lora','Noto Serif JP',serif;font-size:23px;font-weight:600;font-style:italic;line-height:1.15;display:block}
-.hero-badge-t{font-size:9px;letter-spacing:.22em;margin-top:6px;display:block;color:rgba(212,176,97,.72);text-transform:uppercase;font-weight:600}
+.hero-badge-t{font-size:9px;letter-spacing:.22em;margin-top:6px;display:block;color:rgba(212,176,97,.72);font-weight:600}
 .hero-quote{margin-top:40px;max-width:440px;border-left:3px solid var(--gold-l);padding-left:18px}
 .hero-quote p{font-family:'Lora','Noto Serif JP',serif;font-size:14px;font-style:italic;color:rgba(251,249,245,.92);line-height:1.85;margin-bottom:6px;text-shadow:0 1px 16px rgba(0,0,0,.5)}
-.hero-quote span{font-size:10px;letter-spacing:.2em;color:rgba(212,176,97,.88);font-weight:700;text-transform:uppercase}
+.hero-quote span{font-size:10px;letter-spacing:.2em;color:rgba(212,176,97,.88);font-weight:700}
 .hero-scroll{position:absolute;z-index:3;right:clamp(28px,5vw,64px);bottom:54px;display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(251,249,245,.72);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;text-decoration:none;writing-mode:vertical-rl}
 .hero-scroll::after{content:'';width:1px;height:44px;background:linear-gradient(var(--gold-l),transparent)}
 /* ヒーロー登場：安全に「見えている状態」を初期値にし、動きは transform のみ付加
@@ -143,7 +143,6 @@ h1 em{font-style:italic;color:var(--gold-l)}
 .copy-band-en{
   font-family:'Lora','Noto Serif JP',serif;font-size:13px;font-style:italic;
   color:var(--gold-l);letter-spacing:.28em;margin-bottom:8px;
-  text-transform:uppercase;
 }
 .copy-band-jp{
   font-family:'Lora','Noto Serif JP',serif;font-size:clamp(17px,2vw,21px);font-weight:600;
@@ -180,7 +179,7 @@ h2 em{font-style:italic;color:var(--burg)}
   box-shadow:0 10px 32px rgba(109,43,61,.32);z-index:2;
 }
 .ai-badge-n{font-family:'Lora','Noto Serif JP',serif;font-size:20px;font-weight:600;font-style:italic;line-height:1.2;display:block}
-.ai-badge-t{font-size:9px;letter-spacing:.22em;margin-top:4px;display:block;opacity:.75;text-transform:uppercase;font-weight:600}
+.ai-badge-t{font-size:9px;letter-spacing:.22em;margin-top:4px;display:block;opacity:.75;font-weight:600}
 .pillars{display:flex;border:2px solid var(--bg3);margin:32px 0;background:var(--white)}
 .pl{flex:1;padding:24px 18px;text-align:center;border-right:2px solid var(--bg3);transition:background .25s}
 .pl:last-child{border-right:none}
@@ -284,6 +283,7 @@ a.gc,a.evt,a.post{text-decoration:none;color:inherit}
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
   position:relative;overflow:hidden;
 }
+.video-frame iframe{width:100%;height:100%;border:0;display:block}
 .video-play{
   width:64px;height:64px;border-radius:50%;
   background:var(--burg);
@@ -536,7 +536,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       <span class="h-eye-t">Nagoya Gospel Choir</span>
     </div>
     <h1>歌で、<br><em>心の垣根を</em><br>越える。</h1>
-    <p class="h-sub">Voices of Vision</p>
+    <p class="h-sub">Voices of Vision（VOV）</p>
     <div class="cta-row">
       <a href="vov_contact.html" class="btn-fill">体験を申し込む</a>
       <a href="vov_join.html" class="btn-line">入会の流れを見る →</a>
@@ -552,7 +552,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 <!-- ===== キャッチコピーバンド ===== -->
 <div class="copy-band">
   <p class="copy-band-en">Music · History · Christianity</p>
-  <p class="copy-band-jp">ゴスペルのルーツに根差した、本物のゴスペルを。</p>
+  <p class="copy-band-jp">ルーツに根差したゴスペルを。</p>
 </div>
 
 <!-- ===== ABOUT ===== -->
@@ -573,7 +573,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
           <span class="s-eye-t">Our Values</span>
         </div>
         <h2>VOVが<br><em>大切にしていること</em></h2>
-        <p class="s-body">Voices of Visionは、Founder（創設者）ラニー・ラッカー氏が提言する "Music" "History" "Christianity" の3つの柱を大切に、世代を超えた仲間とともに、多くの人の心に届くゴスペルを歌い続けています。</p>
+        <p class="s-body">VOVは、創設者ラニー・ラッカー氏が提言する "Music" "History" "Christianity" の3つの柱を大切に、世代を超えた仲間とともに、多くの人の心に届くゴスペルを歌い続けています。</p>
         <div class="pillars">
           <div class="pl"><span class="pl-n">Music</span><span class="pl-d">歌の喜びを<br>分かち合う</span></div>
           <div class="pl"><span class="pl-n">History</span><span class="pl-d">ゴスペルの<br>ルーツを知る</span></div>
@@ -690,19 +690,18 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       </div>
       <div class="videos-g">
         <div>
-          <!-- STUDIOではYouTube埋め込みブロックに差し替え -->
           <div class="video-frame">
-            <div class="video-play"></div>
-            <span class="video-lbl">YouTube — 演奏動画</span>
+            <iframe src="https://www.youtube-nocookie.com/embed/XSXoPy4CWcI" title="Let's Celebrate — Voices of Vision" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
-          <p class="video-cap">クリスマスコンサート 2025 ダイジェスト</p>
+          <p class="video-cap">Let's Celebrate</p>
         </div>
         <div>
+          <!-- WeStand：DVDからの切り出し映像を掲載予定 -->
           <div class="video-frame">
             <div class="video-play"></div>
-            <span class="video-lbl">YouTube — 演奏動画</span>
+            <span class="video-lbl">映像準備中</span>
           </div>
-          <p class="video-cap">VOV リハーサル風景</p>
+          <p class="video-cap">We Stand（DVDより切り出し予定）</p>
         </div>
       </div>
     </div>

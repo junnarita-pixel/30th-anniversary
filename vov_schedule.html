@@ -109,7 +109,43 @@ footer{background:var(--ink);padding:52px 48px 26px;border-top:1px solid rgba(21
 .ev-tag{font-size:10px;font-weight:700;letter-spacing:.14em;padding:5px 14px;text-transform:uppercase}
 .tg-c{background:var(--burg);color:var(--white)}
 .tg-e{background:var(--gold);color:var(--ink)}
-.cal-embed{margin-top:20px;background:var(--white);border:2px dashed var(--bg3);aspect-ratio:16/8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+/* 月ごとのスケジュール表 */
+.mcal{margin-top:44px;background:var(--white);box-shadow:0 6px 28px rgba(28,20,16,.08);border-top:4px solid var(--gold)}
+.mcal-hd{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 26px;border-bottom:1px solid var(--bg3)}
+.mcal-mo{font-family:'Lora','Noto Serif JP',serif;font-size:21px;font-weight:700;color:var(--ink)}
+.mcal-nav{display:flex;gap:8px}
+.mcal-btn{
+  background:var(--paper);border:1.5px solid var(--bg3);color:var(--ink-m);
+  font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:700;
+  padding:8px 16px;cursor:pointer;transition:all .2s;
+}
+.mcal-btn:hover:not(:disabled){border-color:var(--gold);color:var(--burg)}
+.mcal-btn:disabled{opacity:.35;cursor:default}
+.mcal-tb{width:100%;border-collapse:collapse}
+.mcal-tb th{
+  background:var(--ink);color:rgba(251,249,245,.72);
+  font-size:11px;letter-spacing:.16em;font-weight:700;
+  padding:12px 14px;text-align:left;white-space:nowrap;
+}
+.mcal-tb td{padding:13px 14px;border-bottom:1px solid var(--bg3);font-size:13.5px;color:var(--ink-m);vertical-align:top}
+.mcal-tb tr:last-child td{border-bottom:none}
+.mcal-tb tr.is-sun td{background:rgba(109,43,61,.04)}
+.mcal-dt{font-family:'Lora','Noto Serif JP',serif;font-size:17px;font-weight:700;color:var(--ink);white-space:nowrap}
+.mcal-dow{font-size:11px;color:var(--ink-l);margin-left:5px}
+.mcal-tag{
+  display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;
+  padding:3px 10px;white-space:nowrap;
+}
+.tg-night{background:var(--burg);color:var(--white)}
+.tg-morn{background:var(--gold);color:var(--white)}
+.tg-ev{background:var(--ink);color:var(--gold-l)}
+.mcal-ttl{font-weight:700;color:var(--ink);display:block;margin-bottom:2px}
+.mcal-empty{padding:40px 26px;text-align:center;color:var(--ink-l);font-size:14px}
+.mcal-note{font-size:12.5px;color:var(--ink-l);line-height:1.9;padding:16px 26px;background:var(--paper);border-top:1px solid var(--bg3)}
+@media(max-width:620px){
+  .mcal-hd{flex-direction:column;align-items:flex-start}
+  .mcal-tb th:nth-child(4),.mcal-tb td:nth-child(4){display:none}
+}
 .cycle-g{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
 .cyc{background:var(--white);padding:26px 22px;text-align:center;border-top:4px solid var(--gold)}
 .cyc:nth-child(1){border-top-color:#C48A9A}
@@ -262,9 +298,20 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         <span class="ev-tag tg-e">Event</span>
       </div>
     </div>
-    <div class="cal-embed">
-      <span class="ph-lbl">Google Calendar 埋め込みエリア</span>
-      <p style="font-size:13px;color:var(--ink-l)">最新のスケジュールをカレンダー形式で表示します（準備中）</p>
+    <!-- 月ごとのスケジュール表（リハーサル＋イベント） -->
+    <div class="mcal" id="mcal">
+      <div class="mcal-hd">
+        <div class="mcal-mo" id="mcal-mo">—</div>
+        <div class="mcal-nav">
+          <button type="button" class="mcal-btn" id="mcal-prev">← 前の月</button>
+          <button type="button" class="mcal-btn" id="mcal-next">次の月 →</button>
+        </div>
+      </div>
+      <div id="mcal-body"></div>
+      <p class="mcal-note">
+        木曜夜・金曜朝のリハーサルは毎週開催しています。見学・体験は事前連絡なしでも大丈夫です。<br>
+        祝日・会場の都合でお休みになる場合があります。最新の開催状況はお問い合わせください。
+      </p>
     </div>
   </div>
 </section>
@@ -332,6 +379,70 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 </footer>
 
 <script>
+/* ===== 月ごとのスケジュール表 =====
+   毎週のリハーサルは曜日ルールから自動生成。
+   単発のイベントは EVENTS に1行足すだけで表に出ます。 */
+const REHEARSALS = [
+  { dow:4, title:'夜リハーサル', tag:'毎週木曜', cls:'tg-night', time:'19:00 〜 21:00',
+    place:'在日大韓基督教会 名古屋教会 7F', note:'仕事・学校帰りに参加しやすいリハーサルです。' },
+  { dow:5, title:'朝リハーサル', tag:'毎週金曜', cls:'tg-morn',  time:'10:00 〜 12:00',
+    place:'在日大韓基督教会 名古屋教会 7F', note:'日中に時間が取りやすい方向けのリハーサルです。' },
+];
+const EVENTS = [
+  { date:'2026-12-20', tag:'コンサート', cls:'tg-ev', title:'VOV クリスマスコンサート',
+    time:'開演 18:00', place:'名古屋市公会堂', note:'入場無料・どなたでもご来場いただけます。' },
+  { date:'2026-10-05', tag:'イベント出演', cls:'tg-ev', title:'秋のゴスペルフェスティバル 出演',
+    time:'', place:'栄・中区文化センター', note:'' },
+];
+const DOW = ['日','月','火','水','木','金','土'];
+const MCAL_MIN = new Date(2026, 8, 1);   // 表示できる最初の月
+const MCAL_MAX = new Date(2027, 11, 1);  // 表示できる最後の月
+let mcalCur = new Date(Math.min(Math.max(new Date().setDate(1), MCAL_MIN), MCAL_MAX));
+mcalCur = new Date(mcalCur.getFullYear(), mcalCur.getMonth(), 1);
+
+function mcalRows(y, m){
+  const rows = [], last = new Date(y, m + 1, 0).getDate();
+  for (let d = 1; d <= last; d++){
+    const dt = new Date(y, m, d), dow = dt.getDay();
+    const key = y + '-' + String(m + 1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+    EVENTS.filter(e => e.date === key).forEach(e => rows.push({ d, dow, ...e }));
+    REHEARSALS.filter(r => r.dow === dow).forEach(r => rows.push({ d, dow, ...r }));
+  }
+  return rows;
+}
+function mcalRender(){
+  const y = mcalCur.getFullYear(), m = mcalCur.getMonth();
+  document.getElementById('mcal-mo').textContent = y + '年 ' + (m + 1) + '月';
+  document.getElementById('mcal-prev').disabled = mcalCur <= MCAL_MIN;
+  document.getElementById('mcal-next').disabled = mcalCur >= MCAL_MAX;
+  const rows = mcalRows(y, m), box = document.getElementById('mcal-body');
+  if (!rows.length){ box.innerHTML = '<p class="mcal-empty">この月の予定は準備中です。</p>'; return; }
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  box.innerHTML =
+    '<table class="mcal-tb"><thead><tr>' +
+    '<th>日付</th><th>内容</th><th>時間</th><th>会場</th>' +
+    '</tr></thead><tbody>' +
+    rows.map(r =>
+      '<tr' + (r.dow === 0 ? ' class="is-sun"' : '') + '>' +
+      '<td class="mcal-dt">' + r.d + '<span class="mcal-dow">（' + DOW[r.dow] + '）</span></td>' +
+      '<td><span class="mcal-ttl">' + esc(r.title) + '</span>' +
+        '<span class="mcal-tag ' + r.cls + '">' + esc(r.tag) + '</span>' +
+        (r.note ? '<br><span style="font-size:12.5px;color:var(--ink-l)">' + esc(r.note) + '</span>' : '') +
+      '</td>' +
+      '<td>' + esc(r.time || '—') + '</td>' +
+      '<td>' + esc(r.place || '—') + '</td>' +
+      '</tr>'
+    ).join('') +
+    '</tbody></table>';
+}
+function mcalMove(n){
+  mcalCur = new Date(mcalCur.getFullYear(), mcalCur.getMonth() + n, 1);
+  mcalRender();
+}
+document.getElementById('mcal-prev').addEventListener('click', () => mcalMove(-1));
+document.getElementById('mcal-next').addEventListener('click', () => mcalMove(1));
+mcalRender();
+
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target)}}),{threshold:.1});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 document.querySelectorAll('a').forEach(a=>{a.addEventListener('click',e=>{

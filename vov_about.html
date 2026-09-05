@@ -92,7 +92,7 @@ h2 em{font-style:italic;color:var(--burg)}
 
 /* 指導者 */
 .leaders{background:var(--bg)}
-.leaders-g{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:48px}
+.leaders-g{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:48px}
 .leader{
   background:var(--white);
   box-shadow:0 6px 28px rgba(28,20,16,.08);
@@ -102,15 +102,30 @@ h2 em{font-style:italic;color:var(--burg)}
   aspect-ratio:4/3;
   display:flex;align-items:center;justify-content:center;
   overflow:hidden;
+  background:linear-gradient(150deg,#C8B49C,#A88C70);
 }
 .leader-ph img{width:100%;height:100%;object-fit:cover}
-.leader:nth-child(1) .leader-ph{background:linear-gradient(150deg,#C8B49C,#A88C70)}
-.leader:nth-child(2) .leader-ph{background:linear-gradient(150deg,#BCA688,#9C8064)}
-.ph-lbl{font-size:10px;letter-spacing:.24em;color:rgba(28,20,16,.35);font-weight:700;text-transform:uppercase}
+.ph-lbl{font-size:10px;letter-spacing:.24em;color:rgba(255,255,255,.85);font-weight:700;text-transform:uppercase}
+
+/* 横並び（全幅）カード：クライアント指定のレイアウトイメージに対応 */
+.leader.wide{
+  grid-column:1/-1;
+  display:grid;grid-template-columns:var(--lw,340px) 1fr;
+}
+.leader.wide .leader-ph{aspect-ratio:auto;min-height:var(--lh,280px);height:100%}
+.leader.wide .leader-body{display:flex;flex-direction:column;justify-content:center}
+.leader.lead{--lw:420px;--lh:400px}
+.leader.lead .leader-name{font-size:30px}
+.leader.second{--lw:340px;--lh:300px}
+.leader.second .leader-name{font-size:26px}
+.leader.founder{--lw:260px;--lh:210px;max-width:68%}
+.leader.founder .leader-name{font-size:21px}
+
 .leader-body{padding:28px 30px 32px}
-.leader-role{font-size:11px;letter-spacing:.24em;color:var(--gold);font-weight:700;text-transform:uppercase;margin-bottom:8px}
+.leader-role{font-size:11px;letter-spacing:.24em;color:var(--gold);font-weight:700;margin-bottom:8px}
 .leader-name{font-family:'Lora','Noto Serif JP',serif;font-size:23px;font-weight:700;color:var(--ink);margin-bottom:14px}
 .leader-bio{font-size:14px;color:var(--ink-m);line-height:2}
+.leader-bio.tba{color:var(--ink-l);font-style:italic}
 
 /* パート構成 */
 .parts{background:var(--paper)}
@@ -209,6 +224,11 @@ footer{background:var(--ink);padding:56px 48px 28px;border-top:1px solid rgba(21
   nav ul li:not(:last-child){display:none}
   section{padding:64px 24px}
   .pillars,.parts-g,.leaders-g{grid-template-columns:1fr}
+  .leader.wide{grid-template-columns:1fr}
+  .leader.wide .leader-ph{aspect-ratio:4/3;min-height:0}
+  .leader.founder{max-width:none}
+  .leader.lead .leader-name{font-size:24px}
+  .leader.second .leader-name{font-size:23px}
   .reh-row{grid-template-columns:1fr}
   .reh-cell.name{border-right:none;border-bottom:1px solid var(--bg3)}
   .reh-row.head{display:none}
@@ -291,7 +311,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 <div class="phero" style="background-image:url(vov_assets/gb-10th.jpg)">
   <p class="phero-eye">About Us</p>
   <h1>VOVについて</h1>
-  <p>Voices of Vision — 名古屋のゴスペル・クワイア</p>
+  <p>Voices of Vision（VOV）— 名古屋のゴスペルクワイア</p>
 </div>
 
 <!-- 理念 -->
@@ -304,10 +324,10 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     </div>
     <h2>私たちが<em>大切にしていること</em></h2>
     <p class="founder-txt">
-      Voices of Visionは、Founder（創設者）ラニー・ラッカー氏が提言している
+      VOVは、創設者ラニー・ラッカー氏が提言している
       "Music"、"History"、"Christianity" を体現し、<br>
-      多くの人の心に届くよう、歌い続けていくことを目的に活動を展開している名古屋のゴスペル・クワイアです。<br>
-      ゴスペルのルーツに根差した、本物のゴスペルを目指しています。
+      多くの人の心に届くよう歌い続けていくことを目的に活動を展開している名古屋のゴスペルクワイアです。<br>
+      ルーツに根差したゴスペルを目指しています。
     </p>
     <div class="pillars">
       <div class="pl">
@@ -335,22 +355,49 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     </div>
     <h2>指導者<em>紹介</em></h2>
     <div class="leaders-g">
-      <div class="leader">
-        <div class="leader-ph"><img src="vov_assets/leader-founder.jpg" alt="ラニー・ラッカー" style="object-position:center 20%" loading="lazy" decoding="async"></div>
+
+      <div class="leader wide lead">
+        <div class="leader-ph"><img src="vov_assets/leader-director.jpg" alt="兼松 弘子" style="object-position:35% center" loading="lazy" decoding="async"></div>
         <div class="leader-body">
-          <p class="leader-role">Founder</p>
-          <h3 class="leader-name">ラニー・ラッカー</h3>
-          <p class="leader-bio">Voices of Visionの創設者。"Music" "History" "Christianity" の3つの柱を提言し、ゴスペルのルーツに根差した本物のゴスペルを日本に伝え続けている。</p>
-        </div>
-      </div>
-      <div class="leader">
-        <div class="leader-ph"><img src="vov_assets/leader-director.jpg" alt="兼松弘子" style="object-position:35% center" loading="lazy" decoding="async"></div>
-        <div class="leader-body">
-          <p class="leader-role">Director</p>
+          <p class="leader-role">ディレクター</p>
           <h3 class="leader-name">兼松 弘子</h3>
           <p class="leader-bio">VOVの指導者として、メンバー一人ひとりの声を大切にしながらクワイアを導いている。</p>
         </div>
       </div>
+
+      <div class="leader wide second">
+        <div class="leader-ph"><span class="ph-lbl">Photo</span></div>
+        <div class="leader-body">
+          <h3 class="leader-name">米田　香</h3>
+          <p class="leader-bio tba">プロフィールは準備中です。</p>
+        </div>
+      </div>
+
+      <div class="leader">
+        <div class="leader-ph"><span class="ph-lbl">Photo</span></div>
+        <div class="leader-body">
+          <h3 class="leader-name">江崎　理子</h3>
+          <p class="leader-bio tba">プロフィールは準備中です。</p>
+        </div>
+      </div>
+
+      <div class="leader">
+        <div class="leader-ph"><span class="ph-lbl">Photo</span></div>
+        <div class="leader-body">
+          <h3 class="leader-name">佐藤　美香</h3>
+          <p class="leader-bio tba">プロフィールは準備中です。</p>
+        </div>
+      </div>
+
+      <div class="leader wide founder">
+        <div class="leader-ph"><img src="vov_assets/leader-founder.jpg" alt="ラニー・ラッカー" style="object-position:center 20%" loading="lazy" decoding="async"></div>
+        <div class="leader-body">
+          <p class="leader-role">創設者</p>
+          <h3 class="leader-name">ラニー・ラッカー</h3>
+          <p class="leader-bio">VOVの創設者。"Music" "History" "Christianity" の3つの柱を提言し、ルーツに根差したゴスペルを日本に伝え続けている。</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

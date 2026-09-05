@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>お問い合わせ | Voices of Vision</title>
-<meta name="description" content="体験・見学の申し込み、イベント出演依頼、メディア取材のお問い合わせはこちらから。">
+<meta name="description" content="体験・見学の申し込み、イベント出演依頼、その他のお問い合わせはこちらから。">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#6D2B3D">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Voices of Vision">
 <meta property="og:title" content="お問い合わせ | Voices of Vision">
-<meta property="og:description" content="体験・見学の申し込み、イベント出演依頼、メディア取材のお問い合わせはこちらから。">
+<meta property="og:description" content="体験・見学の申し込み、イベント出演依頼、その他のお問い合わせはこちらから。">
 <meta property="og:url" content="https://junnarita-pixel.github.io/30th-anniversary/vov_contact.html">
 <meta property="og:image" content="https://junnarita-pixel.github.io/30th-anniversary/vov_assets/top1-01.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -257,7 +257,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 <div class="phero" style="background-image:url(vov_assets/gb-section.jpg)">
   <p class="phero-eye">Contact</p>
   <h1>お問い合わせ</h1>
-  <p>体験申し込み・イベント出演依頼・取材のご相談など、お気軽にどうぞ</p>
+  <p>体験申し込み・イベント出演依頼・その他のご相談など、お気軽にどうぞ</p>
 </div>
 
 <section>
@@ -266,27 +266,27 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <!-- イベント出演依頼バナー -->
     <div class="event-banner" id="event">
       <div class="eb-t">
-        <h3>イベント出演のご依頼を受け付けています</h3>
-        <p>地域イベント・式典・企業イベントなど、ゴスペルの生演奏でイベントを彩ります。<br>下記フォームのカテゴリで「イベント出演依頼」を選択してお送りください。</p>
+        <h3>お問い合わせを受け付けています</h3>
+        <p>下記フォームのカテゴリから、ご希望のお問い合わせ項目を選んでお送りください。<br>体験・見学のお申し込み、イベント出演のご依頼、その他のご相談まで承ります。</p>
       </div>
     </div>
 
     <!-- カテゴリ選択 -->
     <div class="cat-g">
-      <div class="cat" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}" onclick="selectCat(this,'イベント出演依頼')">
+      <div class="cat" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}" onclick="selectCat(this,'VOV イベント出演依頼')">
         <div class="cat-icon">01</div>
         <div class="cat-n">イベント出演依頼</div>
         <p class="cat-d">イベント・式典などへの出演のご相談</p>
       </div>
-      <div class="cat active" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}" onclick="selectCat(this,'体験・見学の申し込み')">
+      <div class="cat active" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}" onclick="selectCat(this,'VOV 体験・見学の申し込み')">
         <div class="cat-icon">02</div>
         <div class="cat-n">体験・見学</div>
         <p class="cat-d">リハーサルの体験・見学の申し込み</p>
       </div>
-      <div class="cat" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}" onclick="selectCat(this,'メディア取材・その他')">
+      <div class="cat" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}" onclick="selectCat(this,'VOV その他問い合わせ')">
         <div class="cat-icon">03</div>
-        <div class="cat-n">取材・その他</div>
-        <p class="cat-d">メディア取材やその他のお問い合わせ</p>
+        <div class="cat-n">その他問い合わせ</div>
+        <p class="cat-d">上記以外のご相談・ご質問はこちら</p>
       </div>
     </div>
 
@@ -295,13 +295,13 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       <h2 class="form-title">お問い合わせフォーム</h2>
       <p class="form-sub">2〜3営業日以内にご返信いたします。</p>
 
-      <form action="#" method="post" novalidate>
+      <form id="contact-form" action="#" method="post">
       <div class="fg">
         <label for="f-cat">お問い合わせカテゴリ<span class="req" aria-hidden="true">必須</span></label>
         <select id="f-cat" name="category" required aria-required="true">
-          <option>体験・見学の申し込み</option>
-          <option>イベント出演依頼</option>
-          <option>メディア取材・その他</option>
+          <option>VOV 体験・見学の申し込み</option>
+          <option>VOV イベント出演依頼</option>
+          <option>VOV その他問い合わせ</option>
         </select>
       </div>
 
@@ -331,35 +331,18 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         ・イベント出演依頼の場合は、開催日時・会場・イベント内容をメッセージ欄にご記入いただけるとスムーズです。
       </p>
 
-      <button type="button" class="submit-btn" onclick="alert('申し訳ありません。送信機能は現在準備中です。\nお急ぎの場合は、木曜夜・金曜朝のリハーサル会場（在日大韓基督教会 名古屋教会 7F）に直接お越しください。')">送信する</button>
+      <button type="submit" class="submit-btn">送信する</button>
+      <p class="form-note" style="margin-top:14px">
+        送信ボタンを押すと、お使いのメールソフトが立ち上がり、宛先・件名・本文が入力された状態になります。<br>
+        そのまま送信してください。うまく開かない場合は <a href="mailto:gospel@vov-jp.com" style="color:var(--gold);font-weight:700">gospel@vov-jp.com</a> まで直接お送りください。
+      </p>
       </form>
     </div>
 
   </div>
 </section>
 
-<!-- 窓口情報 -->
-<section class="contact-info">
-  <div class="inner rv">
-    <div class="s-eye">
-      <div class="s-eye-bar"></div>
-      <span class="s-eye-t">Information</span>
-    </div>
-    <h2>各種<em>窓口</em></h2>
-    <div class="ci-g">
-      <div class="ci">
-        <p class="ci-role">Event / Booking</p>
-        <h3>イベント出演・契約窓口</h3>
-        <p>出演のご依頼・契約に関するご相談はこちら。<br>（掲載内容はVOV確認後に確定）</p>
-      </div>
-      <div class="ci">
-        <p class="ci-role">Visit / Join</p>
-        <h3>体験・入会窓口</h3>
-        <p>体験・見学・入会に関するご質問はこちら。<br>（掲載内容はVOV確認後に確定）</p>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- 「各種窓口」セクションはクライアント指示（フォームがあれば不要）により削除 -->
 
 <footer>
   <div class="ft-g">
@@ -411,6 +394,33 @@ const obs = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
 }), { threshold: .1 });
 document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+/* 送信先：gospel@vov-jp.com　件名の頭に「VOV 〜」を付けてソートしやすくする */
+var VOV_MAIL = 'gospel@vov-jp.com';
+document.getElementById('contact-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  var f = e.target;
+  var cat  = f.category.value;
+  var name = f.name.value.trim();
+  var mail = f.email.value.trim();
+  var date = f.preferred_date.value.trim();
+  var msg  = f.message.value.trim();
+  var body = [
+    '【カテゴリ】' + cat,
+    '【お名前】'   + name,
+    '【メール】'   + mail,
+    '【希望日・イベント日程】' + (date || '（未記入）'),
+    '',
+    '【メッセージ】',
+    (msg || '（未記入）'),
+    '',
+    '――――――――――――',
+    'Voices of Vision ウェブサイトのお問い合わせフォームより送信'
+  ].join('\n');
+  window.location.href = 'mailto:' + VOV_MAIL
+    + '?subject=' + encodeURIComponent(cat)
+    + '&body='    + encodeURIComponent(body);
+});
 
 function selectCat(el, val){
   document.querySelectorAll('.cat').forEach(c => c.classList.remove('active'));

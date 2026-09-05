@@ -104,6 +104,7 @@ footer{background:var(--ink);padding:52px 48px 26px;border-top:1px solid rgba(21
 @media(max-width:860px){.arc-g{grid-template-columns:1fr 1fr;gap:10px}}
 .videos-g{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:36px}
 .video-frame{aspect-ratio:16/9;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;cursor:pointer}
+.video-frame iframe{width:100%;height:100%;border:0;display:block}
 .video-play{width:60px;height:60px;border-radius:50%;background:var(--burg);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;transition:all .3s}
 .video-frame:hover .video-play{background:var(--gold);transform:scale(1.08)}
 .video-play::after{content:'';border-left:15px solid var(--white);border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
@@ -266,12 +267,13 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <h2>演奏<em>動画</em></h2>
     <div class="videos-g">
       <div>
-        <div class="video-frame"><div class="video-play"></div><span class="video-lbl">YouTube — 演奏動画</span></div>
-        <p class="video-cap">クリスマスコンサート 2025 ダイジェスト</p>
+        <div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/XSXoPy4CWcI" title="Let's Celebrate — Voices of Vision" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <p class="video-cap">Let's Celebrate</p>
       </div>
       <div>
-        <div class="video-frame"><div class="video-play"></div><span class="video-lbl">YouTube — 演奏動画</span></div>
-        <p class="video-cap">VOV リハーサル風景</p>
+        <!-- WeStand：DVDからの切り出し映像を掲載予定 -->
+        <div class="video-frame"><div class="video-play"></div><span class="video-lbl">映像準備中</span></div>
+        <p class="video-cap">We Stand（DVDより切り出し予定）</p>
       </div>
     </div>
   </div>
