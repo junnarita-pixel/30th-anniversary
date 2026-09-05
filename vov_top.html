@@ -17,7 +17,7 @@
 <link rel="icon" type="image/svg+xml" href="vov_assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#E9E3D9;--bg2:#E2DBCF;--bg3:#D6CDBE;--paper:#F2EEE6;
@@ -62,7 +62,7 @@ nav{
   border-bottom:1px solid var(--bg3);
 }
 .logo{text-decoration:none;display:flex;flex-direction:column}
-.logo-m{font-family:'Lora',serif;font-size:21px;font-weight:700;color:var(--burg);letter-spacing:.02em;line-height:1}
+.logo-m{font-family:'Lora','Noto Serif JP',serif;font-size:21px;font-weight:700;color:var(--burg);letter-spacing:.02em;line-height:1}
 .logo-s{font-size:10px;letter-spacing:.3em;color:var(--ink-l);margin-top:4px;font-weight:500}
 nav ul{display:flex;gap:26px;list-style:none;align-items:center}
 nav ul a{color:var(--ink-m);text-decoration:none;font-size:14px;font-weight:500;letter-spacing:.04em;transition:color .25s}
@@ -79,7 +79,7 @@ nav ul a:hover{color:var(--burg)}
 .hero-bg{position:absolute;inset:0;z-index:0;background:linear-gradient(155deg,#C8B49C,#94785C)}
 /* 写真ローテーション（ランダム・重複なし）＝ヒーロー全面 */
 img[data-rot],img[data-rot-fade]{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:opacity 1.4s ease}
-.hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(22,15,11,.82),rgba(22,15,11,.5) 44%,rgba(22,15,11,.26) 72%,rgba(22,15,11,.42)),linear-gradient(to top,rgba(22,15,11,.5),transparent 40%)}
+.hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(22,15,11,.84),rgba(22,15,11,.56) 44%,rgba(22,15,11,.42) 72%,rgba(22,15,11,.5)),linear-gradient(to top,rgba(22,15,11,.55),transparent 42%),rgba(22,15,11,.26)}
 /* ゴールドの枠線イラスト（このイラストを活用） */
 .hero-frame{position:absolute;z-index:2;inset:26px;border:1.5px solid rgba(212,176,97,.8);pointer-events:none}
 .hero-frame::before,.hero-frame::after{content:'';position:absolute;width:30px;height:30px;border-color:var(--gold-l);border-style:solid}
@@ -89,9 +89,9 @@ img[data-rot],img[data-rot-fade]{position:absolute;inset:0;width:100%;height:100
 .h-eye{display:flex;align-items:center;gap:13px;margin-bottom:26px}
 .h-eye-bar{width:44px;height:2px;background:var(--gold-l)}
 .h-eye-t{font-size:clamp(10px,1vw,12px);letter-spacing:.34em;color:var(--gold-l);font-weight:700;text-transform:uppercase}
-h1{font-family:'Lora',serif;font-size:clamp(40px,6vw,76px);font-weight:700;line-height:1.2;color:var(--white);margin-bottom:22px;text-shadow:0 2px 34px rgba(0,0,0,.42)}
+h1{font-family:'Lora','Noto Serif JP',serif;font-size:clamp(40px,6vw,76px);font-weight:700;line-height:1.2;color:var(--white);margin-bottom:22px;text-shadow:0 2px 34px rgba(0,0,0,.42)}
 h1 em{font-style:italic;color:var(--gold-l)}
-.h-sub{font-family:'Lora',serif;font-size:clamp(15px,1.7vw,19px);letter-spacing:.26em;color:rgba(251,249,245,.85);margin-bottom:42px;font-weight:500;font-style:italic;text-shadow:0 1px 20px rgba(0,0,0,.4)}
+.h-sub{font-family:'Lora','Noto Serif JP',serif;font-size:clamp(15px,1.7vw,19px);letter-spacing:.26em;color:rgba(251,249,245,.85);margin-bottom:42px;font-weight:500;font-style:italic;text-shadow:0 1px 20px rgba(0,0,0,.4)}
 .cta-row{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
 .btn-fill{
   background:var(--burg);color:var(--white);padding:17px 40px;
@@ -109,10 +109,10 @@ h1 em{font-style:italic;color:var(--gold-l)}
 .hero-content .btn-line{color:var(--white);display:inline-flex;border-bottom-color:var(--gold-l);transition:opacity .25s}
 .hero-content .btn-line:hover{color:var(--white);opacity:.72}
 .hero-badge{position:absolute;z-index:3;top:52px;right:clamp(28px,5vw,64px);background:rgba(24,16,12,.72);backdrop-filter:blur(3px);color:var(--gold-l);padding:15px 22px;text-align:center;border:1px solid rgba(212,176,97,.3)}
-.hero-badge-n{font-family:'Lora',serif;font-size:23px;font-weight:600;font-style:italic;line-height:1.15;display:block}
+.hero-badge-n{font-family:'Lora','Noto Serif JP',serif;font-size:23px;font-weight:600;font-style:italic;line-height:1.15;display:block}
 .hero-badge-t{font-size:9px;letter-spacing:.22em;margin-top:6px;display:block;color:rgba(212,176,97,.72);text-transform:uppercase;font-weight:600}
 .hero-quote{margin-top:40px;max-width:440px;border-left:3px solid var(--gold-l);padding-left:18px}
-.hero-quote p{font-family:'Lora',serif;font-size:14px;font-style:italic;color:rgba(251,249,245,.92);line-height:1.85;margin-bottom:6px;text-shadow:0 1px 16px rgba(0,0,0,.5)}
+.hero-quote p{font-family:'Lora','Noto Serif JP',serif;font-size:14px;font-style:italic;color:rgba(251,249,245,.92);line-height:1.85;margin-bottom:6px;text-shadow:0 1px 16px rgba(0,0,0,.5)}
 .hero-quote span{font-size:10px;letter-spacing:.2em;color:rgba(212,176,97,.88);font-weight:700;text-transform:uppercase}
 .hero-scroll{position:absolute;z-index:3;right:clamp(28px,5vw,64px);bottom:54px;display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(251,249,245,.72);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;text-decoration:none;writing-mode:vertical-rl}
 .hero-scroll::after{content:'';width:1px;height:44px;background:linear-gradient(var(--gold-l),transparent)}
@@ -125,12 +125,12 @@ h1 em{font-style:italic;color:var(--gold-l)}
   text-align:center;
 }
 .copy-band-en{
-  font-family:'Lora',serif;font-size:13px;font-style:italic;
+  font-family:'Lora','Noto Serif JP',serif;font-size:13px;font-style:italic;
   color:var(--gold-l);letter-spacing:.28em;margin-bottom:8px;
   text-transform:uppercase;
 }
 .copy-band-jp{
-  font-family:'Lora',serif;font-size:clamp(17px,2vw,21px);font-weight:600;
+  font-family:'Lora','Noto Serif JP',serif;font-size:clamp(17px,2vw,21px);font-weight:600;
   color:var(--white);letter-spacing:.14em;line-height:1.7;
 }
 
@@ -140,7 +140,7 @@ section{padding:96px 48px}
 .s-eye{display:flex;align-items:center;gap:12px;margin-bottom:16px}
 .s-eye-bar{width:30px;height:2px;background:var(--gold)}
 .s-eye-t{font-size:11px;letter-spacing:.34em;color:var(--gold);font-weight:700;text-transform:uppercase}
-h2{font-family:'Lora',serif;font-size:clamp(32px,3.6vw,42px);font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:20px}
+h2{font-family:'Lora','Noto Serif JP',serif;font-size:clamp(32px,3.6vw,42px);font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:20px}
 h2 em{font-style:italic;color:var(--burg)}
 .s-body{font-size:15.5px;line-height:2.1;color:var(--ink-m)}
 
@@ -163,13 +163,13 @@ h2 em{font-style:italic;color:var(--burg)}
   padding:16px 22px;text-align:center;
   box-shadow:0 10px 32px rgba(109,43,61,.32);z-index:2;
 }
-.ai-badge-n{font-family:'Lora',serif;font-size:20px;font-weight:600;font-style:italic;line-height:1.2;display:block}
+.ai-badge-n{font-family:'Lora','Noto Serif JP',serif;font-size:20px;font-weight:600;font-style:italic;line-height:1.2;display:block}
 .ai-badge-t{font-size:9px;letter-spacing:.22em;margin-top:4px;display:block;opacity:.75;text-transform:uppercase;font-weight:600}
 .pillars{display:flex;border:2px solid var(--bg3);margin:32px 0;background:var(--white)}
 .pl{flex:1;padding:24px 18px;text-align:center;border-right:2px solid var(--bg3);transition:background .25s}
 .pl:last-child{border-right:none}
 .pl:hover{background:var(--bg)}
-.pl-n{font-family:'Lora',serif;font-size:15px;font-weight:700;color:var(--burg);display:block;margin-bottom:6px}
+.pl-n{font-family:'Lora','Noto Serif JP',serif;font-size:15px;font-weight:700;color:var(--burg);display:block;margin-bottom:6px}
 .pl-d{font-size:12.5px;color:var(--ink-l);line-height:1.7}
 .ab-note{font-size:14px;color:var(--ink-m);background:var(--bg);padding:18px 22px;border-left:4px solid var(--gold);line-height:2}
 
@@ -187,10 +187,10 @@ h2 em{font-style:italic;color:var(--burg)}
 }
 .reh-card.gold{border-left-color:var(--gold)}
 .reh-day-block{text-align:center}
-.reh-day{font-family:'Lora',serif;font-size:44px;font-weight:700;color:var(--burg);line-height:1}
+.reh-day{font-family:'Lora','Noto Serif JP',serif;font-size:44px;font-weight:700;color:var(--burg);line-height:1}
 .reh-card.gold .reh-day{color:var(--gold)}
 .reh-day-sub{font-size:10.5px;letter-spacing:.18em;color:var(--ink-l);margin-top:4px;font-weight:600}
-.reh-body h4{font-size:16.5px;font-weight:700;color:var(--ink);margin-bottom:6px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.reh-body h3{font-size:16.5px;font-weight:700;color:var(--ink);margin-bottom:6px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .reh-tag{
   font-size:9.5px;font-weight:700;letter-spacing:.14em;
   padding:3px 12px;text-transform:uppercase;
@@ -223,9 +223,10 @@ h2 em{font-style:italic;color:var(--burg)}
 .evt:hover{border-left-color:var(--gold);box-shadow:0 6px 26px rgba(28,20,16,.12);transform:translateX(4px)}
 .ev-dt{text-align:center}
 .ev-mo{font-size:10px;letter-spacing:.2em;color:var(--gold);font-weight:700;text-transform:uppercase}
-.ev-d{font-family:'Lora',serif;font-size:34px;font-weight:700;color:var(--ink);line-height:1}
+.ev-d{font-family:'Lora','Noto Serif JP',serif;font-size:34px;font-weight:700;color:var(--ink);line-height:1}
 .ev-dow{font-size:11px;color:var(--ink-l);font-weight:500}
-.ev-info h4{font-size:16.5px;font-weight:700;color:var(--ink);margin-bottom:5px}
+.ev-info h3{font-size:16.5px;font-weight:700;color:var(--ink);margin-bottom:5px}
+a.gc,a.evt,a.post{text-decoration:none;color:inherit}
 .ev-info p{font-size:13px;color:var(--ink-l);line-height:1.7}
 .ev-tag{font-size:10px;font-weight:700;letter-spacing:.14em;padding:5px 14px;white-space:nowrap;text-transform:uppercase}
 .tg-c{background:var(--burg);color:var(--white)}
@@ -259,13 +260,13 @@ h2 em{font-style:italic;color:var(--burg)}
 .videos-hd{
   display:flex;align-items:center;gap:14px;margin-bottom:26px;
 }
-.videos-hd h3{font-family:'Lora',serif;font-size:22px;font-weight:700;color:var(--ink)}
+.videos-hd h3{font-family:'Lora','Noto Serif JP',serif;font-size:22px;font-weight:700;color:var(--ink)}
 .videos-hd-bar{flex:1;height:1px;background:var(--bg3)}
 .videos-g{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .video-frame{
   aspect-ratio:16/9;background:var(--ink);
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
-  position:relative;overflow:hidden;cursor:pointer;
+  position:relative;overflow:hidden;
 }
 .video-play{
   width:64px;height:64px;border-radius:50%;
@@ -292,8 +293,8 @@ h2 em{font-style:italic;color:var(--burg)}
 }
 .cb-date{text-align:center;color:var(--gold-l)}
 .cb-mo{font-size:11px;letter-spacing:.22em;font-weight:700;text-transform:uppercase}
-.cb-d{font-family:'Lora',serif;font-size:46px;font-weight:700;line-height:1}
-.cb-info h3{font-family:'Lora',serif;font-size:22px;font-weight:700;color:var(--white);margin-bottom:8px}
+.cb-d{font-family:'Lora','Noto Serif JP',serif;font-size:46px;font-weight:700;line-height:1}
+.cb-info h3{font-family:'Lora','Noto Serif JP',serif;font-size:22px;font-weight:700;color:var(--white);margin-bottom:8px}
 .cb-info p{font-size:13.5px;color:rgba(251,249,245,.6);line-height:1.8}
 .cb-btn{
   background:var(--gold);color:var(--ink);
@@ -315,7 +316,7 @@ h2 em{font-style:italic;color:var(--burg)}
   border:3px solid var(--bg);box-shadow:0 0 0 2px var(--gold);
 }
 .tl-item.major::before{background:var(--burg);box-shadow:0 0 0 2px var(--burg)}
-.tl-year{font-family:'Lora',serif;font-size:21px;font-weight:700;color:var(--burg);margin-bottom:4px}
+.tl-year{font-family:'Lora','Noto Serif JP',serif;font-size:21px;font-weight:700;color:var(--burg);margin-bottom:4px}
 .tl-text{font-size:14.5px;color:var(--ink-m);line-height:1.9}
 
 /* ===== JOIN ===== */
@@ -325,15 +326,15 @@ h2 em{font-style:italic;color:var(--burg)}
 .steps{display:flex;flex-direction:column}
 .step{display:flex;gap:24px;padding:28px 0;border-bottom:1px solid var(--bg3);align-items:flex-start}
 .step:last-child{border-bottom:none}
-.st-n{font-family:'Lora',serif;font-size:38px;font-weight:700;color:var(--gold);line-height:1;flex-shrink:0;width:48px}
-.st-b h4{font-size:16.5px;font-weight:700;color:var(--ink);margin-bottom:7px}
+.st-n{font-family:'Lora','Noto Serif JP',serif;font-size:38px;font-weight:700;color:var(--gold);line-height:1;flex-shrink:0;width:48px}
+.st-b h3{font-size:16.5px;font-weight:700;color:var(--ink);margin-bottom:7px}
 .st-b p{font-size:14px;color:var(--ink-m);line-height:1.95}
 .faq{
   background:var(--white);padding:38px 34px;
   border-top:4px solid var(--gold);
   box-shadow:0 6px 28px rgba(28,20,16,.08);
 }
-.faq h3{font-family:'Lora',serif;font-size:23px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.faq h3{font-family:'Lora','Noto Serif JP',serif;font-size:23px;font-weight:700;color:var(--ink);margin-bottom:8px}
 .faq-sub{font-size:14px;color:var(--ink-l);margin-bottom:26px;line-height:1.85}
 .faq-list{display:flex;flex-direction:column;margin-bottom:32px}
 .fi{padding:15px 0;border-bottom:1px solid var(--bg3)}
@@ -366,7 +367,7 @@ h2 em{font-style:italic;color:var(--burg)}
 /* ===== FOOTER ===== */
 footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--gold)}
 .ft-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;max-width:1100px;margin:0 auto 40px}
-.ft-brand{font-family:'Lora',serif;font-size:21px;font-weight:700;color:var(--gold-l);margin-bottom:12px}
+.ft-brand{font-family:'Lora','Noto Serif JP',serif;font-size:21px;font-weight:700;color:var(--gold-l);margin-bottom:12px}
 .ft-tag{font-size:13px;color:rgba(251,249,245,.45);line-height:1.9;margin-bottom:24px}
 .ft-sns{display:flex;gap:10px}
 .sn{
@@ -505,8 +506,8 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <h1>歌で、<br><em>心の垣根を</em><br>越える。</h1>
     <p class="h-sub">Voices of Vision</p>
     <div class="cta-row">
-      <a href="#join" class="btn-fill">体験を申し込む</a>
-      <a href="vov_about.html" class="btn-line">VOVのことを知る →</a>
+      <a href="vov_contact.html" class="btn-fill">体験を申し込む</a>
+      <a href="vov_join.html" class="btn-line">入会の流れを見る →</a>
     </div>
     <div class="hero-quote">
       <p>「はじめはみんな初心者。One Voiceで歌う醍醐味を、ぜひ体験してください。」</p>
@@ -576,7 +577,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
             <div class="reh-day-sub">毎週木曜</div>
           </div>
           <div class="reh-body">
-            <h4>夜リハーサル <span class="reh-tag night">Night</span></h4>
+            <h3>夜リハーサル <span class="reh-tag night">Night</span></h3>
             <p>19:00 〜 21:00<br>在日大韓基督教会 名古屋教会 7F（名古屋市中村区・名古屋駅から徒歩約10分）</p>
             <p class="reh-note">仕事・学校帰りに参加しやすい、メインのリハーサルです。</p>
           </div>
@@ -587,7 +588,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
             <div class="reh-day-sub">毎週金曜</div>
           </div>
           <div class="reh-body">
-            <h4>朝リハーサル <span class="reh-tag morning">Morning</span></h4>
+            <h3>朝リハーサル <span class="reh-tag morning">Morning</span></h3>
             <p>10:00 〜 12:00<br>在日大韓基督教会 名古屋教会 7F（名古屋市中村区・名古屋駅から徒歩約10分）</p>
             <p class="reh-note">日中に時間が取りやすい方向け。落ち着いた雰囲気で歌えます。</p>
           </div>
@@ -598,7 +599,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
             <div class="reh-day-sub">ユース</div>
           </div>
           <div class="reh-body">
-            <h4>VOV-U25（ユース） <span class="reh-tag youth">Youth</span></h4>
+            <h3>VOV-U25（ユース） <span class="reh-tag youth">Youth</span></h3>
             <p>高校生〜25歳までのユース世代クラス<br>開催日時・会場の詳細はお問い合わせください</p>
             <p class="reh-note">同世代の仲間と一緒に、ゴスペルを楽しめます。</p>
           </div>
@@ -611,16 +612,16 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       <!-- イベント -->
       <div>
         <div class="evts">
-          <div class="evt">
+          <a class="evt" href="vov_schedule.html">
             <div class="ev-dt"><div class="ev-mo">Dec</div><div class="ev-d">20</div><div class="ev-dow">土</div></div>
-            <div class="ev-info"><h4>VOV クリスマスコンサート</h4><p>名古屋市公会堂　開演 18:00　入場無料</p></div>
+            <div class="ev-info"><h3>VOV クリスマスコンサート</h3><p>名古屋市公会堂　開演 18:00　入場無料</p></div>
             <span class="ev-tag tg-c">Concert</span>
-          </div>
-          <div class="evt">
+          </a>
+          <a class="evt" href="vov_schedule.html">
             <div class="ev-dt"><div class="ev-mo">Oct</div><div class="ev-d">05</div><div class="ev-dow">日</div></div>
-            <div class="ev-info"><h4>秋のゴスペルフェスティバル 出演</h4><p>栄・中区文化センター</p></div>
+            <div class="ev-info"><h3>秋のゴスペルフェスティバル 出演</h3><p>栄・中区文化センター</p></div>
             <span class="ev-tag tg-e">Event</span>
-          </div>
+          </a>
         </div>
         <p class="sched-cal-note">※ 最新のスケジュールはGoogleカレンダーでもご確認いただけます（準備中）</p>
       </div>
@@ -642,11 +643,11 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       <a href="vov_gallery.html" class="btn-line">すべて見る →</a>
     </div>
     <div class="gal-grid rv">
-      <div class="gc"><div class="gc-in"><img src="vov_assets/gb-20th.jpg" alt="20周年記念コンサート" data-rot="gal"></div><div class="gc-ov"><span class="gc-ov-t">20周年記念コンサート</span></div></div>
-      <div class="gc"><div class="gc-in"><img src="vov_assets/gb-night-reh.jpg" alt="夜リハーサル" data-rot="gal"></div><div class="gc-ov"><span class="gc-ov-t">夜リハーサル</span></div></div>
-      <div class="gc"><div class="gc-in"><img src="vov_assets/gb-tokai.jpg" alt="東海フェスティバル" data-rot="gal"></div><div class="gc-ov"><span class="gc-ov-t">東海フェスティバル</span></div></div>
-      <div class="gc"><div class="gc-in"><img src="vov_assets/gb-tpw.jpg" alt="TPWとの共演" data-rot="gal"></div><div class="gc-ov"><span class="gc-ov-t">TPWとの共演</span></div></div>
-      <div class="gc"><div class="gc-in"><img src="vov_assets/gb-newyear.jpg" alt="VOV新年会" data-rot="gal"></div><div class="gc-ov"><span class="gc-ov-t">VOV新年会</span></div></div>
+      <a class="gc" href="vov_gallery.html"><div class="gc-in"><img src="vov_assets/gb-20th.jpg" alt="20周年記念コンサート" data-rot="gal"></div><div class="gc-ov"><span class="gc-ov-t">20周年記念コンサート</span></div></a>
+      <a class="gc" href="vov_gallery.html"><div class="gc-in"><img src="vov_assets/gb-night-reh.jpg" alt="夜リハーサル" data-rot="gal"></div><div class="gc-ov"><span class="gc-ov-t">夜リハーサル</span></div></a>
+      <a class="gc" href="vov_gallery.html"><div class="gc-in"><img src="vov_assets/gb-tokai.jpg" alt="東海フェスティバル" data-rot="gal"></div><div class="gc-ov"><span class="gc-ov-t">東海フェスティバル</span></div></a>
+      <a class="gc" href="vov_gallery.html"><div class="gc-in"><img src="vov_assets/gb-tpw.jpg" alt="TPWとの共演" data-rot="gal"></div><div class="gc-ov"><span class="gc-ov-t">TPWとの共演</span></div></a>
+      <a class="gc" href="vov_gallery.html"><div class="gc-in"><img src="vov_assets/gb-newyear.jpg" alt="VOV新年会" data-rot="gal"></div><div class="gc-ov"><span class="gc-ov-t">VOV新年会</span></div></a>
     </div>
 
     <!-- 動画（YouTube埋め込みエリア） -->
@@ -743,15 +744,15 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       <div class="steps">
         <div class="step">
           <span class="st-n">01</span>
-          <div class="st-b"><h4>リハーサルを見学する</h4><p>木曜夜・金曜朝のリハーサルに気軽に来てください。事前連絡なしでも大丈夫です。</p></div>
+          <div class="st-b"><h3>リハーサルを見学する</h3><p>木曜夜・金曜朝のリハーサルに気軽に来てください。事前連絡なしでも大丈夫です。</p></div>
         </div>
         <div class="step">
           <span class="st-n">02</span>
-          <div class="st-b"><h4>体験参加してみる</h4><p>見学後、一緒に歌いたいと思ったらそのまま体験参加できます。</p></div>
+          <div class="st-b"><h3>体験参加してみる</h3><p>見学後、一緒に歌いたいと思ったらそのまま体験参加できます。</p></div>
         </div>
         <div class="step">
           <span class="st-n">03</span>
-          <div class="st-b"><h4>メンバーとして参加スタート</h4><p>入会手続き後、正式メンバーとして活動スタート！</p></div>
+          <div class="st-b"><h3>メンバーとして参加スタート</h3><p>入会手続き後、正式メンバーとして活動スタート！</p></div>
         </div>
       </div>
       <div class="faq">
@@ -783,30 +784,30 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       <a href="vov_posts.html" class="btn-line">すべての投稿を見る →</a>
     </div>
     <div class="posts-g rv">
-      <div class="post">
+      <a class="post" href="vov_posts.html">
         <div class="post-img"><span class="ph-lbl">Photo</span></div>
         <div class="post-body">
           <span class="post-date">2026.05.20</span>
-          <h4 class="post-title">春のワークショップを開催しました</h4>
+          <h3 class="post-title">春のワークショップを開催しました</h3>
           <p class="post-ex">新メンバーも交えて、ゴスペルの基礎から楽しく学びました。</p>
         </div>
-      </div>
-      <div class="post">
+      </a>
+      <a class="post" href="vov_posts.html">
         <div class="post-img"><span class="ph-lbl">Photo</span></div>
         <div class="post-body">
           <span class="post-date">2026.04.12</span>
-          <h4 class="post-title">地域イベントに出演しました</h4>
+          <h3 class="post-title">地域イベントに出演しました</h3>
           <p class="post-ex">たくさんの方に聴いていただき、ありがとうございました。</p>
         </div>
-      </div>
-      <div class="post">
+      </a>
+      <a class="post" href="vov_posts.html">
         <div class="post-img"><span class="ph-lbl">Photo</span></div>
         <div class="post-body">
           <span class="post-date">2026.03.08</span>
-          <h4 class="post-title">新年度メンバー募集スタート！</h4>
+          <h3 class="post-title">新年度メンバー募集スタート！</h3>
           <p class="post-ex">2026年度の新メンバーを募集しています。体験はいつでも歓迎です。</p>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
