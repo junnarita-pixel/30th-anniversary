@@ -14,6 +14,7 @@
 <meta property="og:url" content="https://junnarita-pixel.github.io/30th-anniversary/vov_schedule.html">
 <meta property="og:image" content="https://junnarita-pixel.github.io/30th-anniversary/vov_assets/top1-01.jpg">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://junnarita-pixel.github.io/30th-anniversary/vov_schedule.html">
 <link rel="icon" type="image/svg+xml" href="vov_assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -179,10 +180,10 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <li><a href="vov_about.html">VOVについて</a></li><li><a href="vov_schedule.html" class="active">スケジュール</a></li><li><a href="vov_gallery.html">ギャラリー</a></li><li><a href="vov_history.html">歴史</a></li><li><a href="vov_posts.html">活動レポート</a></li>
     <li><a href="vov_contact.html" class="nav-cta">体験を申し込む</a></li>
   </ul>
-  <button class="menu-btn" aria-label="メニューを開く" onclick="document.body.classList.toggle('menu-open')">
+  <button class="menu-btn" aria-label="メニュー" aria-expanded="false" aria-controls="m-menu" onclick="const o=document.body.classList.toggle('menu-open');this.setAttribute('aria-expanded',o)">
     <span></span><span></span><span></span>
   </button>
-  <div class="m-menu">
+  <div class="m-menu" id="m-menu">
     <a href="vov_top.html">トップ</a>
     <a href="vov_about.html">VOVについて</a>
     <a href="vov_schedule.html">活動・スケジュール</a>

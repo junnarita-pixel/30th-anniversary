@@ -14,6 +14,7 @@
 <meta property="og:url" content="https://junnarita-pixel.github.io/30th-anniversary/vov_contact.html">
 <meta property="og:image" content="https://junnarita-pixel.github.io/30th-anniversary/vov_assets/top1-01.jpg">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://junnarita-pixel.github.io/30th-anniversary/vov_contact.html">
 <link rel="icon" type="image/svg+xml" href="vov_assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -238,10 +239,10 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <li><a href="vov_posts.html">活動レポート</a></li>
     <li><a href="#form" class="nav-cta">体験を申し込む</a></li>
   </ul>
-  <button class="menu-btn" aria-label="メニューを開く" onclick="document.body.classList.toggle('menu-open')">
+  <button class="menu-btn" aria-label="メニュー" aria-expanded="false" aria-controls="m-menu" onclick="const o=document.body.classList.toggle('menu-open');this.setAttribute('aria-expanded',o)">
     <span></span><span></span><span></span>
   </button>
-  <div class="m-menu">
+  <div class="m-menu" id="m-menu">
     <a href="vov_top.html">トップ</a>
     <a href="vov_about.html">VOVについて</a>
     <a href="vov_schedule.html">活動・スケジュール</a>
@@ -272,17 +273,17 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 
     <!-- カテゴリ選択 -->
     <div class="cat-g">
-      <div class="cat" onclick="selectCat(this,'イベント出演依頼')">
+      <div class="cat" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}" onclick="selectCat(this,'イベント出演依頼')">
         <div class="cat-icon">01</div>
         <div class="cat-n">イベント出演依頼</div>
         <p class="cat-d">イベント・式典などへの出演のご相談</p>
       </div>
-      <div class="cat active" onclick="selectCat(this,'体験・見学の申し込み')">
+      <div class="cat active" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}" onclick="selectCat(this,'体験・見学の申し込み')">
         <div class="cat-icon">02</div>
         <div class="cat-n">体験・見学</div>
         <p class="cat-d">リハーサルの体験・見学の申し込み</p>
       </div>
-      <div class="cat" onclick="selectCat(this,'メディア取材・その他')">
+      <div class="cat" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}" onclick="selectCat(this,'メディア取材・その他')">
         <div class="cat-icon">03</div>
         <div class="cat-n">取材・その他</div>
         <p class="cat-d">メディア取材やその他のお問い合わせ</p>

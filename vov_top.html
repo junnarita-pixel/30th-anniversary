@@ -14,7 +14,12 @@
 <meta property="og:url" content="https://junnarita-pixel.github.io/30th-anniversary/vov_top.html">
 <meta property="og:image" content="https://junnarita-pixel.github.io/30th-anniversary/vov_assets/top1-01.jpg">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://junnarita-pixel.github.io/30th-anniversary/vov_top.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MusicGroup","name":"Voices of Vision","alternateName":"VOV","genre":"Gospel","foundingDate":"1999","url":"https://junnarita-pixel.github.io/30th-anniversary/vov_top.html","image":"https://junnarita-pixel.github.io/30th-anniversary/vov_assets/top1-01.jpg","description":"名古屋のゴスペルクワイア Voices of Vision（VOV）。1999年創設。オーディションなし・楽譜なしで、初心者も歓迎。","location":{"@type":"Place","name":"在日大韓基督教会 名古屋教会 7F","address":{"@type":"PostalAddress","postalCode":"450-0002","addressCountry":"JP","addressRegion":"愛知県","addressLocality":"名古屋市中村区","streetAddress":"名駅2-39-11"}}}
+</script>
 <link rel="icon" type="image/svg+xml" href="vov_assets/favicon.svg">
+<link rel="preload" as="image" href="vov_assets/top1-01.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
@@ -485,10 +490,10 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <li><a href="vov_posts.html">活動レポート</a></li>
     <li><a href="vov_contact.html" class="nav-cta">体験を申し込む</a></li>
   </ul>
-  <button class="menu-btn" aria-label="メニューを開く" onclick="document.body.classList.toggle('menu-open')">
+  <button class="menu-btn" aria-label="メニュー" aria-expanded="false" aria-controls="m-menu" onclick="const o=document.body.classList.toggle('menu-open');this.setAttribute('aria-expanded',o)">
     <span></span><span></span><span></span>
   </button>
-  <div class="m-menu">
+  <div class="m-menu" id="m-menu">
     <a href="vov_top.html">トップ</a>
     <a href="vov_about.html">VOVについて</a>
     <a href="vov_schedule.html">活動・スケジュール</a>
@@ -502,7 +507,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 
 <!-- ===== HERO（フルスクリーン） ===== -->
 <div class="hero">
-  <div class="hero-bg"><img src="vov_assets/top1-01.jpg" alt="Voices of Vision" data-rot="hero"></div>
+  <div class="hero-bg"><img src="vov_assets/top1-01.jpg" alt="Voices of Vision" data-rot="hero" fetchpriority="high" decoding="async"></div>
   <div class="hero-scrim"></div>
   <div class="hero-frame"></div>
   <div class="hero-badge">
@@ -540,7 +545,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <div class="about-g rv">
       <div class="ai-block">
         <div class="ai-frame"></div>
-        <div class="ai-main"><img src="vov_assets/top2-01.jpg" alt="VOVのメンバー" data-rot="about"></div>
+        <div class="ai-main"><img src="vov_assets/top2-01.jpg" alt="VOVのメンバー" data-rot="about" loading="lazy" decoding="async"></div>
         <div class="ai-badge">
           <span class="ai-badge-n">Since<br>1999</span>
           <span class="ai-badge-t">Nagoya</span>
@@ -654,11 +659,11 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       <a href="vov_gallery.html" class="btn-line">すべて見る →</a>
     </div>
     <div class="gal-grid rv">
-      <a class="gc" href="vov_gallery.html"><div class="gc-in"><img src="vov_assets/gb-20th.jpg" alt="20周年記念コンサート" data-rot="gal"></div><div class="gc-ov"><span class="gc-ov-t">20周年記念コンサート</span></div></a>
-      <a class="gc" href="vov_gallery.html"><div class="gc-in"><img src="vov_assets/gb-night-reh.jpg" alt="夜リハーサル" data-rot="gal"></div><div class="gc-ov"><span class="gc-ov-t">夜リハーサル</span></div></a>
-      <a class="gc" href="vov_gallery.html"><div class="gc-in"><img src="vov_assets/gb-tokai.jpg" alt="東海フェスティバル" data-rot="gal"></div><div class="gc-ov"><span class="gc-ov-t">東海フェスティバル</span></div></a>
-      <a class="gc" href="vov_gallery.html"><div class="gc-in"><img src="vov_assets/gb-tpw.jpg" alt="TPWとの共演" data-rot="gal"></div><div class="gc-ov"><span class="gc-ov-t">TPWとの共演</span></div></a>
-      <a class="gc" href="vov_gallery.html"><div class="gc-in"><img src="vov_assets/gb-newyear.jpg" alt="VOV新年会" data-rot="gal"></div><div class="gc-ov"><span class="gc-ov-t">VOV新年会</span></div></a>
+      <a class="gc" href="vov_gallery.html"><div class="gc-in"><img src="vov_assets/gb-20th.jpg" alt="20周年記念コンサート" data-rot="gal" loading="lazy" decoding="async"></div><div class="gc-ov"><span class="gc-ov-t">20周年記念コンサート</span></div></a>
+      <a class="gc" href="vov_gallery.html"><div class="gc-in"><img src="vov_assets/gb-night-reh.jpg" alt="夜リハーサル" data-rot="gal" loading="lazy" decoding="async"></div><div class="gc-ov"><span class="gc-ov-t">夜リハーサル</span></div></a>
+      <a class="gc" href="vov_gallery.html"><div class="gc-in"><img src="vov_assets/gb-tokai.jpg" alt="東海フェスティバル" data-rot="gal" loading="lazy" decoding="async"></div><div class="gc-ov"><span class="gc-ov-t">東海フェスティバル</span></div></a>
+      <a class="gc" href="vov_gallery.html"><div class="gc-in"><img src="vov_assets/gb-tpw.jpg" alt="TPWとの共演" data-rot="gal" loading="lazy" decoding="async"></div><div class="gc-ov"><span class="gc-ov-t">TPWとの共演</span></div></a>
+      <a class="gc" href="vov_gallery.html"><div class="gc-in"><img src="vov_assets/gb-newyear.jpg" alt="VOV新年会" data-rot="gal" loading="lazy" decoding="async"></div><div class="gc-ov"><span class="gc-ov-t">VOV新年会</span></div></a>
     </div>
 
     <!-- 動画（YouTube埋め込みエリア） -->
