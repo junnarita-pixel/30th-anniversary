@@ -116,6 +116,17 @@ h1 em{font-style:italic;color:var(--gold-l)}
 .hero-quote span{font-size:10px;letter-spacing:.2em;color:rgba(212,176,97,.88);font-weight:700;text-transform:uppercase}
 .hero-scroll{position:absolute;z-index:3;right:clamp(28px,5vw,64px);bottom:54px;display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(251,249,245,.72);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;text-decoration:none;writing-mode:vertical-rl}
 .hero-scroll::after{content:'';width:1px;height:44px;background:linear-gradient(var(--gold-l),transparent)}
+/* ヒーロー登場：安全に「見えている状態」を初期値にし、動きは transform のみ付加
+   （アニメが走らない/一時停止でも文字は必ず表示される） */
+@media(prefers-reduced-motion:no-preference){
+  .hero-content>*{animation:heroIn .85s cubic-bezier(.2,.7,.2,1) backwards}
+  .hero-content .h-eye{animation-delay:.1s}
+  .hero-content h1{animation-delay:.24s}
+  .hero-content .h-sub{animation-delay:.42s}
+  .hero-content .cta-row{animation-delay:.56s}
+  .hero-content .hero-quote{animation-delay:.7s}
+}
+@keyframes heroIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
 /* ===== キャッチコピーバンド（旧ニュースバー差し替え） ===== */
 .copy-band{
@@ -501,7 +512,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
   <div class="hero-content">
     <div class="h-eye">
       <div class="h-eye-bar"></div>
-      <span class="h-eye-t">Nagoya Gospel Choir · Since 1999</span>
+      <span class="h-eye-t">Nagoya Gospel Choir</span>
     </div>
     <h1>歌で、<br><em>心の垣根を</em><br>越える。</h1>
     <p class="h-sub">Voices of Vision</p>

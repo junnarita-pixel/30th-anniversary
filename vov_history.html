@@ -43,7 +43,10 @@ nav ul a{color:var(--ink-m);text-decoration:none;font-size:14px;font-weight:500;
 nav ul a:hover,nav ul a.active{color:var(--burg)}
 .nav-cta{background:var(--burg);color:var(--white)!important;padding:11px 26px;font-size:13px!important;font-weight:700!important;letter-spacing:.1em!important}
 .nav-cta:hover{background:var(--burg-d)}
-.phero{background:var(--burg);border-bottom:4px solid var(--gold);padding:76px 48px;text-align:center}
+.phero{position:relative;overflow:hidden;background:var(--burg);border-bottom:4px solid var(--gold);padding:clamp(72px,11vh,116px) 48px;text-align:center;background-size:cover;background-position:center}
+.phero::before{content:'';position:absolute;inset:0;background:linear-gradient(rgba(22,15,11,.6),rgba(22,15,11,.72));z-index:0}
+.phero::after{content:'';position:absolute;inset:16px;border:1.5px solid rgba(212,176,97,.5);pointer-events:none;z-index:1}
+.phero-eye,.phero h1,.phero p{position:relative;z-index:2}
 .phero-eye{font-size:11px;letter-spacing:.4em;color:var(--gold-l);font-weight:700;text-transform:uppercase;margin-bottom:14px}
 .phero h1{font-family:'Lora','Noto Serif JP',serif;font-size:clamp(34px,4vw,46px);font-weight:700;color:var(--white)}
 .phero p{font-size:14px;color:rgba(251,249,245,.6);margin-top:12px}
@@ -152,7 +155,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <a href="vov_contact.html" class="m-cta">体験を申し込む</a>
   </div>
 </nav>
-<div class="phero">
+<div class="phero" style="background-image:url(vov_assets/gb-20th.jpg)">
   <p class="phero-eye">History</p>
   <h1>VOVの歩み</h1>
   <p>1999年から続く、Voices of Visionの年表</p>
