@@ -74,22 +74,29 @@ nav ul a:hover{color:var(--burg)}
 }
 .nav-cta:hover{background:var(--burg-d)}
 
-/* ===== HERO ===== */
-.hero{position:relative;min-height:calc(100vh - 103px);display:grid;grid-template-columns:1.05fr .95fr;overflow:hidden}
-.hero-l{display:flex;flex-direction:column;justify-content:center;padding:64px 56px 84px;position:relative}
-.hero-l::before{content:'';position:absolute;left:0;top:15%;bottom:15%;width:4px;background:var(--ink)}
-.h-eye{display:flex;align-items:center;gap:12px;margin-bottom:32px}
-.h-eye-bar{width:36px;height:2px;background:var(--gold)}
-.h-eye-t{font-size:11px;letter-spacing:.38em;color:var(--gold);font-weight:700;text-transform:uppercase}
-h1{font-family:'Lora',serif;font-size:clamp(42px,4.4vw,58px);font-weight:700;line-height:1.24;color:var(--ink);margin-bottom:16px}
-h1 em{font-style:italic;color:var(--burg)}
-.h-sub{font-family:'Lora',serif;font-size:15px;letter-spacing:.22em;color:var(--ink-l);margin-bottom:30px;font-weight:500;font-style:italic}
-.h-desc{font-size:14.5px;line-height:2.15;color:var(--ink-m);max-width:470px;margin-bottom:42px}
+/* ===== HERO（フルスクリーン写真＋コピーオーバーレイ） ===== */
+.hero{position:relative;min-height:calc(100vh - 103px);overflow:hidden;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0;z-index:0;background:linear-gradient(155deg,#C8B49C,#94785C)}
+/* 写真ローテーション（ランダム・重複なし）＝ヒーロー全面 */
+img[data-rot],img[data-rot-fade]{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:opacity 1.4s ease}
+.hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(22,15,11,.82),rgba(22,15,11,.5) 44%,rgba(22,15,11,.26) 72%,rgba(22,15,11,.42)),linear-gradient(to top,rgba(22,15,11,.5),transparent 40%)}
+/* ゴールドの枠線イラスト（このイラストを活用） */
+.hero-frame{position:absolute;z-index:2;inset:26px;border:1.5px solid rgba(212,176,97,.8);pointer-events:none}
+.hero-frame::before,.hero-frame::after{content:'';position:absolute;width:30px;height:30px;border-color:var(--gold-l);border-style:solid}
+.hero-frame::before{top:-9px;left:-9px;border-width:1.5px 0 0 1.5px}
+.hero-frame::after{right:-9px;bottom:-9px;border-width:0 1.5px 1.5px 0}
+.hero-content{position:relative;z-index:3;width:100%;padding:0 clamp(40px,8vw,110px)}
+.h-eye{display:flex;align-items:center;gap:13px;margin-bottom:26px}
+.h-eye-bar{width:44px;height:2px;background:var(--gold-l)}
+.h-eye-t{font-size:clamp(10px,1vw,12px);letter-spacing:.34em;color:var(--gold-l);font-weight:700;text-transform:uppercase}
+h1{font-family:'Lora',serif;font-size:clamp(40px,6vw,76px);font-weight:700;line-height:1.2;color:var(--white);margin-bottom:22px;text-shadow:0 2px 34px rgba(0,0,0,.42)}
+h1 em{font-style:italic;color:var(--gold-l)}
+.h-sub{font-family:'Lora',serif;font-size:clamp(15px,1.7vw,19px);letter-spacing:.26em;color:rgba(251,249,245,.85);margin-bottom:42px;font-weight:500;font-style:italic;text-shadow:0 1px 20px rgba(0,0,0,.4)}
 .cta-row{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
 .btn-fill{
   background:var(--burg);color:var(--white);padding:17px 40px;
   font-size:14.5px;font-weight:700;letter-spacing:.08em;text-decoration:none;
-  box-shadow:0 6px 24px rgba(109,43,61,.28);transition:all .25s;position:relative;
+  box-shadow:0 6px 24px rgba(109,43,61,.42);transition:all .25s;position:relative;
 }
 .btn-fill::after{content:'';position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--gold)}
 .btn-fill:hover{background:var(--burg-d);transform:translateY(-2px)}
@@ -99,41 +106,16 @@ h1 em{font-style:italic;color:var(--burg)}
   border-bottom:2px solid var(--gold);padding-bottom:3px;transition:color .25s;
 }
 .btn-line:hover{color:var(--burg)}
-.h-since{display:flex;align-items:center;gap:16px;margin-top:50px;padding-top:36px;border-top:1px solid var(--bg3)}
-.h-since-n{
-  font-family:'Lora',serif;font-size:34px;font-weight:600;font-style:italic;
-  color:var(--burg);line-height:1;letter-spacing:.02em;
-}
-.h-since-t{font-size:11px;letter-spacing:.24em;color:var(--ink-l);line-height:1.7;font-weight:600;text-transform:uppercase}
-
-/* HERO右：横構図メインを大きく見せる */
-.hero-r{position:relative;background:var(--bg2);overflow:hidden;display:flex;align-items:center;justify-content:center;padding:56px 52px}
-.hr-stage{position:relative;width:100%;max-width:600px}
-.hr-gold-frame{position:absolute;top:-14px;left:-14px;width:100%;height:100%;border:2px solid var(--gold);pointer-events:none;z-index:0}
-.hr-photo-main{
-  position:relative;z-index:1;width:100%;aspect-ratio:3/2;overflow:hidden;
-  background:linear-gradient(155deg,#C8B49C 0%,#AE9678 50%,#94785C 100%);
-  box-shadow:0 24px 64px rgba(28,20,16,.22);
-}
-.ph-lbl{font-size:10px;letter-spacing:.24em;color:rgba(28,20,16,.35);font-weight:700;text-transform:uppercase}
-/* 写真ローテーション（ランダム・重複なし） */
-img[data-rot],img[data-rot-fade]{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:opacity 1.4s ease}
-.hr-badge{
-  position:absolute;z-index:2;top:-20px;right:-16px;
-  background:var(--ink);color:var(--gold-l);
-  padding:13px 19px;text-align:center;
-  box-shadow:0 10px 32px rgba(28,20,16,.3);
-}
-.hr-badge-n{font-family:'Lora',serif;font-size:20px;font-weight:600;font-style:italic;line-height:1.2;display:block}
-.hr-badge-t{font-size:9px;letter-spacing:.22em;margin-top:5px;display:block;color:rgba(212,176,97,.75);text-transform:uppercase;font-weight:600}
-.hr-quote{
-  position:relative;z-index:1;margin-top:24px;
-  background:var(--white);padding:17px 22px;
-  border-left:4px solid var(--burg);
-  box-shadow:0 8px 28px rgba(28,20,16,.1);
-}
-.hr-quote p{font-family:'Lora',serif;font-size:13.5px;font-style:italic;color:var(--ink-m);line-height:1.85;margin-bottom:6px}
-.hr-quote span{font-size:10px;letter-spacing:.18em;color:var(--ink-l);font-weight:700;text-transform:uppercase}
+.hero-content .btn-line{color:var(--white);display:inline-flex;border-bottom-color:var(--gold-l);transition:opacity .25s}
+.hero-content .btn-line:hover{color:var(--white);opacity:.72}
+.hero-badge{position:absolute;z-index:3;top:52px;right:clamp(28px,5vw,64px);background:rgba(24,16,12,.72);backdrop-filter:blur(3px);color:var(--gold-l);padding:15px 22px;text-align:center;border:1px solid rgba(212,176,97,.3)}
+.hero-badge-n{font-family:'Lora',serif;font-size:23px;font-weight:600;font-style:italic;line-height:1.15;display:block}
+.hero-badge-t{font-size:9px;letter-spacing:.22em;margin-top:6px;display:block;color:rgba(212,176,97,.72);text-transform:uppercase;font-weight:600}
+.hero-quote{margin-top:40px;max-width:440px;border-left:3px solid var(--gold-l);padding-left:18px}
+.hero-quote p{font-family:'Lora',serif;font-size:14px;font-style:italic;color:rgba(251,249,245,.92);line-height:1.85;margin-bottom:6px;text-shadow:0 1px 16px rgba(0,0,0,.5)}
+.hero-quote span{font-size:10px;letter-spacing:.2em;color:rgba(212,176,97,.88);font-weight:700;text-transform:uppercase}
+.hero-scroll{position:absolute;z-index:3;right:clamp(28px,5vw,64px);bottom:54px;display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(251,249,245,.72);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;text-decoration:none;writing-mode:vertical-rl}
+.hero-scroll::after{content:'';width:1px;height:44px;background:linear-gradient(var(--gold-l),transparent)}
 
 /* ===== キャッチコピーバンド（旧ニュースバー差し替え） ===== */
 .copy-band{
@@ -438,10 +420,14 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
   nav{padding:14px 24px}
   nav ul{gap:16px}
   nav ul li:not(:last-child){display:none}
-  .hero{grid-template-columns:1fr;min-height:auto}
-  .hero-r{min-height:auto;padding:34px 26px 44px}
-  .hr-stage{max-width:460px}
-  .hero-l{padding:52px 28px 8px}
+  .hero{min-height:calc(100svh - 56px)}
+  .hero-frame{inset:16px}
+  .hero-content{padding:0 30px}
+  .hero-badge{top:24px;right:22px;padding:10px 15px}
+  .hero-badge-n{font-size:17px}
+  .hero-quote{margin-top:30px;max-width:none}
+  .hero-quote p{font-size:12.5px}
+  .hero-scroll{display:none}
   section{padding:72px 24px}
   .about-g,.join-g,.sched-g{grid-template-columns:1fr;gap:44px}
   .gal-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,180px)}
@@ -502,39 +488,32 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
   </div>
 </nav>
 
-<!-- ===== HERO ===== -->
+<!-- ===== HERO（フルスクリーン） ===== -->
 <div class="hero">
-  <div class="hero-l">
+  <div class="hero-bg"><img src="vov_assets/top1-01.jpg" alt="Voices of Vision" data-rot="hero"></div>
+  <div class="hero-scrim"></div>
+  <div class="hero-frame"></div>
+  <div class="hero-badge">
+    <span class="hero-badge-n">Since<br>1999</span>
+    <span class="hero-badge-t">Gospel Choir</span>
+  </div>
+  <div class="hero-content">
     <div class="h-eye">
       <div class="h-eye-bar"></div>
       <span class="h-eye-t">Nagoya Gospel Choir · Since 1999</span>
     </div>
     <h1>歌で、<br><em>心の垣根を</em><br>越える。</h1>
     <p class="h-sub">Voices of Vision</p>
-    <p class="h-desc">Voices of Visionは、Founder（創設者）ラニー・ラッカー氏が提言する "Music" "History" "Christianity" を体現し、多くの人の心に届くよう歌い続けていくことを目的に活動する、名古屋のゴスペル・クワイアです。ゴスペルのルーツに根差した、本物のゴスペルを目指しています。</p>
     <div class="cta-row">
       <a href="#join" class="btn-fill">体験を申し込む</a>
       <a href="vov_about.html" class="btn-line">VOVのことを知る →</a>
     </div>
-    <div class="h-since">
-      <span class="h-since-n">Since 1999</span>
-      <span class="h-since-t">Nagoya<br>Gospel Choir</span>
+    <div class="hero-quote">
+      <p>「はじめはみんな初心者。One Voiceで歌う醍醐味を、ぜひ体験してください。」</p>
+      <span>Voices of Vision</span>
     </div>
   </div>
-  <div class="hero-r">
-    <div class="hr-stage">
-      <div class="hr-gold-frame"></div>
-      <div class="hr-photo-main"><img src="vov_assets/top1-01.jpg" alt="Voices of Vision" data-rot="hero"></div>
-      <div class="hr-badge">
-        <span class="hr-badge-n">Since<br>1999</span>
-        <span class="hr-badge-t">Gospel Choir</span>
-      </div>
-      <div class="hr-quote">
-        <p>「はじめはみんな初心者。<br>One Voiceで歌う醍醐味を、ぜひ体験してください。」</p>
-        <span>Voices of Vision</span>
-      </div>
-    </div>
-  </div>
+  <a href="#about" class="hero-scroll">Scroll</a>
 </div>
 
 <!-- ===== キャッチコピーバンド ===== -->
