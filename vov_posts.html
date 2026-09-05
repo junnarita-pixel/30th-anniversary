@@ -83,7 +83,8 @@ footer{background:var(--ink);padding:52px 48px 26px;border-top:1px solid rgba(21
 .posts-g{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
 .post{background:var(--white);box-shadow:0 4px 20px rgba(28,20,16,.07);transition:all .28s;cursor:pointer;overflow:hidden}
 .post:hover{box-shadow:0 10px 36px rgba(28,20,16,.14);transform:translateY(-4px)}
-.post-img{aspect-ratio:16/10;display:flex;align-items:center;justify-content:center}
+.post-img{aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.post-img img{width:100%;height:100%;object-fit:cover;display:block}
 .post:nth-child(3n+1) .post-img{background:linear-gradient(150deg,#C4AC90,#A08468)}
 .post:nth-child(3n+2) .post-img{background:linear-gradient(150deg,#BCA48C,#9C8064)}
 .post:nth-child(3n) .post-img{background:linear-gradient(150deg,#CCB498,#AC9070)}
@@ -172,7 +173,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <p class="s-body">VOVの日々の活動を月1〜2回のペースでお届けします。</p>
     <div class="posts-g">
       <div class="post">
-        <div class="post-img"><span class="ph-lbl">Photo</span></div>
+        <div class="post-img"><img src="vov_assets/gb-lanny-night.jpg" alt="春のワークショップ" loading="lazy" decoding="async"></div>
         <div class="post-body">
           <span class="post-date">2026.05.20</span>
           <h3 class="post-title">春のワークショップを開催しました</h3>
@@ -180,7 +181,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         </div>
       </div>
       <div class="post">
-        <div class="post-img"><span class="ph-lbl">Photo</span></div>
+        <div class="post-img"><img src="vov_assets/gb-waiwai.jpg" alt="地域イベント出演" loading="lazy" decoding="async"></div>
         <div class="post-body">
           <span class="post-date">2026.04.12</span>
           <h3 class="post-title">地域イベントに出演しました</h3>
@@ -188,7 +189,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         </div>
       </div>
       <div class="post">
-        <div class="post-img"><span class="ph-lbl">Photo</span></div>
+        <div class="post-img"><img src="vov_assets/gb-section.jpg" alt="メンバー募集" loading="lazy" decoding="async"></div>
         <div class="post-body">
           <span class="post-date">2026.03.08</span>
           <h3 class="post-title">新年度メンバー募集スタート！</h3>
@@ -196,7 +197,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         </div>
       </div>
       <div class="post">
-        <div class="post-img"><span class="ph-lbl">Photo</span></div>
+        <div class="post-img"><img src="vov_assets/gb-morning-reh.jpg" alt="金曜朝リハーサル" loading="lazy" decoding="async"></div>
         <div class="post-body">
           <span class="post-date">2026.02.14</span>
           <h3 class="post-title">金曜朝リハーサルの様子</h3>
@@ -204,7 +205,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         </div>
       </div>
       <div class="post">
-        <div class="post-img"><span class="ph-lbl">Photo</span></div>
+        <div class="post-img"><img src="vov_assets/gb-newyear.jpg" alt="VOVの活動" loading="lazy" decoding="async"></div>
         <div class="post-body">
           <span class="post-date">2026.01.20</span>
           <h3 class="post-title">2026年の活動がスタートしました</h3>
@@ -212,7 +213,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         </div>
       </div>
       <div class="post">
-        <div class="post-img"><span class="ph-lbl">Photo</span></div>
+        <div class="post-img"><img src="vov_assets/gb-xmas.jpg" alt="クリスマスコンサート" loading="lazy" decoding="async"></div>
         <div class="post-body">
           <span class="post-date">2025.12.21</span>
           <h3 class="post-title">クリスマスコンサート2025 御礼</h3>

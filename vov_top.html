@@ -337,7 +337,22 @@ a.gc,a.evt,a.post{text-decoration:none;color:inherit}
 
 /* ===== JOIN ===== */
 .join{background:var(--paper)}
-.join-hd{text-align:center;margin-bottom:56px}
+.join-hd{text-align:center;margin-bottom:40px}
+/* 次のリハを見学カード（予約不要・低ハードルの一次CV） */
+.visit-card{background:var(--burg);color:var(--white);border-left:5px solid var(--gold);padding:32px 38px;margin:0 auto 52px;max-width:900px;display:grid;grid-template-columns:1.15fr 1fr;gap:24px 40px;align-items:center;box-shadow:0 14px 44px rgba(109,43,61,.26)}
+.visit-eye{font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-l);font-weight:700}
+.visit-card h3{font-family:'Lora','Noto Serif JP',serif;font-size:22px;font-weight:700;color:var(--white);margin:10px 0 10px}
+.vc-lead{font-size:13.5px;color:rgba(251,249,245,.82);line-height:1.95}
+.visit-times{display:flex;flex-direction:column;gap:10px}
+.vt{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.06);border:1px solid rgba(212,176,97,.3);padding:11px 16px}
+.vt-d{font-family:'Lora','Noto Serif JP',serif;font-size:26px;font-weight:700;color:var(--gold-l);width:32px;text-align:center;flex-shrink:0}
+.vt-b strong{display:block;font-size:14px;color:var(--white);font-weight:700}
+.vt-b span{font-size:12.5px;color:rgba(251,249,245,.7)}
+.visit-place{grid-column:1/-1;border-top:1px solid rgba(212,176,97,.25);padding-top:20px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.visit-place p{font-size:13px;color:rgba(251,249,245,.82);line-height:1.8}
+.visit-place .btn-line{color:var(--gold-l);border-bottom-color:var(--gold-l);white-space:nowrap}
+.visit-place .btn-line:hover{color:var(--white)}
+@media(max-width:860px){.visit-card{grid-template-columns:1fr;padding:26px 22px;gap:20px}}
 .join-g{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
 .steps{display:flex;flex-direction:column}
 .step{display:flex;gap:24px;padding:28px 0;border-bottom:1px solid var(--bg3);align-items:flex-start}
@@ -371,7 +386,8 @@ a.gc,a.evt,a.post{text-decoration:none;color:inherit}
 .posts-g{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .post{background:var(--white);box-shadow:0 4px 20px rgba(28,20,16,.07);transition:all .28s;cursor:pointer;overflow:hidden}
 .post:hover{box-shadow:0 10px 36px rgba(28,20,16,.14);transform:translateY(-4px)}
-.post-img{aspect-ratio:16/10;display:flex;align-items:center;justify-content:center}
+.post-img{aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.post-img img{width:100%;height:100%;object-fit:cover;display:block}
 .post:nth-child(1) .post-img{background:linear-gradient(150deg,#C4AC90,#A08468)}
 .post:nth-child(2) .post-img{background:linear-gradient(150deg,#BCA48C,#9C8064)}
 .post:nth-child(3) .post-img{background:linear-gradient(150deg,#CCB498,#AC9070)}
@@ -756,6 +772,21 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       <h2>一緒に<em>歌いませんか？</em></h2>
       <p class="s-body" style="max-width:480px;margin:0 auto">オーディションも楽譜も必要ありません。<br>まずは一度、リハーサルを体験しに来てください。</p>
     </div>
+    <div class="visit-card rv">
+      <div class="visit-head">
+        <span class="visit-eye">Drop in anytime</span>
+        <h3>次のリハーサルを、見学しませんか？</h3>
+        <p class="vc-lead">予約不要・手ぶらでOK。楽譜は使いません。気になったら、そのまま会場にお越しください。</p>
+      </div>
+      <div class="visit-times">
+        <div class="vt"><span class="vt-d">木</span><div class="vt-b"><strong>夜リハーサル</strong><span>19:00 〜 21:00</span></div></div>
+        <div class="vt"><span class="vt-d">金</span><div class="vt-b"><strong>朝リハーサル</strong><span>10:00 〜 12:00</span></div></div>
+      </div>
+      <div class="visit-place">
+        <p>在日大韓基督教会 名古屋教会 7F ／ 名古屋市中村区名駅2-39-11（名古屋駅から徒歩約10分）</p>
+        <a href="https://www.google.com/maps/search/?api=1&query=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E6%9D%91%E5%8C%BA%E5%90%8D%E9%A7%852-39-11" target="_blank" rel="noopener" class="btn-line">Googleマップで開く →</a>
+      </div>
+    </div>
     <div class="join-g rv">
       <div class="steps">
         <div class="step">
@@ -801,7 +832,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     </div>
     <div class="posts-g rv">
       <a class="post" href="vov_posts.html">
-        <div class="post-img"><span class="ph-lbl">Photo</span></div>
+        <div class="post-img"><img src="vov_assets/gb-lanny-night.jpg" alt="春のワークショップ" loading="lazy" decoding="async"></div>
         <div class="post-body">
           <span class="post-date">2026.05.20</span>
           <h3 class="post-title">春のワークショップを開催しました</h3>
@@ -809,7 +840,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         </div>
       </a>
       <a class="post" href="vov_posts.html">
-        <div class="post-img"><span class="ph-lbl">Photo</span></div>
+        <div class="post-img"><img src="vov_assets/gb-waiwai.jpg" alt="地域イベント出演" loading="lazy" decoding="async"></div>
         <div class="post-body">
           <span class="post-date">2026.04.12</span>
           <h3 class="post-title">地域イベントに出演しました</h3>
@@ -817,7 +848,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         </div>
       </a>
       <a class="post" href="vov_posts.html">
-        <div class="post-img"><span class="ph-lbl">Photo</span></div>
+        <div class="post-img"><img src="vov_assets/gb-section.jpg" alt="メンバー募集" loading="lazy" decoding="async"></div>
         <div class="post-body">
           <span class="post-date">2026.03.08</span>
           <h3 class="post-title">新年度メンバー募集スタート！</h3>
