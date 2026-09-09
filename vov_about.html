@@ -46,6 +46,19 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 nav ul{display:flex;gap:26px;list-style:none;align-items:center}
 nav ul a{color:var(--ink-m);text-decoration:none;font-size:14px;font-weight:500;transition:color .25s}
 nav ul a:hover,nav ul a.active{color:var(--burg)}
+
+/* ナビのドロップダウン（クリックで小項目） */
+nav ul li.has-sub{position:relative}
+nav ul li.has-sub>.navtop{display:inline-flex;align-items:center;gap:6px;cursor:pointer;background:none;border:0;font-family:inherit;font-size:14px;font-weight:500;color:var(--ink-m);padding:0;transition:color .25s}
+nav ul li.has-sub>.navtop::after{content:'';width:5px;height:5px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+nav ul li.has-sub[aria-expanded="true"]>.navtop::after{transform:rotate(-135deg) translateY(-2px)}
+nav ul li.has-sub>.navtop:hover,nav ul li.has-sub[aria-expanded="true"]>.navtop{color:var(--burg)}
+.subm{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-6px);min-width:216px;background:var(--white);border:1px solid var(--bg3);border-top:3px solid var(--gold);box-shadow:0 12px 34px rgba(28,20,16,.14);padding:8px 0;display:none;opacity:0;transition:opacity .18s ease,transform .18s ease;z-index:120}
+li.has-sub[aria-expanded="true"] .subm{display:block;opacity:1;transform:translateX(-50%) translateY(0)}
+.subm a{display:block;padding:10px 20px;font-size:13.5px;color:var(--ink-m);text-decoration:none;white-space:nowrap;transition:background .18s,color .18s}
+.subm a:hover{background:var(--paper);color:var(--burg)}
+.subm a.subm-top{font-weight:700;color:var(--burg);border-bottom:1px solid var(--bg3);margin-bottom:4px;padding-bottom:12px}
+@media(max-width:860px){nav ul li.has-sub{display:none}}
 .nav-cta{background:var(--burg);color:var(--white)!important;padding:11px 26px;font-size:13px!important;font-weight:700!important;letter-spacing:.1em!important}
 .nav-cta:hover{background:var(--burg-d)}
 
@@ -246,7 +259,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
 .ft-col a{font-size:13.5px;color:rgba(251,249,245,.5);text-decoration:none;transition:color .22s}
 .ft-col a:hover{color:var(--gold-l)}
-.ft-support{max-width:1100px;margin:0 auto 40px;border:1px solid rgba(212,176,97,.2);padding:22px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.ft-support{max-width:1100px;margin:0 auto 40px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .ft-support-t{font-size:13px;color:rgba(251,249,245,.6);line-height:1.8}
 .ft-support-t strong{color:var(--gold-l);font-weight:700}
 .ft-support-btns{display:flex;gap:12px}
@@ -286,8 +299,8 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
   </a>
   <ul>
     <li><a href="vov_about.html" class="active">VOVについて</a></li>
-    <li><a href="vov_schedule.html">スケジュール</a></li>
-    <li><a href="vov_gallery.html">ギャラリー</a></li>
+    <li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">スケジュール</button><div class="subm"><a href="vov_schedule.html" class="subm-top">活動・スケジュール（すべて）</a><a href="vov_schedule.html#rehearsal">リハーサル</a><a href="vov_schedule.html#access">リハーサル会場</a><a href="vov_schedule.html#events">直近のイベント・出演情報</a></div></li>
+    <li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">ギャラリー</button><div class="subm"><a href="vov_gallery.html" class="subm-top">ギャラリー（すべて）</a><a href="vov_gallery.html#photo">フォトギャラリー</a><a href="vov_gallery.html#movie">動画</a></div></li>
     <li><a href="vov_history.html">歴史</a></li>
     <li><a href="vov_posts.html">活動レポート</a></li>
     <li><a href="vov_contact.html" class="nav-cta">体験を申し込む</a></li>
@@ -332,22 +345,22 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <div class="pillars">
       <div class="pl">
         <span class="pl-n">Music</span>
-        <p class="pl-d">歌の喜びを仲間と分かち合う。オーディションなし・楽譜なし。音を聴いて覚えるスタイルで、誰もが音楽に参加できます。</p>
+        <p class="pl-d">ゴスペル “Music” のメッセージを理解し、音楽で表現することを目標とします。</p>
       </div>
       <div class="pl">
         <span class="pl-n">History</span>
-        <p class="pl-d">ゴスペルが歩んできた歴史とルーツを学び、その背景にある物語とともに歌い継いでいきます。</p>
+        <p class="pl-d">黒人奴隷の時代からのゴスペルミュージックの “History” を学び、現在から未来へとゴスペルの素晴らしさを継承することを目標とします。</p>
       </div>
       <div class="pl">
         <span class="pl-n">Christianity</span>
-        <p class="pl-d">ゴスペルの精神を尊重し、歌に込める。信仰の強制はありません。メンバーのうちクリスチャンは約2〜3割です。</p>
+        <p class="pl-d">ゴスペルミュージックの根底にある “Christianity” を理解し、その精神を伝えることを目標とします。</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- 指導者 -->
-<section class="leaders">
+<section class="leaders" id="leaders">
   <div class="inner rv">
     <div class="s-eye">
       <div class="s-eye-bar"></div>
@@ -403,7 +416,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 </section>
 
 <!-- パート構成 -->
-<section class="parts">
+<section class="parts" id="parts">
   <div class="inner rv">
     <div class="s-eye">
       <div class="s-eye-bar"></div>
@@ -436,7 +449,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       <span class="s-eye-t">Rehearsal &amp; Membership</span>
     </div>
     <h2>リハーサル・<em>会費について</em></h2>
-    <p class="s-body">夜リハ・朝リハ・ユースの3つのリハーサルを月会費制で運用しています。</p>
+    <p class="s-body">主に、夜リハ・朝リハ・ユースの3つのリハーサルがあります。メンバーは、どのリハーサルにも参加できます。<br>日程は変更になる場合があります。最新の情報は、<a href="vov_schedule.html" style="color:var(--gold);font-weight:700">スケジュール</a>を確認してください。</p>
 
     <div class="reh-table">
       <div class="reh-row head">
@@ -446,29 +459,29 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       </div>
       <div class="reh-row">
         <div class="reh-cell name">夜リハーサル</div>
-        <div class="reh-cell">毎週木曜日<br>19:00 〜 21:00</div>
+        <div class="reh-cell">・定期リハーサル（原則第2・4木曜）<br>　※チーフディレクター指導。<br>・自主リハーサル（原則第1・3木曜）<br>19:00 〜 21:00</div>
         <div class="reh-cell">在日大韓基督教会 名古屋教会 7F<br>（名古屋市中村区・名古屋駅から徒歩約10分）<br><a href="https://www.google.com/maps/search/?api=1&query=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E6%9D%91%E5%8C%BA%E5%90%8D%E9%A7%852-39-11" target="_blank" rel="noopener" style="font-size:12.5px;color:var(--gold);font-weight:700;text-decoration:none;border-bottom:1px solid var(--gold)">Googleマップで見る →</a></div>
       </div>
       <div class="reh-row">
         <div class="reh-cell name">朝リハーサル</div>
-        <div class="reh-cell">毎週金曜日<br>10:00 〜 12:00</div>
-        <div class="reh-cell">在日大韓基督教会 名古屋教会 7F<br>（名古屋市中村区・名古屋駅から徒歩約10分）<br><a href="https://www.google.com/maps/search/?api=1&query=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E6%9D%91%E5%8C%BA%E5%90%8D%E9%A7%852-39-11" target="_blank" rel="noopener" style="font-size:12.5px;color:var(--gold);font-weight:700;text-decoration:none;border-bottom:1px solid var(--gold)">Googleマップで見る →</a></div>
+        <div class="reh-cell">原則第1・3金曜<br>　※チーフディレクター指導。<br>10:30 〜 12:30</div>
+        <div class="reh-cell">金山クリスチャンセンター 1F<br>名古屋市中区金山2-1-3<br>（金山駅より大津通りを北へ徒歩5分。平和郵便局右折。）<br><a href="https://www.google.com/maps/search/?api=1&query=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E9%87%91%E5%B1%B12-1-3" target="_blank" rel="noopener" style="font-size:12.5px;color:var(--gold);font-weight:700;text-decoration:none;border-bottom:1px solid var(--gold)">Googleマップで見る →</a></div>
       </div>
       <div class="reh-row">
         <div class="reh-cell name">VOV-U25<br>（ユース）</div>
-        <div class="reh-cell">開催日時は<br>お問い合わせください</div>
-        <div class="reh-cell">高校生〜25歳のユース世代クラス</div>
+        <div class="reh-cell">第1木曜日 19:00 〜 20:30<br>第2木曜日 19:00 〜 20:00</div>
+        <div class="reh-cell">在日大韓基督教会 名古屋教会 7F ロビー<br>高校生〜25歳のユース世代クラス</div>
       </div>
     </div>
 
     <div class="fee-highlight">
       <div class="fee-price">
         <div class="fee-price-n">¥4,000</div>
-        <div class="fee-price-t">月額 / 一般会員</div>
+        <div class="fee-price-t">／月　一般会員</div>
       </div>
       <p class="fee-desc">
-        月会費制で運用しています。一般会員は月額4,000円で、<strong>夜リハ・朝リハ・ユースのどのリハーサルにも参加できます。</strong><br>
-        自分のライフスタイルに合わせて、参加しやすい時間を選んでください。
+        VOVの活動は、メンバーの会費で運用されています。<br>
+        <strong>学生料金など、各種割引料金あります。</strong>
       </p>
     </div>
   </div>
@@ -525,7 +538,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <div class="ft-col">
       <h5>Pages</h5>
       <ul>
-        <li><a href="vov_about.html">VOVについて</a></li>
+        <li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">VOVについて</button><div class="subm"><a href="vov_about.html" class="subm-top">VOVについて（すべて）</a><a href="vov_about.html#leaders">指導者紹介</a><a href="vov_about.html#parts">パート構成</a><a href="vov_about.html#fees">リハーサル・会費について</a><a href="vov_history.html">VOVの歩み</a></div></li>
         <li><a href="vov_schedule.html">活動・スケジュール</a></li>
         <li><a href="vov_join.html">入会案内</a></li>
         <li><a href="vov_gallery.html">ギャラリー・コンサート</a></li>
@@ -578,6 +591,24 @@ document.querySelectorAll('a').forEach(a => {
     }
   });
 });
+
+/* ナビのドロップダウン：クリックで開閉、外側クリック/Escで閉じる */
+(function(){
+  const subs=[...document.querySelectorAll('nav li.has-sub')];
+  if(!subs.length) return;
+  function closeAll(except){subs.forEach(li=>{if(li!==except)li.setAttribute('aria-expanded','false')})}
+  subs.forEach(li=>{
+    const btn=li.querySelector('.navtop');
+    btn.addEventListener('click',e=>{
+      e.stopPropagation();
+      const open=li.getAttribute('aria-expanded')==='true';
+      closeAll(li); li.setAttribute('aria-expanded', open?'false':'true');
+      btn.setAttribute('aria-expanded', open?'false':'true');
+    });
+  });
+  document.addEventListener('click',()=>closeAll(null));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll(null)});
+})();
 </script>
 </body>
 </html>

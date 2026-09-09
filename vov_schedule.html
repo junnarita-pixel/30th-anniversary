@@ -42,6 +42,19 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 nav ul{display:flex;gap:26px;list-style:none;align-items:center}
 nav ul a{color:var(--ink-m);text-decoration:none;font-size:14px;font-weight:500;transition:color .25s}
 nav ul a:hover,nav ul a.active{color:var(--burg)}
+
+/* ナビのドロップダウン（クリックで小項目） */
+nav ul li.has-sub{position:relative}
+nav ul li.has-sub>.navtop{display:inline-flex;align-items:center;gap:6px;cursor:pointer;background:none;border:0;font-family:inherit;font-size:14px;font-weight:500;color:var(--ink-m);padding:0;transition:color .25s}
+nav ul li.has-sub>.navtop::after{content:'';width:5px;height:5px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+nav ul li.has-sub[aria-expanded="true"]>.navtop::after{transform:rotate(-135deg) translateY(-2px)}
+nav ul li.has-sub>.navtop:hover,nav ul li.has-sub[aria-expanded="true"]>.navtop{color:var(--burg)}
+.subm{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-6px);min-width:216px;background:var(--white);border:1px solid var(--bg3);border-top:3px solid var(--gold);box-shadow:0 12px 34px rgba(28,20,16,.14);padding:8px 0;display:none;opacity:0;transition:opacity .18s ease,transform .18s ease;z-index:120}
+li.has-sub[aria-expanded="true"] .subm{display:block;opacity:1;transform:translateX(-50%) translateY(0)}
+.subm a{display:block;padding:10px 20px;font-size:13.5px;color:var(--ink-m);text-decoration:none;white-space:nowrap;transition:background .18s,color .18s}
+.subm a:hover{background:var(--paper);color:var(--burg)}
+.subm a.subm-top{font-weight:700;color:var(--burg);border-bottom:1px solid var(--bg3);margin-bottom:4px;padding-bottom:12px}
+@media(max-width:860px){nav ul li.has-sub{display:none}}
 .nav-cta{background:var(--burg);color:var(--white)!important;padding:11px 26px;font-size:13px!important;font-weight:700!important;letter-spacing:.1em!important}
 .nav-cta:hover{background:var(--burg-d)}
 .phero{position:relative;overflow:hidden;background:var(--burg);border-bottom:4px solid var(--gold);padding:clamp(72px,11vh,116px) 48px;text-align:center;background-size:cover;background-position:center}
@@ -139,6 +152,7 @@ footer{background:var(--ink);padding:52px 48px 26px;border-top:1px solid rgba(21
 .tg-night{background:var(--burg);color:var(--white)}
 .tg-morn{background:var(--gold);color:var(--white)}
 .tg-ev{background:var(--ink);color:var(--gold-l)}
+.tg-youth{background:var(--ink);color:var(--gold-l)}
 .mcal-ttl{font-weight:700;color:var(--ink);display:block;margin-bottom:2px}
 .mcal-empty{padding:40px 26px;text-align:center;color:var(--ink-l);font-size:14px}
 .mcal-note{font-size:12.5px;color:var(--ink-l);line-height:1.9;padding:16px 26px;background:var(--paper);border-top:1px solid var(--bg3)}
@@ -167,7 +181,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
 .ft-col a{font-size:13.5px;color:rgba(251,249,245,.5);text-decoration:none;transition:color .22s}
 .ft-col a:hover{color:var(--gold-l)}
-.ft-support{max-width:1100px;margin:0 auto 40px;border:1px solid rgba(212,176,97,.2);padding:22px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.ft-support{max-width:1100px;margin:0 auto 40px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .ft-support-t{font-size:13px;color:rgba(251,249,245,.6);line-height:1.8}
 .ft-support-t strong{color:var(--gold-l);font-weight:700}
 .ft-support-btns{display:flex;gap:12px}
@@ -213,7 +227,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <span class="logo-s">Nagoya Gospel Choir</span>
   </a>
   <ul>
-    <li><a href="vov_about.html">VOVについて</a></li><li><a href="vov_schedule.html" class="active">スケジュール</a></li><li><a href="vov_gallery.html">ギャラリー</a></li><li><a href="vov_history.html">歴史</a></li><li><a href="vov_posts.html">活動レポート</a></li>
+    <li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">VOVについて</button><div class="subm"><a href="vov_about.html" class="subm-top">VOVについて（すべて）</a><a href="vov_about.html#leaders">指導者紹介</a><a href="vov_about.html#parts">パート構成</a><a href="vov_about.html#fees">リハーサル・会費について</a><a href="vov_history.html">VOVの歩み</a></div></li><li><a href="vov_schedule.html" class="active">スケジュール</a></li><li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">ギャラリー</button><div class="subm"><a href="vov_gallery.html" class="subm-top">ギャラリー（すべて）</a><a href="vov_gallery.html#photo">フォトギャラリー</a><a href="vov_gallery.html#movie">動画</a></div></li><li><a href="vov_history.html">歴史</a></li><li><a href="vov_posts.html">活動レポート</a></li>
     <li><a href="vov_contact.html" class="nav-cta">体験を申し込む</a></li>
   </ul>
   <button class="menu-btn" aria-label="メニュー" aria-expanded="false" aria-controls="m-menu" onclick="const o=document.body.classList.toggle('menu-open');this.setAttribute('aria-expanded',o)">
@@ -238,62 +252,73 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 
 <section style="background:var(--paper)">
   <div class="inner rv">
-    <div class="s-eye"><div class="s-eye-bar"></div><span class="s-eye-t">Rehearsal</span></div>
-    <h2>定期<em>リハーサル</em></h2>
-    <p class="s-body" style="margin-bottom:36px">夜リハ・朝リハ・ユースの3つのリハーサルを月会費制で運用しています。どのリハーサルにも参加できます。見学は事前連絡なしでもOKです。</p>
+    <div class="s-eye"><div class="s-eye-bar"></div><span class="s-eye-t" id="rehearsal">Rehearsal</span></div>
+    <h2>リハーサル<em>について</em></h2>
+    <p class="s-body" style="margin-bottom:36px">主に、夜リハ・朝リハ・ユースの3つのリハーサルがあります。メンバーは、どのリハーサルにも参加できます。<br>日程は変更になる場合があります。見学は事前連絡なしでもOKです。</p>
     <div class="reh-card">
-      <div><div class="reh-day">木</div><div class="reh-day-sub">毎週木曜</div></div>
+      <div><div class="reh-day">木</div><div class="reh-day-sub">第2・4／第1・3</div></div>
       <div class="reh-body">
         <h3>夜リハーサル <span class="reh-tag n">Night</span></h3>
-        <p>19:00 〜 21:00　／　在日大韓基督教会 名古屋教会 7F（名古屋市中村区・名古屋駅から徒歩約10分）<br>仕事・学校帰りに参加しやすい、メインのリハーサルです。</p>
+        <p>19:00 〜 21:00　／　在日大韓基督教会 名古屋教会 7F（名古屋市中村区・名古屋駅から徒歩約10分）<br>・定期リハーサル（原則第2・4木曜）※チーフディレクター指導。<br>・自主リハーサル（原則第1・3木曜）</p>
       </div>
     </div>
     <div class="reh-card gold">
-      <div><div class="reh-day">金</div><div class="reh-day-sub">毎週金曜</div></div>
+      <div><div class="reh-day">金</div><div class="reh-day-sub">第1・3金曜</div></div>
       <div class="reh-body">
         <h3>朝リハーサル <span class="reh-tag m">Morning</span></h3>
-        <p>10:00 〜 12:00　／　在日大韓基督教会 名古屋教会 7F（名古屋市中村区・名古屋駅から徒歩約10分）<br>日中に時間が取りやすい方向け。落ち着いた雰囲気で歌えます。</p>
+        <p>10:30 〜 12:30　／　金山クリスチャンセンター 1F（名古屋市中区金山2-1-3）<br>原則第1・3金曜　※チーフディレクター指導。</p>
       </div>
     </div>
     <div class="reh-card youth">
       <div><div class="reh-day">U25</div><div class="reh-day-sub">ユース</div></div>
       <div class="reh-body">
         <h3>VOV-U25（ユース） <span class="reh-tag y">Youth</span></h3>
-        <p>高校生〜25歳までのユース世代クラス。開催日時・会場の詳細はお問い合わせください。<br>同世代の仲間と一緒にゴスペルを楽しめます。</p>
+        <p>第1木曜 19:00 〜 20:30／第2木曜 19:00 〜 20:00　／　在日大韓基督教会 名古屋教会 7F ロビー<br>高校生〜25歳までのユース世代クラス。同世代の仲間と一緒にゴスペルを楽しめます。</p>
       </div>
     </div>
     <div class="fee-highlight">
       <div class="fee-price">
         <div class="fee-price-n">¥4,000</div>
-        <div class="fee-price-t">月額 / 一般会員</div>
+        <div class="fee-price-t">／月　一般会員</div>
       </div>
-      <p class="fee-desc">月会費制で運用しています。一般会員は月額4,000円で、<strong>どのリハーサルにも参加できます。</strong>ライフスタイルに合わせて参加しやすい時間を選んでください。</p>
+      <p class="fee-desc">VOVの活動は、メンバーの会費で運用されています。<strong>学生料金など、各種割引料金あります。</strong></p>
     </div>
-    <div class="access-box">
+    <div class="access-box" id="access">
       <div class="access-info">
         <p class="access-eye">Access</p>
-        <h3>リハーサル会場</h3>
-        <p class="access-t"><strong>在日大韓基督教会 名古屋教会 7F</strong><br>〒450-0002 愛知県名古屋市中村区名駅2-39-11<br>名古屋駅より徒歩約10分・茶色のレンガ造りの建物です。<br>夜リハ・朝リハともにこちらの会場。見学・体験は事前連絡なしでも大丈夫です。</p>
+        <h3>リハーサル会場①　名古屋</h3>
+        <p class="access-t"><strong>在日大韓基督教会 名古屋教会 7F</strong><br>〒450-0002 愛知県名古屋市中村区名駅2-39-11<br>名古屋駅より徒歩約10分・茶色のレンガ造りの建物です。<br>夜リハーサル・VOV-U25はこちらの会場です。</p>
         <a href="https://www.google.com/maps/search/?api=1&query=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E6%9D%91%E5%8C%BA%E5%90%8D%E9%A7%852-39-11" target="_blank" rel="noopener" class="btn-line">Googleマップで開く →</a>
       </div>
       <div class="access-map">
-        <iframe src="https://maps.google.com/maps?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E6%9D%91%E5%8C%BA%E5%90%8D%E9%A7%852-39-11&z=17&output=embed" loading="lazy" title="リハーサル会場の地図" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://maps.google.com/maps?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E6%9D%91%E5%8C%BA%E5%90%8D%E9%A7%852-39-11&z=17&output=embed" loading="lazy" title="リハーサル会場（名古屋）の地図" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <div class="access-box" style="margin-top:22px">
+      <div class="access-info">
+        <p class="access-eye">Access</p>
+        <h3>リハーサル会場②　金山</h3>
+        <p class="access-t"><strong>金山クリスチャンセンター 1F</strong><br>愛知県名古屋市中区金山2-1-3<br>金山駅より大津通りを北へ徒歩5分。平和郵便局を右折。<br>朝リハーサルはこちらの会場です。見学・体験は事前連絡なしでも大丈夫です。</p>
+        <a href="https://www.google.com/maps/search/?api=1&query=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E9%87%91%E5%B1%B12-1-3" target="_blank" rel="noopener" class="btn-line">Googleマップで開く →</a>
+      </div>
+      <div class="access-map">
+        <iframe src="https://maps.google.com/maps?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%8C%BA%E9%87%91%E5%B1%B12-1-3&z=17&output=embed" loading="lazy" title="リハーサル会場（金山）の地図" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </div>
 </section>
 <section style="background:var(--bg)">
   <div class="inner rv">
-    <div class="s-eye"><div class="s-eye-bar"></div><span class="s-eye-t">Events</span></div>
+    <div class="s-eye"><div class="s-eye-bar"></div><span class="s-eye-t" id="events">Events</span></div>
     <h2>直近の<em>イベント・出演情報</em></h2>
     <div style="margin-top:36px">
       <div class="evt">
-        <div><div class="ev-mo">Dec</div><div class="ev-d">20</div><div class="ev-dow">土</div></div>
+        <div><div class="ev-d" style="font-size:26px">12/20</div><div class="ev-dow">土</div></div>
         <div class="ev-info"><h3>VOV クリスマスコンサート</h3><p>名古屋市公会堂　開演 18:00　入場無料・どなたでもご来場いただけます</p></div>
         <span class="ev-tag tg-c">Concert</span>
       </div>
       <div class="evt">
-        <div><div class="ev-mo">Oct</div><div class="ev-d">05</div><div class="ev-dow">日</div></div>
+        <div><div class="ev-d" style="font-size:26px">10/5</div><div class="ev-dow">月</div></div>
         <div class="ev-info"><h3>秋のゴスペルフェスティバル 出演</h3><p>栄・中区文化センター</p></div>
         <span class="ev-tag tg-e">Event</span>
       </div>
@@ -309,7 +334,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       </div>
       <div id="mcal-body"></div>
       <p class="mcal-note">
-        木曜夜・金曜朝のリハーサルは毎週開催しています。見学・体験は事前連絡なしでも大丈夫です。<br>
+        見学・体験は事前連絡なしでも大丈夫です。会場は回によって異なりますのでご確認ください。<br>
         祝日・会場の都合でお休みになる場合があります。最新の開催状況はお問い合わせください。
       </p>
     </div>
@@ -382,11 +407,20 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 /* ===== 月ごとのスケジュール表 =====
    毎週のリハーサルは曜日ルールから自動生成。
    単発のイベントは EVENTS に1行足すだけで表に出ます。 */
+const NAGOYA = '在日大韓基督教会 名古屋教会 7F';
+const KANAYAMA = '金山クリスチャンセンター 1F（名古屋市中区金山2-1-3）';
+/* nth = 第n週の該当曜日。dow: 0=日 … 4=木, 5=金 */
 const REHEARSALS = [
-  { dow:4, title:'夜リハーサル', tag:'毎週木曜', cls:'tg-night', time:'19:00 〜 21:00',
-    place:'在日大韓基督教会 名古屋教会 7F', note:'仕事・学校帰りに参加しやすいリハーサルです。' },
-  { dow:5, title:'朝リハーサル', tag:'毎週金曜', cls:'tg-morn',  time:'10:00 〜 12:00',
-    place:'在日大韓基督教会 名古屋教会 7F', note:'日中に時間が取りやすい方向けのリハーサルです。' },
+  { dow:4, nth:[2,4], title:'定期リハーサル', tag:'第2・4木曜', cls:'tg-night', time:'19:00 〜 21:00',
+    place:NAGOYA, note:'※チーフディレクター指導。' },
+  { dow:4, nth:[1,3], title:'自主リハーサル', tag:'第1・3木曜', cls:'tg-night', time:'19:00 〜 21:00',
+    place:NAGOYA, note:'' },
+  { dow:5, nth:[1,3], title:'朝リハーサル', tag:'第1・3金曜', cls:'tg-morn', time:'10:30 〜 12:30',
+    place:KANAYAMA, note:'※チーフディレクター指導。' },
+  { dow:4, nth:[1], title:'VOV-U25（ユース）', tag:'第1木曜', cls:'tg-youth', time:'19:00 〜 20:30',
+    place:NAGOYA + ' ロビー', note:'高校生〜25歳のユース世代クラス。' },
+  { dow:4, nth:[2], title:'VOV-U25（ユース）', tag:'第2木曜', cls:'tg-youth', time:'19:00 〜 20:00',
+    place:NAGOYA + ' ロビー', note:'高校生〜25歳のユース世代クラス。' },
 ];
 const EVENTS = [
   { date:'2026-12-20', tag:'コンサート', cls:'tg-ev', title:'VOV クリスマスコンサート',
@@ -406,7 +440,9 @@ function mcalRows(y, m){
     const dt = new Date(y, m, d), dow = dt.getDay();
     const key = y + '-' + String(m + 1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
     EVENTS.filter(e => e.date === key).forEach(e => rows.push({ d, dow, ...e }));
-    REHEARSALS.filter(r => r.dow === dow).forEach(r => rows.push({ d, dow, ...r }));
+    const nth = Math.floor((d - 1) / 7) + 1;   // その月で何回目の曜日か
+    REHEARSALS.filter(r => r.dow === dow && r.nth.includes(nth))
+              .forEach(r => rows.push({ d, dow, ...r }));
   }
   return rows;
 }
@@ -450,6 +486,24 @@ document.querySelectorAll('a').forEach(a=>{a.addEventListener('click',e=>{
   if(h&&h.startsWith('#')&&h.length>1){e.preventDefault();const t=document.querySelector(h);if(t)t.scrollIntoView({behavior:'smooth'})}
   else if(h==='#'){e.preventDefault()}
 });});
+
+/* ナビのドロップダウン：クリックで開閉、外側クリック/Escで閉じる */
+(function(){
+  const subs=[...document.querySelectorAll('nav li.has-sub')];
+  if(!subs.length) return;
+  function closeAll(except){subs.forEach(li=>{if(li!==except)li.setAttribute('aria-expanded','false')})}
+  subs.forEach(li=>{
+    const btn=li.querySelector('.navtop');
+    btn.addEventListener('click',e=>{
+      e.stopPropagation();
+      const open=li.getAttribute('aria-expanded')==='true';
+      closeAll(li); li.setAttribute('aria-expanded', open?'false':'true');
+      btn.setAttribute('aria-expanded', open?'false':'true');
+    });
+  });
+  document.addEventListener('click',()=>closeAll(null));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll(null)});
+})();
 </script>
 
 </body>

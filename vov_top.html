@@ -72,6 +72,19 @@ nav{
 nav ul{display:flex;gap:26px;list-style:none;align-items:center}
 nav ul a{color:var(--ink-m);text-decoration:none;font-size:14px;font-weight:500;letter-spacing:.04em;transition:color .25s}
 nav ul a:hover{color:var(--burg)}
+
+/* ナビのドロップダウン（クリックで小項目） */
+nav ul li.has-sub{position:relative}
+nav ul li.has-sub>.navtop{display:inline-flex;align-items:center;gap:6px;cursor:pointer;background:none;border:0;font-family:inherit;font-size:14px;font-weight:500;color:var(--ink-m);padding:0;transition:color .25s}
+nav ul li.has-sub>.navtop::after{content:'';width:5px;height:5px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+nav ul li.has-sub[aria-expanded="true"]>.navtop::after{transform:rotate(-135deg) translateY(-2px)}
+nav ul li.has-sub>.navtop:hover,nav ul li.has-sub[aria-expanded="true"]>.navtop{color:var(--burg)}
+.subm{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-6px);min-width:216px;background:var(--white);border:1px solid var(--bg3);border-top:3px solid var(--gold);box-shadow:0 12px 34px rgba(28,20,16,.14);padding:8px 0;display:none;opacity:0;transition:opacity .18s ease,transform .18s ease;z-index:120}
+li.has-sub[aria-expanded="true"] .subm{display:block;opacity:1;transform:translateX(-50%) translateY(0)}
+.subm a{display:block;padding:10px 20px;font-size:13.5px;color:var(--ink-m);text-decoration:none;white-space:nowrap;transition:background .18s,color .18s}
+.subm a:hover{background:var(--paper);color:var(--burg)}
+.subm a.subm-top{font-weight:700;color:var(--burg);border-bottom:1px solid var(--bg3);margin-bottom:4px;padding-bottom:12px}
+@media(max-width:860px){nav ul li.has-sub{display:none}}
 .nav-cta{
   background:var(--burg);color:var(--white)!important;
   padding:11px 26px;font-size:13px!important;font-weight:700!important;
@@ -247,6 +260,20 @@ a.gc,a.evt,a.post{text-decoration:none;color:inherit}
 .tg-c{background:var(--burg);color:var(--white)}
 .tg-e{background:var(--gold);color:var(--ink)}
 .sched-cal-note{margin-top:20px;font-size:13px;color:var(--ink-l);text-align:center}
+/* 「直近のイベントやリハーサル情報はこちらへ」大きな誘導ボタン */
+.big-cta{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  margin:44px auto 0;max-width:720px;
+  background:var(--burg);color:var(--white);text-decoration:none;
+  padding:26px 34px;text-align:center;position:relative;
+  font-size:clamp(15px,1.8vw,18px);font-weight:700;letter-spacing:.06em;
+  box-shadow:0 8px 30px rgba(109,43,61,.32);transition:all .25s;
+}
+.big-cta::after{content:'';position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--gold)}
+.big-cta span.arw{transition:transform .2s}
+.big-cta:hover{background:var(--burg-d);transform:translateY(-2px)}
+.big-cta:hover span.arw{transform:translateX(5px)}
+@media(max-width:640px){.big-cta{padding:22px 20px;font-size:15px}}
 
 /* ===== GALLERY + CONCERT + VIDEO ===== */
 .gal{background:var(--paper)}
@@ -415,7 +442,6 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 /* アフィリエイト応援ブロック */
 .ft-support{
   max-width:1100px;margin:0 auto 40px;
-  border:1px solid rgba(212,176,97,.2);
   padding:22px 28px;
   display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
 }
@@ -499,9 +525,9 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <span class="logo-s">Nagoya Gospel Choir</span>
   </a>
   <ul>
-    <li><a href="vov_about.html">VOVについて</a></li>
-    <li><a href="vov_schedule.html">スケジュール</a></li>
-    <li><a href="vov_gallery.html">ギャラリー</a></li>
+    <li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">VOVについて</button><div class="subm"><a href="vov_about.html" class="subm-top">VOVについて（すべて）</a><a href="vov_about.html#leaders">指導者紹介</a><a href="vov_about.html#parts">パート構成</a><a href="vov_about.html#fees">リハーサル・会費について</a><a href="vov_history.html">VOVの歩み</a></div></li>
+    <li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">スケジュール</button><div class="subm"><a href="vov_schedule.html" class="subm-top">活動・スケジュール（すべて）</a><a href="vov_schedule.html#rehearsal">リハーサル</a><a href="vov_schedule.html#access">リハーサル会場</a><a href="vov_schedule.html#events">直近のイベント・出演情報</a></div></li>
+    <li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">ギャラリー</button><div class="subm"><a href="vov_gallery.html" class="subm-top">ギャラリー（すべて）</a><a href="vov_gallery.html#photo">フォトギャラリー</a><a href="vov_gallery.html#movie">動画</a></div></li>
     <li><a href="vov_history.html">歴史</a></li>
     <li><a href="vov_posts.html">活動レポート</a></li>
     <li><a href="vov_contact.html" class="nav-cta">体験を申し込む</a></li>
@@ -579,7 +605,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
           <div class="pl"><span class="pl-n">History</span><span class="pl-d">ゴスペルの<br>ルーツを知る</span></div>
           <div class="pl"><span class="pl-n">Christianity</span><span class="pl-d">精神を尊重し<br>歌に込める</span></div>
         </div>
-        <p class="ab-note">信仰の強制はありません。現在メンバーのうちクリスチャンは約2〜3割。歌が好きな方なら、どなたでも歓迎します。</p>
+        <p class="ab-note">ゴスペルのルーツであるキリスト教を大切に活動していますが、個人の信仰は問いません。</p>
         <div style="margin-top:26px">
           <a href="vov_about.html" class="btn-line">リハーサル・会費について詳しく →</a>
         </div>
@@ -597,8 +623,8 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         <span class="s-eye-t">Schedule</span>
         <div class="s-eye-bar"></div>
       </div>
-      <h2>活動・<em>スケジュール</em></h2>
-      <p class="s-body" style="max-width:560px;margin:0 auto">夜リハ・朝リハ・ユースの3つのリハーサルを月会費制で運用しています。<br>どのリハーサルにも参加できます。</p>
+      <h2>リハーサル<em>について</em></h2>
+      <p class="s-body" style="max-width:560px;margin:0 auto">主に、夜リハ・朝リハ・ユースの3つのリハーサルがあります。<br>メンバーは、どのリハーサルにも参加できます。</p>
     </div>
     <div class="sched-g rv">
       <!-- リハーサル一覧：木夜・金朝・U25 デフォルト表示 -->
@@ -606,23 +632,23 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         <div class="reh-card">
           <div class="reh-day-block">
             <div class="reh-day">木</div>
-            <div class="reh-day-sub">毎週木曜</div>
+            <div class="reh-day-sub">第2・4／第1・3</div>
           </div>
           <div class="reh-body">
             <h3>夜リハーサル <span class="reh-tag night">Night</span></h3>
             <p>19:00 〜 21:00<br>在日大韓基督教会 名古屋教会 7F（名古屋市中村区・名古屋駅から徒歩約10分）</p>
-            <p class="reh-note">仕事・学校帰りに参加しやすい、メインのリハーサルです。</p>
+            <p class="reh-note">・定期リハーサル（原則第2・4木曜）※チーフディレクター指導。<br>・自主リハーサル（原則第1・3木曜）</p>
           </div>
         </div>
         <div class="reh-card gold">
           <div class="reh-day-block">
             <div class="reh-day">金</div>
-            <div class="reh-day-sub">毎週金曜</div>
+            <div class="reh-day-sub">第1・3金曜</div>
           </div>
           <div class="reh-body">
             <h3>朝リハーサル <span class="reh-tag morning">Morning</span></h3>
-            <p>10:00 〜 12:00<br>在日大韓基督教会 名古屋教会 7F（名古屋市中村区・名古屋駅から徒歩約10分）</p>
-            <p class="reh-note">日中に時間が取りやすい方向け。落ち着いた雰囲気で歌えます。</p>
+            <p>10:30 〜 12:30<br>金山クリスチャンセンター 1階（名古屋市中区金山2-1-3）</p>
+            <p class="reh-note">原則第1・3金曜　※チーフディレクター指導。</p>
           </div>
         </div>
         <div class="reh-card" style="border-left-color:var(--ink)">
@@ -632,32 +658,32 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
           </div>
           <div class="reh-body">
             <h3>VOV-U25（ユース） <span class="reh-tag youth">Youth</span></h3>
-            <p>高校生〜25歳までのユース世代クラス<br>開催日時・会場の詳細はお問い合わせください</p>
-            <p class="reh-note">同世代の仲間と一緒に、ゴスペルを楽しめます。</p>
+            <p>第1木曜 19:00 〜 20:30／第2木曜 19:00 〜 20:00<br>在日大韓基督教会 名古屋教会 7F ロビー</p>
+            <p class="reh-note">高校生〜25歳までのユース世代クラス。同世代の仲間と一緒に、ゴスペルを楽しめます。</p>
           </div>
         </div>
         <div class="fee-box">
           <h5>Membership</h5>
-          <p>月会費制で運用しています。<br><span class="fee-strong">一般会員：月額 4,000円</span>　—　どのリハーサルにも参加できます。</p>
+          <p>VOVの活動は、メンバーの会費で運用されています。<br><span class="fee-strong">一般会員：4,000円／月</span><br>学生料金など、各種割引料金あります。</p>
         </div>
       </div>
       <!-- イベント -->
       <div>
         <div class="evts">
           <a class="evt" href="vov_schedule.html">
-            <div class="ev-dt"><div class="ev-mo">Dec</div><div class="ev-d">20</div><div class="ev-dow">土</div></div>
+            <div class="ev-dt"><div class="ev-d" style="font-size:24px">12/20</div><div class="ev-dow">土</div></div>
             <div class="ev-info"><h3>VOV クリスマスコンサート</h3><p>名古屋市公会堂　開演 18:00　入場無料</p></div>
             <span class="ev-tag tg-c">Concert</span>
           </a>
           <a class="evt" href="vov_schedule.html">
-            <div class="ev-dt"><div class="ev-mo">Oct</div><div class="ev-d">05</div><div class="ev-dow">日</div></div>
+            <div class="ev-dt"><div class="ev-d" style="font-size:24px">10/5</div><div class="ev-dow">月</div></div>
             <div class="ev-info"><h3>秋のゴスペルフェスティバル 出演</h3><p>栄・中区文化センター</p></div>
             <span class="ev-tag tg-e">Event</span>
           </a>
         </div>
-        <p class="sched-cal-note">※ 最新のスケジュールはGoogleカレンダーでもご確認いただけます（準備中）</p>
       </div>
     </div>
+    <a href="vov_schedule.html" class="big-cta rv">直近のイベントやリハーサル情報はこちらへ<span class="arw">→</span></a>
   </div>
 </section>
 
@@ -769,7 +795,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         <div class="s-eye-bar"></div>
       </div>
       <h2>一緒に<em>歌いませんか？</em></h2>
-      <p class="s-body" style="max-width:480px;margin:0 auto">オーディションも楽譜も必要ありません。<br>まずは一度、リハーサルを体験しに来てください。</p>
+      <p class="s-body" style="max-width:520px;margin:0 auto">オーディションも楽譜も必要ありません。<br>まずは一度、リハーサルを見に来てください。<br>見学は無料、何回でも納得がいくまで来てください。</p>
     </div>
     <div class="visit-card rv">
       <div class="visit-head">
@@ -790,16 +816,17 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       <div class="steps">
         <div class="step">
           <span class="st-n">01</span>
-          <div class="st-b"><h3>リハーサルを見学する</h3><p>木曜夜・金曜朝のリハーサルに気軽に来てください。事前連絡なしでも大丈夫です。</p></div>
+          <div class="st-b"><h3>見学・体験</h3><p>リハーサルに気軽に来てください。事前連絡なしでも大丈夫です。何度でも無料。</p></div>
         </div>
         <div class="step">
           <span class="st-n">02</span>
-          <div class="st-b"><h3>体験参加してみる</h3><p>見学後、一緒に歌いたいと思ったらそのまま体験参加できます。</p></div>
+          <div class="st-b"><h3>入会オリエンテーションに参加（年3回）</h3><p>スタッフによるVOVの活動コンセプト、活動内容、運営スタイル等の説明があります。オリエンテーション後、入会意志を確認します。</p></div>
         </div>
         <div class="step">
           <span class="st-n">03</span>
           <div class="st-b"><h3>メンバーとして参加スタート</h3><p>入会手続き後、正式メンバーとして活動スタート！</p></div>
         </div>
+    <a href="vov_schedule.html" class="big-cta rv">直近のイベントやリハーサル情報はこちらへ<span class="arw">→</span></a>
       </div>
       <div class="faq">
         <h3>よくある質問</h3>
@@ -807,8 +834,8 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         <div class="faq-list">
           <div class="fi"><div class="fq">Q. オーディションはありますか？</div><div class="fa">ありません。歌が好きならOKです。</div></div>
           <div class="fi"><div class="fq">Q. 楽譜が読めませんが大丈夫？</div><div class="fa">大丈夫！音を聴いて覚えるスタイルです。</div></div>
-          <div class="fi"><div class="fq">Q. キリスト教徒でないとダメ？</div><div class="fa">信仰の強制はありません。メンバーの多くは未信者です。</div></div>
-          <div class="fi"><div class="fq">Q. 会費はいくらですか？</div><div class="fa">月会費制です。一般会員は月額4,000円で、どのリハーサルにも参加できます。</div></div>
+          <div class="fi"><div class="fq">Q. キリスト教徒でないとダメ？</div><div class="fa">信仰の強制はありません。現在メンバーのうちクリスチャンは約2〜3割。歌が好きな方なら、どなたでも歓迎します。</div></div>
+          <div class="fi"><div class="fq">Q. 会費はいくらですか？</div><div class="fa">VOVの活動は、メンバーの会費で運用されています。一般会員は4,000円／月。学生料金など、各種割引料金あります。</div></div>
         </div>
         <a href="vov_contact.html" class="faq-btn">体験を申し込む</a>
       </div>
@@ -988,6 +1015,24 @@ document.querySelectorAll('a').forEach(a => {
     }
   });
 });
+
+/* ナビのドロップダウン：クリックで開閉、外側クリック/Escで閉じる */
+(function(){
+  const subs=[...document.querySelectorAll('nav li.has-sub')];
+  if(!subs.length) return;
+  function closeAll(except){subs.forEach(li=>{if(li!==except)li.setAttribute('aria-expanded','false')})}
+  subs.forEach(li=>{
+    const btn=li.querySelector('.navtop');
+    btn.addEventListener('click',e=>{
+      e.stopPropagation();
+      const open=li.getAttribute('aria-expanded')==='true';
+      closeAll(li); li.setAttribute('aria-expanded', open?'false':'true');
+      btn.setAttribute('aria-expanded', open?'false':'true');
+    });
+  });
+  document.addEventListener('click',()=>closeAll(null));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll(null)});
+})();
 </script>
 </body>
 </html>
