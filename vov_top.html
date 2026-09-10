@@ -204,20 +204,20 @@ h2 em{font-style:italic;color:var(--burg)}
 /* ===== SCHEDULE ===== */
 .sched{background:var(--bg)}
 .sched-hd{text-align:center;margin-bottom:56px}
-.sched-g{display:grid;grid-template-columns:1.15fr 1fr;gap:44px;align-items:start}
+.sched-g{display:grid;grid-template-columns:1fr;gap:44px;align-items:start;max-width:860px;margin:0 auto}
 /* リハーサル一覧（木・金・U25をデフォルト表示） */
 .reh-list{display:flex;flex-direction:column;gap:14px}
 .reh-card{
   background:var(--white);padding:26px 30px;
   border-left:4px solid var(--burg);
   box-shadow:0 4px 20px rgba(28,20,16,.07);
-  display:grid;grid-template-columns:88px 1fr;gap:24px;align-items:center;
+  display:grid;grid-template-columns:106px 1fr;gap:24px;align-items:center;
 }
 .reh-card.gold{border-left-color:var(--gold)}
 .reh-day-block{text-align:center}
 .reh-day{font-family:'Lora','Noto Serif JP',serif;font-size:44px;font-weight:700;color:var(--burg);line-height:1}
 .reh-card.gold .reh-day{color:var(--gold)}
-.reh-day-sub{font-size:10.5px;letter-spacing:.18em;color:var(--ink-l);margin-top:4px;font-weight:600}
+.reh-day-sub{font-size:10px;letter-spacing:.04em;color:var(--ink-l);margin-top:5px;font-weight:600;white-space:nowrap}
 .reh-body h3{font-size:16.5px;font-weight:700;color:var(--ink);margin-bottom:6px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .reh-tag{
   font-size:9.5px;font-weight:700;letter-spacing:.14em;
@@ -632,7 +632,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         <div class="reh-card">
           <div class="reh-day-block">
             <div class="reh-day">木</div>
-            <div class="reh-day-sub">第2・4／第1・3</div>
+            <div class="reh-day-sub">木曜開催</div>
           </div>
           <div class="reh-body">
             <h3>夜リハーサル <span class="reh-tag night">Night</span></h3>
