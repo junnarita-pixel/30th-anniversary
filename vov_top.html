@@ -146,6 +146,7 @@ h1 em{font-style:italic;color:var(--gold-l)}
    （アニメが走らない/一時停止でも文字は必ず表示される） */
 @media(prefers-reduced-motion:no-preference){
   .hero-content>*{animation:heroIn .85s cubic-bezier(.2,.7,.2,1) backwards}
+  .hero-content .info-pill{animation-delay:0s}
   .hero-content .h-eye{animation-delay:.1s}
   .hero-content h1{animation-delay:.24s}
   .hero-content .h-catch{animation-delay:.34s}
@@ -283,6 +284,46 @@ a.gc,a.evt,a.post{text-decoration:none;color:inherit}
 .big-cta:hover{background:var(--burg-d);transform:translateY(-2px)}
 .big-cta:hover span.arw{transform:translateX(5px)}
 @media(max-width:640px){.big-cta{padding:22px 20px;font-size:15px}}
+
+/* ===== INFORMATION（お知らせ・イベント）＝ シート No.115 =====
+   中身は vov_assets/vov-data.js から作る。左に写真（なければ日付）、右に日付・見出し・本文 */
+.info{background:var(--bg2)}
+.info-hd{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:36px}
+.info-list{display:grid;gap:16px}
+.info-card{display:grid;grid-template-columns:260px minmax(0,1fr);background:var(--white);box-shadow:0 4px 20px rgba(28,20,16,.07);text-decoration:none;color:inherit;overflow:hidden;transition:box-shadow .25s,transform .25s}
+a.info-card:hover{box-shadow:0 10px 32px rgba(28,20,16,.13);transform:translateY(-2px)}
+.info-ph{position:relative;min-height:168px;background:var(--burg);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.info-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.info-ph .d{font-family:'Lora','Noto Serif JP',serif;font-size:42px;font-weight:700;line-height:1;color:var(--white);font-variant-numeric:tabular-nums}
+.info-ph .w{font-size:12px;letter-spacing:.24em;margin-top:10px;color:var(--gold-l);font-weight:700}
+.info-body{padding:24px 30px;display:flex;flex-direction:column;justify-content:center;min-width:0}
+.info-meta{display:flex;align-items:center;gap:12px;margin-bottom:8px;flex-wrap:wrap}
+.info-date{font-size:12px;letter-spacing:.12em;color:var(--gold);font-weight:700;font-variant-numeric:tabular-nums}
+.info-tag{font-size:10.5px;font-weight:700;letter-spacing:.08em;padding:3px 10px;background:var(--ink);color:var(--gold-l)}
+.info-tag.notice{background:var(--burg);color:var(--white)}
+.info-title{font-family:'Lora','Noto Serif JP',serif;font-size:18px;font-weight:700;color:var(--ink);line-height:1.6}
+.info-text{font-size:13.5px;color:var(--ink-m);line-height:1.9;margin-top:6px}
+.info-empty{font-size:14px;color:var(--ink-l)}
+@media(max-width:640px){
+  .info-card{grid-template-columns:1fr}
+  .info-ph{min-height:112px}
+  .info-ph.has-img{aspect-ratio:16/9;min-height:0}
+  .info-body{padding:20px 22px}
+}
+/* ヒーローの「動く」案内：Information の最新1件へ誘導 */
+.info-pill{display:inline-flex;align-items:center;gap:10px;max-width:100%;margin-bottom:22px;padding:8px 16px 8px 12px;background:rgba(24,16,12,.62);border:1px solid rgba(212,176,97,.45);color:var(--white);text-decoration:none;font-size:13px;-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);transition:border-color .25s}
+.info-pill[hidden]{display:none}
+.info-pill:hover{border-color:var(--gold-l)}
+.info-pill .ip-dot{width:8px;height:8px;border-radius:50%;background:var(--gold-l);flex:none}
+.info-pill .ip-lbl{font-family:'Lora',serif;font-style:italic;font-weight:700;color:var(--gold-l);letter-spacing:.06em;flex:none}
+.info-pill .ip-t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.info-pill .ip-arw{flex:none;color:var(--gold-l)}
+@media(prefers-reduced-motion:no-preference){
+  .info-pill .ip-dot{animation:ipPulse 1.8s ease-out infinite}
+  .info-pill .ip-arw{display:inline-block;animation:ipBob 1.6s ease-in-out infinite}
+}
+@keyframes ipPulse{0%{box-shadow:0 0 0 0 rgba(212,176,97,.7)}70%{box-shadow:0 0 0 9px rgba(212,176,97,0)}100%{box-shadow:0 0 0 0 rgba(212,176,97,0)}}
+@keyframes ipBob{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
 
 /* ===== GALLERY + CONCERT + VIDEO ===== */
 .gal{background:var(--paper)}
@@ -569,6 +610,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <span class="hero-badge-t">Gospel Choir</span>
   </div>
   <div class="hero-content">
+    <a href="#info" class="info-pill" id="info-pill" hidden aria-label="お知らせを見る"><span class="ip-dot" aria-hidden="true"></span><span class="ip-lbl">Information</span><span class="ip-t"></span><span class="ip-arw" aria-hidden="true">↓</span></a>
     <div class="h-eye">
       <div class="h-eye-bar"></div>
       <span class="h-eye-t">Gospel Choir</span>
@@ -683,6 +725,24 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 
     </div>
     <a href="vov_schedule.html" class="big-cta rv">直近のイベントやリハーサル情報はこちらへ<span class="arw">→</span></a>
+  </div>
+</section>
+
+<!-- ===== INFORMATION（お知らせ・イベント）===== -->
+<section class="info" id="info">
+  <div class="inner">
+    <div class="info-hd rv">
+      <div>
+        <div class="s-eye">
+          <div class="s-eye-bar"></div>
+          <span class="s-eye-t">Information</span>
+        </div>
+        <h2>最新の<em>お知らせ</em></h2>
+      </div>
+      <a href="vov_schedule.html#events" class="btn-line">活動スケジュールを見る →</a>
+    </div>
+    <!-- 中身は vov_assets/vov-data.js（お知らせ→今後のイベントの順に最大5件） -->
+    <div class="info-list rv" id="info-list"></div>
   </div>
 </section>
 
@@ -879,7 +939,40 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
   </div>
 </footer>
 
+<script src="vov_assets/vov-data.js"></script>
 <script>
+/* ===== Information（vov_assets/vov-data.js から作る）===== */
+(function(){
+  const D = window.VOV_DATA || {};
+  const W = ['日','月','火','水','木','金','土'];
+  const esc = t => String(t == null ? '' : t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const day = s => new Date(s + 'T00:00:00');
+  const today = new Date(); today.setHours(0,0,0,0);
+  const notices = (D.info || []).slice().sort((a,b) => a.date < b.date ? 1 : -1).map(x => Object.assign({ kind:'notice' }, x));
+  const events  = (D.events || []).filter(e => day(e.date) >= today).sort((a,b) => a.date < b.date ? -1 : 1).map(x => Object.assign({ kind:'event' }, x));
+  const items = notices.concat(events).slice(0, 5);
+  const ymd = d => d.getFullYear() + '.' + String(d.getMonth()+1).padStart(2,'0') + '.' + String(d.getDate()).padStart(2,'0') + '（' + W[d.getDay()] + '）';
+  const list = document.getElementById('info-list');
+  if (list) {
+    list.innerHTML = !items.length ? '<p class="info-empty">現在お知らせはありません。</p>' : items.map(it => {
+      const d = day(it.date);
+      const tag = it.tag || (it.kind === 'notice' ? 'お知らせ' : 'イベント');
+      const sub = it.kind === 'event' ? [it.time, it.place, it.text].filter(Boolean).join('　') : (it.text || '');
+      const ph = it.image
+        ? '<div class="info-ph has-img"><img src="' + esc(it.image) + '" alt="' + esc(it.title) + '" loading="lazy" decoding="async"></div>'
+        : '<div class="info-ph" aria-hidden="true"><span class="d">' + (d.getMonth()+1) + '/' + d.getDate() + '</span><span class="w">' + W[d.getDay()] + '</span></div>';
+      const body = '<div class="info-body"><div class="info-meta"><span class="info-tag' + (it.kind === 'notice' ? ' notice' : '') + '">' + esc(tag) + '</span><span class="info-date">' + ymd(d) + '</span></div>'
+        + '<h3 class="info-title">' + esc(it.title) + '</h3>' + (sub ? '<p class="info-text">' + esc(sub) + '</p>' : '') + '</div>';
+      return it.link ? '<a class="info-card" href="' + esc(it.link) + '">' + ph + body + '</a>' : '<div class="info-card">' + ph + body + '</div>';
+    }).join('');
+  }
+  const pill = document.getElementById('info-pill');
+  if (pill && items.length) {
+    const d = day(items[0].date);
+    pill.querySelector('.ip-t').textContent = (d.getMonth()+1) + '/' + d.getDate() + '　' + items[0].title;
+    pill.hidden = false;
+  }
+})();
 const obs = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
 }), { threshold: .1 });
