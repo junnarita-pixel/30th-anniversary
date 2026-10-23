@@ -111,6 +111,7 @@ footer{background:var(--ink);padding:52px 48px 26px;border-top:1px solid rgba(21
 .fee-highlight{margin-top:32px;background:var(--burg);padding:36px 42px;display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;border-left:5px solid var(--gold)}
 .fee-price{font-family:'Lora','Noto Serif JP',serif;text-align:center;color:var(--white)}
 .fee-price-n{font-size:44px;font-weight:700;line-height:1}
+.fee-per{font-size:.42em;font-weight:600;letter-spacing:.04em;margin-left:4px;color:var(--gold-l)}
 .fee-price-t{font-size:12px;letter-spacing:.2em;margin-top:6px;color:var(--gold-l);font-weight:600}
 .fee-desc{color:rgba(251,249,245,.85);font-size:14.5px;line-height:2.1}
 .fee-desc strong{color:var(--gold-l)}
@@ -188,6 +189,9 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 .ft-support-t strong{color:var(--gold-l);font-weight:700}
 .ft-support-btns{display:flex;gap:12px}
 .aff-btn{display:flex;align-items:center;gap:9px;padding:11px 22px;text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.04em;transition:all .25s}
+.aff-furusato{background:var(--white);color:var(--ink)}
+.aff-furusato:hover{background:var(--paper)}
+.aff-px{position:absolute;width:1px;height:1px;border:0;opacity:0;pointer-events:none}
 .aff-amazon{background:#FF9900;color:#1C1410}
 .aff-amazon:hover{background:#FFAD33}
 .aff-rakuten{background:#BF0000;color:#FBF9F5}
@@ -281,8 +285,8 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     </div>
     <div class="fee-highlight">
       <div class="fee-price">
-        <div class="fee-price-n">¥4,000</div>
-        <div class="fee-price-t">／月　一般会員</div>
+        <div class="fee-price-n">¥4,000<span class="fee-per">/月</span></div>
+        <div class="fee-price-t">一般会員</div>
       </div>
       <p class="fee-desc">VOVの活動は、メンバーの会費で運用されています。<strong>学生料金など、各種割引料金あります。</strong></p>
     </div>
@@ -314,18 +318,8 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
   <div class="inner rv">
     <div class="s-eye"><div class="s-eye-bar"></div><span class="s-eye-t" id="events">Events</span></div>
     <h2>直近の<em>イベント・出演情報</em></h2>
-    <div style="margin-top:36px">
-      <div class="evt">
-        <div><div class="ev-d" style="font-size:26px">12/20</div><div class="ev-dow">土</div></div>
-        <div class="ev-info"><h3>VOV クリスマスコンサート</h3><p>名古屋市公会堂　開演 18:00　入場無料・どなたでもご来場いただけます</p></div>
-        <span class="ev-tag tg-c">Concert</span>
-      </div>
-      <div class="evt">
-        <div><div class="ev-d" style="font-size:26px">10/5</div><div class="ev-dow">月</div></div>
-        <div class="ev-info"><h3>秋のゴスペルフェスティバル 出演</h3><p>栄・中区文化センター</p></div>
-        <span class="ev-tag tg-e">Event</span>
-      </div>
-    </div>
+    <!-- 直近のイベント：vov_assets/vov-data.js の events から表示 -->
+    <div id="evt-list" style="margin-top:36px"></div>
     <!-- 月ごとのスケジュール表（リハーサル＋イベント） -->
     <div class="mcal" id="mcal">
       <div class="mcal-hd">
@@ -347,7 +341,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 
 <div class="cta-sec">
   <h2>一緒に<em>歌いませんか？</em></h2>
-  <p>オーディションも楽譜も必要ありません。まずは一度、リハーサルを体験しに来てください。</p>
+  <p>オーディションも楽譜も必要ありません。まずは一度、リハーサルを見に来てください。<br>見学は無料、何回でも納得がいくまで来てください。</p>
   <a href="vov_contact.html" class="btn-fill">体験を申し込む</a>
 </div>
 <footer>
@@ -383,6 +377,9 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
   <div class="ft-support">
     <p class="ft-support-t"><strong>お買い物でVOVを応援</strong>　—　こちらのリンクからお買い物いただくと、VOVの活動支援につながります。</p>
     <div class="ft-support-btns">
+      <a href="https://px.a8.net/svt/ejp?a8mat=4BCH7R+AYQEUQ+5IMU+5YRHE" target="_blank" rel="nofollow noopener" class="aff-btn aff-furusato">
+        <span class="aff-icon">ふ</span>ふるさと本舗
+      </a><img src="https://www10.a8.net/0.gif?a8mat=4BCH7R+AYQEUQ+5IMU+5YRHE" width="1" height="1" alt="" class="aff-px">
       <a href="https://amzn.to/4haP4xB" target="_blank" rel="noopener" class="aff-btn aff-amazon">
         <span class="aff-icon">a</span>Amazon
       </a>
@@ -394,6 +391,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
   </div>
 </footer>
 
+<script src="vov_assets/vov-data.js"></script>
 <script>
 /* ===== 月ごとのスケジュール表 =====
    毎週のリハーサルは曜日ルールから自動生成。
@@ -413,13 +411,31 @@ const REHEARSALS = [
   { dow:4, nth:[2], title:'VOV-U25（ユース）', tag:'第2木曜', cls:'tg-youth', time:'19:00 〜 20:00',
     place:NAGOYA + ' ロビー', note:'高校生〜25歳のユース世代クラス。' },
 ];
-const EVENTS = [
-  { date:'2026-12-20', tag:'コンサート', cls:'tg-ev', title:'VOV クリスマスコンサート',
-    time:'開演 18:00', place:'名古屋市公会堂', note:'入場無料・どなたでもご来場いただけます。' },
-  { date:'2026-10-05', tag:'イベント出演', cls:'tg-ev', title:'秋のゴスペルフェスティバル 出演',
-    time:'', place:'栄・中区文化センター', note:'' },
-];
+/* イベントは vov_assets/vov-data.js にまとめてある（一覧・月表・TOP で共通） */
+const EVENTS = ((window.VOV_DATA && window.VOV_DATA.events) || []).map(e => ({
+  date: e.date, tag: e.tag || 'イベント', cls: 'tg-ev', title: e.title,
+  time: e.time || '', place: e.place || '', note: e.text || ''
+}));
 const DOW = ['日','月','火','水','木','金','土'];
+
+/* 直近のイベント・出演情報（今日以降を日付の早い順に） */
+(function(){
+  const box = document.getElementById('evt-list'); if (!box) return;
+  const esc = t => String(t == null ? '' : t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const today = new Date(); today.setHours(0,0,0,0);
+  const list = EVENTS.filter(e => new Date(e.date + 'T00:00:00') >= today)
+                     .sort((a, b) => a.date < b.date ? -1 : 1);
+  if (!list.length) { box.innerHTML = '<p class="s-body">現在お知らせできるイベントはありません。決まりしだい掲載します。</p>'; return; }
+  box.innerHTML = list.map(e => {
+    const d = new Date(e.date + 'T00:00:00');
+    const meta = [e.time, e.place, e.note].filter(Boolean).join('　');
+    return '<div class="evt">'
+      + '<div><div class="ev-d" style="font-size:26px">' + (d.getMonth()+1) + '/' + d.getDate() + '</div><div class="ev-dow">' + DOW[d.getDay()] + '</div></div>'
+      + '<div class="ev-info"><h3>' + esc(e.title) + '</h3>' + (meta ? '<p>' + esc(meta) + '</p>' : '') + '</div>'
+      + '<span class="ev-tag tg-e">' + esc(e.tag) + '</span></div>';
+  }).join('');
+})();
+
 const MCAL_MIN = new Date(2026, 8, 1);   // 表示できる最初の月
 const MCAL_MAX = new Date(2027, 11, 1);  // 表示できる最後の月
 let mcalCur = new Date(Math.min(Math.max(new Date().setDate(1), MCAL_MIN), MCAL_MAX));

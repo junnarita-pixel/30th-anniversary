@@ -191,6 +191,7 @@ h2 em{font-style:italic;color:var(--burg)}
   font-family:'Lora','Noto Serif JP',serif;text-align:center;color:var(--white);
 }
 .fee-price-n{font-size:46px;font-weight:700;line-height:1}
+.fee-per{font-size:.42em;font-weight:600;letter-spacing:.04em;margin-left:4px;color:var(--gold-l)}
 .fee-price-t{font-size:12px;letter-spacing:.2em;margin-top:6px;color:var(--gold-l);font-weight:600}
 .fee-desc{color:rgba(251,249,245,.85);font-size:15px;line-height:2.1}
 .fee-desc strong{color:var(--gold-l);font-weight:700}
@@ -265,6 +266,9 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 .ft-support-t strong{color:var(--gold-l);font-weight:700}
 .ft-support-btns{display:flex;gap:12px}
 .aff-btn{display:flex;align-items:center;gap:9px;padding:11px 22px;text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.04em;transition:all .25s}
+.aff-furusato{background:var(--white);color:var(--ink)}
+.aff-furusato:hover{background:var(--paper)}
+.aff-px{position:absolute;width:1px;height:1px;border:0;opacity:0;pointer-events:none}
 .aff-amazon{background:#FF9900;color:#1C1410}
 .aff-amazon:hover{background:#FFAD33}
 .aff-rakuten{background:#BF0000;color:#FBF9F5}
@@ -457,8 +461,8 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 
     <div class="fee-highlight">
       <div class="fee-price">
-        <div class="fee-price-n">¥4,000</div>
-        <div class="fee-price-t">／月　一般会員</div>
+        <div class="fee-price-n">¥4,000<span class="fee-per">/月</span></div>
+        <div class="fee-price-t">一般会員</div>
       </div>
       <p class="fee-desc">
         VOVの活動は、メンバーの会費で運用されています。<br>
@@ -480,23 +484,23 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <div class="timeline">
       <div class="tl-item major">
         <div class="tl-year">1999</div>
-        <p class="tl-text">名古屋でゴスペルグループ創設（前身：名古屋ゴスペルクワイヤー）</p>
+        <p class="tl-text"><strong>5月</strong>　ラッカー・ゴスペル・ミニストリー主催「中部地区ブラック・ゴスペル・ワークショップ＆ゴールデンウィーク・ゴスペルライブ」を名古屋で初開催。<br><strong>9月</strong>　ワークショップ参加者120名が中心となり、"名古屋ゴスペルクワイヤー" を発足。</p>
       </div>
       <div class="tl-item">
         <div class="tl-year">2000</div>
-        <p class="tl-text">「Voices of Vision（VOV）」に改名</p>
+        <p class="tl-text">メンバーからの公募で "Voices of Vision（VOV）" に改名。</p>
       </div>
       <div class="tl-item">
         <div class="tl-year">2001</div>
-        <p class="tl-text">TPW（アメリカ・アラバマ州）と初共演。以後、姉妹クワイアに</p>
+        <p class="tl-text">兼松弘子のCD "Praise the Lord" レコーディングに参加。<br>TPW（アメリカ・アラバマ州）と初共演。以後、姉妹クワイアとして親交を深める。</p>
       </div>
       <div class="tl-item">
         <div class="tl-year">2008</div>
-        <p class="tl-text">1stアルバム "We Stand on the Vision" をリリース</p>
+        <p class="tl-text">VOV 1stアルバム "We Stand on the Vision" をリリース。</p>
       </div>
       <div class="tl-item major">
         <div class="tl-year">2019</div>
-        <p class="tl-text">20周年記念コンサート "Time to Get Up!!!" を開催</p>
+        <p class="tl-text">VOV 20周年記念コンサート "Time to Get Up!!!" を開催。</p>
       </div>
     </div>
     <p style="text-align:center;margin-top:36px"><a href="vov_history.html" class="btn-line">VOVの歩みをすべて見る →</a></p>
@@ -506,7 +510,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 <!-- CTA -->
 <div class="cta-sec">
   <h2>一緒に<em>歌いませんか？</em></h2>
-  <p>オーディションも楽譜も必要ありません。まずは一度、リハーサルを体験しに来てください。</p>
+  <p>オーディションも楽譜も必要ありません。まずは一度、リハーサルを見に来てください。<br>見学は無料、何回でも納得がいくまで来てください。</p>
   <a href="vov_contact.html" class="btn-fill">体験を申し込む</a>
 </div>
 
@@ -543,6 +547,9 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
   <div class="ft-support">
     <p class="ft-support-t"><strong>お買い物でVOVを応援</strong>　—　こちらのリンクからお買い物いただくと、VOVの活動支援につながります。</p>
     <div class="ft-support-btns">
+      <a href="https://px.a8.net/svt/ejp?a8mat=4BCH7R+AYQEUQ+5IMU+5YRHE" target="_blank" rel="nofollow noopener" class="aff-btn aff-furusato">
+        <span class="aff-icon">ふ</span>ふるさと本舗
+      </a><img src="https://www10.a8.net/0.gif?a8mat=4BCH7R+AYQEUQ+5IMU+5YRHE" width="1" height="1" alt="" class="aff-px">
       <a href="https://amzn.to/4haP4xB" target="_blank" rel="noopener" class="aff-btn aff-amazon">
         <span class="aff-icon">a</span>Amazon
       </a>
