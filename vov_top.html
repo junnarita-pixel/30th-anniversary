@@ -95,9 +95,13 @@ li.has-sub[aria-expanded="true"] .subm{display:block;opacity:1;transform:transla
 /* ===== HERO（フルスクリーン写真＋コピーオーバーレイ） ===== */
 .hero{position:relative;min-height:calc(100vh - 103px);overflow:hidden;display:flex;align-items:center}
 .hero-bg{position:absolute;inset:0;z-index:0;background:linear-gradient(155deg,#C8B49C,#94785C)}
-/* 写真ローテーション（ランダム・重複なし）＝ヒーロー全面 */
+/* 写真の切り替え（TOP1・TOP2は番号順、ギャラリー枠はランダム）＝ヒーロー全面 */
 img[data-rot],img[data-rot-fade]{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:opacity 1.4s ease}
-.hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(22,15,11,.84),rgba(22,15,11,.56) 44%,rgba(22,15,11,.42) 72%,rgba(22,15,11,.5)),linear-gradient(to top,rgba(22,15,11,.55),transparent 42%),rgba(22,15,11,.26)}
+/* 写真を明るく見せる膜：文字のある左側は濃さを保ち、写真が見える右側を薄くする。
+   8枚で計算：右半分は約3.1倍明るく、文字の範囲のコントラストは平均11.0→10.7 */
+.hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(22,15,11,.88) 0%,rgba(22,15,11,.80) 32%,rgba(22,15,11,.62) 48%,rgba(22,15,11,.24) 64%,rgba(22,15,11,.10) 100%),linear-gradient(to top,rgba(22,15,11,.40),transparent 30%)}
+/* スマホは文字が全面に乗るので、全体を均一にやや薄く（約1.4倍明るく・コントラストは最低5.9） */
+@media(max-width:860px){.hero-scrim{background:linear-gradient(to bottom,rgba(22,15,11,.55),rgba(22,15,11,.62) 55%,rgba(22,15,11,.72))}}
 /* ゴールドの枠線イラスト（このイラストを活用） */
 .hero-frame{position:absolute;z-index:2;inset:26px;border:1.5px solid rgba(212,176,97,.8);pointer-events:none}
 .hero-frame::before,.hero-frame::after{content:'';position:absolute;width:30px;height:30px;border-color:var(--gold-l);border-style:solid}
@@ -912,9 +916,13 @@ const obs = new IntersectionObserver(es => es.forEach(e => {
 }), { threshold: .1 });
 document.querySelectorAll('.rv').forEach(el => obs.observe(el));
 
-/* 写真ローテーション：枠ごとに専用の写真プールを持ち、数秒ごとに
-   どれか1枠がランダムに切り替わる。同じグループ内で表示中の写真とは
-   重複しない画像だけを選ぶ（1枚が2箇所に同時表示されない）。 */
+/* 写真の切り替え
+   - TOP1（ヒーロー）と TOP2（VOVが大切にしていること）は、先方指定の番号順
+     （TOP1-1→…→TOP1-8、TOP2-1→…→TOP2-6）でくり返し表示する。
+   - 「活動の記録とコンサート」の5枠は、表示中の写真と重ならないようにランダムに入れ替える。
+   - 切り替えはフェード（不透明度の変化）だけで、画面は動かない。そのため PC の
+     「動きを減らす」設定でも止めない。設定がオンの人には間隔を少し長くする。
+   - 写真の読み込みに失敗しても止まらず、次の写真へ進む。 */
 const heroPool = [];
 for (let i = 1; i <= 8; i++) heroPool.push({ src: 'vov_assets/top1-' + String(i).padStart(2,'0') + '.jpg', cap: 'Voices of Vision' });
 const aboutPool = [];
@@ -934,49 +942,70 @@ const galPool = [
   { src: 'vov_assets/gb-jr-visit.jpg',    cap: 'VOV-Jr. 施設訪問' },
   { src: 'vov_assets/gb-staff.jpg',       cap: '運営スタッフミーティング' }
 ];
-const ROT_GROUPS = { hero: heroPool, about: aboutPool, gal: galPool };
+const ROT_GROUPS = {
+  hero:  { pool: heroPool,  order: 'sequence' },
+  about: { pool: aboutPool, order: 'sequence' },
+  gal:   { pool: galPool,   order: 'random' }
+};
+const ROT_SLOW = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const srcKey = el => el.getAttribute('src').replace(/^.*\//, 'vov_assets/');
 
-if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  Object.keys(ROT_GROUPS).forEach((group, gi) => {
-    const slots = Array.from(document.querySelectorAll('img[data-rot="' + group + '"]'));
-    const pool = ROT_GROUPS[group];
-    if (!slots.length || pool.length <= slots.length) return;
-    const shown = new Set(slots.map(im => im.getAttribute('src').replace(/^.*\//, 'vov_assets/')));
-    let last = -1, busy = false;
-    setInterval(() => {
-      if (busy) return;
-      let si;
-      do { si = Math.floor(Math.random() * slots.length); } while (si === last && slots.length > 1);
-      last = si;
-      const slot = slots[si];
-      const cands = pool.filter(p => !shown.has(p.src));
-      if (!cands.length) return;
-      const next = cands[Math.floor(Math.random() * cands.length)];
-      busy = true;
-      shown.add(next.src);
-      const pre = new Image();
-      pre.src = next.src;
-      (pre.decode ? pre.decode() : Promise.resolve()).then(() => {
-        const ov = document.createElement('img');
-        ov.src = next.src; ov.alt = next.cap;
-        ov.setAttribute('data-rot-fade', '');
-        if (next.pos) ov.style.objectPosition = next.pos;
-        ov.style.opacity = '0';
-        slot.parentElement.insertBefore(ov, slot.nextSibling);
-        requestAnimationFrame(() => requestAnimationFrame(() => { ov.style.opacity = '1'; }));
-        setTimeout(() => {
-          shown.delete(slot.getAttribute('src').replace(/^.*\//, 'vov_assets/'));
-          slot.src = next.src; slot.alt = next.cap;
-          slot.style.objectPosition = next.pos || '';
-          ov.remove();
-          const gc = slot.closest('.gc');
-          if (gc) { const t = gc.querySelector('.gc-ov-t'); if (t) t.textContent = next.cap; }
-          busy = false;
-        }, 1500);
-      }).catch(() => { shown.delete(next.src); busy = false; });
-    }, 4200 + gi * 900);
+function loadImage(src) {
+  return new Promise((resolve, reject) => {
+    const im = new Image();
+    im.onload = () => (im.decode ? im.decode().catch(() => {}) : Promise.resolve()).then(() => resolve());
+    im.onerror = reject;
+    im.src = src;
   });
 }
+function crossfade(slot, next, done) {
+  const ov = document.createElement('img');
+  ov.src = next.src; ov.alt = next.cap;
+  ov.setAttribute('data-rot-fade', '');
+  if (next.pos) ov.style.objectPosition = next.pos;
+  ov.style.opacity = '0';
+  slot.parentElement.insertBefore(ov, slot.nextSibling);
+  requestAnimationFrame(() => requestAnimationFrame(() => { ov.style.opacity = '1'; }));
+  setTimeout(() => {
+    slot.src = next.src; slot.alt = next.cap;
+    slot.style.objectPosition = next.pos || '';
+    ov.remove();
+    const gc = slot.closest('.gc');
+    if (gc) { const t = gc.querySelector('.gc-ov-t'); if (t) t.textContent = next.cap; }
+    done();
+  }, 1500);
+}
+
+Object.keys(ROT_GROUPS).forEach((group, gi) => {
+  const { pool, order } = ROT_GROUPS[group];
+  const slots = Array.from(document.querySelectorAll('img[data-rot="' + group + '"]'));
+  if (!slots.length || pool.length <= slots.length) return;
+  let busy = false, lastSlot = -1;
+  // 番号順：いま表示中の写真の次から始める
+  let pos = Math.max(0, pool.findIndex(p => p.src === srcKey(slots[0])));
+  const interval = (ROT_SLOW ? 7000 : 4200) + gi * 900;
+  setInterval(() => {
+    if (busy || document.hidden) return;
+    let slot, next;
+    if (order === 'sequence') {
+      slot = slots[0];
+      pos = (pos + 1) % pool.length;
+      next = pool[pos];
+    } else {
+      let si;
+      do { si = Math.floor(Math.random() * slots.length); } while (si === lastSlot && slots.length > 1);
+      lastSlot = si; slot = slots[si];
+      const shown = new Set(slots.map(srcKey));
+      const cands = pool.filter(p => !shown.has(p.src));
+      if (!cands.length) return;
+      next = cands[Math.floor(Math.random() * cands.length)];
+    }
+    busy = true;
+    loadImage(next.src)
+      .then(() => crossfade(slot, next, () => { busy = false; }))
+      .catch(() => { busy = false; });   // 読めない写真は飛ばして、次の回で次の写真へ
+  }, interval);
+});
 
 document.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', e => {
