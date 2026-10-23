@@ -113,11 +113,12 @@ img[data-rot],img[data-rot-fade]{position:absolute;inset:0;width:100%;height:100
 .h-eye{display:flex;align-items:center;gap:13px;margin-bottom:26px}
 .h-eye-bar{width:44px;height:2px;background:var(--gold-l)}
 .h-eye-t{font-size:clamp(10px,1vw,12px);letter-spacing:.34em;color:var(--gold-l);font-weight:700}
-h1{font-family:'Lora','Noto Serif JP',serif;font-size:clamp(40px,6vw,76px);font-weight:700;line-height:1.2;color:var(--white);margin-bottom:22px;text-shadow:0 2px 34px rgba(0,0,0,.42)}
+h1{font-family:'Lora','Noto Serif JP',serif;font-size:clamp(40px,6vw,76px);font-weight:700;line-height:1.2;color:var(--white);margin-bottom:14px;text-shadow:0 2px 34px rgba(0,0,0,.42)}
 h1 em{font-style:italic;color:var(--gold-l)}
 /* 採用されたキャッチコピー（シート No.7） */
-.h-catch{font-family:'Noto Serif JP','Lora',serif;font-weight:600;font-size:clamp(17px,1.9vw,23px);letter-spacing:.12em;line-height:1.7;color:rgba(251,249,245,.96);margin:-6px 0 18px;text-shadow:0 1px 18px rgba(0,0,0,.5)}
-.h-sub{font-family:'Lora','Noto Serif JP',serif;font-size:clamp(15px,1.7vw,19px);letter-spacing:.26em;color:rgba(251,249,245,.85);margin-bottom:42px;font-weight:500;font-style:italic;text-shadow:0 1px 20px rgba(0,0,0,.4)}
+.h-desc{font-size:clamp(13px,1.05vw,15px);line-height:1.9;color:rgba(251,249,245,.9);max-width:600px;margin:-18px 0 22px;text-shadow:0 1px 16px rgba(0,0,0,.5)}
+.h-catch{font-family:'Noto Serif JP','Lora',serif;font-weight:600;font-size:clamp(17px,1.9vw,23px);letter-spacing:.12em;line-height:1.7;color:rgba(251,249,245,.96);margin:-6px 0 14px;text-shadow:0 1px 18px rgba(0,0,0,.5)}
+.h-sub{font-family:'Lora','Noto Serif JP',serif;font-size:clamp(15px,1.7vw,19px);letter-spacing:.26em;color:rgba(251,249,245,.85);margin-bottom:28px;font-weight:500;font-style:italic;text-shadow:0 1px 20px rgba(0,0,0,.4)}
 .cta-row{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
 .btn-fill{
   background:var(--burg);color:var(--white);padding:17px 40px;
@@ -137,7 +138,7 @@ h1 em{font-style:italic;color:var(--gold-l)}
 .hero-badge{position:absolute;z-index:3;top:52px;right:clamp(28px,5vw,64px);background:rgba(24,16,12,.72);backdrop-filter:blur(3px);color:var(--gold-l);padding:15px 22px;text-align:center;border:1px solid rgba(212,176,97,.3)}
 .hero-badge-n{font-family:'Lora','Noto Serif JP',serif;font-size:23px;font-weight:600;font-style:italic;line-height:1.15;display:block}
 .hero-badge-t{font-size:9px;letter-spacing:.22em;margin-top:6px;display:block;color:rgba(212,176,97,.72);font-weight:600}
-.hero-quote{margin-top:40px;max-width:440px;border-left:3px solid var(--gold-l);padding-left:18px}
+.hero-quote{margin-top:22px;max-width:440px;border-left:3px solid var(--gold-l);padding-left:18px}
 .hero-quote p{font-family:'Lora','Noto Serif JP',serif;font-size:14px;font-style:italic;color:rgba(251,249,245,.92);line-height:1.85;margin-bottom:6px;text-shadow:0 1px 16px rgba(0,0,0,.5)}
 .hero-quote span{font-size:10px;letter-spacing:.2em;color:rgba(212,176,97,.88);font-weight:700}
 .hero-scroll{position:absolute;z-index:3;right:clamp(28px,5vw,64px);bottom:54px;display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(251,249,245,.72);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;text-decoration:none;writing-mode:vertical-rl}
@@ -151,10 +152,14 @@ h1 em{font-style:italic;color:var(--gold-l)}
   .hero-content h1{animation-delay:.24s}
   .hero-content .h-catch{animation-delay:.34s}
   .hero-content .h-sub{animation-delay:.42s}
+  .hero-content .h-desc{animation-delay:.5s}
   .hero-content .cta-row{animation-delay:.56s}
   .hero-content .hero-quote{animation-delay:.7s}
 }
 @keyframes heroIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+/* 高さの低い画面（ノートPCなど）では見出しを少し小さくして、ヒーローの中に収める */
+@media(min-width:861px) and (max-height:920px){.hero-content h1{font-size:clamp(36px,5.2vw,64px)}.hero-content .info-pill{margin-bottom:14px}.h-eye{margin-bottom:18px}.h-desc{margin-bottom:18px}}
+@media(min-width:861px) and (max-height:800px){.hero-content h1{font-size:clamp(34px,4.6vw,56px)}.hero-content .hero-quote{display:none}}
 
 /* ===== キャッチコピーバンド（旧ニュースバー差し替え） ===== */
 .copy-band{
@@ -460,7 +465,7 @@ a.info-card:hover{box-shadow:0 10px 32px rgba(28,20,16,.13);transform:translateY
 .faq-btn:hover{background:var(--burg-d)}
 
 /* ===== POSTS ===== */
-.posts{background:var(--bg)}
+.posts{background:var(--bg2)}
 .posts-hd{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:44px;flex-wrap:wrap;gap:16px}
 .posts-g{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .post{background:var(--white);box-shadow:0 4px 20px rgba(28,20,16,.07);transition:all .28s;cursor:pointer;overflow:hidden}
@@ -536,11 +541,12 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
   nav ul li:not(:last-child){display:none}
   .hero{min-height:calc(100svh - 56px)}
   .hero-frame{inset:16px}
-  .hero-content{padding:0 30px}
+  .hero-content{padding:116px 30px 34px}  /* 右上の Since 1999 の札と Information の案内が重ならないように */
   .hero-badge{top:24px;right:22px;padding:10px 15px}
   .hero-badge-n{font-size:17px}
   .hero-quote{margin-top:30px;max-width:none}
   .hero-quote p{font-size:12.5px}
+  .h-desc{font-size:12.5px;line-height:1.9;margin:-20px 0 22px}
   .hero-scroll{display:none}
   section{padding:72px 24px}
   .about-g,.join-g,.sched-g{grid-template-columns:1fr;gap:44px}
@@ -617,14 +623,14 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     </div>
     <h1>歌で、<br><em>心の垣根を</em><br>越える。</h1>
     <p class="h-catch">ゴスペルは魂の声。<wbr>さあ一緒に歌おう。</p>
-    <p class="h-sub">Voices of Vision（VOV）</p>
+    <p class="h-sub">Voices of Vision</p>
+<p class="h-desc">Voices of Vision（VOV）は、創設者ラニー・ラッカー氏が提言する "Music" "History" "Christianity" を体現し、多くの人の心に届くよう歌い続けていくことを目的に活動する、名古屋のゴスペルクワイアです。経験も、信仰も問いません。</p>
     <div class="cta-row">
       <a href="vov_contact.html" class="btn-fill">体験を申し込む</a>
       <a href="vov_join.html" class="btn-line">入会案内 →</a>
     </div>
     <div class="hero-quote">
-      <p>「はじめはみんな初心者。One Voiceで歌う醍醐味を、ぜひ体験してください。」</p>
-      <span>Voices of Vision</span>
+      <p>「オーディションなし。楽譜なし。歌が好きな気持ちだけ持ってきてください。」</p>
     </div>
   </div>
   <a href="#about" class="hero-scroll">Scroll</a>
@@ -645,22 +651,22 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         <div class="ai-main"><img src="vov_assets/top2-01.jpg" alt="VOVのメンバー" data-rot="about" loading="lazy" decoding="async"></div>
         <div class="ai-badge">
           <span class="ai-badge-n">Since<br>1999</span>
-          <span class="ai-badge-t">Nagoya</span>
+          <span class="ai-badge-t">Gospel Choir</span>
         </div>
       </div>
       <div>
         <div class="s-eye">
           <div class="s-eye-bar"></div>
-          <span class="s-eye-t">Our Values</span>
+          <span class="s-eye-t">About Us</span>
         </div>
         <h2>VOVが<br><em>大切にしていること</em></h2>
-        <p class="s-body">VOVは、創設者ラニー・ラッカー氏が提言する "Music" "History" "Christianity" の3つの柱を大切に、世代を超えた仲間とともに、多くの人の心に届くゴスペルを歌い続けています。</p>
+        <p class="s-body">VOVは、創設者ラニー・ラッカー氏が提言する3つの柱を体現し、多くの人の心に届くよう歌い続けていくことを目的に活動しています。</p>
         <div class="pillars">
           <div class="pl"><span class="pl-n">Music</span><span class="pl-d">歌の喜びを<br>分かち合う</span></div>
           <div class="pl"><span class="pl-n">History</span><span class="pl-d">ゴスペルの<br>ルーツを知る</span></div>
           <div class="pl"><span class="pl-n">Christianity</span><span class="pl-d">精神を尊重し<br>歌に込める</span></div>
         </div>
-        <p class="ab-note">ゴスペルのルーツであるキリスト教を大切に活動していますが、個人の信仰は問いません。</p>
+        <p class="ab-note">ゴスペルのルーツであるキリスト教を大切に活動していますが、個人の信仰は問いません。現在メンバーのうちクリスチャンは約2〜3割。歌が好きな方なら、どなたでも歓迎します。</p>
         <div style="margin-top:26px">
           <a href="vov_about.html" class="btn-line">VOVについて →</a>
         </div>
@@ -795,6 +801,48 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
   </div>
 </section>
 
+<!-- ===== 活動レポート ===== -->
+<section class="posts" id="posts">
+  <div class="inner">
+    <div class="posts-hd rv">
+      <div>
+        <div class="s-eye">
+          <div class="s-eye-bar"></div>
+          <span class="s-eye-t">Report</span>
+        </div>
+        <h2>活動<em>レポート</em></h2>
+      </div>
+      <a href="vov_posts.html" class="btn-line">すべての投稿を見る →</a>
+    </div>
+    <div class="posts-g rv">
+      <a class="post" href="vov_posts.html">
+        <div class="post-img"><img src="vov_assets/gb-lanny-night.jpg" alt="春のワークショップ" loading="lazy" decoding="async"></div>
+        <div class="post-body">
+          <span class="post-date">2026.05.20</span>
+          <h3 class="post-title">春のワークショップを開催しました</h3>
+          <p class="post-ex">新メンバーも交えて、ゴスペルの基礎から楽しく学びました。</p>
+        </div>
+      </a>
+      <a class="post" href="vov_posts.html">
+        <div class="post-img"><img src="vov_assets/gb-waiwai.jpg" alt="地域イベント出演" loading="lazy" decoding="async"></div>
+        <div class="post-body">
+          <span class="post-date">2026.04.12</span>
+          <h3 class="post-title">地域イベントに出演しました</h3>
+          <p class="post-ex">たくさんの方に聴いていただき、ありがとうございました。</p>
+        </div>
+      </a>
+      <a class="post" href="vov_posts.html">
+        <div class="post-img"><img src="vov_assets/gb-section.jpg" alt="メンバー募集" loading="lazy" decoding="async"></div>
+        <div class="post-body">
+          <span class="post-date">2026.03.08</span>
+          <h3 class="post-title">新年度メンバー募集スタート！</h3>
+          <p class="post-ex">2026年度の新メンバーを募集しています。体験はいつでも歓迎です。</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ===== HISTORY ===== -->
 <section class="hist" id="history">
   <div class="inner">
@@ -845,48 +893,6 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       <h2>一緒に<em>歌いませんか？</em></h2>
       <p class="s-body" style="max-width:520px;margin:0 auto">オーディションも楽譜も必要ありません。<br>まずは一度、リハーサルを見に来てください。<br>見学は無料、何回でも納得がいくまで来てください。</p>
       <div class="join-cta"><a href="vov_join.html" class="btn-fill">入会案内</a></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 活動レポート ===== -->
-<section class="posts" id="posts">
-  <div class="inner">
-    <div class="posts-hd rv">
-      <div>
-        <div class="s-eye">
-          <div class="s-eye-bar"></div>
-          <span class="s-eye-t">Report</span>
-        </div>
-        <h2>活動<em>レポート</em></h2>
-      </div>
-      <a href="vov_posts.html" class="btn-line">すべての投稿を見る →</a>
-    </div>
-    <div class="posts-g rv">
-      <a class="post" href="vov_posts.html">
-        <div class="post-img"><img src="vov_assets/gb-lanny-night.jpg" alt="春のワークショップ" loading="lazy" decoding="async"></div>
-        <div class="post-body">
-          <span class="post-date">2026.05.20</span>
-          <h3 class="post-title">春のワークショップを開催しました</h3>
-          <p class="post-ex">新メンバーも交えて、ゴスペルの基礎から楽しく学びました。</p>
-        </div>
-      </a>
-      <a class="post" href="vov_posts.html">
-        <div class="post-img"><img src="vov_assets/gb-waiwai.jpg" alt="地域イベント出演" loading="lazy" decoding="async"></div>
-        <div class="post-body">
-          <span class="post-date">2026.04.12</span>
-          <h3 class="post-title">地域イベントに出演しました</h3>
-          <p class="post-ex">たくさんの方に聴いていただき、ありがとうございました。</p>
-        </div>
-      </a>
-      <a class="post" href="vov_posts.html">
-        <div class="post-img"><img src="vov_assets/gb-section.jpg" alt="メンバー募集" loading="lazy" decoding="async"></div>
-        <div class="post-body">
-          <span class="post-date">2026.03.08</span>
-          <h3 class="post-title">新年度メンバー募集スタート！</h3>
-          <p class="post-ex">2026年度の新メンバーを募集しています。体験はいつでも歓迎です。</p>
-        </div>
-      </a>
     </div>
   </div>
 </section>
