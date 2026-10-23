@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>目次・リンク集｜VOV ホームページ</title>
+<link rel="icon" type="image/svg+xml" href="vov_assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;700&family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#1C1410;--ink-m:#473A30;--gy:#8A7B6C;--line:#D6CDBE;--bg:#F5F1EB;--bg2:#EDE6DB;--white:#FFFDF9;--burg:#6D2B3D;--gold:#A9822F;--ok:#2F6B45;--ok-bg:#E3EFE6;--wait:#8A5A12;--wait-bg:#F5E8CF;
+--serif:"Noto Serif JP","Hiragino Mincho ProN",serif;--body:"Noto Sans JP","Hiragino Sans",sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+body{background:var(--bg);color:var(--ink-m);font-family:var(--body);line-height:1.85;font-size:14px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.4rem}
+a{color:var(--burg);text-underline-offset:3px}
+.topnav{border-bottom:1.5px solid var(--ink);background:rgba(245,241,235,.96);position:sticky;top:0;z-index:9}
+.topnav .in{max-width:1080px;margin:0 auto;padding:.7rem 1.4rem;display:flex;gap:1.2rem;align-items:baseline;flex-wrap:wrap}
+.topnav b{font-family:var(--serif);color:var(--burg)}
+.topnav a{color:var(--gy);text-decoration:none;font-size:.8rem}
+.topnav a:hover,.topnav a[aria-current]{color:var(--ink)}
+header.h{border-bottom:3px solid var(--ink);padding:2.4rem 0 1.4rem;margin-bottom:1.4rem}
+.kick{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;color:var(--gy);display:flex;align-items:center;gap:.6rem}
+.kick::before{content:"";width:26px;height:1.5px;background:var(--gold)}
+h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.2rem);margin:.7rem 0 .3rem;color:var(--ink)}
+h2{font-family:var(--serif);font-size:1.25rem;color:var(--ink);margin:2.4rem 0 .8rem;padding-top:1.2rem;border-top:1.5px solid var(--ink)}
+h3{font-family:var(--serif);font-size:1rem;color:var(--ink);margin:1.4rem 0 .5rem}
+p{margin:.6rem 0;max-width:50em}
+.note{background:var(--white);border-left:3px solid var(--gold);padding:.8rem 1rem;font-size:.86rem;margin:1rem 0}
+.tag{display:inline-block;font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;border:1px solid var(--gy);color:var(--gy);padding:.06rem .5rem;border-radius:99px;white-space:nowrap;vertical-align:middle}
+.tag.ok{border-color:var(--ok);color:var(--ok);background:var(--ok-bg)}.tag.wait{border-color:var(--wait);color:var(--wait);background:var(--wait-bg)}.tag.upd{border-color:var(--burg);color:var(--burg)}
+
+/* ページの図 */
+.tree-top{display:flex;justify-content:center}
+.tree-top .pg{width:min(100%,420px)}
+.tree-line{height:28px;border-left:2px solid var(--gold);margin:0 auto;width:0}
+.tree-bar{border-top:2px solid var(--gold);margin:0 6%}
+.pgs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:14px}
+.pg{background:var(--white);border:1.5px solid var(--ink);display:flex;flex-direction:column;min-width:0}
+.pg img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-bottom:1px solid var(--line)}
+.pg .b{padding:.7rem .85rem .9rem;display:flex;flex-direction:column;gap:.35rem}
+.pg .n{font-family:var(--serif);font-weight:700;color:var(--ink);font-size:1rem;line-height:1.4}
+.pg .u{font-family:var(--mono);font-size:.66rem;color:var(--gy);word-break:break-all}
+.pg .lbl{font-size:.66rem;font-weight:700;color:var(--gold);letter-spacing:.08em;margin-top:.25rem}
+.pg ul{list-style:none;font-size:.78rem;line-height:1.7}
+.pg li::before{content:"・";color:var(--gy)}
+.pg .to li::before{content:"→ ";color:var(--burg)}
+
+.map{border:1.5px solid var(--ink);background:var(--white);padding:1.1rem 1.2rem;margin:1rem 0;font-family:var(--mono);font-size:.74rem;line-height:1.95;white-space:pre;overflow-x:auto;color:var(--ink)}
+.tw{overflow-x:auto;border:1.5px solid var(--ink);background:var(--white);margin:1rem 0}
+table{border-collapse:collapse;width:100%;font-size:.82rem;min-width:620px}
+th{background:var(--bg2);text-align:left;padding:.55rem .75rem;border-bottom:1.5px solid var(--ink);white-space:nowrap;font-weight:700;color:var(--ink)}
+td{padding:.55rem .75rem;border-bottom:1px solid #E6DED2;vertical-align:top}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+ol.steps{margin:.6rem 0 .6rem 1.3rem}ol.steps li{margin:.3rem 0}
+footer{border-top:3px solid var(--ink);margin-top:2.8rem;padding:1.2rem 0 3rem;font-family:var(--mono);font-size:.68rem;color:var(--gy)}
+@media(max-width:900px){.pgs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.pgs{grid-template-columns:1fr}.tree-bar{display:none}}
+@media print{.topnav{display:none}body{font-size:10pt}.pg,.tw,.map{break-inside:avoid}h2{break-after:avoid}.pgs{grid-template-columns:repeat(4,1fr)}}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.9rem;margin:1rem 0}
+.box{border:1.5px solid var(--ink);background:var(--white);padding:1rem 1.1rem}
+.box b{font-family:var(--serif);font-size:1rem;color:var(--ink);display:block;margin-bottom:.3rem}
+.box span{font-size:.82rem}
+ul.done{margin:.5rem 0 .5rem 1.2rem}ul.done li{margin:.28rem 0}
+.no{font-family:var(--mono);font-size:.7rem;color:var(--burg)}
+</style>
+</head>
+<body>
+<div class="topnav"><div class="in"><b>VOV ホームページ 確認資料</b>
+<a href="vov_docs.html" aria-current="page">目次・リンク集</a><a href="vov_sitemap.html">サイトマップ</a><a href="vov_top.html" target="_blank">サイトを見る</a></div></div>
+<div class="wrap">
+<header class="h">
+  <div class="kick">VOV ／ Voices of Vision ／ 2026.10.23</div>
+  <h1>目次・リンク集</h1>
+  <p>10/21 の打ち合わせと、対応状況シート（10/4 版）・9/23 の PDF をもとに修正した内容の確認資料です。</p>
+</header>
+
+<h2>今回の資料</h2>
+<div class="grid">
+  <div class="box"><b><a href="vov_sitemap.html">サイトマップ</a></b><span>全ページの図（画像つき）、同じ情報が載っている場所、VOV で更新できる場所（予定）、月ごとの表のしくみ</span></div>
+  <div class="box"><b>対応状況シート</b><span>シートの各行に、今回の対応を書き込んでお送りします（メッセージで別にお送りします）</span></div>
+</div>
+
+<h2>いまのサイト</h2>
+<p>どのページも、検索には出ない設定です。リンクを知っている方だけが見られます。</p>
+<div class="tw"><table>
+<tr><th>ページ</th><th>リンク</th></tr>
+<tr><td>TOP</td><td><a href="vov_top.html" target="_blank">https://junnarita-pixel.github.io/30th-anniversary/vov_top.html</a></td></tr>
+<tr><td>VOVについて</td><td><a href="vov_about.html" target="_blank">https://junnarita-pixel.github.io/30th-anniversary/vov_about.html</a></td></tr>
+<tr><td>活動・スケジュール</td><td><a href="vov_schedule.html" target="_blank">https://junnarita-pixel.github.io/30th-anniversary/vov_schedule.html</a></td></tr>
+<tr><td>活動レポート</td><td><a href="vov_posts.html" target="_blank">https://junnarita-pixel.github.io/30th-anniversary/vov_posts.html</a></td></tr>
+<tr><td>VOVの歩み</td><td><a href="vov_history.html" target="_blank">https://junnarita-pixel.github.io/30th-anniversary/vov_history.html</a></td></tr>
+<tr><td>ギャラリー・コンサート</td><td><a href="vov_gallery.html" target="_blank">https://junnarita-pixel.github.io/30th-anniversary/vov_gallery.html</a></td></tr>
+<tr><td>入会案内</td><td><a href="vov_join.html" target="_blank">https://junnarita-pixel.github.io/30th-anniversary/vov_join.html</a></td></tr>
+<tr><td>お問い合わせ</td><td><a href="vov_contact.html" target="_blank">https://junnarita-pixel.github.io/30th-anniversary/vov_contact.html</a></td></tr>
+</table></div>
+
+<h2>10/21 以降に直したこと</h2>
+<h3>指導者紹介</h3>
+<ul class="done">
+  <li>5名とも写真とプロフィールを掲載し、米田さまと同じ横長の形にそろえました。順番は 兼松さま→米田さま→江崎さま→佐藤さま→ラニーさま。役職も兼松さまと同じ形で入れています <span class="no">9/23 PDF・No.77</span></li>
+</ul>
+<h3>TOP</h3>
+<ul class="done">
+  <li>「最新のお知らせ（Information）」を「活動の記録とコンサート」の上に新設。TOP の最初に、そこへ移動する動く案内を置きました <span class="no">No.115</span></li>
+  <li>キャッチコピー「ゴスペルは魂の声。さあ一緒に歌おう。」を見出しの下に追加 <span class="no">No.7</span></li>
+  <li>写真が番号順（TOP1-1→8、TOP2-1→6）で切り替わるように。一部の PC で切り替わらなかった原因（PC の「動きを減らす」設定で止まる作り）も直しました <span class="no">No.12</span></li>
+  <li>写真を明るく。文字のある左側の濃さはそのままに、写真が見える右側を明るくしました <span class="no">No.12</span></li>
+  <li>「入会の流れを見る」→「入会案内」。下部「一緒に歌いませんか？」はタイトルと3行だけ残し、入会案内へのボタンに <span class="no">No.119・120</span></li>
+</ul>
+<h3>全ページ共通</h3>
+<ul class="done">
+  <li>メニューの順番を「スケジュール→活動レポート→歴史→ギャラリー」に。PC にも「入会案内」を追加 <span class="no">No.116・118</span></li>
+  <li>右上のボタンを「体験申込・お問い合わせ」に <span class="no">No.121</span></li>
+  <li>写真を押すと拡大して見られるように（前後の写真も送れます） <span class="no">No.117</span></li>
+  <li>フッターに「ふるさと本舗」のリンクを Amazon の左に追加 <span class="no">No.59</span></li>
+  <li>ヘッダーとフッターを全ページで同じ形にそろえました（TOP だけ直っていた箇所を、ほかのページにも反映）</li>
+</ul>
+<h3>入会案内・スケジュール・その他</h3>
+<ul class="done">
+  <li>入会案内に「リハーサル情報を見る」ボタン。よくある質問「キリスト教徒でないとダメ？」の回答を差し替え <span class="no">No.122・123</span></li>
+  <li>直近のイベントを 12/24（木・夜）クリスマス自主企画イベント／12/26（土）わいわいミュージックフェス in 鶴舞公園奏楽堂 に差し替え</li>
+  <li>会費の「/月」を ¥4,000 の右隣に <span class="no">No.86</span></li>
+  <li>VOV-Jr. を「2026年より活動休止」に</li>
+  <li>年表の抜粋（TOP・VOVについて）を、8/18 にいただいた年表と同じ文にそろえました</li>
+</ul>
+
+<h2>決めていただきたいこと</h2>
+<div class="tw"><table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td><b>自分たちで更新したい場所</b></td><td>10/21 の宿題です。候補は<a href="vov_sitemap.html">サイトマップ</a>の「VOV で更新できる場所（予定）」にまとめました</td></tr>
+<tr><td><b>フォトギャラリーの中身</b></td><td>TOP で使っている写真に固定するか、ほかの写真も入れるか</td></tr>
+<tr><td><b>12/24（木）のリハーサル</b></td><td>第4木曜で、定期リハーサルの日です。クリスマス自主企画イベントと同じ夜ですが、リハーサルはありますか</td></tr>
+<tr><td><b>写真を自分で送って見る形</b></td><td>No.16（Amazon の商品写真のような形）。今回、写真を押すと拡大して前後に送れるようにしました。TOP の写真そのものに送るボタンを付ける作り込みは行っていません。これで足りるかご確認ください</td></tr>
+<tr><td><b>活動レポートの6件</b></td><td>最初のデザインに入っていた記事です。実際の記事に差し替えますか</td></tr>
+<tr><td><b>検索エンジンへの公開</b></td><td>公開に切り替える時期</td></tr>
+</table></div>
+
+<h2>こちらで判断したこと（ご確認ください）</h2>
+<div class="tw"><table>
+<tr><th>項目</th><th>判断</th></tr>
+<tr><td>キャッチコピー</td><td>ご回答が「下記追加」だったので、見出し「歌で、心の垣根を越える。」は残し、その下に追加しました。見出しを差し替える場合はすぐに直せます</td></tr>
+<tr><td>兼松さまの役職</td><td>プロフィールの「チーフディレクター / 代表」から「チーフディレクター・代表」としました</td></tr>
+<tr><td>江崎さまの役職</td><td>9/23 の PDF の「ピアニスト」としました（プロフィールには「ピアニスト / ミュージックリーダー」とあります）</td></tr>
+<tr><td>江崎さまの写真</td><td>2枚のうち「本人希望・今回提出」を使いました</td></tr>
+<tr><td>ラニーさまの写真</td><td>同じ写真が2枚（左右反転したもの）あったため、反転していない方を使いました</td></tr>
+<tr><td>楽天のリンク</td><td>いただいたリンク先が「ふるさと本舗」だったので、ボタンの表示も「ふるさと本舗」にしました</td></tr>
+</table></div>
+
+<h2>準備中</h2>
+<ul class="done">
+  <li>We Stand の映像（いただいた DVD の 1:04:19 頃〜1:10:25 頃。タイトル「We Shall Overcome / We Stand on the Vision」）</li>
+</ul>
+
+<footer>WAVE CREATIVE（成田 淳）／ 確認用（検索には出ません）</footer>
+</div>
+</body>
+</html>

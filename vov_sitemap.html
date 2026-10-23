@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>サイトマップ｜VOV ホームページ</title>
+<link rel="icon" type="image/svg+xml" href="vov_assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;700&family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#1C1410;--ink-m:#473A30;--gy:#8A7B6C;--line:#D6CDBE;--bg:#F5F1EB;--bg2:#EDE6DB;--white:#FFFDF9;--burg:#6D2B3D;--gold:#A9822F;--ok:#2F6B45;--ok-bg:#E3EFE6;--wait:#8A5A12;--wait-bg:#F5E8CF;
+--serif:"Noto Serif JP","Hiragino Mincho ProN",serif;--body:"Noto Sans JP","Hiragino Sans",sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+body{background:var(--bg);color:var(--ink-m);font-family:var(--body);line-height:1.85;font-size:14px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.4rem}
+a{color:var(--burg);text-underline-offset:3px}
+.topnav{border-bottom:1.5px solid var(--ink);background:rgba(245,241,235,.96);position:sticky;top:0;z-index:9}
+.topnav .in{max-width:1080px;margin:0 auto;padding:.7rem 1.4rem;display:flex;gap:1.2rem;align-items:baseline;flex-wrap:wrap}
+.topnav b{font-family:var(--serif);color:var(--burg)}
+.topnav a{color:var(--gy);text-decoration:none;font-size:.8rem}
+.topnav a:hover,.topnav a[aria-current]{color:var(--ink)}
+header.h{border-bottom:3px solid var(--ink);padding:2.4rem 0 1.4rem;margin-bottom:1.4rem}
+.kick{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;color:var(--gy);display:flex;align-items:center;gap:.6rem}
+.kick::before{content:"";width:26px;height:1.5px;background:var(--gold)}
+h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.2rem);margin:.7rem 0 .3rem;color:var(--ink)}
+h2{font-family:var(--serif);font-size:1.25rem;color:var(--ink);margin:2.4rem 0 .8rem;padding-top:1.2rem;border-top:1.5px solid var(--ink)}
+h3{font-family:var(--serif);font-size:1rem;color:var(--ink);margin:1.4rem 0 .5rem}
+p{margin:.6rem 0;max-width:50em}
+.note{background:var(--white);border-left:3px solid var(--gold);padding:.8rem 1rem;font-size:.86rem;margin:1rem 0}
+.tag{display:inline-block;font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;border:1px solid var(--gy);color:var(--gy);padding:.06rem .5rem;border-radius:99px;white-space:nowrap;vertical-align:middle}
+.tag.ok{border-color:var(--ok);color:var(--ok);background:var(--ok-bg)}.tag.wait{border-color:var(--wait);color:var(--wait);background:var(--wait-bg)}.tag.upd{border-color:var(--burg);color:var(--burg)}
+
+/* ページの図 */
+.tree-top{display:flex;justify-content:center}
+.tree-top .pg{width:min(100%,420px)}
+.tree-line{height:28px;border-left:2px solid var(--gold);margin:0 auto;width:0}
+.tree-bar{border-top:2px solid var(--gold);margin:0 6%}
+.pgs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:14px}
+.pg{background:var(--white);border:1.5px solid var(--ink);display:flex;flex-direction:column;min-width:0}
+.pg img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-bottom:1px solid var(--line)}
+.pg .b{padding:.7rem .85rem .9rem;display:flex;flex-direction:column;gap:.35rem}
+.pg .n{font-family:var(--serif);font-weight:700;color:var(--ink);font-size:1rem;line-height:1.4}
+.pg .u{font-family:var(--mono);font-size:.66rem;color:var(--gy);word-break:break-all}
+.pg .lbl{font-size:.66rem;font-weight:700;color:var(--gold);letter-spacing:.08em;margin-top:.25rem}
+.pg ul{list-style:none;font-size:.78rem;line-height:1.7}
+.pg li::before{content:"・";color:var(--gy)}
+.pg .to li::before{content:"→ ";color:var(--burg)}
+
+.map{border:1.5px solid var(--ink);background:var(--white);padding:1.1rem 1.2rem;margin:1rem 0;font-family:var(--mono);font-size:.74rem;line-height:1.95;white-space:pre;overflow-x:auto;color:var(--ink)}
+.tw{overflow-x:auto;border:1.5px solid var(--ink);background:var(--white);margin:1rem 0}
+table{border-collapse:collapse;width:100%;font-size:.82rem;min-width:620px}
+th{background:var(--bg2);text-align:left;padding:.55rem .75rem;border-bottom:1.5px solid var(--ink);white-space:nowrap;font-weight:700;color:var(--ink)}
+td{padding:.55rem .75rem;border-bottom:1px solid #E6DED2;vertical-align:top}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+ol.steps{margin:.6rem 0 .6rem 1.3rem}ol.steps li{margin:.3rem 0}
+footer{border-top:3px solid var(--ink);margin-top:2.8rem;padding:1.2rem 0 3rem;font-family:var(--mono);font-size:.68rem;color:var(--gy)}
+@media(max-width:900px){.pgs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.pgs{grid-template-columns:1fr}.tree-bar{display:none}}
+@media print{.topnav{display:none}body{font-size:10pt}.pg,.tw,.map{break-inside:avoid}h2{break-after:avoid}.pgs{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<div class="topnav"><div class="in"><b>VOV ホームページ 確認資料</b>
+<a href="vov_docs.html">目次・リンク集</a><a href="vov_sitemap.html" aria-current="page">サイトマップ</a><a href="vov_top.html" target="_blank">サイトを見る</a></div></div>
+<div class="wrap">
+<header class="h">
+  <div class="kick">VOV ／ Voices of Vision ／ 2026.10.23</div>
+  <h1>サイトマップ</h1>
+  <p>全8ページのつながりと、同じ情報が載っている場所の一覧です。直すときに、もう片方を直し忘れないための資料です。</p>
+</header>
+
+<h2>全ページの図</h2>
+<p>画像は各ページの最初の画面です。「区画」はページの中の見出し、「本文から移動」は本文の中のボタンやリンクの行き先です。メニューとフッターは全ページ共通なので、下の「メニューとフッター」にまとめています。</p>
+
+<div class="tree-top">
+  <div class="pg">
+    <a href="vov_top.html" target="_blank"><img src="vov_assets/sitemap/top.jpg" alt="TOPの最初の画面"></a>
+    <div class="b">
+      <div class="n">TOP</div><div class="u">vov_top.html</div>
+      <div class="lbl">区画（上から順）</div>
+      <ul>
+        <li>写真の切り替え＋キャッチコピー＋Information の案内</li>
+        <li>VOVが大切にしていること</li>
+        <li>リハーサルについて（夜リハ／朝リハ／U25・会費）</li>
+        <li>最新のお知らせ（Information） <span class="tag upd">更新予定</span></li>
+        <li>活動の記録とコンサート（写真5枠・動画2本）</li>
+        <li>VOVの歩み（主な5年）</li>
+        <li>一緒に歌いませんか？</li>
+        <li>活動レポート（新しい3件） <span class="tag upd">更新予定</span></li>
+      </ul>
+      <div class="lbl">本文から移動</div>
+      <ul class="to">
+        <li>入会案内（ヒーロー・下部のボタン）</li>
+        <li>お問い合わせ（体験を申し込む）</li>
+        <li>VOVについて（大切にしていること）</li>
+        <li>活動・スケジュール（大きなボタン・Information）</li>
+        <li>ギャラリー（写真5枠・すべて見る）</li>
+        <li>VOVの歩み（すべて見る）</li>
+        <li>活動レポート（3件・すべての投稿）</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="tree-line"></div>
+<div class="tree-bar"></div>
+
+<div class="pgs">
+  <div class="pg">
+    <a href="vov_about.html" target="_blank"><img src="vov_assets/sitemap/about.jpg" alt="VOVについての最初の画面"></a>
+    <div class="b"><div class="n">VOVについて</div><div class="u">vov_about.html</div>
+      <div class="lbl">区画</div>
+      <ul><li>私たちが大切にしていること（3つの柱）</li><li>指導者紹介（5名）</li><li>リハーサル・会費について（表・地図）</li><li>VOVの歩み（主な5年）</li></ul>
+      <div class="lbl">本文から移動</div>
+      <ul class="to"><li>活動・スケジュール</li><li>VOVの歩み</li><li>お問い合わせ</li></ul>
+    </div>
+  </div>
+  <div class="pg">
+    <a href="vov_schedule.html" target="_blank"><img src="vov_assets/sitemap/schedule.jpg" alt="活動・スケジュールの最初の画面"></a>
+    <div class="b"><div class="n">活動・スケジュール</div><div class="u">vov_schedule.html</div>
+      <div class="lbl">区画</div>
+      <ul><li>リハーサルについて（3種・会費）</li><li>リハーサル会場（名古屋・金山の地図）</li><li>直近のイベント・出演情報 <span class="tag upd">更新予定</span></li><li>月ごとの表 <span class="tag upd">更新予定</span></li></ul>
+      <div class="lbl">本文から移動</div>
+      <ul class="to"><li>お問い合わせ</li></ul>
+    </div>
+  </div>
+  <div class="pg">
+    <a href="vov_posts.html" target="_blank"><img src="vov_assets/sitemap/posts.jpg" alt="活動レポートの最初の画面"></a>
+    <div class="b"><div class="n">活動レポート</div><div class="u">vov_posts.html</div>
+      <div class="lbl">区画</div>
+      <ul><li>記事の一覧（6件） <span class="tag upd">更新予定</span></li></ul>
+      <div class="lbl">本文から移動</div>
+      <ul class="to"><li>お問い合わせ</li></ul>
+    </div>
+  </div>
+  <div class="pg">
+    <a href="vov_history.html" target="_blank"><img src="vov_assets/sitemap/history.jpg" alt="VOVの歩みの最初の画面"></a>
+    <div class="b"><div class="n">VOVの歩み</div><div class="u">vov_history.html</div>
+      <div class="lbl">区画</div>
+      <ul><li>年表（1999〜2026）</li></ul>
+      <div class="lbl">本文から移動</div>
+      <ul class="to"><li>お問い合わせ</li></ul>
+    </div>
+  </div>
+  <div class="pg">
+    <a href="vov_gallery.html" target="_blank"><img src="vov_assets/sitemap/gallery.jpg" alt="ギャラリー・コンサートの最初の画面"></a>
+    <div class="b"><div class="n">ギャラリー・コンサート</div><div class="u">vov_gallery.html</div>
+      <div class="lbl">区画</div>
+      <ul><li>VOVのこれまでの歩み（写真＋タイトル） <span class="tag wait">ご相談中</span></li><li>フォトギャラリー <span class="tag wait">ご相談中</span></li><li>動画（2本）</li></ul>
+      <div class="lbl">本文から移動</div>
+      <ul class="to"><li>VOVの歩み（年表）</li><li>お問い合わせ</li></ul>
+    </div>
+  </div>
+  <div class="pg">
+    <a href="vov_join.html" target="_blank"><img src="vov_assets/sitemap/join.jpg" alt="入会案内の最初の画面"></a>
+    <div class="b"><div class="n">入会案内</div><div class="u">vov_join.html</div>
+      <div class="lbl">区画</div>
+      <ul><li>入会までの3ステップ</li><li>よくある質問（6問）</li></ul>
+      <div class="lbl">本文から移動</div>
+      <ul class="to"><li>活動・スケジュール（リハーサル情報を見る）</li><li>お問い合わせ</li></ul>
+    </div>
+  </div>
+  <div class="pg">
+    <a href="vov_contact.html" target="_blank"><img src="vov_assets/sitemap/contact.jpg" alt="お問い合わせの最初の画面"></a>
+    <div class="b"><div class="n">お問い合わせ</div><div class="u">vov_contact.html</div>
+      <div class="lbl">区画</div>
+      <ul><li>カテゴリ（3種）</li><li>お問い合わせフォーム（宛先 gospel@vov-jp.com）</li></ul>
+    </div>
+  </div>
+</div>
+
+<h2>メニューとフッター（全ページ共通）</h2>
+<div class="map">メニュー（PC）
+├─ VOVについて ▾ ─┬ VOVについて（すべて）
+│                 ├ 指導者紹介
+│                 ├ リハーサル・会費について
+│                 └ VOVの歩み
+├─ スケジュール ▾ ─┬ 活動・スケジュール（すべて）
+│                 ├ リハーサル
+│                 ├ リハーサル会場
+│                 └ 直近のイベント・出演情報
+├─ 活動レポート
+├─ 歴史（VOVの歩み）
+├─ ギャラリー ▾ ──┬ ギャラリー（すべて）
+│                 ├ フォトギャラリー
+│                 └ 動画
+├─ 入会案内
+└─［体験申込・お問い合わせ］→ お問い合わせ
+
+メニュー（スマホ・1020px 以下）
+  トップ／VOVについて／活動・スケジュール／活動レポート／VOVの歩み／ギャラリー・コンサート／入会案内／［体験申込・お問い合わせ］
+
+フッター
+  Pages   ： VOVについて／活動・スケジュール／入会案内／ギャラリー・コンサート
+  Info    ： 活動レポート／VOVの歩み（年表）
+  Contact ： イベント出演依頼／体験・入会／その他問い合わせ（いずれもお問い合わせへ）
+  お買い物でVOVを応援 ： ふるさと本舗／Amazon</div>
+
+<h2>同じ情報が載っている場所</h2>
+<p>下の情報は、複数のページに載っています。内容が変わるときは、ここに並んだ場所をまとめて直します。</p>
+<div class="tw"><table>
+<tr><th>情報</th><th>載っている場所</th><th>直し方</th></tr>
+<tr><td><b>イベント・お知らせ</b></td><td>TOP「最新のお知らせ」と上部の案内／活動・スケジュール「直近のイベント」「月ごとの表」</td><td><span class="tag ok">1か所</span> 元のデータは1つ。そこを直すと4か所すべてに出ます</td></tr>
+<tr><td><b>リハーサルの曜日・時間・会場</b></td><td>TOP「リハーサルについて」／VOVについて「リハーサル・会費について」／活動・スケジュール「リハーサルについて」「月ごとの表」</td><td>変更があるときは、3ページをまとめてこちらで直します（月ごとの表は曜日のきまりから自動）</td></tr>
+<tr><td><b>会費（4,000円／月・割引）</b></td><td>TOP（Membership）／VOVについて／活動・スケジュール／入会案内（ステップ3・よくある質問）</td><td>4か所をまとめて直します</td></tr>
+<tr><td><b>会場の住所と地図</b></td><td>VOVについて（表）／活動・スケジュール（地図2か所）／TOP（会場名と住所）</td><td>まとめて直します</td></tr>
+<tr><td><b>年表</b></td><td>VOVの歩み（全体）／TOP と VOVについて（主な5年。同じ文）</td><td>年表を直したら、主な5年もそろえます</td></tr>
+<tr><td><b>入会の流れ</b></td><td>入会案内</td><td><span class="tag ok">1か所</span> TOP からは「入会案内」ボタンで移動する形にしました（10/4 のご依頼 No.120）</td></tr>
+<tr><td><b>「一緒に歌いませんか？」の文</b></td><td>TOP と、TOP 以外の6ページの下部</td><td>同じ文にそろえてあります</td></tr>
+<tr><td><b>動画</b></td><td>TOP（Movie）／ギャラリー（動画）</td><td>同じ2本です</td></tr>
+</table></div>
+
+<h2>VOV で更新できる場所（予定）</h2>
+<p>10/21 の打ち合わせで、「どこを自分たちで更新したいか」を VOV で話し合ってご連絡いただくことになりました。下は、いまの形から想定している候補です。ご連絡をいただいてから、更新の仕組みを組み込みます。</p>
+<div class="tw"><table>
+<tr><th>場所</th><th>中身</th><th>状態</th></tr>
+<tr><td><b>お知らせ（Information）</b></td><td>天候による中止、チラシの公開など。TOP の「最新のお知らせ」と上部の案内に出ます</td><td><span class="tag upd">更新予定</span></td></tr>
+<tr><td><b>イベント・出演</b></td><td>日付・名前・時間・会場。TOP、直近のイベント、月ごとの表に同時に出ます</td><td><span class="tag upd">更新予定</span></td></tr>
+<tr><td><b>活動レポート</b></td><td>写真・タイトル・本文。TOP の新しい3件にも出ます</td><td><span class="tag upd">更新予定</span></td></tr>
+<tr><td><b>VOVのこれまでの歩み</b></td><td>ギャラリーの写真＋タイトル（大きなコンサートなどを残す場所）</td><td><span class="tag wait">ご相談中</span></td></tr>
+<tr><td><b>フォトギャラリー</b></td><td>TOP で使っている写真に固定する案など</td><td><span class="tag wait">ご相談中</span></td></tr>
+</table></div>
+<p class="note">上の表以外（指導者紹介、3つの柱、年表、入会案内など）は、文言の修正・写真の差し替えのご依頼をいただければ、こちらで直します。</p>
+
+<h2>月ごとの表のしくみ</h2>
+<p>活動・スケジュールの「月ごとの表」は、次のしくみで並んでいます。（シート No.93 のご質問）</p>
+<ol class="steps">
+  <li><b>リハーサルは自動で並びます。</b>「第何週の何曜日」というきまりから、毎月の日付を計算して表示します。毎月入力する必要はありません。<br>定期リハーサル＝第2・4木曜／自主リハーサル＝第1・3木曜／朝リハーサル＝第1・3金曜（金山）／VOV-U25＝第1・2木曜</li>
+  <li><b>イベントは1か所に足すだけです。</b>日付・名前・時間・会場を足すと、月ごとの表と「直近のイベント」、TOP の「最新のお知らせ」に同時に出ます。</li>
+  <li><b>終わったイベントは自動で片づきます。</b>「直近のイベント」と TOP からは日付が過ぎると消えます。月ごとの表には記録として残ります。</li>
+  <li><b>前の月・次の月</b>のボタンで、2026年9月から2027年12月まで見られます。</li>
+</ol>
+<p class="note">いまの表でできないこと：祝日や会場の都合で休みになる日を、表から消すしくみはまだありません。休みのご連絡は「最新のお知らせ」に載せる形を考えています。表の上でも「休み」と出したい場合は、追加できます。</p>
+
+<footer>WAVE CREATIVE（成田 淳）／ 確認用（検索には出ません）</footer>
+</div>
+</body>
+</html>
