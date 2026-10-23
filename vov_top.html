@@ -995,8 +995,15 @@ document.querySelectorAll('.rv').forEach(el => obs.observe(el));
    - 写真の読み込みに失敗しても止まらず、次の写真へ進む。 */
 const heroPool = [];
 for (let i = 1; i <= 8; i++) heroPool.push({ src: 'vov_assets/top1-' + String(i).padStart(2,'0') + '.jpg', cap: 'Voices of Vision' });
-const aboutPool = [];
-for (let i = 1; i <= 6; i++) aboutPool.push({ src: 'vov_assets/top2-' + String(i).padStart(2,'0') + '.jpg', cap: 'VOVのメンバー' });
+/* pos＝枠の中で見せる位置、zoom＝拡大率（天井など余白の多い写真を寄せる） */
+const aboutPool = [
+  { src: 'vov_assets/top2-01.jpg', cap: 'VOVのメンバー' },
+  { src: 'vov_assets/top2-02.jpg', cap: 'VOVのメンバー' },
+  { src: 'vov_assets/top2-03.jpg', cap: 'VOVのメンバー' },
+  { src: 'vov_assets/top2-04.jpg', cap: 'VOVのメンバー', pos: 'center 65%', zoom: 1.15 },
+  { src: 'vov_assets/top2-05.jpg', cap: 'VOVのメンバー' },
+  { src: 'vov_assets/top2-06.jpg', cap: 'VOVのメンバー', pos: 'center 100%', zoom: 1.35 }   // 上半分が天井なので、下に寄せて拡大
+];
 const galPool = [
   { src: 'vov_assets/gb-night-reh.jpg',   cap: '夜リハーサル' },
   { src: 'vov_assets/gb-morning-reh.jpg', cap: '朝リハーサル' },
@@ -1033,12 +1040,14 @@ function crossfade(slot, next, done) {
   ov.src = next.src; ov.alt = next.cap;
   ov.setAttribute('data-rot-fade', '');
   if (next.pos) ov.style.objectPosition = next.pos;
+  ov.style.transformOrigin = next.pos || ''; ov.style.transform = next.zoom ? 'scale(' + next.zoom + ')' : '';
   ov.style.opacity = '0';
   slot.parentElement.insertBefore(ov, slot.nextSibling);
   requestAnimationFrame(() => requestAnimationFrame(() => { ov.style.opacity = '1'; }));
   setTimeout(() => {
     slot.src = next.src; slot.alt = next.cap;
     slot.style.objectPosition = next.pos || '';
+    slot.style.transformOrigin = next.pos || ''; slot.style.transform = next.zoom ? 'scale(' + next.zoom + ')' : '';
     ov.remove();
     const gc = slot.closest('.gc');
     if (gc) { const t = gc.querySelector('.gc-ov-t'); if (t) t.textContent = next.cap; }
