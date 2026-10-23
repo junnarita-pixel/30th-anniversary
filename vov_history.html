@@ -54,7 +54,9 @@ li.has-sub[aria-expanded="true"] .subm{display:block;opacity:1;transform:transla
 .subm a{display:block;padding:10px 20px;font-size:13.5px;color:var(--ink-m);text-decoration:none;white-space:nowrap;transition:background .18s,color .18s}
 .subm a:hover{background:var(--paper);color:var(--burg)}
 .subm a.subm-top{font-weight:700;color:var(--burg);border-bottom:1px solid var(--bg3);margin-bottom:4px;padding-bottom:12px}
-@media(max-width:860px){nav ul li.has-sub{display:none}}
+nav ul li.has-sub.is-current>.navtop{color:var(--burg);font-weight:700}
+nav ul a.active{color:var(--burg);font-weight:700}
+@media(max-width:1020px){nav ul li.has-sub{display:none}}
 .nav-cta{background:var(--burg);color:var(--white)!important;padding:11px 26px;font-size:13px!important;font-weight:700!important;letter-spacing:.1em!important}
 .nav-cta:hover{background:var(--burg-d)}
 .phero{position:relative;overflow:hidden;background:var(--burg);border-bottom:4px solid var(--gold);padding:clamp(72px,11vh,116px) 48px;text-align:center;background-size:cover;background-position:center}
@@ -138,13 +140,14 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 .m-menu{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);border-bottom:2px solid var(--gold);box-shadow:0 14px 30px rgba(28,20,16,.14)}
 .m-menu a{display:block;padding:15px 26px;color:var(--ink-m);text-decoration:none;font-size:14.5px;font-weight:500;border-bottom:1px solid var(--bg3)}
 .m-menu a.m-cta{background:var(--burg);color:var(--white);font-weight:700;text-align:center;letter-spacing:.1em;border-bottom:none}
-@media(max-width:860px){nav ul{display:none}.menu-btn{display:block}.menu-open .m-menu{display:block}}
+@media(max-width:1020px){nav ul{display:none}.menu-btn{display:block}.menu-open .m-menu{display:block}}
+/* メニュー項目が増えたので、1021〜1240px は間隔を詰めて1行に収め、1020px 以下はハンバーガーにする */
+@media(min-width:1021px) and (max-width:1240px){nav{padding-left:28px;padding-right:28px}nav ul{gap:17px}.nav-cta{padding:10px 16px!important;letter-spacing:.04em!important}}
 </style>
 </head>
 <body>
 <div class="topbar">
   <span class="topbar-t">名古屋のゴスペルクワイア　Voices of Vision</span>
-  <a href="vov_contact.html#event" class="topbar-cta">イベント出演依頼はこちら</a>
 </div>
 <nav>
   <a href="vov_top.html" class="logo">
@@ -152,8 +155,8 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <span class="logo-s">Nagoya Gospel Choir</span>
   </a>
   <ul>
-    <li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">VOVについて</button><div class="subm"><a href="vov_about.html" class="subm-top">VOVについて（すべて）</a><a href="vov_about.html#leaders">指導者紹介</a><a href="vov_about.html#fees">リハーサル・会費について</a><a href="vov_history.html">VOVの歩み</a></div></li><li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">スケジュール</button><div class="subm"><a href="vov_schedule.html" class="subm-top">活動・スケジュール（すべて）</a><a href="vov_schedule.html#rehearsal">リハーサル</a><a href="vov_schedule.html#access">リハーサル会場</a><a href="vov_schedule.html#events">直近のイベント・出演情報</a></div></li><li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">ギャラリー</button><div class="subm"><a href="vov_gallery.html" class="subm-top">ギャラリー（すべて）</a><a href="vov_gallery.html#photo">フォトギャラリー</a><a href="vov_gallery.html#movie">動画</a></div></li><li><a href="vov_history.html" class="active">歴史</a></li><li><a href="vov_posts.html">活動レポート</a></li>
-    <li><a href="vov_contact.html" class="nav-cta">体験を申し込む</a></li>
+    <li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">VOVについて</button><div class="subm"><a href="vov_about.html" class="subm-top">VOVについて（すべて）</a><a href="vov_about.html#leaders">指導者紹介</a><a href="vov_about.html#fees">リハーサル・会費について</a><a href="vov_history.html">VOVの歩み</a></div></li><li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">スケジュール</button><div class="subm"><a href="vov_schedule.html" class="subm-top">活動・スケジュール（すべて）</a><a href="vov_schedule.html#rehearsal">リハーサル</a><a href="vov_schedule.html#access">リハーサル会場</a><a href="vov_schedule.html#events">直近のイベント・出演情報</a></div></li><li><a href="vov_posts.html">活動レポート</a></li><li><a class="active" aria-current="page" href="vov_history.html">歴史</a></li><li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">ギャラリー</button><div class="subm"><a href="vov_gallery.html" class="subm-top">ギャラリー（すべて）</a><a href="vov_gallery.html#photo">フォトギャラリー</a><a href="vov_gallery.html#movie">動画</a></div></li><li><a href="vov_join.html">入会案内</a></li>
+    <li><a href="vov_contact.html" class="nav-cta">体験申込・お問い合わせ</a></li>
   </ul>
   <button class="menu-btn" aria-label="メニュー" aria-expanded="false" aria-controls="m-menu" onclick="const o=document.body.classList.toggle('menu-open');this.setAttribute('aria-expanded',o)">
     <span></span><span></span><span></span>
@@ -162,11 +165,11 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <a href="vov_top.html">トップ</a>
     <a href="vov_about.html">VOVについて</a>
     <a href="vov_schedule.html">活動・スケジュール</a>
-    <a href="vov_gallery.html">ギャラリー・コンサート</a>
-    <a href="vov_history.html">VOVの歩み</a>
     <a href="vov_posts.html">活動レポート</a>
+    <a href="vov_history.html" class="active" aria-current="page">VOVの歩み</a>
+    <a href="vov_gallery.html">ギャラリー・コンサート</a>
     <a href="vov_join.html">入会案内</a>
-    <a href="vov_contact.html" class="m-cta">体験を申し込む</a>
+    <a href="vov_contact.html" class="m-cta">体験申込・お問い合わせ</a>
   </div>
 </nav>
 <div class="phero" style="background-image:url(vov_assets/gb-20th.jpg)">
@@ -251,7 +254,6 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
   <div class="ft-g">
     <div>
       <div class="ft-brand">Voices of Vision</div>
-      <p class="ft-tag">名古屋を拠点に活動する<br>ゴスペルクワイア。Since 1999</p>
     </div>
     <div class="ft-col">
       <h5>Pages</h5>
