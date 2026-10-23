@@ -125,19 +125,19 @@ h2 em{font-style:italic;color:var(--burg)}
   grid-column:1/-1;
   display:grid;grid-template-columns:var(--lw,340px) 1fr;
 }
-.leader.wide .leader-ph{aspect-ratio:auto;min-height:var(--lh,280px);height:100%}
+.leader.wide .leader-ph{aspect-ratio:auto;min-height:var(--lh,280px);height:100%;position:relative}
+.leader.wide .leader-ph img{position:absolute;inset:0}
 .leader.wide .leader-body{display:flex;flex-direction:column;justify-content:center}
-.leader.lead{--lw:420px;--lh:400px}
+.leader.lead{--lw:420px;--lh:480px}
 .leader.lead .leader-name{font-size:30px}
-.leader.second{--lw:340px;--lh:300px}
+.leader.second{--lw:340px;--lh:380px}
 .leader.second .leader-name{font-size:26px}
-.leader.founder{--lw:260px;--lh:210px;max-width:68%}
-.leader.founder .leader-name{font-size:21px}
 
 .leader-body{padding:28px 30px 32px}
 .leader-role{font-size:11px;letter-spacing:.24em;color:var(--gold);font-weight:700;margin-bottom:8px}
-.leader-name{font-family:'Lora','Noto Serif JP',serif;font-size:23px;font-weight:700;color:var(--ink);margin-bottom:14px}
-.leader-bio{font-size:14px;color:var(--ink-m);line-height:2}
+.leader-name{font-family:'Lora','Noto Serif JP',serif;font-size:23px;font-weight:700;color:var(--ink);margin-bottom:2px}
+.leader-en{font-family:'Lora',serif;font-style:italic;font-size:13px;letter-spacing:.06em;color:var(--ink-l);margin-bottom:14px}
+.leader-bio{font-size:14px;color:var(--ink-m);line-height:2;text-align:justify}
 .leader-bio.tba{color:var(--ink-l);font-style:italic}
 
 /* パート構成 */
@@ -238,8 +238,7 @@ footer{background:var(--ink);padding:56px 48px 28px;border-top:1px solid rgba(21
   section{padding:64px 24px}
   .pillars,.parts-g,.leaders-g{grid-template-columns:1fr}
   .leader.wide{grid-template-columns:1fr}
-  .leader.wide .leader-ph{aspect-ratio:4/3;min-height:0}
-  .leader.founder{max-width:none}
+  .leader.wide .leader-ph{aspect-ratio:1/1;min-height:0;height:auto}
   .leader.lead .leader-name{font-size:24px}
   .leader.second .leader-name{font-size:23px}
   .reh-row{grid-template-columns:1fr}
@@ -369,44 +368,52 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <div class="leaders-g">
 
       <div class="leader wide lead">
-        <div class="leader-ph"><img src="vov_assets/leader-director.jpg" alt="兼松 弘子" style="object-position:35% center" loading="lazy" decoding="async"></div>
+        <div class="leader-ph"><img src="vov_assets/leader-kanematsu.jpg" alt="兼松 弘子" style="object-position:center 22%" loading="lazy" decoding="async"></div>
         <div class="leader-body">
-          <p class="leader-role">ディレクター</p>
+          <p class="leader-role">チーフディレクター・代表</p>
           <h3 class="leader-name">兼松 弘子</h3>
-          <p class="leader-bio">VOVの指導者として、メンバー一人ひとりの声を大切にしながらクワイアを導いている。</p>
+          <p class="leader-en">Hiroco Kanematsu</p>
+          <p class="leader-bio">高校卒業後、カナダのMillar College of the Bibleに留学。在学中よりマスクワイアやコラールのメンバーとして、またソリストとして、アメリカ・カナダの教会やコンベンション等で歌う。同時にブラックゴスペルからも大きな影響を受け、独学でその歌唱法を学ぶ。卒業後は、外国人のゴスペルアーティストのバックコーラス・通訳訳詞等を手がける傍ら、自らもゴスペルシンガーとして全国各地の教会やコンサートホール等、活動の場を広げる。1989年、『ジャパニーズ・コンチネンタルズ』（クワイア）を設立。同クワイアのコーディネーター・ピアニスト・シンガーとして全国ツアーや２枚のアルバムに参加。日本人離れしたソウルフルな歌唱力は、国内外で高い評価を受ける。1992年より東海地方に拠点を移し、ライブ活動を続ける傍ら、世界最大のゴスペルワークショップGMWAの日本支部長でもあるラニー・ラッカー氏と1999年よりディレクターとして名古屋でVoices of Visionを立ち上げ、その後、豊田･美濃加茂･津･豊橋でもゴスペルクワイアを指導する。2008年4月より名古屋芸術大学非常勤講師（ヴォーカル）としてゴスペル、ジャズ、ポップス等を教えている。またアメリカ、ノルウェーを中心にヨーロッパで拡大しているSoul Children（子どものゴスペル）のミニストリー等、後進の育成にも力を注いでいる。2023年4月にはポーランドとイスラエルにてウクライナ難民支援、イスラエル建国75周年記念イベントに出演。</p>
         </div>
       </div>
 
       <div class="leader wide second">
-        <div class="leader-ph"><span class="ph-lbl">Photo</span></div>
+        <div class="leader-ph"><img src="vov_assets/leader-yoneda.jpg" alt="米田 香" style="object-position:40% 18%" loading="lazy" decoding="async"></div>
         <div class="leader-body">
-          <h3 class="leader-name">米田　香</h3>
-          <p class="leader-bio tba">プロフィールは準備中です。</p>
+          <p class="leader-role">ディレクター・ピアニスト</p>
+          <h3 class="leader-name">米田 香</h3>
+          <p class="leader-en">Kaori Yoneda</p>
+          <p class="leader-bio">幼い頃からピアノや教会音楽に親しむ。大学生の時にブラックゴスペルと出会い、クワイアやワークショップ等に参加しながらゴスペルの音楽や文化に触れる。2005年からゴスペルクワイアのピアニストとして東海地区を中心に活動を開始。数々のクワイアにピアニストとして所属し、コンサートやイベントに出演、バンドマスターなどを務める。ディレクターとしてクワイアの指導や、ピアノ個人指導では教会奏楽者の育成にも尽力する。様々なシンガーやミュージシャンとのライブ活動、楽曲制作などに取り組みつつ、ピアノソロにおいては讃美歌やゴスペルをはじめ、独自のアレンジでの演奏活動を全国で行う。2023年1月、ピアノソロミニアルバム「Presence」をリリース。</p>
         </div>
       </div>
 
-      <div class="leader">
-        <div class="leader-ph"><span class="ph-lbl">Photo</span></div>
+      <div class="leader wide second">
+        <div class="leader-ph"><img src="vov_assets/leader-ezaki.jpg" alt="江崎 理子" style="object-position:center 24%" loading="lazy" decoding="async"></div>
         <div class="leader-body">
-          <h3 class="leader-name">江崎　理子</h3>
-          <p class="leader-bio tba">プロフィールは準備中です。</p>
+          <p class="leader-role">ピアニスト</p>
+          <h3 class="leader-name">江崎 理子</h3>
+          <p class="leader-en">Riko Ezaki</p>
+          <p class="leader-bio">音大在学中よりジャズやフュージョンを始める。夫の赴任先ドイツでゴスペルと出会い帰国後ラニーラッカーのゴスペルワークショップを経てVOVに創立時より所属する。2000年から個人的に様々なゴスペルクワイアの指導を始める。現在は６つのゴスペルクワイアの総ディレクターとして指導に励んでいる。また、他のゴスペルクワイアやシンガーのピアノ伴奏や個人的なライブ活動、福祉的な音楽活動にも積極的に関わっている。</p>
         </div>
       </div>
 
-      <div class="leader">
-        <div class="leader-ph"><span class="ph-lbl">Photo</span></div>
+      <div class="leader wide second">
+        <div class="leader-ph"><img src="vov_assets/leader-sato.jpg" alt="佐藤 美香" style="object-position:center 20%" loading="lazy" decoding="async"></div>
         <div class="leader-body">
-          <h3 class="leader-name">佐藤　美香</h3>
-          <p class="leader-bio tba">プロフィールは準備中です。</p>
+          <p class="leader-role">ピアニスト</p>
+          <h3 class="leader-name">佐藤 美香</h3>
+          <p class="leader-en">Mika Sato</p>
+          <p class="leader-bio">６歳からエレクトーンを習い始め、１０歳で教会の奏楽を始める。１９歳で出会ったゴスペル音楽を広めるため２２歳でゴスペル事務所を設立。ゴスペルユニット"M4U"の活動でラジオ出演やライブ活動を展開。日本語ゴスペルの制作にも精力的に取り組む。日本国内外のゴスペルアーティストと共演。</p>
         </div>
       </div>
 
-      <div class="leader wide founder">
-        <div class="leader-ph"><img src="vov_assets/leader-founder.jpg" alt="ラニー・ラッカー" style="object-position:center 20%" loading="lazy" decoding="async"></div>
+      <div class="leader wide second">
+        <div class="leader-ph"><img src="vov_assets/leader-rucker.jpg" alt="ラニー・ラッカー" style="object-position:center 26%" loading="lazy" decoding="async"></div>
         <div class="leader-body">
           <p class="leader-role">創設者</p>
           <h3 class="leader-name">ラニー・ラッカー</h3>
-          <p class="leader-bio">VOVの創設者。"Music" "History" "Christianity" の3つの柱を提言し、ルーツに根差したゴスペルを日本に伝え続けている。</p>
+          <p class="leader-en">Ronnie Rucker</p>
+          <p class="leader-bio">ニューヨーク州オーベニー市で生まれ、幼い頃から教会の賛美の中に育ち、教会のクワイヤに参加。1977年初来日、音楽活動を行う。1986年第31回ヤマハポプコンにおいて、「Friendship」が優秀曲賞受賞。1991〜1993年にフジテレビ「ひらけ！ポンキッキ」の英語コーナーに作曲、そして出演。1992年、ヴォーカル教室の開始、「ゴスペルを通して神の福音を日本列島に伝える」というビジョンを与えられ、国内初となる日本人に向けたゴスペル・ワークショップを開催した。各地でワークショップをきっかけに結成したゴスペル・クワイヤを指導。また、自ら作詞・作曲を手がけたゴスペルの楽譜やピアノ奏者のための教本を出版。</p>
         </div>
       </div>
 
