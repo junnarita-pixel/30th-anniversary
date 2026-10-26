@@ -29,8 +29,11 @@ posts の API がまだ無いときは、いまの vov-data.js の posts をそ�
 
 公開中の記事が1件も無い API は「まだ使いはじめていない」とみなし、サイトのその部分は書き換えない
 （下書きしか無い状態で同期して、いまのイベントや活動レポートを消してしまわないため）。
+
+公開リポジトリの定期実行は、60日間コミットが無いと GitHub に止められる。
+最後のコミットから50日たったら、中身が同じでも「最終同期」の日付だけ書き換えて記録を残す。
 """
-import json, os, sys, urllib.request, urllib.error, datetime
+import json, os, re, subprocess, sys, time, urllib.request, urllib.error, datetime
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "vov_assets", "vov-data.js")
@@ -130,8 +133,37 @@ def replace_posts_only(posts):
     if new == s: return False
     open(OUT, "w", encoding="utf-8").write(new); return True
 
+STAMP_RE = re.compile(r"最終同期: [^\n]*")
+KEEPALIVE_DAYS = 50
+
+def now_jst():
+    return datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).strftime("%Y-%m-%d %H:%M")
+
+def without_stamp(text):
+    """日付の行を除いた中身（変わったかどうかの比較用）"""
+    return STAMP_RE.sub("", text)
+
+def days_since_last_commit():
+    try:
+        t = int(subprocess.check_output(["git", "-C", ROOT, "log", "-1", "--format=%ct"], text=True).strip())
+    except Exception:
+        return 0
+    return (time.time() - t) / 86400
+
+def keepalive():
+    """最後のコミットから50日たっていたら、日付の行だけ書き換える（60日で定期実行が止まるのを防ぐ）"""
+    days = days_since_last_commit()
+    if days < KEEPALIVE_DAYS:
+        return False
+    s = open(OUT, encoding="utf-8").read()
+    line = f"最終同期: {now_jst()}（変更なし・定期確認）"
+    s = STAMP_RE.sub(line, s, count=1) if STAMP_RE.search(s) else f"/* {line} */\n" + s
+    open(OUT, "w", encoding="utf-8").write(s)
+    print(f"最後のコミットから {days:.0f} 日たったので、日付だけ書き換えました（定期実行を止められないため）")
+    return True
+
 def write(info, events, posts, source):
-    stamp = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).strftime("%Y-%m-%d %H:%M")
+    stamp = now_jst()
     out = ("/* =====================================================================\n"
            "   VOV サイトの「お知らせ」「イベント・出演」「活動レポート」のデータ\n"
            "   ---------------------------------------------------------------------\n"
@@ -146,7 +178,7 @@ def write(info, events, posts, source):
            f"  posts: {js(posts)}\n"
            "};\n")
     old = open(OUT, encoding="utf-8").read() if os.path.exists(OUT) else ""
-    changed = old.split("最終同期")[0] != out.split("最終同期")[0] or "最終同期" not in old
+    changed = without_stamp(old) != without_stamp(out)
     if changed:
         open(OUT, "w", encoding="utf-8").write(out)
     print(f"お知らせ {len(info)} 件 / イベント {len(events)} 件 / 活動レポート {len(posts)} 件 → {'書き出しました' if changed else '変更なし'}")
@@ -175,7 +207,8 @@ if __name__ == "__main__":
         # お知らせ側はまだ使いはじめていない → いまの info・events を残し、posts だけ必要なら差し替える
         changed = bool(post_items) and replace_posts_only(posts)
         print("お知らせは書き換えません（公開中の記事が無いため）" + ("／活動レポートを差し替えました" if changed else "／変更なし"))
+        changed = changed or keepalive()
         sys.exit(0 if changed else 3)
     info, events = convert(items)
-    changed = write(info, events, posts, "microCMS")
+    changed = write(info, events, posts, "microCMS") or keepalive()
     sys.exit(0 if changed else 3)      # 3 = 変更なし（Actions 側でコミットを飛ばす）
