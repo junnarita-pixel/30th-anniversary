@@ -1,0 +1,48 @@
+# microCMS の「お知らせ」「活動レポート」を vov_assets/vov-data.js に写して公開する
+#
+# 動くとき
+#   - 15分ごと（schedule）
+#   - microCMS の Webhook（GitHub Actions 連携）から呼ばれたとき（repository_dispatch）
+#   - GitHub の Actions 画面で「Run workflow」を押したとき（workflow_dispatch）
+#
+# 必要な設定（リポジトリの Settings → Secrets and variables → Actions）
+#   MICROCMS_API_KEY … microCMS の API キー（GET 権限）
+#
+name: sync-microcms
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  repository_dispatch:
+    types: [microcms]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: sync-microcms
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: microCMS から取得して vov-data.js を作り直す
+        id: sync
+        env:
+          MICROCMS_SERVICE_DOMAIN: voices-of-vision
+          MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
+        run: |
+          set +e
+          python3 scripts/sync_microcms.py
+          code=$?
+          set -e
+          if [ "$code" = "3" ]; then echo "changed=false" >> "$GITHUB_OUTPUT"; exit 0; fi
+          if [ "$code" != "0" ]; then exit "$code"; fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: 変わっていれば記録して公開
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          git config user.name "microCMS sync"
+          git config user.email "noreply@github.com"
+          git add vov_assets/vov-data.js
+          git commit -m "お知らせ・イベント・活動レポートを microCMS から同期"
+          git push
