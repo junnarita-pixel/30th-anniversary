@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Voices of Vision | 名古屋ゴスペルクワイア</title>
-<meta name="description" content="名古屋のゴスペルクワイア Voices of Vision（VOV）公式サイト。1999年創設、オーディションなし・楽譜なし。木曜夜・金曜朝のリハーサルで一緒に歌いませんか。見学・体験はいつでも歓迎です。">
+<meta name="description" content="名古屋のゴスペルクワイア Voices of Vision（VOV）公式サイト。1999年創設、オーディションなし・楽譜なし。リハーサルは木曜夜と金曜朝。見学は無料で、事前連絡なしで来られます。">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#6D2B3D">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Voices of Vision">
 <meta property="og:title" content="Voices of Vision | 名古屋ゴスペルクワイア">
-<meta property="og:description" content="名古屋のゴスペルクワイア Voices of Vision（VOV）公式サイト。1999年創設、オーディションなし・楽譜なし。木曜夜・金曜朝のリハーサルで一緒に歌いませんか。見学・体験はいつでも歓迎です。">
+<meta property="og:description" content="名古屋のゴスペルクワイア Voices of Vision（VOV）公式サイト。1999年創設、オーディションなし・楽譜なし。リハーサルは木曜夜と金曜朝。見学は無料で、事前連絡なしで来られます。">
 <meta property="og:url" content="https://junnarita-pixel.github.io/30th-anniversary/vov_top.html">
 <meta property="og:image" content="https://junnarita-pixel.github.io/30th-anniversary/vov_assets/top1-01.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -158,6 +158,7 @@ h1 em{font-style:italic;color:var(--gold-l)}
 }
 @keyframes heroIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 /* 高さの低い画面（ノートPCなど）では見出しを少し小さくして、ヒーローの中に収める */
+@media(max-width:520px){.hero-content h1{font-size:min(40px,calc((100vw - 60px) / 9.6))}}  /* スマホで見出しが句の途中で折り返さないように */
 @media(min-width:861px) and (max-height:920px){.hero-content h1{font-size:clamp(36px,5.2vw,64px)}.hero-content .info-pill{margin-bottom:14px}.h-eye{margin-bottom:18px}.h-desc{margin-bottom:18px}}
 @media(min-width:861px) and (max-height:800px){.hero-content h1{font-size:clamp(34px,4.6vw,56px)}.hero-content .hero-quote{display:none}}
 
@@ -182,7 +183,7 @@ section{padding:96px 48px}
 .inner{max-width:1100px;margin:0 auto}
 .s-eye{display:flex;align-items:center;gap:12px;margin-bottom:16px}
 .s-eye-bar{width:30px;height:2px;background:var(--gold)}
-.s-eye-t{font-size:11px;letter-spacing:.34em;color:var(--gold);font-weight:700;text-transform:uppercase}
+.s-eye-t{font-size:11px;letter-spacing:.34em;color:var(--gold);font-weight:700}
 h2{font-family:'Noto Serif','Noto Serif JP',serif;font-size:clamp(32px,3.6vw,42px);font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:20px}
 h2 em{font-style:italic;color:var(--burg)}
 .s-body{font-size:15.5px;line-height:2.1;color:var(--ink-m)}
@@ -620,7 +621,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <a href="#info" class="info-pill" id="info-pill" hidden aria-label="お知らせを見る"><span class="ip-dot" aria-hidden="true"></span><span class="ip-lbl">Information</span><span class="ip-t"></span><span class="ip-arw" aria-hidden="true">↓</span></a>
     <div class="h-eye">
       <div class="h-eye-bar"></div>
-      <span class="h-eye-t">Gospel Choir</span>
+      <span class="h-eye-t">Gospel Choir · Since 1999</span>
     </div>
     <h1>ゴスペルは魂の声。<br><em>さあ一緒に歌おう。</em></h1>
     <p class="h-sub">Voices of Vision</p>
@@ -662,9 +663,9 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         <h2>VOVが<br><em>大切にしていること</em></h2>
         <p class="s-body">VOVは、創設者ラニー・ラッカー氏が提言する3つの柱を体現し、多くの人の心に届くよう歌い続けていくことを目的に活動しています。</p>
         <div class="pillars">
-          <div class="pl"><span class="pl-n">Music</span><span class="pl-d">歌の喜びを<br>分かち合う</span></div>
-          <div class="pl"><span class="pl-n">History</span><span class="pl-d">ゴスペルの<br>ルーツを知る</span></div>
-          <div class="pl"><span class="pl-n">Christianity</span><span class="pl-d">精神を尊重し<br>歌に込める</span></div>
+          <div class="pl"><span class="pl-n">Music</span><span class="pl-d">メッセージを理解し<br>音楽で表現する</span></div>
+          <div class="pl"><span class="pl-n">History</span><span class="pl-d">ゴスペルの歴史を<br>学び、受け継ぐ</span></div>
+          <div class="pl"><span class="pl-n">Christianity</span><span class="pl-d">その精神を<br>理解し、伝える</span></div>
         </div>
         <p class="ab-note">ゴスペルのルーツであるキリスト教を大切に活動していますが、個人の信仰は問いません。現在メンバーのうちクリスチャンは約2〜3割。歌が好きな方なら、どなたでも歓迎します。</p>
         <div style="margin-top:26px">
@@ -720,7 +721,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
           <div class="reh-body">
             <h3>VOV-U25（ユース） <span class="reh-tag youth">Youth</span></h3>
             <p>第1木曜 19:00 〜 20:30／第2木曜 19:00 〜 20:00<br>在日大韓基督教会 名古屋教会 7F ロビー</p>
-            <p class="reh-note">高校生〜25歳までのユース世代クラス。同世代の仲間と一緒に、ゴスペルを楽しめます。</p>
+            <p class="reh-note">高校生〜25歳までのユース世代クラス。</p>
           </div>
         </div>
         <div class="fee-box">
@@ -782,7 +783,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       <div class="videos-g">
         <div>
           <div class="video-frame">
-            <iframe src="https://www.youtube-nocookie.com/embed/XSXoPy4CWcI" title="Let's Celebrate — Voices of Vision" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe src="https://www.youtube-nocookie.com/embed/XSXoPy4CWcI" title="Let's Celebrate（Voices of Vision）" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
           <p class="video-cap">Let's Celebrate</p>
         </div>
@@ -792,7 +793,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
             <div class="video-play"></div>
             <span class="video-lbl">映像準備中</span>
           </div>
-          <p class="video-cap">We Stand（DVDより切り出し予定）</p>
+          <p class="video-cap">We Shall Overcome / We Stand on the Vision（準備中）</p>
         </div>
       </div>
     </div>
@@ -829,7 +830,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         <div class="s-eye-bar"></div>
       </div>
       <h2>VOVの<em>歩み</em></h2>
-      <p class="s-body" style="max-width:520px;margin:0 auto">1999年の創設から今日まで。VOVが紡いできた歴史の概要です。</p>
+      <p class="s-body" style="max-width:520px;margin:0 auto">1999年からの主な出来事です。</p>
     </div>
     <div class="timeline rv">
       <div class="tl-item major">
@@ -906,7 +907,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     </div>
   </div>
   <div class="ft-support">
-    <p class="ft-support-t"><strong>お買い物でVOVを応援</strong>　—　こちらのリンクからお買い物いただくと、VOVの活動支援につながります。</p>
+    <p class="ft-support-t"><strong>お買い物でVOVを応援</strong>　このリンクからお買い物をすると、VOVの活動の支援になります。</p>
     <div class="ft-support-btns">
       <a href="https://px.a8.net/svt/ejp?a8mat=4BCH7R+AYQEUQ+5IMU+5YRHE" target="_blank" rel="nofollow noopener" class="aff-btn aff-furusato">
         <span class="aff-icon">ふ</span>ふるさと本舗
