@@ -11,7 +11,7 @@
 name: sync-microcms
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '7,22,37,52 * * * *'
   repository_dispatch:
     types: [microcms]
   workflow_dispatch:
