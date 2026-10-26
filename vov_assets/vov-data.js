@@ -6,6 +6,7 @@
      ・TOP の「Information」と、ヒーローの Information の案内
      ・活動スケジュールの「お知らせ」の見出しと「直近のイベント・出演情報」
      ・活動スケジュールの「月ごとの表」
+     ・活動レポートの一覧と記事ページ、TOP の「活動レポート」（新しい3件）
    同じお知らせを何か所にも書く必要はありません。
 
    お知らせ（info）の書き方
@@ -44,5 +45,53 @@ window.VOV_DATA = {
       time:'夜', place:'', text:'企画中。', link:'vov_schedule.html#events' },
     { date:'2026-12-26', tag:'出演', title:'第22回 わいわいミュージックフェス in 鶴舞公園奏楽堂',
       time:'', place:'鶴舞公園奏楽堂', text:'出演時間は調整中。', link:'vov_schedule.html#events' }
+  ],
+
+  /* 活動レポート（新しいものを上に）。一覧には写真・日付・タイトル・本文の最初の2行が出て、押すと記事ページ（vov_posts.html#id）
+     いまの6件は最初のデザインに入っていた見本です（シート③「活動レポートの6件」）
+     書き方：id・date・title・image（一覧と記事の写真）・body（本文。空行で段落）・photos（記事に並べる写真の配列・なくてもよい） */
+  posts: [
+    {
+      "id": "sample-20260520",
+      "date": "2026-05-20",
+      "title": "春のワークショップを開催しました",
+      "image": "vov_assets/gb-lanny-night.jpg",
+      "body": "新メンバーも交えて、ゴスペルの基礎から楽しく学びました。"
+    },
+    {
+      "id": "sample-20260412",
+      "date": "2026-04-12",
+      "title": "地域イベントに出演しました",
+      "image": "vov_assets/gb-waiwai.jpg",
+      "body": "たくさんの方に聴いていただき、ありがとうございました。"
+    },
+    {
+      "id": "sample-20260308",
+      "date": "2026-03-08",
+      "title": "新年度メンバー募集スタート！",
+      "image": "vov_assets/gb-section.jpg",
+      "body": "2026年度の新メンバーを募集しています。体験はいつでも歓迎です。"
+    },
+    {
+      "id": "sample-20260214",
+      "date": "2026-02-14",
+      "title": "金曜朝リハーサルの様子",
+      "image": "vov_assets/gb-morning-reh.jpg",
+      "body": "落ち着いた雰囲気の朝リハ。日中に時間が取れる方におすすめです。"
+    },
+    {
+      "id": "sample-20260120",
+      "date": "2026-01-20",
+      "title": "2026年の活動がスタートしました",
+      "image": "vov_assets/gb-newyear.jpg",
+      "body": "今年もルーツに根差したゴスペルを届けていきます。"
+    },
+    {
+      "id": "sample-20251221",
+      "date": "2025-12-21",
+      "title": "クリスマスコンサート2025 御礼",
+      "image": "vov_assets/gb-xmas.jpg",
+      "body": "満席の会場でのステージ。ご来場ありがとうございました。"
+    }
   ]
 };

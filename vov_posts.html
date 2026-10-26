@@ -107,6 +107,22 @@ footer{background:var(--ink);padding:52px 48px 26px;border-top:1px solid rgba(21
 .post-date{font-size:11px;letter-spacing:.16em;color:var(--gold);font-weight:700;margin-bottom:8px;display:block}
 .post-title{font-size:16px;font-weight:700;color:var(--ink);line-height:1.6;margin-bottom:8px}
 .post-ex{font-size:13px;color:var(--ink-l);line-height:1.8}
+a.post{display:block;text-decoration:none;color:inherit}
+.post-ex{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.posts-more-wrap{text-align:center;margin-top:40px}
+.posts-more{font:inherit;font-size:14px;font-weight:700;letter-spacing:.1em;color:var(--burg);background:var(--white);border:1px solid var(--burg);padding:14px 48px;cursor:pointer;transition:all .25s}
+.posts-more:hover{background:var(--burg);color:var(--white)}
+.posts-more[hidden]{display:none}
+.art{max-width:760px;margin:0 auto}
+.art .post-date{font-size:12px;margin-bottom:12px}
+.art h1{font-family:'Noto Serif','Noto Serif JP',serif;font-size:clamp(24px,3vw,32px);font-weight:700;line-height:1.5;color:var(--ink);margin-bottom:26px}
+.art-img{margin:0 0 30px;background:var(--white);padding:10px;box-shadow:0 4px 20px rgba(28,20,16,.07)}
+.art-img img{display:block;width:100%;height:auto}
+.art-body{font-size:15.5px;line-height:2.1;color:var(--ink-m)}
+.art-body p{margin-bottom:1.4em}
+.art-photos{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:10px 0 30px}
+.art-photos img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.art-back{margin-top:40px;padding-top:24px;border-top:1px solid var(--bg3)}
 .posts-note{margin-top:44px;background:var(--paper);border-left:4px solid var(--gold);padding:20px 26px;font-size:13.5px;color:var(--ink-m);line-height:1.95}
 @media(max-width:860px){.posts-g{grid-template-columns:1fr}}
 
@@ -162,7 +178,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <span class="logo-s">Nagoya Gospel Choir</span>
   </a>
   <ul>
-    <li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">VOVについて</button><div class="subm"><a href="vov_about.html" class="subm-top">VOVについて（すべて）</a><a href="vov_about.html#leaders">指導者紹介</a><a href="vov_about.html#fees">リハーサル・会費について</a><a href="vov_history.html">VOVの歩み</a></div></li><li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">スケジュール</button><div class="subm"><a href="vov_schedule.html" class="subm-top">活動・スケジュール（すべて）</a><a href="vov_schedule.html#rehearsal">リハーサル</a><a href="vov_schedule.html#access">リハーサル会場</a><a href="vov_schedule.html#events">直近のイベント・出演情報</a><a href="vov_news.html">お知らせ</a></div></li><li><a class="active" aria-current="page" href="vov_posts.html">活動レポート</a></li><li><a href="vov_history.html">歴史</a></li><li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">ギャラリー</button><div class="subm"><a href="vov_gallery.html" class="subm-top">ギャラリー（すべて）</a><a href="vov_gallery.html#photo">フォトギャラリー</a><a href="vov_gallery.html#movie">動画</a></div></li><li><a href="vov_join.html">入会案内</a></li>
+    <li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">VOVについて</button><div class="subm"><a href="vov_about.html" class="subm-top">VOVについて（すべて）</a><a href="vov_about.html#leaders">指導者紹介</a><a href="vov_about.html#fees">リハーサル・会費について</a><a href="vov_history.html">VOVの歩み</a></div></li><li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">スケジュール</button><div class="subm"><a href="vov_schedule.html" class="subm-top">活動・スケジュール（すべて）</a><a href="vov_schedule.html#rehearsal">リハーサル</a><a href="vov_schedule.html#access">リハーサル会場</a><a href="vov_schedule.html#events">直近のイベント・出演情報</a><a href="vov_news.html">お知らせ</a></div></li><li><a class="active" aria-current="page" href="vov_posts.html">活動レポート</a></li><li><a href="vov_history.html">歴史</a></li><li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">ギャラリー</button><div class="subm"><a href="vov_gallery.html" class="subm-top">ギャラリー（すべて）</a><a href="vov_gallery.html#milestones">これまでの歩み</a><a href="vov_gallery.html#movie">動画</a></div></li><li><a href="vov_join.html">入会案内</a></li>
     <li><a href="vov_contact.html" class="nav-cta">体験申込・お問い合わせ</a></li>
   </ul>
   <button class="menu-btn" aria-label="メニュー" aria-expanded="false" aria-controls="m-menu" onclick="const o=document.body.classList.toggle('menu-open');this.setAttribute('aria-expanded',o)">
@@ -186,60 +202,17 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 </div>
 
 <section style="background:var(--bg)">
-  <div class="inner rv">
+  <div class="inner">
+    <div id="posts-head">
     <div class="s-eye"><div class="s-eye-bar"></div><span class="s-eye-t">Report</span></div>
     <h2>活動<em>レポート</em></h2>
-    <div class="posts-g">
-      <div class="post">
-        <div class="post-img"><img src="vov_assets/gb-lanny-night.jpg" alt="春のワークショップ" loading="lazy" decoding="async"></div>
-        <div class="post-body">
-          <span class="post-date">2026.05.20</span>
-          <h3 class="post-title">春のワークショップを開催しました</h3>
-          <p class="post-ex">新メンバーも交えて、ゴスペルの基礎から楽しく学びました。</p>
-        </div>
-      </div>
-      <div class="post">
-        <div class="post-img"><img src="vov_assets/gb-waiwai.jpg" alt="地域イベント出演" loading="lazy" decoding="async"></div>
-        <div class="post-body">
-          <span class="post-date">2026.04.12</span>
-          <h3 class="post-title">地域イベントに出演しました</h3>
-          <p class="post-ex">たくさんの方に聴いていただき、ありがとうございました。</p>
-        </div>
-      </div>
-      <div class="post">
-        <div class="post-img"><img src="vov_assets/gb-section.jpg" alt="メンバー募集" loading="lazy" decoding="async"></div>
-        <div class="post-body">
-          <span class="post-date">2026.03.08</span>
-          <h3 class="post-title">新年度メンバー募集スタート！</h3>
-          <p class="post-ex">2026年度の新メンバーを募集しています。体験はいつでも歓迎です。</p>
-        </div>
-      </div>
-      <div class="post">
-        <div class="post-img"><img src="vov_assets/gb-morning-reh.jpg" alt="金曜朝リハーサル" loading="lazy" decoding="async"></div>
-        <div class="post-body">
-          <span class="post-date">2026.02.14</span>
-          <h3 class="post-title">金曜朝リハーサルの様子</h3>
-          <p class="post-ex">落ち着いた雰囲気の朝リハ。日中に時間が取れる方におすすめです。</p>
-        </div>
-      </div>
-      <div class="post">
-        <div class="post-img"><img src="vov_assets/gb-newyear.jpg" alt="VOVの活動" loading="lazy" decoding="async"></div>
-        <div class="post-body">
-          <span class="post-date">2026.01.20</span>
-          <h3 class="post-title">2026年の活動がスタートしました</h3>
-          <p class="post-ex">今年もルーツに根差したゴスペルを届けていきます。</p>
-        </div>
-      </div>
-      <div class="post">
-        <div class="post-img"><img src="vov_assets/gb-xmas.jpg" alt="クリスマスコンサート" loading="lazy" decoding="async"></div>
-        <div class="post-body">
-          <span class="post-date">2025.12.21</span>
-          <h3 class="post-title">クリスマスコンサート2025 御礼</h3>
-          <p class="post-ex">満席の会場でのステージ。ご来場ありがとうございました。</p>
-        </div>
-      </div>
     </div>
-    <p class="posts-note">※ 活動レポートは随時更新していきます。ギャラリーと合わせて、VOVの活動アーカイブの役割も担っていきます。</p>
+    <!-- 一覧と記事は vov_assets/vov-data.js の posts から描く。記事は vov_posts.html#（id） -->
+    <div id="posts-list">
+      <div class="posts-g" id="posts-g"></div>
+      <p class="posts-more-wrap"><button type="button" class="posts-more" id="posts-more" hidden>もっと見る</button></p>
+    </div>
+    <article id="post-article" class="art" hidden></article>
   </div>
 </section>
 
@@ -324,6 +297,54 @@ document.querySelectorAll('a').forEach(a=>{a.addEventListener('click',e=>{
 })();
 </script>
 
+<script src="vov_assets/vov-data.js"></script>
+<script>
+/* ===== 活動レポート：一覧（9件ずつ「もっと見る」）と記事（vov_assets/vov-data.js の posts から）===== */
+(function(){
+  const PAGE = 9;
+  const items = ((window.VOV_DATA && window.VOV_DATA.posts) || []).slice().sort((a,b) => a.date < b.date ? 1 : -1);
+  const esc = t => String(t == null ? '' : t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const dot = s => String(s || '').replace(/-/g, '.');
+  const g = document.getElementById('posts-g'), more = document.getElementById('posts-more');
+  const list = document.getElementById('posts-list'), head = document.getElementById('posts-head'), art = document.getElementById('post-article');
+  let shown = 0;
+  function card(it){
+    return '<a class="post" href="vov_posts.html#' + encodeURIComponent(it.id) + '">'
+      + '<div class="post-img">' + (it.image ? '<img src="' + esc(it.image) + '" alt="' + esc(it.title) + '" loading="lazy" decoding="async">' : '') + '</div>'
+      + '<div class="post-body"><span class="post-date">' + dot(it.date) + '</span><h3 class="post-title">' + esc(it.title) + '</h3>'
+      + '<p class="post-ex">' + esc(String(it.text || it.body || '').replace(/\s+/g, ' ')) + '</p></div></a>';
+  }
+  function showMore(){
+    g.insertAdjacentHTML('beforeend', items.slice(shown, shown + PAGE).map(card).join(''));
+    shown = Math.min(items.length, shown + PAGE);
+    more.hidden = shown >= items.length;
+  }
+  more.addEventListener('click', showMore);
+  function article(id){
+    const it = items.find(x => x.id === id);
+    if (!it) return false;
+    const paras = String(it.body || '').split(/\n\s*\n/).map(p => '<p>' + esc(p).replace(/\n/g, '<br>') + '</p>').join('');
+    const photos = (it.photos || []).map(p => '<img src="' + esc(p) + '" alt="' + esc(it.title) + '" loading="lazy" decoding="async">').join('');
+    art.innerHTML = '<span class="post-date">' + dot(it.date) + '</span><h1>' + esc(it.title) + '</h1>'
+      + (it.image ? '<figure class="art-img"><img src="' + esc(it.image) + '" alt="' + esc(it.title) + '" decoding="async"></figure>' : '')
+      + '<div class="art-body">' + paras + '</div>'
+      + (photos ? '<div class="art-photos">' + photos + '</div>' : '')
+      + '<p class="art-back"><a href="vov_posts.html" class="btn-line">← 活動レポート一覧へ</a></p>';
+    document.title = it.title + ' | 活動レポート | Voices of Vision';
+    return true;
+  }
+  function route(){
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (id && article(id)) { list.hidden = head.hidden = true; art.hidden = false; window.scrollTo(0, 0); }
+    else {
+      art.hidden = true; list.hidden = head.hidden = false; document.title = '活動レポート | Voices of Vision';
+      if (!shown) { if (items.length) showMore(); else g.outerHTML = '<p class="s-body">活動レポートは準備中です。</p>'; }
+    }
+  }
+  addEventListener('hashchange', route);
+  route();
+})();
+</script>
 <script src="vov_assets/lightbox.js" defer></script>
 </body>
 </html>
