@@ -26,6 +26,9 @@ microCMS 側の項目（API「活動レポート」 endpoint: posts）
   image  一覧と記事の写真        body  本文（空行で段落）
   photos 記事に並べる写真（複数画像）
 posts の API がまだ無いときは、いまの vov-data.js の posts をそのまま残す。
+
+公開中の記事が1件も無い API は「まだ使いはじめていない」とみなし、サイトのその部分は書き換えない
+（下書きしか無い状態で同期して、いまのイベントや活動レポートを消してしまわないため）。
 """
 import json, os, sys, urllib.request, urllib.error, datetime
 
@@ -114,6 +117,19 @@ def current_posts():
 def js(v):
     return json.dumps(v, ensure_ascii=False, indent=2)
 
+def replace_posts_only(posts):
+    """お知らせ側は書き換えず、posts の部分だけを差し替える"""
+    s = open(OUT, encoding="utf-8").read()
+    i = s.find("posts:")
+    if i < 0: return False
+    j = s.find("[", i); depth = 0
+    for k in range(j, len(s)):
+        depth += s[k] == "["; depth -= s[k] == "]"
+        if depth == 0: break
+    new = s[:j] + json.dumps(posts, ensure_ascii=False, indent=2).replace("\n", "\n  ") + s[k + 1:]
+    if new == s: return False
+    open(OUT, "w", encoding="utf-8").write(new); return True
+
 def write(info, events, posts, source):
     stamp = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).strftime("%Y-%m-%d %H:%M")
     out = ("/* =====================================================================\n"
@@ -148,11 +164,18 @@ if __name__ == "__main__":
         items = fetch_all(domain, key)
     except urllib.error.HTTPError as e:
         print(f"microCMS から取得できません: HTTP {e.code}", file=sys.stderr); sys.exit(1)
-    info, events = convert(items)
     try:
-        posts = convert_posts(fetch_all(domain, key, "posts"))
+        post_items = fetch_all(domain, key, "posts")
     except urllib.error.HTTPError as e:
         if e.code != 404: print(f"活動レポートを取得できません: HTTP {e.code}", file=sys.stderr); sys.exit(1)
-        posts = current_posts()          # まだ API が無い
+        post_items = []                  # まだ API が無い
+    posts = convert_posts(post_items) if post_items else current_posts()
+    print(f"microCMS の公開中：お知らせ {len(items)} 件 / 活動レポート {len(post_items)} 件")
+    if not items:
+        # お知らせ側はまだ使いはじめていない → いまの info・events を残し、posts だけ必要なら差し替える
+        changed = bool(post_items) and replace_posts_only(posts)
+        print("お知らせは書き換えません（公開中の記事が無いため）" + ("／活動レポートを差し替えました" if changed else "／変更なし"))
+        sys.exit(0 if changed else 3)
+    info, events = convert(items)
     changed = write(info, events, posts, "microCMS")
     sys.exit(0 if changed else 3)      # 3 = 変更なし（Actions 側でコミットを飛ばす）
