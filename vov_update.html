@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>更新のしかた｜VOV ホームページ</title>
+<link rel="icon" type="image/svg+xml" href="vov_assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;700&family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#1C1410;--ink-m:#473A30;--gy:#8A7B6C;--line:#D6CDBE;--bg:#F5F1EB;--bg2:#EDE6DB;--white:#FFFDF9;--burg:#6D2B3D;--gold:#A9822F;--ok:#2F6B45;--ok-bg:#E3EFE6;--wait:#8A5A12;--wait-bg:#F5E8CF;
+--serif:"Noto Serif JP","Hiragino Mincho ProN",serif;--body:"Noto Sans JP","Hiragino Sans",sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+body{background:var(--bg);color:var(--ink-m);font-family:var(--body);line-height:1.85;font-size:14px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.4rem}
+a{color:var(--burg);text-underline-offset:3px}
+.topnav{border-bottom:1.5px solid var(--ink);background:rgba(245,241,235,.96);position:sticky;top:0;z-index:9}
+.topnav .in{max-width:1080px;margin:0 auto;padding:.7rem 1.4rem;display:flex;gap:1.2rem;align-items:baseline;flex-wrap:wrap}
+.topnav b{font-family:var(--serif);color:var(--burg)}
+.topnav a{color:var(--gy);text-decoration:none;font-size:.8rem}
+.topnav a:hover,.topnav a[aria-current]{color:var(--ink)}
+header.h{border-bottom:3px solid var(--ink);padding:2.4rem 0 1.4rem;margin-bottom:1.4rem}
+.kick{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;color:var(--gy);display:flex;align-items:center;gap:.6rem}
+.kick::before{content:"";width:26px;height:1.5px;background:var(--gold)}
+h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.2rem);margin:.7rem 0 .3rem;color:var(--ink)}
+h2{font-family:var(--serif);font-size:1.25rem;color:var(--ink);margin:2.4rem 0 .8rem;padding-top:1.2rem;border-top:1.5px solid var(--ink)}
+h3{font-family:var(--serif);font-size:1rem;color:var(--ink);margin:1.4rem 0 .5rem}
+p{margin:.6rem 0;max-width:50em}
+.note{background:var(--white);border-left:3px solid var(--gold);padding:.8rem 1rem;font-size:.86rem;margin:1rem 0}
+.tag{display:inline-block;font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;border:1px solid var(--gy);color:var(--gy);padding:.06rem .5rem;border-radius:99px;white-space:nowrap;vertical-align:middle}
+.tag.ok{border-color:var(--ok);color:var(--ok);background:var(--ok-bg)}.tag.wait{border-color:var(--wait);color:var(--wait);background:var(--wait-bg)}.tag.upd{border-color:var(--burg);color:var(--burg)}
+
+/* ページの図 */
+.tree-top{display:flex;justify-content:center}
+.tree-top .pg{width:min(100%,420px)}
+.tree-line{height:28px;border-left:2px solid var(--gold);margin:0 auto;width:0}
+.tree-bar{border-top:2px solid var(--gold);margin:0 6%}
+.pgs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:14px}
+.pg{background:var(--white);border:1.5px solid var(--ink);display:flex;flex-direction:column;min-width:0}
+.pg img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-bottom:1px solid var(--line)}
+.pg .b{padding:.7rem .85rem .9rem;display:flex;flex-direction:column;gap:.35rem}
+.pg .n{font-family:var(--serif);font-weight:700;color:var(--ink);font-size:1rem;line-height:1.4}
+.pg .u{font-family:var(--mono);font-size:.66rem;color:var(--gy);word-break:break-all}
+.pg .lbl{font-size:.66rem;font-weight:700;color:var(--gold);letter-spacing:.08em;margin-top:.25rem}
+.pg ul{list-style:none;font-size:.78rem;line-height:1.7}
+.pg li::before{content:"・";color:var(--gy)}
+.pg .to li::before{content:"→ ";color:var(--burg)}
+
+.map{border:1.5px solid var(--ink);background:var(--white);padding:1.1rem 1.2rem;margin:1rem 0;font-family:var(--mono);font-size:.74rem;line-height:1.95;white-space:pre;overflow-x:auto;color:var(--ink)}
+.tw{overflow-x:auto;border:1.5px solid var(--ink);background:var(--white);margin:1rem 0}
+table{border-collapse:collapse;width:100%;font-size:.82rem;min-width:620px}
+th{background:var(--bg2);text-align:left;padding:.55rem .75rem;border-bottom:1.5px solid var(--ink);white-space:nowrap;font-weight:700;color:var(--ink)}
+td{padding:.55rem .75rem;border-bottom:1px solid #E6DED2;vertical-align:top}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+ol.steps{margin:.6rem 0 .6rem 1.3rem}ol.steps li{margin:.3rem 0}
+footer{border-top:3px solid var(--ink);margin-top:2.8rem;padding:1.2rem 0 3rem;font-family:var(--mono);font-size:.68rem;color:var(--gy)}
+@media(max-width:900px){.pgs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.pgs{grid-template-columns:1fr}.tree-bar{display:none}}
+@media print{.topnav{display:none}body{font-size:10pt}.pg,.tw,.map{break-inside:avoid}h2{break-after:avoid}.pgs{grid-template-columns:repeat(4,1fr)}}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.9rem;margin:1rem 0}
+.box{border:1.5px solid var(--ink);background:var(--white);padding:1rem 1.1rem}
+.box b{font-family:var(--serif);font-size:1rem;color:var(--ink);display:block;margin-bottom:.3rem}
+.box span{font-size:.82rem}
+ul.done{margin:.5rem 0 .5rem 1.2rem}ul.done li{margin:.28rem 0}
+.no{font-family:var(--mono);font-size:.7rem;color:var(--burg)}
+
+/* ===== 更新のしかた ===== */
+.lead{font-size:1rem;color:var(--ink);max-width:44em}
+.toc{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.2rem 0 .4rem}
+.toc a{border:1.5px solid var(--ink);background:var(--white);color:var(--ink);text-decoration:none;font-size:.82rem;padding:.35rem .8rem;font-weight:500}
+.toc a:hover{background:var(--ink);color:var(--white)}
+.prep{border:1.5px solid var(--wait);background:var(--wait-bg);color:#5C3B08;padding:.9rem 1.1rem;margin:1.2rem 0;font-size:.88rem}
+.prep b{display:block;font-family:var(--serif);font-size:.98rem;margin-bottom:.2rem}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem;margin:1rem 0}
+.three .box{display:flex;gap:.8rem;align-items:flex-start}
+.three .box .big-n{font-family:var(--serif);font-size:2.1rem;font-weight:700;line-height:1;color:var(--burg);flex:none}
+.three .box b{font-size:1rem}
+.cta{display:inline-flex;align-items:center;gap:.6rem;background:var(--burg);color:#fff;text-decoration:none;font-weight:700;font-size:1rem;padding:.9rem 1.6rem;margin:.6rem 0;border-bottom:3px solid var(--gold)}
+.cta:hover{background:#4E1C2A;color:#fff}
+.url{font-family:var(--mono);font-size:.8rem;background:var(--white);border:1px solid var(--line);padding:.15rem .45rem;user-select:all;word-break:break-all}
+.step{display:grid;grid-template-columns:2.6rem minmax(0,1fr);gap:.9rem;margin:1.1rem 0;align-items:start}
+.step .n{width:2.6rem;height:2.6rem;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:1.1rem}
+.step .t{font-weight:700;color:var(--ink);font-size:.98rem;margin-bottom:.2rem}
+.btnlike{display:inline-block;font-size:.78rem;font-weight:700;padding:.1rem .55rem;border:1.5px solid var(--ink);background:var(--white);color:var(--ink);white-space:nowrap}
+.btnlike.dark{background:#2B2D33;border-color:#2B2D33;color:#fff}
+/* 画面の見本（microCMS の画面をかんたんにした絵） */
+.mock{border:1.5px solid var(--ink);background:#fff;margin:1rem 0;font-family:var(--body);overflow:hidden}
+.mock-bar{background:#2B2D33;color:#fff;font-size:.72rem;padding:.4rem .8rem;display:flex;justify-content:space-between;align-items:center;gap:.6rem}
+.mock-bar .mb{display:flex;gap:.4rem}
+.mock-bar .mb span{border:1px solid #fff;padding:.05rem .5rem;font-weight:700}
+.mock-bar .mb span.pub{background:#fff;color:#2B2D33}
+.mock-body{display:grid;grid-template-columns:150px minmax(0,1fr);min-height:120px}
+.mock-side{background:#F2F3F5;border-right:1px solid #E1E3E8;padding:.7rem .7rem;font-size:.72rem;color:#5A5F6B;line-height:2}
+.mock-side b{display:block;color:#2B2D33;font-size:.7rem;margin-top:.2rem}
+.mock-side .on{background:#fff;border:1.5px solid var(--burg);color:var(--burg);font-weight:700;padding:0 .4rem;margin:0 -.4rem}
+.mock-main{padding:.9rem 1rem;display:flex;flex-direction:column;gap:.7rem}
+.fld{display:grid;grid-template-columns:1.8rem minmax(0,1fr);gap:.6rem;align-items:start}
+.fld .c{width:1.6rem;height:1.6rem;border-radius:50%;background:var(--burg);color:#fff;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:.15rem}
+.fld .l{font-size:.78rem;font-weight:700;color:#2B2D33}
+.fld .l i{color:#D33;font-style:normal}
+.fld .h{font-size:.7rem;color:#6B7080;line-height:1.6}
+.fld .in{border:1px solid #CDD0D6;border-radius:4px;background:#fff;min-height:1.9rem;font-size:.76rem;color:#2B2D33;padding:.3rem .5rem;margin-top:.25rem}
+.fld .in.ta{min-height:3.6rem}
+.fld .in.img{border-style:dashed;color:#8A8F9C;text-align:center}
+.fld .in.sel{display:flex;justify-content:space-between}
+.fld .in .ex{color:#2B2D33}
+.fld .in .ph{color:#9AA0AC}
+.legend{font-size:.8rem;margin:.4rem 0 1rem}
+.legend li{margin:.25rem 0 .25rem 1.2rem}
+.where{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem;margin:1rem 0}
+/* サイトでの見え方の見本 */
+.site{border:1.5px solid var(--ink);background:#F2EEE6;padding:.9rem}
+.site .cap{font-size:.7rem;color:var(--gy);margin-bottom:.5rem;font-family:var(--mono)}
+.ic{display:grid;grid-template-columns:90px minmax(0,1fr);background:#FBF9F5;box-shadow:0 2px 10px rgba(28,20,16,.07)}
+.ic .d{background:#6D2B3D;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:1.2rem;line-height:1;padding:.7rem 0}
+.ic .d small{font-size:.6rem;color:#D4B061;margin-top:.3rem}
+.ic .b{padding:.6rem .8rem;font-size:.72rem}
+.ic .b .tg{display:inline-block;background:#6D2B3D;color:#fff;font-size:.6rem;font-weight:700;padding:0 .4rem;margin-right:.4rem}
+.ic .b .dt{color:#B8923A;font-weight:700;font-size:.62rem}
+.ic .b .ti{font-family:var(--serif);font-weight:700;color:#1C1410;font-size:.85rem;margin:.15rem 0}
+.pc{background:#FBF9F5;box-shadow:0 2px 10px rgba(28,20,16,.07);max-width:240px}
+.pc .im{aspect-ratio:16/10;background:linear-gradient(150deg,#C4AC90,#A08468);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.68rem;letter-spacing:.1em}
+.pc .b{padding:.6rem .75rem .75rem;font-size:.72rem}
+.pc .b .dt{color:#B8923A;font-weight:700;font-size:.62rem}
+.pc .b .ti{font-weight:700;color:#1C1410;font-size:.8rem;margin:.15rem 0}
+.pc .b .ex{color:#8A7B6C;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ok-ng{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem}
+.qa dt{font-weight:700;color:var(--ink);margin-top:.9rem}
+.qa dt::before{content:"Q. ";color:var(--burg)}
+.qa dd{margin:.2rem 0 0 1.4rem}
+@media(max-width:760px){.three,.where,.ok-ng{grid-template-columns:1fr}.mock-body{grid-template-columns:1fr}.mock-side{display:none}}
+</style>
+</head>
+<body>
+<div class="topnav"><div class="in"><b>VOV ホームページ 確認資料</b>
+<a href="vov_docs.html">目次・リンク集</a><a href="vov_sitemap.html">サイトマップ</a><a href="vov_update.html" aria-current="page">更新のしかた</a><a href="vov_top.html" target="_blank">サイトを見る</a></div></div>
+<div class="wrap">
+<header class="h">
+  <div class="kick">VOV ／ Voices of Vision ／ 2026.10.26</div>
+  <h1>更新のしかた</h1>
+  <p class="lead">お知らせ・イベント・活動レポートを、VOV の皆さんで書いてホームページに出すための手引きです。上から順に読めば、はじめての方でも書けるようにしています。</p>
+  <nav class="toc" aria-label="このページの目次">
+    <a href="#login">1. ログイン</a><a href="#which">2. どこに書く？</a><a href="#news">3. お知らせ・イベントを書く</a><a href="#posts">4. 活動レポートを書く</a><a href="#fix">5. 直す・下げる・消す</a><a href="#photo">6. 写真のコツ</a><a href="#qa">7. こんなときは</a>
+  </nav>
+</header>
+
+<div class="prep"><b>いまは準備中です</b>ログインのご案内（招待メール）をお送りしてから使えるようになります。ご案内まで、このページは読んでおくだけで大丈夫です。</div>
+
+<h2 style="border-top:0;padding-top:0;margin-top:1rem">まず、ここだけ</h2>
+<div class="three">
+  <div class="box"><span class="big-n">1</span><span><b>書く場所は2つだけ</b>「お知らせ」（イベント・出演も）と「活動レポート」。</span></div>
+  <div class="box"><span class="big-n">2</span><span><b>「公開」を押すと出る</b>押してから15分ほどで、ホームページに出ます。</span></div>
+  <div class="box"><span class="big-n">3</span><span><b>間違えても大丈夫</b>直して、もう一度「公開」を押せば、上書きされます。</span></div>
+</div>
+
+<h2 id="login">1. ログイン</h2>
+<p>ホームページの中身は「microCMS（マイクロ シーエムエス）」という更新用のサービスで書きます。パソコンでもスマホでも使えます。</p>
+<a class="cta" href="https://voices-of-vision.microcms.io" target="_blank" rel="noopener">更新画面を開く →</a>
+<p>アドレス：<span class="url">https://voices-of-vision.microcms.io</span>（ブックマークしておくと便利です）</p>
+<div class="step"><span class="n">1</span><div><div class="t">はじめての方：招待メールから登録</div>microCMS から「Voices of Vision に招待されました」というメールが届きます。メールのボタンを押し、パスワードを決めて登録します。</div></div>
+<div class="step"><span class="n">2</span><div><div class="t">2回目から：メールアドレスとパスワードでログイン</div>上の「更新画面を開く」から、登録したメールアドレスとパスワードを入れます。</div></div>
+<div class="step"><span class="n">3</span><div><div class="t">左のメニューに「お知らせ」と「活動レポート」が出たら準備完了</div>この2つのどちらかを押して書きはじめます。</div></div>
+<div class="mock" aria-label="ログイン後の画面の見本">
+  <div class="mock-bar"><span>Voices of Vision　voices-of-vision</span></div>
+  <div class="mock-body">
+    <div class="mock-side"><b>コンテンツ（API）</b><div class="on">活動レポート</div><div class="on">お知らせ</div><b>メディア</b>アップした写真の一覧</div>
+    <div class="mock-main"><p style="font-size:.8rem;margin:0">左のメニューの<b>「お知らせ」</b>か<b>「活動レポート」</b>を押すと、これまでに書いたものの一覧が出ます。右上の <span class="btnlike dark">＋ 追加</span> で新しく書きはじめます。</p></div>
+  </div>
+</div>
+
+<h2 id="which">2. どこに書く？</h2>
+<p>迷ったら、この表で探してください。</p>
+<div class="tw"><table>
+<tr><th>書きたいこと</th><th>書く場所</th><th>区分</th><th>ホームページで出る場所</th></tr>
+<tr><td>台風などでリハーサルを中止する</td><td><b>お知らせ</b></td><td>お知らせ</td><td>TOP の「最新のお知らせ」と上部の案内、お知らせのページ</td></tr>
+<tr><td>チラシができたので見てほしい</td><td><b>お知らせ</b></td><td>お知らせ</td><td>同上（チラシは「写真・チラシ」に入れる。押すと拡大して見られます）</td></tr>
+<tr><td>VOV のコンサートやイベントの告知</td><td><b>お知らせ</b></td><td>イベント</td><td>TOP の「最新のお知らせ」、活動・スケジュールの「直近のイベント」と「月ごとの表」</td></tr>
+<tr><td>よそのイベントに出演する</td><td><b>お知らせ</b></td><td>出演</td><td>同上</td></tr>
+<tr><td>終わったコンサート・イベントの報告や写真</td><td><b>活動レポート</b></td><td>―</td><td>活動レポートのページ（9件ずつ「もっと見る」）、TOP の新しい3件</td></tr>
+<tr><td>記念コンサートなどの写真（これまでの歩み）</td><td colspan="3">ここでは書きません。原則として更新しない場所です。追加したいときは成田にご依頼ください</td></tr>
+</table></div>
+<p class="note">イベント・出演は、開催日を過ぎると TOP と「直近のイベント」から自動で消えます（月ごとの表には記録として残ります）。終わったら、報告は「活動レポート」に書いてください。</p>
+
+<h2 id="news">3. お知らせ・イベントを書く</h2>
+<div class="step"><span class="n">1</span><div><div class="t">左のメニュー「お知らせ」→ 右上の <span class="btnlike dark">＋ 追加</span></div>空の入力画面が開きます。</div></div>
+<div class="step"><span class="n">2</span><div><div class="t">上から順に書く</div>赤い <span style="color:#D33">*</span> がついた2つ（タイトル・日付）だけは必ず。ほかは空欄でも大丈夫です。各項目の下に、短い説明も出ます。</div></div>
+<div class="mock" aria-label="お知らせの入力画面の見本">
+  <div class="mock-bar"><span>お知らせ ＞ 追加</span><span class="mb"><span>下書きを保存</span><span class="pub">公開</span></span></div>
+  <div class="mock-main">
+    <div class="fld"><span class="c">1</span><div><div class="l">タイトル <i>*</i></div><div class="h">見出しです。TOP や一覧に、このまま出ます。</div><div class="in"><span class="ex">台風のため 11/5（木）の夜リハーサルは中止します</span></div></div></div>
+    <div class="fld"><span class="c">2</span><div><div class="l">日付 <i>*</i></div><div class="h">お知らせは書いた日。イベント・出演は開催日（時刻は何時でも大丈夫）。</div><div class="in"><span class="ex">2026年11月4日 12:00</span></div></div></div>
+    <div class="fld"><span class="c">3</span><div><div class="l">区分</div><div class="h">「お知らせ」＝中止の連絡やチラシ。「イベント」「出演」＝スケジュールの表にも載ります。</div><div class="in sel"><span class="ex">お知らせ</span><span>▾</span></div></div></div>
+    <div class="fld"><span class="c">4</span><div><div class="l">一覧に出る短い文</div><div class="h">一覧や TOP に出る1〜2行。空欄でも大丈夫。</div><div class="in ta"><span class="ex">次回は 11/12（木）です。</span></div></div></div>
+    <div class="fld"><span class="c">5</span><div><div class="l">本文</div><div class="h">記事ページに出る文章。1行あけると段落が分かれます。</div><div class="in ta"><span class="ph">（くわしく書きたいときだけ）</span></div></div></div>
+    <div class="fld"><span class="c">6</span><div><div class="l">写真・チラシ</div><div class="h">1枚。押すと拡大して見られます。</div><div class="in img">＋ 画像を選ぶ（ドラッグ＆ドロップでも）</div></div></div>
+    <div class="fld"><span class="c">7</span><div><div class="l">リンク先（あれば）</div><div class="h">別のページに案内したいときだけ。ふだんは空欄。</div><div class="in"></div></div></div>
+    <div class="fld"><span class="c">8</span><div><div class="l">時間（イベント用）・会場（イベント用）</div><div class="h">イベント・出演のときだけ。例：19:00〜／鶴舞公園奏楽堂</div><div class="in"></div></div></div>
+  </div>
+</div>
+<div class="step"><span class="n">3</span><div><div class="t">右上の <span class="btnlike dark">公開</span> を押す</div>15分ほどでホームページに出ます。<span class="btnlike">下書きを保存</span> は「まだ出さない」保存です。続きはあとで書けます。</div></div>
+<div class="step"><span class="n">4</span><div><div class="t">ホームページで確かめる</div>TOP を開いて、「最新のお知らせ」に出ているか見てください。</div></div>
+<div class="where">
+  <div class="site"><div class="cap">TOP の「最新のお知らせ」での見え方（見本）</div>
+    <div class="ic"><div class="d">11/4<small>水</small></div><div class="b"><span class="tg">お知らせ</span><span class="dt">2026.11.04（水）</span><div class="ti">台風のため 11/5（木）の夜リハーサルは中止します</div>次回は 11/12（木）です。</div></div>
+  </div>
+  <div class="site"><div class="cap">押すと開く記事ページ</div>
+    <div style="background:#FBF9F5;padding:.8rem;font-size:.72rem"><span class="dt" style="color:#B8923A;font-weight:700">2026.11.04（水）</span><div style="font-family:var(--serif);font-weight:700;color:#1C1410;font-size:.95rem;margin:.2rem 0 .4rem">台風のため 11/5（木）の夜リハーサルは中止します</div>本文と写真・チラシが出ます。</div>
+  </div>
+</div>
+
+<h2 id="posts">4. 活動レポートを書く</h2>
+<div class="step"><span class="n">1</span><div><div class="t">左のメニュー「活動レポート」→ 右上の <span class="btnlike dark">＋ 追加</span></div></div></div>
+<div class="step"><span class="n">2</span><div><div class="t">上から順に書く</div>タイトルと日付は必ず。写真は1枚あると一覧がきれいに並びます。</div></div>
+<div class="mock" aria-label="活動レポートの入力画面の見本">
+  <div class="mock-bar"><span>活動レポート ＞ 追加</span><span class="mb"><span>下書きを保存</span><span class="pub">公開</span></span></div>
+  <div class="mock-main">
+    <div class="fld"><span class="c">1</span><div><div class="l">タイトル <i>*</i></div><div class="h">見出しです。一覧と TOP に、このまま出ます。</div><div class="in"><span class="ex">クリスマスイベントを開催しました</span></div></div></div>
+    <div class="fld"><span class="c">2</span><div><div class="l">日付 <i>*</i></div><div class="h">活動した日（コンサートやリハーサルの日）。新しい日付のものから順に並びます。</div><div class="in"><span class="ex">2026年12月24日 12:00</span></div></div></div>
+    <div class="fld"><span class="c">3</span><div><div class="l">写真（一覧と記事のいちばん上）</div><div class="h">1枚。スマホで撮った写真をそのまま入れて大丈夫です。</div><div class="in img">＋ 画像を選ぶ</div></div></div>
+    <div class="fld"><span class="c">4</span><div><div class="l">本文</div><div class="h">記事ページに出る文章。一覧には最初の2行が出ます。1行あけると段落が分かれます。文字数の制限はありません。</div><div class="in ta"><span class="ex">たくさんの方にお越しいただき、ありがとうございました。</span></div></div></div>
+    <div class="fld"><span class="c">5</span><div><div class="l">記事に並べる写真（あれば・何枚でも）</div><div class="h">記事の下に並びます。押すと拡大して見られます。</div><div class="in img">＋ 画像を選ぶ（何枚でも）</div></div></div>
+  </div>
+</div>
+<div class="step"><span class="n">3</span><div><div class="t">右上の <span class="btnlike dark">公開</span> を押す</div>15分ほどで、活動レポートのページと TOP に出ます。</div></div>
+<div class="where">
+  <div class="site"><div class="cap">一覧での見え方（見本）</div>
+    <div class="pc"><div class="im">写真</div><div class="b"><span class="dt">2026.12.24</span><div class="ti">クリスマスイベントを開催しました</div><div class="ex">たくさんの方にお越しいただき、ありがとうございました。当日は 120 名の方に…</div></div></div>
+  </div>
+  <div class="site"><div class="cap">押すと開く記事ページ</div>
+    <div style="background:#FBF9F5;padding:.8rem;font-size:.72rem">いちばん上に写真、その下に本文の全文、最後に「記事に並べる写真」が並びます。一覧は9件ずつで、下の「もっと見る」で続きが出ます。</div>
+  </div>
+</div>
+
+<h2 id="fix">5. 直す・下げる・消す</h2>
+<div class="tw"><table>
+<tr><th>したいこと</th><th>やりかた</th></tr>
+<tr><td><b>書いたものを直す</b></td><td>一覧から開いて書き直し、右上の「公開」をもう一度押す。15分ほどで入れ替わります。</td></tr>
+<tr><td><b>ホームページから下げる（残しておく）</b></td><td>開いて、右上の「…」のメニューから「公開終了」を選ぶ。microCMS には残るので、あとでまた出せます。</td></tr>
+<tr><td><b>消す</b></td><td>開いて、右上の「…」のメニューから「削除」。元に戻せないので、迷ったら「公開終了」に。</td></tr>
+</table></div>
+<p class="note">終わったお知らせは、記録として残さなくて大丈夫です（10/24 のご回答のとおり）。残したいものは「活動レポート」に書いてください。</p>
+
+<h2 id="photo">6. 写真のコツ</h2>
+<div class="ok-ng">
+  <div class="box"><b>そのままで大丈夫</b><span>スマホで撮った写真を、縮めたりせずにそのまま入れてください。ホームページでは自動で軽くして表示します。</span></div>
+  <div class="box"><b>横向きがおすすめ</b><span>一覧は横長の枠に入るので、横向きの写真がきれいに収まります。縦の写真は上下が少し切れます。</span></div>
+  <div class="box"><b>チラシは「写真・チラシ」に</b><span>お知らせの「写真・チラシ」に入れると、押して拡大して読めます。</span></div>
+  <div class="box"><b>写っている方への確認</b><span>お顔がはっきり写っている写真は、載せてよいかご本人に確認してから。</span></div>
+</div>
+
+<h2 id="qa">7. こんなときは</h2>
+<dl class="qa">
+  <dt>「公開」したのに、ホームページに出ない</dt><dd>15分ほどかかります。時間をおいて、ページを読み込み直してください。1時間たっても出ないときは成田にご連絡ください。</dd>
+  <dt>日付や区分を間違えた</dt><dd>開いて直し、もう一度「公開」を押せば大丈夫です。</dd>
+  <dt>イベントが「直近のイベント」から消えた</dt><dd>開催日を過ぎると自動で消える仕組みです。月ごとの表には残っています。</dd>
+  <dt>パスワードを忘れた</dt><dd>ログインの画面にある、パスワードを忘れたときの案内から再設定できます。</dd>
+  <dt>ここに書けないところを直したい</dt><dd>指導者紹介、3つの柱、年表、これまでの歩み、入会案内などの文章や写真は、成田にご依頼ください（Messenger のグループで大丈夫です）。</dd>
+</dl>
+
+<footer>WAVE CREATIVE（成田 淳）／ 確認用（検索には出ません）</footer>
+</div>
+</body>
+</html>
