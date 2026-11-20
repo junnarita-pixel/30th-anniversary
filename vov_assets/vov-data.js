@@ -4,7 +4,7 @@
    このファイルは microCMS（https://voices-of-vision.microcms.io）の内容から
    scripts/sync_microcms.py が自動で作ります。手で直しても次の同期で戻るので、
    書き換えは microCMS で行ってください。
-   最終同期: 2026-11-20 10:07（microCMS）
+   最終同期: 2026-11-20 10:29（microCMS）
    ===================================================================== */
 window.VOV_DATA = {
   info: [],
@@ -31,5 +31,13 @@ window.VOV_DATA = {
   }
 ],
   posts: [],
-  changes: []
+  changes: [
+  {
+    "id": "0k5t5bi73y1z",
+    "date": "2026-12-24",
+    "target": "定期リハーサル",
+    "kind": "お休み",
+    "text": "クリスマス自主企画イベントのためお休み"
+  }
+]
 };
