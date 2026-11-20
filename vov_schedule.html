@@ -165,9 +165,11 @@ footer{background:var(--ink);padding:52px 48px 26px;border-top:1px solid rgba(21
 .mcal-chg{font-size:12.5px;color:#9B2C2C;font-weight:700}
 .mcal-empty{padding:40px 26px;text-align:center;color:var(--ink-l);font-size:14px}
 .mcal-note{font-size:12.5px;color:var(--ink-l);line-height:1.9;padding:16px 26px;background:var(--paper);border-top:1px solid var(--bg3)}
+.mcal-place-sm{display:none}   /* スマホでは会場の列を隠すので、内容の欄に会場を出す */
 @media(max-width:620px){
   .mcal-hd{flex-direction:column;align-items:flex-start}
   .mcal-tb th:nth-child(4),.mcal-tb td:nth-child(4){display:none}
+  .mcal-place-sm{display:block;font-size:12px;color:var(--ink-l);margin-top:2px}
 }
 .cycle-g{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
 .cyc{background:var(--white);padding:26px 22px;text-align:center;border-top:4px solid var(--gold)}
@@ -305,7 +307,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         <div class="fee-price-n">¥4,000<span class="fee-per">/月</span></div>
         <div class="fee-price-t">一般会員</div>
       </div>
-      <p class="fee-desc">VOVの活動は、メンバーの会費で運用されています。<strong>学生料金など、各種割引料金あります。</strong></p>
+      <p class="fee-desc">VOVの活動は、メンバーの会費で運用されています。一般会員は月額4,000円で、夜リハ・朝リハのどのリハーサルにも参加できます。<br><strong>学生料金など、各種割引料金あります。</strong></p>
     </div>
     <div class="access-box" id="access">
       <div class="access-info">
@@ -500,6 +502,7 @@ function mcalRender(){
       '<td class="mcal-dt">' + r.d + '<span class="mcal-dow">（' + DOW[r.dow] + '）</span></td>' +
       '<td><span class="mcal-ttl">' + esc(r.title) + '</span>' +
         '<span class="mcal-tag ' + r.cls + '">' + esc(r.tag) + '</span>' +
+        (r.place ? '<span class="mcal-place-sm">会場：' + esc(r.place) + '</span>' : '') +
         (r.chg ? '<br><span class="mcal-chg">' + esc(r.chg) + '</span>' : '') +
         (r.note && !r.off ? '<br><span style="font-size:12.5px;color:var(--ink-l)">' + esc(r.note) + '</span>' : '') +
       '</td>' +
