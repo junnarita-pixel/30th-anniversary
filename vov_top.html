@@ -317,19 +317,25 @@ a.info-card:hover{box-shadow:0 10px 32px rgba(28,20,16,.13);transform:translateY
   .info-body{padding:20px 22px}
 }
 /* ヒーローの「動く」案内：Information の最新1件へ誘導 */
-.info-pill{display:inline-flex;align-items:center;gap:10px;max-width:100%;margin-bottom:22px;padding:8px 16px 8px 12px;background:rgba(24,16,12,.62);border:1px solid rgba(212,176,97,.45);color:var(--white);text-decoration:none;font-size:13px;-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);transition:border-color .25s}
+.info-pill{display:flex;align-items:center;gap:10px;width:min(100%,560px);margin-bottom:22px;padding:8px 16px 8px 12px;background:rgba(24,16,12,.62);border:1px solid rgba(212,176,97,.45);color:var(--white);text-decoration:none;font-size:13px;-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);transition:border-color .25s}
 .info-pill[hidden]{display:none}
 .info-pill:hover{border-color:var(--gold-l)}
 .info-pill .ip-dot{width:8px;height:8px;border-radius:50%;background:var(--gold-l);flex:none}
 .info-pill .ip-lbl{font-family:'Noto Serif',serif;font-style:italic;font-weight:700;color:var(--gold-l);letter-spacing:.06em;flex:none}
-.info-pill .ip-t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-.info-pill .ip-arw{flex:none;color:var(--gold-l)}
+.info-pill .ip-t{flex:1;min-width:0;overflow:hidden;white-space:nowrap;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12px,#000 calc(100% - 18px),transparent);mask-image:linear-gradient(90deg,transparent,#000 12px,#000 calc(100% - 18px),transparent)}
+/* 文字が右から左へ流れ続ける（同じ文を2つ並べて、半分ずらすとつながる）。指を乗せる・選ぶと止まる */
+.info-pill .ip-track{display:inline-flex;animation:ipTicker var(--ip-dur,18s) linear infinite}
+.info-pill .ip-seg{padding-right:3.5em}
+.info-pill:hover .ip-track,.info-pill:focus-visible .ip-track{animation-play-state:paused}
+.info-pill .ip-hand{flex:none;width:22px;height:22px;color:var(--gold-l);display:inline-flex}
+.info-pill .ip-hand svg{width:100%;height:100%;fill:currentColor}
 @media(prefers-reduced-motion:no-preference){
   .info-pill .ip-dot{animation:ipPulse 1.8s ease-out infinite}
-  .info-pill .ip-arw{display:inline-block;animation:ipBob 1.6s ease-in-out infinite}
+  .info-pill .ip-hand{animation:ipTap 1.6s ease-in-out infinite;transform-origin:50% 80%}
 }
+@keyframes ipTicker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes ipTap{0%,60%,100%{transform:translateY(0) scale(1)}75%{transform:translateY(2px) scale(.9)}}
 @keyframes ipPulse{0%{box-shadow:0 0 0 0 rgba(212,176,97,.7)}70%{box-shadow:0 0 0 9px rgba(212,176,97,0)}100%{box-shadow:0 0 0 0 rgba(212,176,97,0)}}
-@keyframes ipBob{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
 
 /* ===== GALLERY + CONCERT + VIDEO ===== */
 .gal{background:var(--paper)}
@@ -586,7 +592,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 <nav>
   <a href="vov_top.html" class="logo">
     <span class="logo-m">Voices of Vision</span>
-    <span class="logo-s">Nagoya Gospel Choir</span>
+    <span class="logo-s">Gospel Choir</span>
   </a>
   <ul>
     <li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">VOVについて</button><div class="subm"><a href="vov_about.html" class="subm-top">VOVについて（すべて）</a><a href="vov_about.html#leaders">指導者紹介</a><a href="vov_about.html#fees">リハーサル・会費について</a><a href="vov_history.html">VOVの歩み</a></div></li><li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">スケジュール</button><div class="subm"><a href="vov_schedule.html" class="subm-top">活動・スケジュール（すべて）</a><a href="vov_schedule.html#rehearsal">リハーサル</a><a href="vov_schedule.html#access">リハーサル会場</a><a href="vov_schedule.html#events">直近のイベント・出演情報</a><a href="vov_news.html">お知らせ</a></div></li><li><a href="vov_posts.html">活動レポート</a></li><li><a href="vov_history.html">歴史</a></li><li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">ギャラリー</button><div class="subm"><a href="vov_gallery.html" class="subm-top">ギャラリー（すべて）</a><a href="vov_gallery.html#milestones">これまでの歩み</a><a href="vov_gallery.html#movie">動画</a></div></li><li><a href="vov_join.html">入会案内</a></li>
@@ -602,7 +608,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <a href="vov_news.html">お知らせ</a>
     <a href="vov_posts.html">活動レポート</a>
     <a href="vov_history.html">VOVの歩み</a>
-    <a href="vov_gallery.html">ギャラリー・コンサート</a>
+    <a href="vov_gallery.html">ギャラリー</a>
     <a href="vov_join.html">入会案内</a>
     <a href="vov_contact.html" class="m-cta">体験申込・お問い合わせ</a>
   </div>
@@ -618,7 +624,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <span class="hero-badge-t">Gospel Choir</span>
   </div>
   <div class="hero-content">
-    <a href="#info" class="info-pill" id="info-pill" hidden aria-label="お知らせを見る"><span class="ip-dot" aria-hidden="true"></span><span class="ip-lbl">Information</span><span class="ip-t"></span><span class="ip-arw" aria-hidden="true">↓</span></a>
+    <a href="#info" class="info-pill" id="info-pill" hidden aria-label="お知らせを見る"><span class="ip-dot" aria-hidden="true"></span><span class="ip-lbl">Information</span><span class="ip-t"><span class="ip-track"></span></span><span class="ip-hand" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 11.24V7.5C9 6.12 10.12 5 11.5 5S14 6.12 14 7.5v3.74c1.21-.81 2-2.18 2-3.74C16 5.01 13.99 3 11.5 3S7 5.01 7 7.5c0 1.56.79 2.93 2 3.74zm9.84 4.63l-4.54-2.26c-.17-.07-.35-.11-.54-.11H13v-6c0-.83-.67-1.5-1.5-1.5S10 6.67 10 7.5v10.74l-3.43-.72c-.08-.01-.15-.03-.24-.03-.31 0-.59.13-.79.33l-.79.8 4.94 4.94c.27.27.65.44 1.06.44h6.79c.75 0 1.33-.55 1.44-1.28l.75-5.27c.01-.07.02-.14.02-.2 0-.62-.38-1.16-.91-1.38z"/></svg></span></a>
     <div class="h-eye">
       <div class="h-eye-bar"></div>
       <span class="h-eye-t">Gospel Choir · Since 1999</span>
@@ -760,7 +766,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       <div>
         <div class="s-eye">
           <div class="s-eye-bar"></div>
-          <span class="s-eye-t">Gallery &amp; Concert</span>
+          <span class="s-eye-t">Gallery</span>
         </div>
         <h2>活動の<em>記録</em>とコンサート</h2>
       </div>
@@ -886,7 +892,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         <li><a href="vov_about.html">VOVについて</a></li>
         <li><a href="vov_schedule.html">活動・スケジュール</a></li>
         <li><a href="vov_join.html">入会案内</a></li>
-        <li><a href="vov_gallery.html">ギャラリー・コンサート</a></li>
+        <li><a href="vov_gallery.html">ギャラリー</a></li>
       </ul>
     </div>
     <div class="ft-col">
@@ -906,17 +912,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       </ul>
     </div>
   </div>
-  <div class="ft-support">
-    <p class="ft-support-t"><strong>お買い物でVOVを応援</strong>　このリンクからお買い物をすると、VOVの活動の支援になります。</p>
-    <div class="ft-support-btns">
-      <a href="https://px.a8.net/svt/ejp?a8mat=4BCH7R+AYQEUQ+5IMU+5YRHE" target="_blank" rel="nofollow noopener" class="aff-btn aff-furusato">
-        <span class="aff-icon">ふ</span>ふるさと本舗
-      </a><img src="https://www10.a8.net/0.gif?a8mat=4BCH7R+AYQEUQ+5IMU+5YRHE" width="1" height="1" alt="" class="aff-px">
-      <a href="https://amzn.to/4haP4xB" target="_blank" rel="noopener" class="aff-btn aff-amazon">
-        <span class="aff-icon">a</span>Amazon
-      </a>
-    </div>
-  </div>
+  <!-- お買い物でVOVを応援（一般公開のあと、リンクの発行を待って戻す） -->
   <div class="ft-bot">
     <span class="ft-c">© 2026 Voices of Vision. All rights reserved.</span>
     <span class="ft-c">vov.jp</span>
@@ -953,9 +949,13 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
   }
   const pill = document.getElementById('info-pill');
   if (pill && items.length) {
-    const d = day(items[0].date);
-    pill.querySelector('.ip-t').textContent = (d.getMonth()+1) + '/' + d.getDate() + '　' + items[0].title;
+    const line = items.slice(0, 3).map(it => { const d = day(it.date); return (d.getMonth()+1) + '/' + d.getDate() + '　' + it.title; }).join('　／　');
+    const track = pill.querySelector('.ip-track');
+    track.innerHTML = '<span class="ip-seg">' + esc(line) + '</span><span class="ip-seg" aria-hidden="true">' + esc(line) + '</span>';
+    pill.setAttribute('aria-label', 'お知らせを見る：' + line);
     pill.hidden = false;
+    const w = track.firstChild.getBoundingClientRect().width;   // 1秒に45pxほどの速さで流す
+    track.style.setProperty('--ip-dur', Math.max(10, Math.round(w / 45)) + 's');
   }
 })();
 /* ===== 活動レポート（新しい3件）===== */
@@ -963,6 +963,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
   const el = document.getElementById('top-posts'); if (!el) return;
   const esc = t => String(t == null ? '' : t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const items = ((window.VOV_DATA && window.VOV_DATA.posts) || []).slice().sort((a,b) => a.date < b.date ? 1 : -1).slice(0, 3);
+  if (!items.length) { el.innerHTML = '<p class="s-body" style="grid-column:1/-1">活動レポートは準備中です。</p>'; return; }
   el.innerHTML = items.map(it => '<a class="post" href="vov_posts.html#' + encodeURIComponent(it.id) + '">'
     + '<div class="post-img">' + (it.image ? '<img src="' + esc(it.image) + '" alt="' + esc(it.title) + '" loading="lazy" decoding="async">' : '') + '</div>'
     + '<div class="post-body"><span class="post-date">' + String(it.date).replace(/-/g, '.') + '</span><h3 class="post-title">' + esc(it.title) + '</h3>'

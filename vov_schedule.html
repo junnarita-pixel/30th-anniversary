@@ -157,6 +157,12 @@ footer{background:var(--ink);padding:52px 48px 26px;border-top:1px solid rgba(21
 .tg-ev{background:var(--ink);color:var(--gold-l)}
 .tg-youth{background:var(--ink);color:var(--gold-l)}
 .mcal-ttl{font-weight:700;color:var(--ink);display:block;margin-bottom:2px}
+/* 更新画面の「スケジュールの変更」で、その日だけ変えた行 */
+.tg-off{background:#9B2C2C;color:var(--white)}
+.tg-chg{background:var(--white);color:var(--burg);border:1px solid var(--burg)}
+.mcal-tb tr.is-off .mcal-ttl{text-decoration:line-through;color:var(--ink-l)}
+.mcal-tb tr.is-off td{color:var(--ink-l)}
+.mcal-chg{font-size:12.5px;color:#9B2C2C;font-weight:700}
 .mcal-empty{padding:40px 26px;text-align:center;color:var(--ink-l);font-size:14px}
 .mcal-note{font-size:12.5px;color:var(--ink-l);line-height:1.9;padding:16px 26px;background:var(--paper);border-top:1px solid var(--bg3)}
 @media(max-width:620px){
@@ -241,7 +247,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
 <nav>
   <a href="vov_top.html" class="logo">
     <span class="logo-m">Voices of Vision</span>
-    <span class="logo-s">Nagoya Gospel Choir</span>
+    <span class="logo-s">Gospel Choir</span>
   </a>
   <ul>
     <li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">VOVについて</button><div class="subm"><a href="vov_about.html" class="subm-top">VOVについて（すべて）</a><a href="vov_about.html#leaders">指導者紹介</a><a href="vov_about.html#fees">リハーサル・会費について</a><a href="vov_history.html">VOVの歩み</a></div></li><li class="has-sub is-current" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">スケジュール</button><div class="subm"><a href="vov_schedule.html" class="subm-top">活動・スケジュール（すべて）</a><a href="vov_schedule.html#rehearsal">リハーサル</a><a href="vov_schedule.html#access">リハーサル会場</a><a href="vov_schedule.html#events">直近のイベント・出演情報</a><a href="vov_news.html">お知らせ</a></div></li><li><a href="vov_posts.html">活動レポート</a></li><li><a href="vov_history.html">歴史</a></li><li class="has-sub" aria-expanded="false"><button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">ギャラリー</button><div class="subm"><a href="vov_gallery.html" class="subm-top">ギャラリー（すべて）</a><a href="vov_gallery.html#milestones">これまでの歩み</a><a href="vov_gallery.html#movie">動画</a></div></li><li><a href="vov_join.html">入会案内</a></li>
@@ -257,7 +263,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
     <a href="vov_news.html">お知らせ</a>
     <a href="vov_posts.html">活動レポート</a>
     <a href="vov_history.html">VOVの歩み</a>
-    <a href="vov_gallery.html">ギャラリー・コンサート</a>
+    <a href="vov_gallery.html">ギャラリー</a>
     <a href="vov_join.html">入会案内</a>
     <a href="vov_contact.html" class="m-cta">体験申込・お問い合わせ</a>
   </div>
@@ -350,7 +356,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       <div id="mcal-body"></div>
       <p class="mcal-note">
         会場は日によって違います。表の「会場」をご確認ください。<br>
-        祝日・会場の都合でお休みになる場合があります。最新の開催状況はお問い合わせください。
+        原則から変更になることは度々あります。月ごとにご確認ください。
       </p>
     </div>
   </div>
@@ -373,7 +379,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
         <li><a href="vov_about.html">VOVについて</a></li>
         <li><a href="vov_schedule.html">活動・スケジュール</a></li>
         <li><a href="vov_join.html">入会案内</a></li>
-        <li><a href="vov_gallery.html">ギャラリー・コンサート</a></li>
+        <li><a href="vov_gallery.html">ギャラリー</a></li>
       </ul>
     </div>
     <div class="ft-col">
@@ -393,17 +399,7 @@ footer{background:var(--ink);padding:64px 48px 30px;border-top:4px solid var(--g
       </ul>
     </div>
   </div>
-  <div class="ft-support">
-    <p class="ft-support-t"><strong>お買い物でVOVを応援</strong>　このリンクからお買い物をすると、VOVの活動の支援になります。</p>
-    <div class="ft-support-btns">
-      <a href="https://px.a8.net/svt/ejp?a8mat=4BCH7R+AYQEUQ+5IMU+5YRHE" target="_blank" rel="nofollow noopener" class="aff-btn aff-furusato">
-        <span class="aff-icon">ふ</span>ふるさと本舗
-      </a><img src="https://www10.a8.net/0.gif?a8mat=4BCH7R+AYQEUQ+5IMU+5YRHE" width="1" height="1" alt="" class="aff-px">
-      <a href="https://amzn.to/4haP4xB" target="_blank" rel="noopener" class="aff-btn aff-amazon">
-        <span class="aff-icon">a</span>Amazon
-      </a>
-    </div>
-  </div>
+  <!-- お買い物でVOVを応援（一般公開のあと、リンクの発行を待って戻す） -->
   <div class="ft-bot">
     <span class="ft-c">© 2026 Voices of Vision. All rights reserved.</span>
     <span class="ft-c">vov.jp</span>
@@ -436,6 +432,9 @@ const EVENTS = ((window.VOV_DATA && window.VOV_DATA.events) || []).map(e => ({
   time: e.time || '', place: e.place || '', note: e.text || ''
 }));
 const DOW = ['日','月','火','水','木','金','土'];
+/* その日だけの変更（お休み・時間や会場の変更・臨時のリハーサル）。更新画面「スケジュールの変更」から入る */
+const CHANGES = (window.VOV_DATA && window.VOV_DATA.changes) || [];
+const CLS_OF = t => /朝/.test(t) ? 'tg-morn' : /U25|ユース/.test(t) ? 'tg-youth' : 'tg-night';
 
 /* 直近のイベント・出演情報（今日以降を日付の早い順に） */
 (function(){
@@ -467,8 +466,20 @@ function mcalRows(y, m){
     const key = y + '-' + String(m + 1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
     EVENTS.filter(e => e.date === key).forEach(e => rows.push({ d, dow, ...e }));
     const nth = Math.floor((d - 1) / 7) + 1;   // その月で何回目の曜日か
-    REHEARSALS.filter(r => r.dow === dow && r.nth.includes(nth))
-              .forEach(r => rows.push({ d, dow, ...r }));
+    const auto = REHEARSALS.filter(r => r.dow === dow && r.nth.includes(nth)).map(r => ({ d, dow, ...r }));
+    CHANGES.filter(c => c.date === key).forEach(c => {
+      const hit = auto.find(r => r.title === c.target || (/U25|ユース/.test(c.target) && /U25/.test(r.title)));
+      if (/休/.test(c.kind) && hit) {
+        Object.assign(hit, { off:true, tag:'お休み', cls:'tg-off', time:'お休み', place:'', chg:c.text || '' });
+      } else if (/変更/.test(c.kind) && hit) {
+        Object.assign(hit, { tag:'変更', cls:'tg-chg', time:c.time || hit.time, place:c.place || hit.place, chg:c.text || '' });
+      } else {
+        // 臨時のリハーサル、または決まった予定にない日の変更
+        auto.push({ d, dow, title:c.target || 'リハーサル', tag:/休/.test(c.kind) ? 'お休み' : '臨時', cls:/休/.test(c.kind) ? 'tg-off' : 'tg-chg',
+                    off:/休/.test(c.kind), time:/休/.test(c.kind) ? 'お休み' : (c.time || ''), place:c.place || '', note:'', chg:c.text || '' });
+      }
+    });
+    auto.forEach(r => rows.push(r));
   }
   return rows;
 }
@@ -485,11 +496,12 @@ function mcalRender(){
     '<th>日付</th><th>内容</th><th>時間</th><th>会場</th>' +
     '</tr></thead><tbody>' +
     rows.map(r =>
-      '<tr' + (r.dow === 0 ? ' class="is-sun"' : '') + '>' +
+      '<tr' + ((r.dow === 0 || r.off) ? ' class="' + [r.dow === 0 ? 'is-sun' : '', r.off ? 'is-off' : ''].join(' ').trim() + '"' : '') + '>' +
       '<td class="mcal-dt">' + r.d + '<span class="mcal-dow">（' + DOW[r.dow] + '）</span></td>' +
       '<td><span class="mcal-ttl">' + esc(r.title) + '</span>' +
         '<span class="mcal-tag ' + r.cls + '">' + esc(r.tag) + '</span>' +
-        (r.note ? '<br><span style="font-size:12.5px;color:var(--ink-l)">' + esc(r.note) + '</span>' : '') +
+        (r.chg ? '<br><span class="mcal-chg">' + esc(r.chg) + '</span>' : '') +
+        (r.note && !r.off ? '<br><span style="font-size:12.5px;color:var(--ink-l)">' + esc(r.note) + '</span>' : '') +
       '</td>' +
       '<td>' + esc(r.time || '—') + '</td>' +
       '<td>' + esc(r.place || '—') + '</td>' +

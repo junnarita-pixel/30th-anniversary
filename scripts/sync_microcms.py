@@ -25,10 +25,14 @@ microCMS 側の項目（API「活動レポート」 endpoint: posts）
   title  タイトル（必須）        date  日付（必須）
   image  一覧と記事の写真        body  本文（空行で段落）
   photos 記事に並べる写真（複数画像）
-posts の API がまだ無いときは、いまの vov-data.js の posts をそのまま残す。
+microCMS 側の項目（API「スケジュールの変更」 endpoint: changes）
+  date   変更がある日（必須）    target 対象のリハーサル（セレクト）
+  kind   変更の種類（セレクト：お休み／時間・会場の変更／臨時のリハーサル）
+  time   新しい時間              place  新しい会場        text  ひとこと（理由など）
+活動スケジュールの「月ごとの表」で、その日の自動の予定に重ねて表示する。
 
-公開中の記事が1件も無い API は「まだ使いはじめていない」とみなし、サイトのその部分は書き換えない
-（下書きしか無い状態で同期して、いまのイベントや活動レポートを消してしまわないため）。
+2026-11-20 から microCMS を正とする：公開中の記事が0件なら、サイトのその部分も空になる。
+API そのものがまだ無いとき（HTTP 404）だけ、いまの vov-data.js の中身を残す。
 
 公開リポジトリの定期実行は、60日間コミットが無いと GitHub に止められる。
 最後のコミットから50日たったら、中身が同じでも「最終同期」の日付だけ書き換えて記録を残す。
@@ -105,11 +109,23 @@ def convert_posts(items):
     out.sort(key=lambda r: r["date"], reverse=True)
     return out
 
-def current_posts():
-    """いまの vov-data.js にある posts（microCMS に活動レポートの API が無いときに残す）"""
+def convert_changes(items):
+    out = []
+    for it in items:
+        if not it.get("date"): continue
+        rec = {"id": it.get("id", ""), "date": jst_date(it["date"]), "target": first(it.get("target")) or "",
+               "kind": first(it.get("kind")) or "お休み"}
+        for k in ("time", "place", "text"):
+            if it.get(k): rec[k] = it[k]
+        out.append(rec)
+    out.sort(key=lambda r: r["date"])
+    return out
+
+def current_posts(name="posts"):
+    """いまの vov-data.js にある posts や changes（microCMS にその API が無いときに残す）"""
     if not os.path.exists(OUT): return []
     s = open(OUT, encoding="utf-8").read()
-    i = s.find("posts:")
+    i = s.find(name + ":")
     if i < 0: return []
     j = s.find("[", i); depth = 0
     for k in range(j, len(s)):
@@ -162,10 +178,10 @@ def keepalive():
     print(f"最後のコミットから {days:.0f} 日たったので、日付だけ書き換えました（定期実行を止められないため）")
     return True
 
-def write(info, events, posts, source):
+def write(info, events, posts, changes, source):
     stamp = now_jst()
     out = ("/* =====================================================================\n"
-           "   VOV サイトの「お知らせ」「イベント・出演」「活動レポート」のデータ\n"
+           "   VOV サイトの「お知らせ」「イベント・出演」「活動レポート」「スケジュールの変更」のデータ\n"
            "   ---------------------------------------------------------------------\n"
            "   このファイルは microCMS（https://voices-of-vision.microcms.io）の内容から\n"
            "   scripts/sync_microcms.py が自動で作ります。手で直しても次の同期で戻るので、\n"
@@ -175,13 +191,14 @@ def write(info, events, posts, source):
            "window.VOV_DATA = {\n"
            f"  info: {js(info)},\n"
            f"  events: {js(events)},\n"
-           f"  posts: {js(posts)}\n"
+           f"  posts: {js(posts)},\n"
+           f"  changes: {js(changes)}\n"
            "};\n")
     old = open(OUT, encoding="utf-8").read() if os.path.exists(OUT) else ""
     changed = without_stamp(old) != without_stamp(out)
     if changed:
         open(OUT, "w", encoding="utf-8").write(out)
-    print(f"お知らせ {len(info)} 件 / イベント {len(events)} 件 / 活動レポート {len(posts)} 件 → {'書き出しました' if changed else '変更なし'}")
+    print(f"お知らせ {len(info)} 件 / イベント {len(events)} 件 / 活動レポート {len(posts)} 件 / スケジュールの変更 {len(changes)} 件 → {'書き出しました' if changed else '変更なし'}")
     return changed
 
 if __name__ == "__main__":
@@ -196,19 +213,18 @@ if __name__ == "__main__":
         items = fetch_all(domain, key)
     except urllib.error.HTTPError as e:
         print(f"microCMS から取得できません: HTTP {e.code}", file=sys.stderr); sys.exit(1)
-    try:
-        post_items = fetch_all(domain, key, "posts")
-    except urllib.error.HTTPError as e:
-        if e.code != 404: print(f"活動レポートを取得できません: HTTP {e.code}", file=sys.stderr); sys.exit(1)
-        post_items = []                  # まだ API が無い
-    posts = convert_posts(post_items) if post_items else current_posts()
-    print(f"microCMS の公開中：お知らせ {len(items)} 件 / 活動レポート {len(post_items)} 件")
-    if not items:
-        # お知らせ側はまだ使いはじめていない → いまの info・events を残し、posts だけ必要なら差し替える
-        changed = bool(post_items) and replace_posts_only(posts)
-        print("お知らせは書き換えません（公開中の記事が無いため）" + ("／活動レポートを差し替えました" if changed else "／変更なし"))
-        changed = changed or keepalive()
-        sys.exit(0 if changed else 3)
+    def optional(endpoint, label, conv, name):
+        """API が無いとき（404）はいまの中身を残す。あれば公開中の記事が正（0件なら空）"""
+        try:
+            got = fetch_all(domain, key, endpoint)
+        except urllib.error.HTTPError as e:
+            if e.code != 404: print(f"{label}を取得できません: HTTP {e.code}", file=sys.stderr); sys.exit(1)
+            print(f"{label}の API はまだありません（いまの中身を残します）")
+            return current_posts(name), None
+        return conv(got), got
+    posts, post_items = optional("posts", "活動レポート", convert_posts, "posts")
+    changes, change_items = optional("changes", "スケジュールの変更", convert_changes, "changes")
+    print(f"microCMS の公開中：お知らせ {len(items)} 件 / 活動レポート {len(post_items or [])} 件 / スケジュールの変更 {len(change_items or [])} 件")
     info, events = convert(items)
-    changed = write(info, events, posts, "microCMS") or keepalive()
+    changed = write(info, events, posts, changes, "microCMS") or keepalive()
     sys.exit(0 if changed else 3)      # 3 = 変更なし（Actions 側でコミットを飛ばす）
